@@ -175,12 +175,6 @@ hr {
     padding: 80px;
 }
 
-#module4ColIndex {
-    margin:auto;
-    width:90%;
-    padding: 40px;
-}
-
 #moduleIndex h1 {
     padding:none;
 }
@@ -191,6 +185,26 @@ hr {
 }
 
 #moduleIndex h3 {
+    font-family: "Raleway", sans-serif;
+    padding:.5em;
+}
+
+#module4ColIndex {
+    margin:auto;
+    width:90%;
+    padding: 40px;
+}
+
+#module4ColIndex h1 {
+    padding:none;
+}
+
+#module4ColIndex h2 {
+    font-family: "Raleway", sans-serif;
+    padding:.5em;
+}
+
+#module4ColIndex h3 {
     font-family: "Raleway", sans-serif;
     padding:.5em;
 }

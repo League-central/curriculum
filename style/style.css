@@ -175,6 +175,12 @@ hr {
     padding: 80px;
 }
 
+#module4ColIndex {
+    margin:auto;
+    width:90%;
+    padding: 40px;
+}
+
 #moduleIndex h1 {
     padding:none;
 }

@@ -275,6 +275,11 @@ hr {
     min-width: 20em;
 }
 
+.moduleIndex4Columns {
+    float: left; 
+    width: 25%;
+    min-width: 20em;
+}
 
 /*the wrap, main, and footer divs make the footer stick to the bottom of the screen*/
 #wrap {

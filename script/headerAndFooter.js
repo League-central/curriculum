@@ -6,11 +6,11 @@ function addHeader() {
     links.innerHTML += "<span style=\"width:100%\">";
     links.innerHTML += "<a href=\"http://www.jointheleague.org\"><img class=\"footer\" src=\"https://league-central.github.io/curriculum/img/league.jpg\" alt=\"league-logo\" title=\"League Website\"></a>";
     links.innerHTML += "</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>";
-    links.innerHTML += "<a href=\"http://jointheleague.github.io\"><img class=\"footer\" src=\"img/teacher.png\" alt=\"Teacher Resources\" title=\"Leauge Resources\"></a>";
+    links.innerHTML += "<a href=\"http://jointheleague.github.io\"><img class=\"footer\" src=\"https://league-central.github.io/curriculum/img/teacher.png\" alt=\"Teacher Resources\" title=\"Leauge Resources\"></a>";
     links.innerHTML += "</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>";
-    links.innerHTML += "<a href=\"https://jtl.pike13.com\"><img class=\"footer\" src=\"img/pike13.png\" alt=\"Legaue Hub\" title=\"League Hub\"></a>";
+    links.innerHTML += "<a href=\"https://jtl.pike13.com\"><img class=\"footer\" src=\"https://league-central.github.io/curriculum/img/pike13.png\" alt=\"Legaue Hub\" title=\"League Hub\"></a>";
     links.innerHTML += "</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>";
-    links.innerHTML += "<a href=\"mailto:curriculum@jointheleague.org\"><img class=\"footer\" src=\"img/suggestions.png\" alt=\"Recipe Suggestions\"title=\"Suggestions\"></a>";  
+    links.innerHTML += "<a href=\"mailto:curriculum@jointheleague.org\"><img class=\"footer\" src=\"https://league-central.github.io/curriculum/img/suggestions.png\" alt=\"Recipe Suggestions\"title=\"Suggestions\"></a>";  
     links.innerHTML += "</span>";
 }
 
@@ -18,7 +18,7 @@ function addFooter() {
 
     var footer = document.getElementById("footer");
 
-    footer.innerHTML += "<a href=\"http://www.jointheleague.org\"><img class=\"footer\" src=\"https://league-level0.github.io/img/league.jpg\" alt=\"league-logo\" align=\"center\"></a>";
+    footer.innerHTML += "<a href=\"http://www.jointheleague.org\"><img class=\"footer\" src=\"https://league-central.github.io/curriculum/img/league.jpg\" alt=\"league-logo\" align=\"center\"></a>";
 
     footer.innerHTML += "<span style=\"position:absolute;bottom:20px;font-weight: bold;\">Copyright <a href=\"http://www.jointheleague.org\">The League of Amazing Programmers</a> 2013-2018</span>";
 
@@ -45,7 +45,7 @@ function addRecipeHeader(){
 function addRecipeFooter(){
     var footer = document.getElementById("footer");
 
-    footer.innerHTML += "<a href=\"http://www.jointheleague.org\"><img class=\"footer\" src=\"https://league-level0.github.io/img/league.jpg\" alt=\"league-logo\" align=\"center\"></a>";
+    footer.innerHTML += "<a href=\"http://www.jointheleague.org\"><img class=\"footer\" src=\"https://league-central.github.io/curriculum/img/league.jpg\" alt=\"league-logo\" align=\"center\"></a>";
 
     footer.innerHTML += "<span style=\"position:absolute;bottom:20px;font-weight: bold;\">Copyright <a href=\"http://www.jointheleague.org\">The League of Amazing Programmers</a> 2013-2019</span>";
 

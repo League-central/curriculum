@@ -49,6 +49,23 @@ p.code {
     padding-left: 50px;
 }
 
+
+pre{
+    font-size:1.15em;
+    font-family:Courier New;
+    color: black;
+    font-family: Courier;
+    font-size: 16px;
+    border-style:solid;
+    border-width: 2px;
+    background:#c1d3bc;
+    border-color:#1E9806;
+    font-weight:200;
+    margin: 0 auto;
+    margin-top: 1em;
+    overflow:auto;
+}
+
 hr {
     margin:auto;
     margin-top:.5em;
@@ -102,7 +119,7 @@ hr {
 }
 
 #overviewPage {
-    width: 100%;
+    width: 1500px;
     padding:1em;
     margin: 0 auto;
 }
@@ -146,6 +163,7 @@ hr {
     text-align: center;
     font-size: 1.2em;
     font-family:monospace;
+    width:100%;
 }
 
 #linkPageBody {
@@ -189,33 +207,13 @@ hr {
     padding:.5em;
 }
 
-#module4ColIndex {
-    margin:auto;
-    width:90%;
-    padding: 40px;
-}
-
-#module4ColIndex h1 {
-    padding:none;
-}
-
-#module4ColIndex h2 {
-    font-family: "Raleway", sans-serif;
-    padding:.5em;
-}
-
-#module4ColIndex h3 {
-    font-family: "Raleway", sans-serif;
-    padding:.5em;
-}
-
 #recipePage {
     padding-top:5em;
     margin: 0 auto;
     background:#d2d4d8;
     padding:1em;
     width:80%;
-    height:100em;
+    height:100%;
     margin-top:1em;
 }
 
@@ -223,25 +221,130 @@ hr {
     font-family: "Raleway", sans-serif;
 }
 
-#recipePage h2 {
-    float:left;
-    padding-left: 10%;
+#recipePage img {
+    width:25%;
+    display:block;
+    margin: 0 auto;
+    padding-top:.5em;
 }
 
-#recipePage p {
+#recipeSteps{
+
+}
+
+#recipeGoal {
+}
+
+#recipeBody h2 {
     float:left;
 }
 
 #recipePage ol {
     float:left;
-    padding-left:-10%;
+    width:100%;
+    padding-left:1em;
+    font-size: 1.15em;
+    padding-top:.5em;
 }
 
-#recipePage img {
-    width:30%;
+#recipePage li {
+    padding-bottom:1em;
+}
+
+#recipePage p {
+    float:left;
+    width:100%;
+    font-size: 1.15em;
+    padding-top:.5em;
+}
+
+#recipePage #recipeTitle {
+    margin-top:1em;
+}
+
+
+
+#recipeBody #recipeGoal {
+    padding:5em;
+    padding-bottom: 9em;
+    border: 5px dashed #f26522;
+    background:#f9f9f9;
+    margin:5em;
+}
+
+#recipeBody #recipeSteps {
+    padding:5em;
+    border: 5px double #f26522;
+    background:#f9f9f9;
+    margin:5em;
+}
+
+#tipsPage {
+    padding-top:5em;
+    margin: 0 auto;
+    background:#d2d4d8;
+    padding:1em;
+    width:80%;
+    height:100%;
+    margin-top:1em;
+}
+
+#tipsPage #tipsTitle {
+    margin-top:1em;
+}
+
+#tipsPage h1 {
+    font-family: "Raleway", sans-serif;
+
+}
+
+#tipsPage h2 {
+    float:left;
+    padding-top:1.5em;
+}
+
+#tipsPage h3 {
+    font-family: "Raleway", sans-serif;
+    float: left; 
+    color: #fa591a;
+}
+
+#tipsPage img {
+    width:25%;
     display:block;
     margin: 0 auto;
     padding-top:1em;
+}
+
+#tipsPage pre {
+    margin:1em;
+
+}
+
+#tipsPage ol {
+    float:left;
+    width:100%;
+    padding-left:1em;
+    font-size: 1.15em;
+    padding-top:.5em;
+}
+
+#tipsPage li {
+    padding-bottom:1em;
+}
+
+#tipsPage p {
+    float:left;
+    width:100%;
+    font-size: 1.15em;
+    padding:1em;
+}
+
+#tipsBody {
+    padding:4.5em;
+    border: 5px double #f26522;
+    background:#f9f9f9;
+    margin:5em;
 }
 
 #moduleButtonForm{
@@ -295,11 +398,6 @@ hr {
     min-width: 20em;
 }
 
-.moduleIndex4Columns {
-    float: left; 
-    width: 25%;
-    min-width: 20em;
-}
 
 /*the wrap, main, and footer divs make the footer stick to the bottom of the screen*/
 #wrap {
@@ -345,11 +443,154 @@ body:before {
 }
 
 @media only screen and (max-width: 768px) {
+    #overviewPage {
+        width:100%;
+        padding:0em;
+
+    }
     #overviewPage .module {
         float:none;
         width:70%;
         margin:0 auto;
-        margin-left: 8%;
         height:100%;
+    }
+
+    #recipePage img {
+        width:70%;
+    }
+
+    #recipePage #recipeBody{
+        width:100%;
+    }
+    
+    #recipePage #recipeTitle{
+        width:100%;
+       
+    }
+    
+    #recipePage h2{
+      
+    }
+    
+    #recipePage #recipeGoal{
+        margin-left:0em;
+        margin-right:0em;
+        padding-top:1em;
+        padding-bottom:1em;
+        display:table;
+       
+        margin-bottom:2em;
+        /*
+        overflow-x: scroll;
+        white-space: nowrap;
+        */
+    }
+
+    #recipePage #recipeSteps{
+        
+        margin-left:0em;
+        margin-right:0em;
+        margin-top:0em;
+        padding-top:1em;
+        padding-bottom:1em;
+    }
+
+    #recipePage p {
+        float:left;
+        width:100%;
+        font-size: 1.15em;
+        padding-top:.5em;
+        padding-left: 0em;
+    }
+
+    #recipePage ol {
+        float:left;
+        width:100%;
+        font-size: 1.15em;
+        padding-left:0em;
+
+        padding-top:.5em;
+    }
+    
+    
+    #tipsBody{
+        margin:0em;
+        margin-top:2em;
+        padding-left:2em;
+        padding-right:2em;
+        padding-top:1em;
+    
+    }
+    
+    #tipsPage p {
+        padding-left:0em;
+        padding-right:0em;
+        margin:0em;
+    }
+
+    /*
+    #tipsPage img {
+        width:70%;
+    }
+    
+    tipsPage {
+        background:red;
+    }
+    
+    #tipsBody {
+    width:100%;
+    padding:1em;
+    padding-top:0em;
+    border: 5px double #f26522;
+    background:#f9f9f9;
+    margin:0em;
+    margin-top:1em;
+    }
+    
+    #tipsPage #tipsTitle{
+        width:100%;
+       
+    }
+    
+    #tipsPage h2{
+       padding-top:2em;
+    }
+    
+    #tipsPage p {
+        float:left;
+        width:100%;
+        font-size: 1.15em;
+        padding-top:.5em;
+        padding-left: 0em;
+    }
+    
+    /*
+    #tipsPage #tipsGoal{
+        margin-left:0em;
+        margin-right:0em;
+        padding-top:1em;
+        padding-bottom:1em;
+        display:table;
+        text-align: center;
+        margin-bottom:2em;
+      
+    }
+
+    #tipsPage #tipsSteps{
+        
+        margin-left:0em;
+        margin-right:0em;
+        margin-top:0em;
+        padding-top:1em;
+        padding-bottom:1em;
+    }
+*/
+    */
+
+}
+
+@media (max-width: 1000px) {
+    body {
+        overflow-x: auto;
     }
 }

@@ -4,7 +4,7 @@ function addHeader() {
     links = document.getElementById("header");
 
     links.innerHTML += "<span style=\"width:100%\">";
-    links.innerHTML += "<a href=\"http://www.jointheleague.org\"><img class=\"footer\" src=\"img/league.jpg\" alt=\"league-logo\" title=\"League Website\"></a>";
+    links.innerHTML += "<a href=\"http://www.jointheleague.org\"><img class=\"footer\" src=\"https://league-central.github.io/curriculum/img/league.jpg\" alt=\"league-logo\" title=\"League Website\"></a>";
     links.innerHTML += "</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>";
     links.innerHTML += "<a href=\"http://jointheleague.github.io\"><img class=\"footer\" src=\"img/teacher.png\" alt=\"Teacher Resources\" title=\"Leauge Resources\"></a>";
     links.innerHTML += "</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>";

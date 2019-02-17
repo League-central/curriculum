@@ -249,7 +249,7 @@ hr {
 
 #recipePage .insetRecipeStepsOL{
     list-style-type: lower-roman;
-    background-color:red;
+    font-size: 1em;
 }
 
 #recipePage li {

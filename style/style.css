@@ -247,6 +247,11 @@ hr {
     padding-top:.5em;
 }
 
+#recipePage .insetRecipeStepsOL{
+    list-style-type: lower-roman;
+    background-color:red;
+}
+
 #recipePage li {
     padding-bottom:1em;
 }

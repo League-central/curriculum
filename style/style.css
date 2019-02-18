@@ -64,6 +64,7 @@ pre{
     margin: 0 auto;
     margin-top: 1em;
     overflow:auto;
+    padding:1em;
 }
 
 hr {

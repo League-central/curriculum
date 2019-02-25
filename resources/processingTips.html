@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Processing Tips</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="img/favicon.png">
+        <script src="script/headerAndFooter.js"></script>
+
+    </head>
+
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id="header">
+                    <script>addRecipeHeader();</script>
+                </div>
+                <div id = "tipsPage">
+                    <div id="tipsTitle">
+                        <h1>Processing Tips</h1>
+                        <hr>
+                    </div>
+                    <div id ="tipsBody">
+
+                        <h2>setup() and draw() methods</h2>
+                        <p style = "font-weight: 900;">
+                            Most Processing sketches start with setup() and draw() methods.  These methods are like the main method in a Java program, they tell the computer what code to run when you hit the play button!  The setup() method is run once at the beginning of your program.  The draw() method is called over and over again until you stop your program.  In your code, these methods should look like this:
+                        </p> 
+                        <pre>
+
+    void setup(){
+       
+
+    }
+
+    void draw(){
+
+
+    }
+                            </pre>
+
+
+                        <h2>size</h2>
+                        <p style = "font-weight: 900;">
+                            The next step is often to make the sketch large enough that you can put things inside of it.  To do this, use the size method.
+                        </p> 
+                        <h3>size( width, height)</h3>
+                        <p>
+                            Sets the size of your sketch.    
+                        </p>
+                        <pre>
+
+    void setup(){
+        size(400,600);  
+
+    }
+
+    void draw(){
+
+
+    }
+                            </pre>
+                        <h2>shapes</h2>
+                        <p style = "font-weight: 900;">
+                            Since Processing is a graphically-oriented programming language, drawing shapes is something you will likely do in every sketch.  Here are a few of the most common shapes:
+                        </p> 
+
+                        <h3>ellipse( x, y, width, height)</h3>
+                        <p>
+                            An ellipse is an oval shape.  When the width and height of an ellipse are equal, it makes a circle.  
+                        </p>
+                        <h3>rect( x, y, width, height)</h3>
+                        <p>
+                            Draws a rectangular shape.  Has the same four parameters as an ellipse.  
+                        </p>
+                        <h3>triangle( x1, y1, x2, y2, x3, y3)</h3>
+                        <p>
+                            Draws a triangular shape.  Takes three pairs of coordinates and draws lines between them.    
+                        </p>
+                        <pre>
+
+    void setup(){
+        size(400,600);
+
+    }
+
+    void draw(){
+        ellipse(25, 50, 100, 100);
+
+    }
+                            </pre>
+
+                        <h2>colors</h2>
+                        <p style = "font-weight: 900;">
+                            Time to make things pretty! 
+                        </p> 
+                        <h3>fill( redValue, greenValue, blueValue)</h3>
+                        <p>
+                            Changes the color of your shape.  The color will be applied to every shape until it is set to something else.    
+                            <span style = "font-weight: bold;">You should change the color of your shape on the line before you draw it! </span>
+                        </p>
+                        <h3>background( redValue, greenValue, blueValue)</h3>
+                        <p>
+                            Changes the background color of the entire sketch.  
+                        </p> 
+
+                        <pre>
+
+    void setup(){
+        size(400,600);
+        background(0,255,0);
+    }
+
+    void draw(){
+        fill(255,0,0);
+        ellipse(25, 50, 100, 100);
+    }
+                            </pre>
+
+
+                        <h2>built-in variables</h2>
+                        <p style = "font-weight: 900;">
+                            Here are some very useful variables that come free with Processing! 
+                        </p> 
+                        <h3>mousePressed</h3>
+                        <p>
+                            Its value is "true" when the mouse is pressed.  Often used inside of an if statement.   
+                        </p> 
+                        <h3>mouseX</h3>
+                        <p>
+                            Contains the current x-position of the mouse.  
+                        </p> 
+                        <h3>mouseY</h3>
+                        <p>
+                            Contains the current y-position of the mouse.  
+                        </p> 
+                        <h3>width</h3>
+                        <p>
+                            Contains the width of the sketch.  
+                        </p> 
+                        <h3>height</h3>
+                        <p>
+                            Contains the height of the sketch.  
+                        </p> 
+                         <pre>
+
+    void setup(){
+        size(400,600);
+        background(0,255,0);
+    }
+
+    void draw(){
+        if(mousePressed){               //if the mouse is pressed 
+            fill(255,0,0);                  //fill red 
+        }
+        else{                           //else
+            fill(0,0,255);                  //fill green
+        }
+        ellipse(mouseX, mouseY, 100, 100);  //using these variables makes this shape follow the mouse
+    }
+                            </pre>
+
+                        <div style="clear:both;"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body>   
+</html>

@@ -122,7 +122,20 @@
                 document.body.removeChild(element);
             }
 
-
+            function submitViaEmail(){
+                 var textFile = null,
+                    makeTextFile = function (text) {
+                        var data = new Blob([text], {type: 'text/html'});
+                        if (textFile !== null) {
+                            window.URL.revokeObjectURL(textFile);
+                        }
+                        textFile = window.URL.createObjectURL(data);
+                        return textFile;
+                    };
+                var URI = 'mailto:test@example.com?subject="New Recipe!"&body=';
+                URI += createRecipe();
+                window.open(URI);
+            }
 
             function formatTitleForFileName(){
                 var input = document.getElementById("title").value;
@@ -200,6 +213,7 @@ Back to the outer level
                         <div class="formElement">
                             <input type="button" class="submitButton" name="display HTML" value="display HTML" onclick="displayHTML();"> 
                             <input type="button" class="submitButton" name="download HTML" value="download HTML" onclick="downloadHTMLFile();"> 
+                            <!--<input type="button" class="submitButton" name="submit via Email" value="submit via email" onclick="submitViaEmail();"> -->
                         </div>
 
                         <div id="htmlOutput" style="visibility: hidden">

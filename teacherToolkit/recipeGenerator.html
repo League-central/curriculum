@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recipe Generator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+        <script src="script/recipeGenerator.js"></script>
+        <style>
+            .formElement{
+                float:left;
+                width:100%;
+                padding-bottom: 2em;
+            }
+            .tipsBody{
+                display: inline-block;
+            }
+
+            #htmlOutput{
+                width:100%;
+            }
+            
+            textarea{
+                max-width:100%;
+            }
+
+            input, textarea {
+                font-size: .9em;
+            }
+            h3{
+                width:100%;
+                text-align: left;
+            }
+            .submitButton {
+                background-color: darkgray; 
+                border: none;
+                color: white;
+                padding: 1em 1em;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                padding:1em;
+                margin:.5em;
+                border-radius: 5px;
+                -webkit-transition-duration: 0.4s; /* Safari */
+                transition-duration: 0.4s;
+            }
+
+            .submitButton:hover {
+                background-color: #fa591a;
+                color: white;
+                border-radius: 10px;
+            }
+
+            .formElement p{
+                border:dotted;
+                border-color: #fa591a;
+                font-size: .1em;
+                max-width: 25em;
+                padding:5em;
+            }
+        </style>
+
+        <script>
+            function createRecipe(){
+                clearOutput();
+                var containsTitleImage = document.getElementById('imageYes').checked
+                var titleImageFileName = "";
+                if(containsTitleImage){
+                    titleImageFileName = document.getElementById('titleImageFileName').value;
+                }
+                var title = document.getElementById('title').value;
+                var goal = document.getElementById('goal').value;
+                var steps = document.getElementById('steps').value;
+                return createRecipeHTML(title, containsTitleImage, titleImageFileName, goal, steps);
+            }
+
+            function displayHTML(){
+
+                var output = document.createElement("pre"); //input element, text
+                output.append(createRecipe());
+                console.log(output);
+
+                var br = document.createElement("br"); //input element, text
+
+
+                var h3=document.createElement("h3");
+
+
+                h3.innerHTML="HTML Output:"
+                h3.style.textAlign="left";
+                document.getElementById('htmlOutput').style.visibility='visible';
+                document.getElementById('htmlOutput').appendChild(h3);
+                //document.getElementById('htmlOutput').appendChild(br);
+                document.getElementById('htmlOutput').innerHTML+="<br><br>";
+                document.getElementById('htmlOutput').appendChild(output);
+            }
+
+            function clearOutput(){
+                document.getElementById('htmlOutput').innerHTML="";
+            }
+
+            function downloadHTMLFile(){
+                var textFile = null,
+                    makeTextFile = function (text) {
+                        var data = new Blob([text], {type: 'text/html'});
+                        if (textFile !== null) {
+                            window.URL.revokeObjectURL(textFile);
+                        }
+                        textFile = window.URL.createObjectURL(data);
+                        return textFile;
+                    };
+                var element = document.createElement('a');
+                element.setAttribute('href', makeTextFile(createRecipe()));
+                element.setAttribute('download', formatTitleForFileName());
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+            }
+
+
+
+            function formatTitleForFileName(){
+                var input = document.getElementById("title").value;
+                input = input.trim();
+                input = input.charAt(0).toUpperCase() + input.substring(1);
+                for(var i=1; i<input.length-2; i++){
+                    if(input.charAt(i)===' '){
+                        input = input.substring(0, i) + input.charAt(i+1).toUpperCase() + input.substring(i+2);
+                    }
+                }
+                if(input.charAt(input.length-2)==' '){
+                    input = input.substring(0, input.length-2) + input.substring(input.length-1);
+                }
+                return input;
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id="header">
+                    <script>addRecipeHeader();</script>
+                </div>
+                <div id = "tipsPage">
+                    <div id="tipsTitle">
+                        <h1>Recipe Generator</h1>
+                        <hr>
+                    </div>
+                    <div id ="tipsBody">
+                        <div class="formElement">
+                            <p>
+                                First time?  Check out the  <a href="http://central.jointheleague.org/resources/recipeGeneratorTips.html">Recipe Generator Tips Page</a>!
+                            </p>
+                        </div>
+
+                        <div class="formElement">
+                            <h3>Recipe Title:</h3><br><br>
+                            <input type="text" name="title" id="title">
+                        </div>
+
+                        <div class="formElement">
+                            <h3>Goal:</h3><br><br>
+                            <textarea rows="4" cols="50" id="goal"></textarea>
+                        </div>
+
+                        <div class="formElement">
+                            <h3>Add a title image?</h3><br><br>
+                            <input type="radio" id="imageYes" name="titleImage" value="Yes" onchange="document.getElementById('imageForm').style.display='inherit';"> Yes<br>
+                            <input type="radio" id="imageNo" name="titleImage" value="No" onchange="document.getElementById('imageForm').style.display='none';" checked="checked"> No<br>
+
+                            <div id="imageForm" style="display:none;">
+                                <br>Image File Name: <input type="text" name="imageFileName" id="titleImageFileName"><br>
+                            </div>
+                        </div>
+
+
+
+                        <div class="formElement">
+                            <h3>Steps:</h3><br><br>
+                            <textarea rows="20" cols="50" id="steps">
+                                1.  Here is my first step
+                                <pre>
+Here is the first line of code
+    This line is even more indented
+    This line is as indented as the last 
+Back to the outer level
+</pre>
+                                2.  Here is the next step.
+
+                            </textarea>
+                        </div>
+
+
+                        <div class="formElement">
+                            <input type="button" class="submitButton" name="display HTML" value="display HTML" onclick="displayHTML();"> 
+                            <input type="button" class="submitButton" name="download HTML" value="download HTML" onclick="downloadHTMLFile();"> 
+                        </div>
+
+                        <div id="htmlOutput" style="visibility: hidden">
+
+                        </div>
+
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body>   
+</html>

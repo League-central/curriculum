@@ -271,8 +271,9 @@ hr {
 
 
 #recipeBody #recipeGoal {
-    padding:2.5em;
-    padding-bottom: 6.5em;
+    padding:3em;
+    padding-left:5em;
+    padding-bottom: 7em;
     border: 5px dashed #f26522;
     background:#f9f9f9;
     margin:5em;

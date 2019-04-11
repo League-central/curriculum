@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<title>Level 2 Final Variables</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level0.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-level0.github.io/script/headerAndFooter.js"></script>
+    
+<body>
+    
+    <h2>Final Variables</h2>
+<p class="normal">
+Sometimes when programming, we want to create variables that never change. <br>
+In Java, you can use the keyword <font color="green">final</font> to make sure that your variables can't be changed.<br>
+It is a programming convention to make static and final variables <u>all capital letters</u> so that they are easy to identify in your code.<br>
+<br>
+EXAMPLE:
+</p>
+ <p class="code">
+double pi = 3.14159265359;<br>
+<br>
+pi = 7.7; // This is perfectly valid.<br>
+<br>
+System.out.println(pi); // This prints out 7.7.<br>
+</p>
+  <p class="normal">  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    </p>
+<p class="code">
+final double PI = 3.14159265359; //notice we added "final"<br>
+<br>
+PI = 7.7; //This will cause an error because PI had been labeled as final.<br>
+<br>
+System.out.println(pi); // It still prints out 3.14159265359.<br>
+    </p>
+
+
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>League Level 2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+    
+    <body>
+            <div id="wrap">
+            <div id="main">
+                <div id = "linkPageBody">
+                    <h1>League Level 2</h1>
+
+  <hr>
+  <h3> <a href="arrays.html">What are arrays?</a></h3>
+  <h3>  <a href="https://classroom.github.com/a/ghN_LK_B">Module 0: Intro to Arrays</a></h3>
+    <h3> <a href="ArraysQuiz.html">Module 0 Checkpoint</a></h3>
+                    <br>
+   <h3>  <a href="https://classroom.github.com/a/gZ6FwZni">Module 1: Intro to ArrayLists</a></h3>
+	  <h3> <a href="ArrayList Quiz.html">Module 1 Checkpoint</a></h3>
+                  <br>
+   <h3>  <a href="https://classroom.github.com/a/RzmcKAVR">League Snake (Processing)</a> </h3>
+                    <br>
+   <h3>  <a href="league_invaders_contents.html">League Invaders Mega Recipe</a> </h3>
+                  <br>
+   <h3>  <a href="project_info.html">Level 2 Project Info</a> </h3>
+    <h3>	 <a href="https://docs.google.com/document/d/1LzC-ksSxDo7U-RsDE9RuDLM4xB9wZ1vYhslsy09CX_0"> Game Design Document </a> </h3>
+   
+    <h3> <a href="game_demos.html">Level 2 Past Projects Hall of Fame</a> </h3>
+                    <hr>
+
+
+
+<div id='demo'></div>
+<script>
+
+function fileUpload(){
+	var inFile = document.getElementById("inputFile");
+	var txt = "";
+	if ('files' in inFile) {
+        if (inFile.files.length == 0) {
+            txt = "Select one or more files.";
+        } else {
+            for (var i = 0; i < inFile.files.length; i++) {
+                txt += "<br><strong>" + (i+1) + ". file</strong><br>";
+                var file = inFile.files[i];
+                if ('name' in file) {
+                    txt += "name: " + file.name + "<br>";
+                }
+                if ('size' in file) {
+                    txt += "size: " + file.size + " bytes <br>";
+                }
+            }
+        }
+    } 
+    else {
+        if (inFile.value == "") {
+            txt += "Select one or more files.";
+        } else {
+            txt += "The files property is not supported by your browser!";
+            txt  += "<br>The path of the selected file: " + inFile.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
+        }
+    }
+    document.getElementById("demo").innerHTML = txt;
+
+}
+
+</script>
+   </div>
+    </div>
+    </div>
+        <div id="footer">
+            <script>addFooter();</script>
+        </div>   
+    
+    
+    </body>
+    </html>

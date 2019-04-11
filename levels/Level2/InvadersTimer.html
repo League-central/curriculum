@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<title>League Invaders - Game Loop</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}    
+</style>
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+<h1>Game Loop</h1>
+<h2>Timer</h2>
+ 
+<br>                    
+<p class="normal">A Timer will control the rate at which the game is refereshed or repainted, also known as the frame rate (or speed) of the game. The following steps will create and start the timer as part of the game's panel function.
+</p>
+                    
+<br>                    
+<p class="normal">
+
+1. <u>In the <code>GamePanel</code> class</u> add a <code>Timer</code> member variable called frameDraw. This is a new class that we haven't used yet. When importing the <code>Timer</code> code, make sure you import the class that reads <code>javax.swing.Timer</code>.<br><br>
+      
+2. The timer is going to use the <code>ActionListener</code> interface to make actions  happen when it expires. Make your class implement the <code>ActionListener</code> interface as shown below:<br>
+
+<pre>public class GamePanel extends JPanel implements ActionListener
+{ ... }</pre>
+<br>
+<p class="normal">Add the unimplemented method (Eclipse can help). You should now have an <code>actionPerformed()</code> method in your class.<br>
+<br>
+
+3. In the <code>GamePanel</code> constructor, initialize its timer member variable. The constructor of the Timer class takes two parameters. The first parameter is an int for how fast your want the timer to repeat. <u>This is in milliseconds</u> so 1000 is equal to 1 second. We want the game to run at <u>60 frames per second</u>. So the first parameter will be 1000 / 60. The second parameter takes a reference to an ActionListener object. Since we implemented it in the <code>GamePanel</code>, we can put <font color="red">this</font> for the second parameter. After you have initialized the variable, start the timer (see below).<br></p>
+                    
+    <pre>
+    frameDraw = new Timer(1000/60,this);
+    frameDraw.start();</pre>
+
+  
+    <br>
+<p class="normal"> 
+4. In the <code>actionPerformed</code> method (which runs when the timer triggers it), add a series of if/else statements to check the <code>currentState</code> variable. Call the appropriate update method inside the if/else block as shown. </p>
+ <pre>
+if(currentState == MENU){
+    updateMenuState();
+}else if(currentState == GAME){
+    updateGameState();
+}else if(currentState == END){
+    updateEndState();
+}</pre>
+    
+    <br><p class="normal">
+    5. Add a line of code to the <code>actionPerformed</code> method to print "action" to the console, followed by a call to the panel's <code>repaint()</code> method to redraw the panel.</p>
+
+   <br>
+                  
+  
+     <img src="images/InvadersBlueBackground.png" style="width: 150px; height=241px; margin: 0px 20px" align="left"> <h3>TESTING</h3><p class="normal"> 6. Run the program. Is the frame now filled by a blue rectangle. Is "action" appearing repeatedly on the console? If not, get this part working before you move on to the next step.
+                    
+               </p>
+                </div></div></div>                   
+<div id="footer">
+<script>addFooter();</script>
+</div>
+   
+</body></html>

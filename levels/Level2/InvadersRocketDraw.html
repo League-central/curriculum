@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<title>League Invaders - Game Objects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+<h1>Rocket (draw)</h1>
+ 
+<br>                    
+<p class="normal">
+All of the game characters share common characteristics. They all have to be drawn at a specific location (x,y) and have a specific size (width,height). The common characteristics will be stored in a "superclass" called GameObject.</p>
+                    
+                    <h2>GameObject</h2>
+                    
+<p class="normal">    
+    1. Create a new class called GameObject and add the following member variables to represent the information shared by all game characters:</p>    
+    
+<pre>
+ int x;
+ int y;
+ int width;
+ int height;</pre>
+
+<br>                      
+<p class="normal">    
+    2. Make a constructor for this class that takes parameters to initialize all of the above member variables.</p>
+<br>
+<p class="normal"> 
+    3. Add another int member variable called <code>speed</code> and initialize it to 0 and a boolean member variable called <code>isActive</code> and initialize it to true. These will be used later.</p>
+                    <h2>Rocketship</h2>
+                                    
+<p class="normal"> 
+4. Create a Rocketship class that extends the GameObject class.</p>
+<pre>
+public class Rocketship extends GameObject { }</pre>
+                                        
+<br>        
+<p class="normal">      
+5. Add a constructor for this class that takes the same parameters as the inherited GameObject constructor (see step 2), and pass the parameters to the GameObject (superclass) constructor (see below). Note: Eclipse can generate this for you</p>
+<pre>
+super(x,y,width,height);
+</pre>                    
+ <br>
+
+
+<p class="normal">           
+    6. In the <code>Rocketship</code> class, create a void <code>draw()</code> method. The draw method takes a parameter that is a <code>Graphics</code> object (g). For now we will draw a blue square to represent the rocketship but putting the following code in its <code>draw()</code> method:</p>
+ <pre>
+        g.setColor(Color.BLUE);
+        g.fillRect(x, y, width, height);</pre>
+<br>
+<h2>GamePanel</h2>
+<br>
+<p class="normal">
+7. In the <code>GamePanel</code>, create a new member variable to hold a Rocketship object that has x,y of 250,700 and width/height of 50,50.</p>
+
+ <br>
+<p class="normal">   
+   8. In the drawGameState() method, add code to call the rocketship's draw method (pass it the Graphics object).</p>  
+    <br>
+  
+     <img src="images/InvadersBlueSquare.png" style="width: 150px; height=241px; margin: 0px 20px" align="left"> <h3><u>TESTING</u></h3><p class="normal"> 9. Run the program. Press the Enter key to put the game into the GAME state (black background). Does the blue rocketship (square) appear at the bottom?
+                    
+               </p>
+                </div></div></div>                   
+<div id="footer">
+<script>addFooter();</script>
+</div>
+   
+</body></html>

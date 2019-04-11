@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<title>Level 2- Arrays</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level3.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+    
+<script src="http://league-level3.github.io/copyrightFooter.js"></script>
+
+<body>
+
+<h1>Arrays</h1>
+
+<p class="normal">
+Variables are used to hold a single value. For example:<br>
+    
+  </p>
+<p class="code">
+int age = 12; <br>
+String name = “Sarah”;
+</p>
+
+    <p class="normal">
+    However, what if a program needed a list of names? We don't want to declare multiple variables with meaningless names like name1, name2, name3, etc.<br><br>
+Arrays allow us to store multiple values of the same type. Just put brackets [] after the type and before the name.<br> E.g. <br>
+</p>
+    <p class="code">
+
+	String[] names = {"Sarah", "Joe","Ali", "Jose"};<br>
+        int[] ages = {12, 15, 9, 5};<br><br>
+    </p>
+    <p class="normal">
+    If we don't know the values, but we know that we are going to have 4 of them in our array, we can declare the array as follows:<br>
+        
+    </p>
+    <p class="code">
+	String[] moreNames = new String[4];<br>
+        int[] moreAges = new int[4];
+</p>
+
+    <p class="normal">
+    Unfortunately, we need to know exactly how many elements we are going to get before we can initialize the array because its length cannot change once it is set.
+ <br><br> 
+    
+        We access the elements of an array by using an index in brackets []. The indexes start at 0.<br>
+        NOTE: The highest posssible index is the length of the array - 1.<br><br>
+    In the case of the names array above, we could use the index to print each name as follows:<br></p>
+
+    <p class="code">
+
+	System.out.println(name[0]);<br>
+	System.out.println(name[1]);<br>
+	System.out.println(name[2]);<br>
+	System.out.println(name[3]);<br>
+        
+    </p>       
+        
+      <p class="normal">
+          ..but imagine how many lines of code you would need for 100 names...<br><br>
+          So, in order to process each element in an array, we should use a for loop, and use the length of the array to supply the end point, like this:<br></p>
+     <p class="code">
+
+	for (int i=0;i&lt;names.length;i++) {<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(name[i]);<br>
+	}<br>
+        
+    </p>
+        <p class="normal">
+          Another type of for loop is available for processing all the elements of an array.<br> It is called a "for each" loop and the syntax looks like this:<br></p>
+     <p class="code">
+
+	for (String name : names) {<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(name);<br>
+	}<br>
+    	for (int age : ages) {<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(age);<br>
+	}<br>    
+    </p>   
+    <p class="normal">Each time the loop repeats, the variable (name or age) gets a new value from the next element of the array.<br>
+    The loop will repeat until there are no more elements in the array.</p>        
+   
+ <div id="copyright" style="float: left; width: 100%;">      
+        <script>copyright();</script>
+    </div>
+ 
+   
+</body></html>

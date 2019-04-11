@@ -1,0 +1,275 @@
+<html>
+
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <style type="text/css">
+    ol {
+      margin: 0;
+      padding: 0
+    }
+
+    table td,
+    table th {
+      padding: 0
+    }
+
+    .c10 {
+      color: #000000;
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 11pt;
+      font-family: "Arial";
+      font-style: normal
+    }
+
+    .c6 {
+      color: #000000;
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 14pt;
+      font-family: "Arial";
+      font-style: normal
+    }
+
+    .c2 {
+      margin-left: 36pt;
+      padding-top: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.15;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    .c1 {
+      color: #000000;
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 12pt;
+      font-family: "Arial";
+      font-style: normal
+    }
+
+    .c4 {
+      padding-top: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.15;
+      orphans: 2;
+      widows: 2;
+      text-align: center;
+      height: 11pt
+    }
+
+    .c0 {
+      color: #0000ff;
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 12pt;
+      font-family: "Arial";
+      font-style: normal
+    }
+
+    .c9 {
+      padding-top: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.15;
+      orphans: 2;
+      widows: 2;
+      text-align: center
+    }
+
+    .c3 {
+      padding-top: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.15;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    .c8 {
+      background-color: #ffffff;
+      max-width: 468pt;
+      padding: 72pt 72pt 72pt 72pt
+    }
+
+    .c5 {
+      height: 11pt
+    }
+
+    .c7 {
+      font-size: 12pt
+    }
+
+    .title {
+      padding-top: 0pt;
+      color: #000000;
+      font-size: 26pt;
+      padding-bottom: 3pt;
+      font-family: "Arial";
+      line-height: 1.15;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    .subtitle {
+      padding-top: 0pt;
+      color: #666666;
+      font-size: 15pt;
+      padding-bottom: 16pt;
+      font-family: "Arial";
+      line-height: 1.15;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    li {
+      color: #000000;
+      font-size: 11pt;
+      font-family: "Arial"
+    }
+
+    p {
+      margin: 0;
+      color: #000000;
+      font-size: 11pt;
+      font-family: "Arial"
+    }
+
+    h1 {
+      padding-top: 20pt;
+      color: #000000;
+      font-size: 20pt;
+      padding-bottom: 6pt;
+      font-family: "Arial";
+      line-height: 1.15;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h2 {
+      padding-top: 18pt;
+      color: #000000;
+      font-size: 16pt;
+      padding-bottom: 6pt;
+      font-family: "Arial";
+      line-height: 1.15;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h3 {
+      padding-top: 16pt;
+      color: #434343;
+      font-size: 14pt;
+      padding-bottom: 4pt;
+      font-family: "Arial";
+      line-height: 1.15;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h4 {
+      padding-top: 14pt;
+      color: #666666;
+      font-size: 12pt;
+      padding-bottom: 4pt;
+      font-family: "Arial";
+      line-height: 1.15;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h5 {
+      padding-top: 12pt;
+      color: #666666;
+      font-size: 11pt;
+      padding-bottom: 4pt;
+      font-family: "Arial";
+      line-height: 1.15;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h6 {
+      padding-top: 12pt;
+      color: #666666;
+      font-size: 11pt;
+      padding-bottom: 4pt;
+      font-family: "Arial";
+      line-height: 1.15;
+      page-break-after: avoid;
+      font-style: italic;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+  </style>
+</head>
+
+<body class="c8">
+  <p class="c9"><span class="c6">League Invaders Pt. 12 </span></p>
+  <p class="c9"><span class="c6">Collisions</span></p>
+  <p class="c4"><span class="c6"></span></p>
+  <p class="c3"><span class="c10">In order to make our objects react to colliding with each other, we will use Java&#39;s Rectangle class.</span></p>
+  <p class="c3 c5"><span class="c6"></span></p>
+  <p class="c3"><span class="c1">1. In your GameObject class, create an object of the Rectangle class in your member variables. Call this object collisionBox. You will have to import the class.</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c3"><span class="c1">2. Initialize the collision box in the GameObject constructor. It takes four parameters. Use the x, y, width, and height variables.</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c3"><span class="c1">3. In the update method of the GameObject class, update the collision box with the x, y, width, and height variables. </span></p>
+  <p class="c3"><span class="c7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c0">collisionBox.setBounds(x, y, width, height);</span></p>
+  <p class="c3 c5"><span class="c0"></span></p>
+  <p class="c3"><span class="c1">4. At the very top of the update method inside the Rocketship class, add this line:</span></p>
+  <p class="c3"><span class="c7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c0">super.update();</span></p>
+  <p class="c3 c5"><span class="c0"></span></p>
+  <p class="c3"><span class="c1">5. Add these same line to the update method in the Alien and the Projectile classes.</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c3"><span class="c1">6. Go to the ObjectManager class and create a method called checkCollision.</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c3"><span class="c1">7. Add code to the checkCollision method that checks if the player collides with any enemies. If so, set the player&#39;s isAlive variable to false.</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c2"><span class="c0">for(Alien a : alienList){</span></p>
+  <p class="c2"><span class="c0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(rocket.collisionBox.intersects(a.collisionBox){</span></p>
+  <p class="c2"><span class="c0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rocket.isAlive = false;</span></p>
+  <p class="c2"><span class="c0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></p>
+  <p class="c2"><span class="c0">}</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c3"><span class="c1">8. Add code that iterates through all the projectiles and all the aliens. If any of them collide, set their isAlive variables to false.</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c3"><span class="c1">9. Go to the GamePanel class. In the updateGameState method, use your ObjectManager object to call the checkCollision method and the purgeObjects method.</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c3"><span class="c1">10. Run your program. Do the aliens and ship disappear when they are supposed to?</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c3"><span class="c1">11. In the updateGameState method, create an if statement that checks the isAlive variable of your Rocketship object. If it is false, set the currentState equal to END_STATE</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c3"><span class="c1">12. In the ObjectManager class, create a member integer called score and initialize it to zero.</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c3"><span class="c1">13. Create a getter for the score variable.</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c3"><span class="c1">14. Increment the score by one every time an enemy is killed by a projectile.</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c3"><span class="c1">15. Use the getScore method in the ObjectManager class to update the player&#39;s score.</span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+  <p class="c3 c5"><span class="c1"></span></p>
+</body>
+
+</html>

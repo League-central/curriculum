@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<title>League Invaders - Game Objects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+<h1>Rocket (movement)</h1>
+ 
+<br>                    
+<p class="normal">
+The next challenge is to get the rocket to move around when the arrow keys are pressed.</p>
+<br>
+<p class="normal">    
+    1. In the Rocketship constructor, set its speed variable to 5.</p>    
+    
+<br>                      
+<p class="normal">    
+    2. Add up(), down(), left() and right() methods to the Rocketship class that modify its x or y value by the amount in the speed variable. For example:</p>
+    <pre>
+    public void right() {
+        x+=speed;
+    }</pre>
+    
+                     <h2>GamePanel</h2>                   
+<br>                        
+<p class="normal"> 
+    3. In the <code>GamePanel</code>, modify the keyPressed() method to call the appropriate method of the rocketship. The rocket must ALWAYS appear in the window, so make sure you only move the rocket if it will still be visible in the game's window after it moves. For example, before you call the rocket's up() method, make sure there is room above it in the window.</p><br>
+      
+
+ <p class="normal">                   
+
+     <img src="images/InvadersBlueSquare.png" style="width: 150px; height=241px; margin: 0px 20px" align="left"> <h3><u>TESTING</u></h3><p class="normal"> 4. Run the program. Press the Enter key to put the game into the GAME state (black background). Does the blue rocketship (square) appear at the bottom? Does it move when you press the arrow keys? Does it stop when it gets to the top, bottom, left, and right of the game's window?
+     
+     <br><br>
+<u>CHALLENGE</u><br>     
+5. Does the rocketship move too quickly or slowly? Is the movement smooth or jagged? Play around with the speed and think about how you might use the keyPressed and keyReleased methods of the GamePanel to improve the rocket's movement. You might need to add more variables and/or methods to achieve the behavior you want.
+</p>                         
+<br>
+
+                </div></div></div>                   
+<div id="footer">
+<script>addFooter();</script>
+</div>
+   
+</body></html>

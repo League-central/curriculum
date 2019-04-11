@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<title>League Invaders - Collision</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+<h1>Collision Management</h1>
+ 
+<br>                    
+<p class="normal">
+If a projectile collides with an alien, both objects are marked inactive. If an alien collides with the rocketship, both are marked inactive. Inactive objects are removed from the game so they are no longer drawn. </p>
+                    
+                    <h2>GameObject</h2>
+                    
+<p class="normal">    
+    1. In your <code>GameObject</code> class, create an object of the <code>Rectangle</code> class in your member variables. Call this object <code>collisionBox</code> and DO NOT INITIALIZE IT YET.</p>    
+<br>                      
+<p class="normal">    
+    2. Initialize the collision box in the constructor. It takes four parameters. Use its x, y, width, and height variables.</p>                    
+<br>
+<p class="normal">
+    3. In the update method, update the collision box with the x, y, width, and height variables so it keeps moving with the GameObject (Alien, Projectile, or Rocketship).
+<pre>
+        collisionBox.setBounds(x, y, width, height);</pre><br>
+                    
+                    <h2>ObjectManager</h2>
+<br>
+<p class="normal"> 
+    4. Create a method called checkCollision. Add code that iterates through every alien and checks if it collides with any &quot;enemy&quot; (Rocket or Projectile). If they collide, set the Alien AND &quot;enemy's&quot; isActive variables to false. NOTE: you will need nested for loops! Collision can be checked using the Rectangle intersects() method - see example below:<br>
+    
+<pre>rocket.collisionBox.intersects(alien.collisionBox)</pre>
+                    </p>                  
+<br>                              
+ 
+<p class="normal">      
+    5. In the update() method call the checkCollision() and the purgeObjects() methods after you have updated all the game objects.</p>                   
+ <br>
+ 
+    
+     <h3><u>TESTING</u></h3>
+ <p class="normal">                   
+6. Run the program. Do the aliens and projectiles disappear when they are supposed to?
+</p>                         
+<br>
+
+                </div></div></div>                   
+<div id="footer">
+<script>addFooter();</script>
+</div>
+   
+</body></html>

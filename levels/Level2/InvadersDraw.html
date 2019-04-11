@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<title>League Invaders - Drawing Shapes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+<h1>Change the View</h1>
+<h2>drawing and updating</h2>
+ 
+<br>                    
+<p class="normal">
+1. The game will have 3 states: MENU, GAME, and END. These are repesented by <code>final int</code> variables that you must create in the <code>GamePanel</code> class. Their names are captialized since their values will not change:</p>
+<pre>
+    final int MENU = 0;
+    final int GAME = 1;
+    final int END = 2;</pre>
+
+<br>                      
+<p class="normal">    
+    2. The game will keep track of which state it is in, via an <code>int</code> variable called <code>currentState</code>. Declare and initialize this variable as follows:</p>
+<pre>
+    int currentState = MENU;</pre>
+                    
+<br>                        
+<p class="normal"> 
+3. Create 3 void methods for updating the game in each state:</p>
+<pre>
+ updateMenuState() {  }
+ updateGameState() {  }
+ updateEndState()  {  }</pre>
+
+                                        
+<br>        
+<p class="normal">      
+4. Create 3 void methods for drawing the game in each state. Note: these methods need a Graphics parameter because they will draw objects onto the panel's Graphics (like the paintComponent method).</p>
+<pre>
+ drawMenuState(Graphics g) {  }
+ drawGameState(Graphics g) {  }
+ drawEndState(Graphics g)  {  }</pre>
+                    
+               
+<br>
+<p class="normal">           
+6. In the <code>paintComponent()</code> method, <u>remove the code that draws a rectangle</u>, and replace it with an if/else block that will check the <code>currentState</code> variable. Call the appropriate draw method inside the if/else block as shown. </p>
+ <pre>
+if(currentState == MENU){
+    drawMenuState(g);
+}else if(currentState == GAME){
+    drawGameState(g);
+}else if(currentState == END){
+    drawEndState(g);
+}</pre>
+<br>
+<p class="normal"> 
+Note: pass the Graphics object to each draw method.
+<br>
+    
+<br>
+<p class="normal">
+7. In the <code>drawMenuState()</code> method, fill the game window with a blue rectangle using the following code:</p>
+<pre>
+g.setColor(Color.BLUE);
+g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);</pre>  
+<br>
+<p class="normal">
+Similarly, fill the game window with black in the <code>drawGameState()</code> method and a red in the <code>drawEndState()</code>method.</p>  
+     <h3><u>TESTING</u></h3>
+ <p class="normal">                   
+We will not able to test this code until we can change the game state. This will come in the next part (controllers).
+                    </p>                         
+
+                </div></div></div>                   
+<div id="footer">
+<script>addFooter();</script>
+</div>
+   
+</body></html>

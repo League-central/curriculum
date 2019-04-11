@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Pig Latin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level0.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-level0.github.io/copyrightFooter.js"></script>
+<body>
+
+<h1>Pig Latin Translator</h1>
+
+    <p class="normal">
+We are going to make a translator (similar to Google translate) that converts English to Pig Latin.
+        </p> 
+ <p class="normal">
+     1. Make a UI that looks something like this:
+<br>
+     <br>
+          <img alt="" src="images/PigLatin.png" style="width: 617.00px; height: 120.00px; margin-left: 100.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+     
+    <br>
+2. Using the class below, translate a word/sentence from left to right when the translate button is pressed.
+<br>
+    </p>
+<p class="code">
+public class PigLatinTranslator {<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Method to test whether a character is a letter or not.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* @param c The character to test<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* @return True if it's a letter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private static boolean isLetter(char c) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ( (c &gt;= 'A' &amp;&amp; c &lt;= 'Z') || (c &gt;='a' &amp;&amp; c &lt;= 'z') );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+    <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Method to translate one word into pig latin.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* @param word The word in english<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* @return The pig latin version<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private static String pigWord(String word) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int split = firstVowel(word);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return word.substring(split)+"-"+word.substring(0, split)+"ay";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+	<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Method to translate a sentence word by word.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* @param s The sentence in English<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* @return The pig latin version<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public String translate(String s) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String latin = "";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int i = 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (i &lt; s.length()) {<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Take care of punctuation and spaces<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (i &lt; s.length() &amp;&amp; !isLetter(s.charAt(i))) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latin = latin + s.charAt(i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// If there aren't any words left, stop.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (i>=s.length()) break;<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Otherwise we're at the beginning of a word.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int begin = i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (i &lt; s.length() &amp;&amp; isLetter(s.charAt(i))) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Now we're at the end of a word, so translate it.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int end = i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latin = latin + pigWord(s.substring(begin, end));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return latin;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Method to find the index of the first vowel in a word.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* @param word The word to search<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* @return The index of the first vowel<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	  private static int firstVowel(String word) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word = word.toLowerCase();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i=0; i &lt; word.length(); i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (word.charAt(i)=='a' || word.charAt(i)=='e' ||<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word.charAt(i)=='i' || word.charAt(i)=='o' ||<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word.charAt(i)=='u')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+                                       </p>
+
+<br><br>   
+    <br><br><br><br><br><br><br>
+   
+<div id="copyright">
+<script>copyright();</script>
+</div>
+   
+</body></html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Nasty Surprise</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level0.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-level0.github.io/copyrightFooter.js"></script>
+<body>
+
+<h1>Nasty Surprise</h1>
+
+    <p class="normal">
+1. Make a user interface that has 2 buttons. One says “Trick” the other says “Treat”. <br>
+<br>
+2. When the user clicks on the Trick button, show them a picture of a cute puppy. <br>
+<br>        
+3. When they click Treat, show them a scary image.<br>
+<br>
+To show the pictures, use the showPictureFromTheInternet() method below.<br>
+
+        </p> 
+
+<p class="code">
+ private void showPictureFromTheInternet(String imageUrl) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL url = new URL(imageUrl);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Icon icon = new ImageIcon(url);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JLabel imageLabel = new JLabel(icon);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JFrame frame = new JFrame();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.add(imageLabel);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.setVisible(true);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.pack();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (MalformedURLException e) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+	}<br>
+    </p>
+
+<br><br>   
+    <br><br><br><br><br><br><br>
+   
+<div id="copyright">
+<script>copyright();</script>
+</div>
+   
+</body></html>

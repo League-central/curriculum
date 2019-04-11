@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Whack-a-Mole</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level0.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-level0.github.io/copyrightFooter.js"></script>
+<body>
+
+<h1>Whack-a-Mole</h1>
+
+    <p class="normal">
+We are going to make a game where the user has to click on a "mole". The game is timed so the user can get their "whack rate".
+        </p> 
+
+    <p class="normal">
+    1. Start building a basic Swing GUI to hold the game shown below (JFrame, JPanel, etc.)
+        </p> 
+    <p class="normal">
+     2. Make a drawButtons method that takes a random number as a parameter. It should make a GUI like the one in the picture below, but the “mole!” location will be random each time the frame is drawn.<br><br>
+        
+	[Hint: set the size of the frame rather than packing it.]
+    <br>
+    <br>
+
+     <img alt="" src="images/whackAmole.png" style="width: 526.00px; height: 513.00px; margin-left: 100.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+     <br>
+<br>     
+3. If they click on a button other than “mole!”, use this speak() method to tell them they missed.
+</p>
+    <p class="code">
+        void speak(String words) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Runtime.getRuntime().exec("say " + words).waitFor();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (Exception e) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+    </p>
+        
+<p class="normal"><br>     
+4. Dispose of the frame and draw the buttons anew.
+<br><br>
+    5. After they’ve whacked 10 moles, call this endGame() method.  </p>
+    <p class="code">
+        private void endGame(Date timeAtStart, int molesWhacked) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date timeAtEnd = new Date();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JOptionPane.showMessageDialog(null, "Your whack rate is "<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ " moles per second.");<br>
+}<br>
+    </p>
+<p class="normal">
+    6. Count how many times they hit something other than the mole! button and change the "missed" comments each time (be nice). When they have missed five times, tell them they have lost, and end the game.<br><br>
+    Option: find out how you can use the switch statement to code this.
+    </p> 
+    
+ <p class="normal"><br>     
+7. Find a sound file (.wav) and place it in your Java package. Call this playSound() method when they hit a mole.
+    </p>
+    <p class="code">
+        private void playSound(String fileName) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound.play();<br>
+}<br>
+    </p>
+<br><br>   
+    <br><br><br><br><br><br><br>
+   
+<div id="copyright">
+<script>copyright();</script>
+</div>
+   
+</body></html>

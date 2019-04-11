@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Typing Tutor</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level0.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-level0.github.io/copyrightFooter.js"></script>
+<body>
+
+<h1>Typing Tutor</h1>
+
+    <p class="normal">
+We are going to make a typing game.
+        </p> 
+ <p class="normal">
+     1. Create a frame for your typing game.<br>
+     <br>
+     <img alt="" src="images/typingTutor2.png" style="width: 444.00px; height: 163.00px; margin-left: 100.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+     
+     
+    <br>
+2. Create a member variable and initialize it as shown below:<br>
+ <p class="code">
+     char currentLetter;<br>
+     <br>
+     currentLetter = generateRandomLetter();<br>
+     <br>
+char generateRandomLetter() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random r = new Random();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (char) (r.nextInt(26) + 'a');<br>
+}<br>
+</p>    
+    
+3.Use a JLabel to show the value of currentLetter on the screen. Make sure it changes every time you start the game.<br>
+
+    <p class="normal">
+4. Format the letter so that it is nice and big. Here are some hints….
+</p>
+
+    <p class="code">
+   	jLabel.setFont(jLabel.getFont().deriveFont(28.0f));<br>
+jLabel.setHorizontalAlignment(JLabel.CENTER);<br>
+
+    </p>
+     <p class="normal">   
+         5. Add a key listener to the frame.
+
+    </p>
+   
+      <p class="normal">      
+   6. Make the letter change every time a key is pressed.<br> 
+    <br>
+ To do that, in the keyReleased method:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i) Reset currentLetter.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii) Update your JLabel.<br>
+</p>
+    
+  <p class="normal">  
+   7. In the keyPressed method, print out the character that the user typed.<br>
+   <br>
+        <img alt="" src="images/typingTutor1.png" style="width: 444.00px; height: 130.00px; margin-left: 100.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+      
+    
+    </p>
+      <p class="normal">  
+   8. If they typed the currentLetter, print “correct”.<br>
+   <br>
+    9. If they typed the correct letter, set the frame background to <font color="green">green</font>. Otherwise set it to <font color="red">red</font>.<br>
+<br>
+        10.  [optional] After a certain number of characters, show the users’ typing speed.<br>
+    </p>
+    <p class="code">
+    
+    private void showTypingSpeed(int numberOfCorrectCharactersTyped) {<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date timeAtEnd = new Date();<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long gameDuration = timeAtEnd.getTime() - timeAtStart.getTime();<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long gameInSeconds = (gameDuration / 1000) % 60;<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double charactersPerSecond = ((double) numberOfCorrectCharactersTyped / (double) gameInSeconds);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int charactersPerMinute = (int) (charactersPerSecond * 60);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JOptionPane.showMessageDialog(null, "Your typing speed is " + charactersPerMinute + " characters per minute.");<br>
+}<br>
+Date timeAtStart = new Date();<br>
+
+    
+    </p>
+
+  <br><br><br><br><br><br><br>
+   
+<div id="copyright">
+<script>copyright();</script>
+</div>
+   
+</body></html>

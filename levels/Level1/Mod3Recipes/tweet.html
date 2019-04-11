@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Latest Tweet</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level0.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-level0.github.io/copyrightFooter.js"></script>
+<body>
+
+<h1>Get Latest Tweet</h1>
+
+    <p class="normal">
+We are going to display the latest tweet that matches the user's search criteria.
+        </p> 
+ <p class="normal">
+     1. Make a UI (User Interface) with a button and a text field for the search 
+     term (see below).<br>
+     <br>
+     <img alt="" src="images/tweet.png" style="width: 444.00px; height: 100.00px; margin-left: 100.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+     
+     
+    <br>
+2. When the "Search" button is clicked, print "Tweet, Tweet".<br>
+    <br>
+3.Download these 2 jars, add them to your project, then add them to your project’s build path.<br>
+<br>
+     <br>
+<a href="https://www.google.com/url?q=http://search.maven.org/remotecontent?filepath%3Dcommons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar&amp;sa=D&amp;ust=1514422304680000&amp;usg=AFQjCNGZmSSpBGfNTPsIKDflVRZh5WJXiw">Apache Commons Logging</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commons-logging-1.1.3.jar<br>
+
+     
+    <a href="https://www.google.com/url?q=http://repo1.maven.org/maven2/org/twitter4j/twitter4j-core/3.0.5/twitter4j-core-3.0.5.jar&amp;sa=D&amp;ust=1514422304681000&amp;usg=AFQjCNGNZiJnbKitOU1qbDz4dZ_K7j5zJg">Twitter4J</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;twitter4j-core-3.0.5<br>
+<br>     
+4. Use this method to get the latest tweet when the user clicks the button. Print the tweet to the console.<br>
+    <br>
+    <b>Make sure you import from twitter4j </b></p>
+<br>
+    <p class="code">
+   	private String getLatestTweet(String searchingFor) {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Twitter twitter = new TwitterFactory().getInstance();<br>
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AccessToken accessToken = new AccessToken(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"2453751158-IVD2VGZsvwZiRKxNe3Gs2lMjg30nvSkV1xSuPFf",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vBa5PjKfuMTK1LLBG51nCUI9r5d6Ph5cAHrS73spg6Nvu");<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;twitter.setOAuthConsumer("YqeZdD2hYxOKv4QOkmp0i2djN",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"6XUB1r8KXBvd8Pk9HHW3NgphMxHvHWBLAr5TihnckMU0ttyGST");<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;twitter.setOAuthAccessToken(accessToken);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Query query = new Query(searchingFor);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QueryResult result = twitter.search(query);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return result.getTweets().get(0).getText();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (Exception e) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.err.print(e.getMessage());<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "What the heck is that?";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+	}<br>
+
+    </p>
+<p class="normal"><br>     
+5. Now display the contents of the latest tweet on the User Interface.<br>
+ </p>   <br><br><br><br><br><br><br>
+   
+<div id="copyright">
+<script>copyright();</script>
+</div>
+   
+</body></html>

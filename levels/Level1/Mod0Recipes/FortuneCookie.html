@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Fortune Cookie</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+
+<h1>Fortune Cookie</h1>
+<br>
+<p class="normal">
+Goal: Make a Swing program from scratch.<br><br>
+The program will have a window (frame) with a button that gives one of five random fortunes when clicked.
+</p><br>
+<br>
+<p class="normal">
+    1. Make a FortuneCookie class, with a <font color="green">showButton()</font> method like the one below: 
+    <br><br>
+    <p class="code">
+        public class FortuneCookie {<br>
+        &nbsp;&nbsp;&nbsp;public void showButton() {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Button clicked");<br>
+       &nbsp;&nbsp;&nbsp; }<br>
+        }<br>
+    </p><br>
+    <p class="normal">
+    2. Now make a runner class to run the code above, like the one below: 
+        <br> <br>       
+        <p class="code">
+        public class FortuneCookieRunner {<br>
+        &nbsp;&nbsp;&nbsp;public static void main(String[] args) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new FortuneCookie().showButton();<br>
+        &nbsp;&nbsp;&nbsp;}<br>
+        }<br>
+        
+    </p><br>
+    <p class="normal">
+    3. Now change the showButton() method in Step 1, to make a JFrame and get it to show up when you run the program. Hint:</p><br>
+    <p class="code">frame.setVisible(true);</p><br>
+
+    
+  <p class="normal">
+    4. Make a JButton and add it to the JFrame.
+<p class="code">JButton button = new JButton();<br>
+    frame.add(button);<br>
+    frame.pack();
+    </p><br>
+    
+ <p class="normal">  
+    5. The next 4 steps make a pop-up appear that says, “Woohoo” when the button is clicked<br>
+    <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. Add an action listener to the button: </p><br>
+   <p class="code">button.addActionListener(this);</p><br>
+    <p class="normal">  
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. Have your class implement ActionListener [use Eclipse quick fix]</p><br>
+    <p class="normal">  
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. Add the unimplemented methods [use Eclipse quick fix]</p><br>
+  <p class="normal">  
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d. Put a JOptionPane pop-up inside the <font color="green">actionPerformed()</font> method that says "Woohoo".<br><br></p><br>
+    
+  <p class="normal">   
+      6. Generate a random number between 0 and 4: </p><br>  
+    <p class="code">int rand = new Random().nextInt(5);</p><br>
+
+    <p class="normal">7. Depending on which random number, show one of the five fortunes.</p><br>
+ <br>
+        <p class="normal">[optional] 8. Run other student's programs to receive fortunes from them.</p><br>
+                </div>
+    </div>
+    </div>                
+                
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body>
+</html>

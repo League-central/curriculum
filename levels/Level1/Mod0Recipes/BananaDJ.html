@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Banana DJ</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level0.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-level0.github.io/copyrightFooter.js"></script>
+    
+<body>
+    
+<h1>Banana DJ</h1>
+
+<p class="normal">
+We're going to use BANANAS to stop and start songs. Different bananas will play different songs.
+ If you haven't used the Makey Makey before, check out <a href="http://makeymakey.com/howto.php">this guide</a> before you start.
+</p>
+
+<p class="normal">
+1. Download a song (mp3) to the desktop. <br>
+    <br>
+ 2. Plug the Makey Makey into the bananas.<br>
+    <br>
+ 3. Finish the Processing code below so that touching a banana will start and stop a song.<br>
+		
+</p>
+    <p class="code">
+import ddf.minim.*;<br>       
+Minim minim = new Minim(this);<br>
+AudioPlayer yellowSubmarine;              //1. Change to the name of your song<br>
+boolean yellowSubmarineIsStopped = true;  <br>
+<br>
+void loadSongs() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yellowSubmarine = minim.loadFile("latch.mp3");  //2. Drop mp3 onto this sketch and put its name here<br>
+}<br>
+<br>
+void keyPressed() {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (keyCode == UP) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* 3. If yellowSubmarineIsStopped, play it, and set yellowSubmarineIsStopped to false. */<br><br>
+   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* 4. Otherwise, stop it, and set yellowSubmarineIsStopped to true. */<br>
+   <br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* 5. Add other songs for the other bananas. keyCode will tell you which banana was pressed. */<br>
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;println("you pressed " + keyCode);<br>
+}<br>
+<br>
+void playSong(AudioPlayer song) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;song.play();<br>
+}<br>
+<br>
+void stopSong(AudioPlayer song) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;song.pause();<br>
+}<br>
+<br>
+void draw() {}<br>
+<br>
+void setup() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loadSongs();<br>
+}<br>
+
+    </p>
+
+
+<a href="https://processing.org/reference">
+    <img src="https://league-level0.github.io/p3logo.jpeg" class="footer" alt="Processing Reference"></a>
+
+<div id="copyright">
+<script>copyright();</script>
+</div>
+
+</body></html>

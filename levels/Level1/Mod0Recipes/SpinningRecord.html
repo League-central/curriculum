@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Spinning Record</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+    
+<h1>Spinning Record</h1>
+<br>
+<p class="normal">
+We are going to make a virtual record player that spins and plays your song when you click on it.<br>
+    <br>
+Start with a new sketch that contains <b>setup()</b> and <b>draw()</b> methods. Ask your teacher if you don't know how to do this.
+    </p><br>
+<p class="normal">
+1. Find an image of a record.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i) Save the image.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii) Drop the image file onto your sketch.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iii) Load it with code like this...<br>
+</p><br>
+    <p class="code"> 
+		PImage pictureOfRecord;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//as member variable<br>
+        size(600,600);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//in setup method	<br>		pictureOfRecord= loadImage("record.jpg");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//in setup method	<br>
+
+		image(pictureOfRecord, xPosition, yPosition);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//in draw method<br>
+    </p><br>
+<p class="normal">    
+    2. Set the size of your image to match the size of your canvas (after you have loaded it).</p><br>
+    <p class="code">
+                pictureOfRecord.resize(height,width);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//in setup method</p><br>
+<p class="normal">
+3. Use this method to rotate your image. Make sure you use the image() command after you call rotateImage().			
+</p><br>
+    <p class="code"> 	void rotateImage(PImage image, int amountToRotate) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;translate(width/2, height/2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotate(amountToRotate*TWO_PI/360);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;translate(-image.width/2, -image.height/2);<br>
+}<br>
+    </p><br>
+<p class="normal">
+    5. Adjust the speed of the record player. Make the record spin.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i) Make a variable to keep track of the image angle.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii) Increase this variable in the draw method.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iii) Use this variable when you call the rotateImage() method.<br>
+    </p><br>
+<p class="normal">
+6. Only spin the record when the user clicks the mouse button.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="magenta">mousePressed</font>
+    </p><br>
+<p class="normal">    
+7. Add a song.<br>
+//drop the song file onto your sketch
+</p><br>
+    <p class="code"> 
+	import ddf.minim.*;	 	//at the very top of your sketch<br>
+	Minim minim;				//as a member variable<br>
+	AudioPlayer song;			//as a member variable<br>
+	minim = new Minim(this);		//in the setup method<br>
+	song = minim.loadFile("awesomeTrack.mp3", 512);//in the setup method<br>
+song.play();<br>
+	<br>
+<p class="normal">
+8. Only play the song when the mouse is pressed.
+</p><br>
+    <p class="code"> 	mousePressed<br>
+	song.play()<br>
+	song.pause()
+    </p><br>
+<p class="normal">
+9. Make the record spin as fast as possible
+    </p><br>
+
+
+<a href="https://processing.org/reference">
+    <img src="https://league-level0.github.io/p3logo.jpeg" class="footer" alt="Processing Reference"></a>
+
+                </div>
+    </div>
+    </div>                
+                
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body>
+</html>

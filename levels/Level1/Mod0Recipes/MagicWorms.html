@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Magic Worms</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+
+<h1>Magic Worms</h1>
+<br>
+<p class="normal">
+
+1. Start a new sketch with <b>draw</b> and <b>setup</b> methods.<br>
+<br>
+2. Set your canvas size and background color in the setup method</p><br>
+    <p class="code">
+    size(width, height)<br>
+    background(red, green, blue)</p><br>
+
+<p class="normal">
+3. In your draw method, use a for loop to draw 300 ellipses in a diagonal line across the canvas.<br>
+    RUN THE PROGRAM TO CHECK IT.
+</p><br>
+    
+<p class="normal">
+4. Now change the x and y location of each ellipse to "different" random numbers that are inside the canvas. Note: random() returns values that are type <b>float</b> so your x and y variable types should also be float.<br>
+    RUN THE PROGRAM TO CHECK IT.</p><br>
+    <p class="code">
+   random(int maxValue)
+</p><br>
+
+<p class="normal">
+5. Set the color of each ellipse.<br>
+    RUN THE PROGRAM TO CHECK IT.
+</p><br>
+    <p class="code">
+    fill(red, green, blue)</p><br>
+
+<p class="normal">
+6.  Paste this code at the bottom of your sketch.</p><br>
+    <p class="code">
+    float frequency = .001;<br>
+float noiseInterval = PI;<br>
+        <br>
+        void makeMagical() {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fill( 0, 0, 0, 10 );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rect(0, 0, width, height);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;noStroke();<br>
+}<br>
+<br>
+        float getWormX(int i) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return map(noise(i*noiseInterval + frameCount * frequency), 0, 1, 0, width);<br>
+}<br>
+<br>
+        float getWormY(int i) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return map(noise(i*noiseInterval+1 + frameCount * frequency), 0, 1, 0, height);<br>
+}<br>
+<br>
+</p><br>
+
+
+<p class="normal">
+7. Now change the x and y location of each ellipse to the value returned by the getWormX() and getWormY() methods (use the for loop variable as the parameter to these methods). <br>
+    RUN THE PROGRAM TO CHECK IT.
+</p><br>
+    
+<p class="normal">
+8. Call makeMagical() in your draw method before the for loop.  OPTIONS: Pass in frameCount or another variable for the ellipse "red value", and i as the "green value" for some extra color coolness.<br>
+    RUN THE PROGRAM TO CHECK IT.
+</p><br>
+
+<p class="normal">
+10. You can adjust the frequency and noiseInterval variables to your liking. Also play with the number and size of particles (ellipses) until it looks <u>amazing</u>.
+
+</p><br>
+
+<p class="normal">
+11. [Optional] Add another worm every time the user clicks the mouse.</p><br>
+
+<a href="https://processing.org/reference">
+    <img src="https://league-level0.github.io/p3logo.jpeg" class="footer" alt="Processing Reference"></a>
+
+                </div>
+    </div>
+    </div>                
+                
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body>
+</html>

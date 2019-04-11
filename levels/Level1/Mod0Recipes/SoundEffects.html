@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Sound Effects Machine</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+<h1>Sound Effects Machine</h1>
+<br>
+    <p class="normal">
+1.  Create a GUI for a sound effects machine that will play different sounds when the buttons are pressed.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you need help, take a look at the instructions for the Fortune Cookie recipe. <br>
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOTE: because this GUI has more than one button, you must add a JPanel to your JFrame and put the buttons on the panel!<br>
+<br>
+        2. Gather sound bites. <u>They must be .wav files.</u> Free sound effects can be found <a href="http://soundbible.com/free-sound-effects-1.html">here</a>. The League also has an account at <a href="https://freesound.org/">freesound</a>. Ask your teacher for our login.<br><br>
+        The .wav files must be placed into your Java project (drag and drop).<br>
+<br>        
+3. Call this playSound() method when they click on a button. You will need to import java.applet.AudioClip
+<br>
+        </p><br> 
+
+<p class="code">
+private void playSound(String fileName) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName)); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound.play();<br>
+	}<br>
+    </p><br>
+                </div>
+    </div>
+    </div>                
+                
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body>
+</html>

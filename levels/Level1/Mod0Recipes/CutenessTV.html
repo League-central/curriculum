@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Cuteness TV</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+ 
+<h1>Cuteness TV</h1>
+<br>
+    <p class="normal">
+1. Make a user interface with 3 buttons that will play different videos depending on which button is clicked. <br>
+     
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you need help, take a look at the instructions for the Fortune Cookie recipe. <br>
+    <br>
+    
+  2.  Use the methods below to play the cutest videos ever. <br>
+    
+    </p><br> 
+<p class="code">
+ void showDucks() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;playVideo("https://www.youtube.com/watch?v=MtN1YnoL46Q");<br>
+}<br>
+    <br>
+  void showFrog() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;playVideo("https://www.youtube.com/watch?v=cBkWhkAZ9ds");<br>
+}<br>
+    <br>
+     void showFluffyUnicorns() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;playVideo("https://www.youtube.com/watch?v=a-xWhG4UU_Y");<br>
+}<br>
+    <br>
+     void playVideo(String videoID) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URI uri = new URI(videoID);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java.awt.Desktop.getDesktop().browse(uri);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (Exception e) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+	}<br>
+    </p><br> 
+   <p class="normal">
+Note: If any of these video links no longer work, go to youtube and get replacements. Use the method names to give you a hint about what the videos should contain :)<br>
+        </p> 
+                </div>
+    </div>
+    </div>                
+                
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body>
+</html>

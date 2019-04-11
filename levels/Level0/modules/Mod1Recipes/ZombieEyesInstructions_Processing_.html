@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Zombie Eyes - League Level 0</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id="header">
+                    <script>addRecipeHeader();</script>
+                </div>
+                <div id = "recipePage">
+                    <div id="recipeTitle">
+                        <h1>Zombie Eyes</h1>
+                        <hr>
+                        <img src="http://level0.jointheleague.org/modules/Mod1Recipes/images/zombieEyes.png       " alt="Zombie Eyes image">
+                    </div>
+                    <div id ="recipeBody">
+                        <div id="recipeGoal">
+                            <h2>Goal:</h2>
+                            <p id="goal">
+                                We are going to make a face with animated eyes. You could use your own face (take a picture with photobooth) or a zombie, a cat, or whatever you like. Whatever you choose, the eyes should be prominent.
+                            </p>
+                        </div>
+                        <div id="recipeSteps">
+                            <h2>Steps:</h2>
+                            <ol id="stepList">
+                                <li>Create a new sketch in Processing and add <a href="http://central.jointheleague.org/resources/processingTips.html">setup() and draw() methods.</a>
+
+                                </li>
+                                <li>Drop the image of the face onto your sketch. Load it like this in the setup method:
+<pre>
+PImage face = loadImage("face.jpeg");
+image(face, 0, 0);
+</pre>
+                                </li>
+                                <li>Adjust the size of your sketch if necessary.
+<pre>
+size(width, height);
+</pre>
+
+                                </li>
+                                <li>Adjust the size of your image so that the sizes match.
+<pre>
+face.resize(width, height);
+</pre>
+<br>
+IMPORTANT: Make sure you use the size or resize command before the image command.
+
+                                </li>
+                                <li>Place 2 ellipses over the irises of the eyes in the draw method.
+<pre>
+ellipse(x, y, width, height);
+</pre>
+                                </li>
+                                <li>Give the irises a color with the fill command (use numbers in place of red, green, blue).
+<pre>
+fill(red, green, blue);
+</pre>
+                                </li>
+                                <li>Use mouseX and mouseY to change the color of the irises when the mouse moves.
+
+                                </li>
+                                <li>Draw black pupils on top of the irises.
+                                </li>
+                            </ol>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body></html>

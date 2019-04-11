@@ -1,0 +1,60 @@
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+			
+<h1>Introduction to Constructors</h1>
+<br>
+
+<p class="normal">Objects have a name, member variables, and methods. 
+    Before you can use an object in your program, you usually have to create <b>an instance</b> of it. 
+This is done using a <b>constructor</b>. Constructors have the same name as the class they belong to and are preceded by <font color ="red">new</font> when called. <br><br>
+    
+    Unlike other methods, constructors <b>do not</b> have a return type, but they can receive parameter values. Constructors have been used in Level 0 recipes to create Robot and Random objects, and in Level 1 recipes to create UI objects as shown below:</p><br>
+    
+  <p class="code">   
+    new Robot("mini")<br>
+    new Random()<br><br>
+    new JFrame()<br>
+    new JButton("click me")<br>
+  </p>
+                    <br>
+ <p class="normal">   
+Constructors are further explained in the following video: <a href="http://bit.ly/apples-tuna">Java Constructors Tutorial</a><br>
+<br><br><br>
+ Use a runner class (a class with a main method) to create a Platypus object in your default Java project.<br><br>
+    1.    First create the Platypus class as shown below. </p><br>
+    <p class="code">
+    public class Platypus {<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private String name;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	void sayHi(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		System.out.println("The platypus " + name + " is smarter than your average platypus.");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	}<br>
+}</p><br>
+
+    
+<p class="normal">
+2. Create <b>another</b> Java class. This will be a "runner" or "driver" class, so it will need a main method.<br><br>
+3. In your runner class, make a <b>new</b> instance of a Platypus<br><br>
+4. Call the sayHi() method  - see what happens<br><br>
+5. Create a constructor in the Platypus class that takes a name parameter, so that you can give your Platypus a name.<br><br>
+6. Change your code above to call the new constructor <br>
+    </p>
+                </div>
+    </div>
+    </div>                
+                
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body>
+</html>

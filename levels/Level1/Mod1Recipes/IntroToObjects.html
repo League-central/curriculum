@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Introduction to Objects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+<h1>Introduction to Objects</h1>
+<br>
+
+<p class="normal">Objects have a name, member variables, and methods. They can be represented by a CRC card (<b>C</b>lass-<b>R</b>esponsibility-<b>C</b>ollaboration) when designing programs. Here is an example of a CRC card:<br>
+<img src="images/duck.png"  style="width: 400px; height: 190px;"> 
+    <br>More information on CRC cards can be found <a href="https://en.wikipedia.org/wiki/Class-responsibility-collaboration_card">here</a>.<br><br> 
+
+1. Create a Duck class in your java project. Add its member variables and methods to match the CRC card. Now add the code for the constructor of the Duck class:</p>
+                    <br>
+<p class="code">
+Duck(String favoriteFood, int numberOfFriends) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	this.favoriteFood = favoriteFood;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	this.numberOfFriends = numberOfFriends;<br>
+}</p>
+    <br>
+<p class="normal">
+2. Now pick your favorite animal and describe it in CRC form with at least 2 member variables and 2 methods (write it on the whiteboard).<br>
+<br>
+3. Create a java class for your animal including:<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;member variables<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;methods(with sysouts)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a constructor that sets the member variables<br>    
+<br>
+<br>4. Create a new java class. This will be a "runner" or "driver" class, so it will need a main method.<br>
+<br>
+5. In your runner class, create a Duck object (instance) by calling its constructor as follows:</p><br>
+<p class="code">
+    Duck daffy = new Duck("donuts",5);</p><br>
+<p class="normal">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now you have a duck object, you can make it quack:</p><br>
+<p class="code">    
+    daffy.quack();
+</p><br>
+<p class="normal">
+6. Now create an instance of your animal (Hint: see step 5 above) and call its methods.<br>
+
+</p>    
+
+                </div>
+    </div>
+    </div>                
+                
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body>
+</html>

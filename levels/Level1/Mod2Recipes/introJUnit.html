@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Intro to JUnit</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+<h1>Intro to Unit Tests</h1>
+<br>
+<p class="normal">
+
+    An important part of coding is testing to see if your code is working correctly. Instead of asking a person to run the program each time it is changed to make sure it still runs properly, we can make much more reliable automated tests to check it out. These are known as unit tests.
+    </p>
+<p class="normal">    
+    Test-driven development (TDD) is a way of developing code where you write the tests before you even start writing the program.  It’s a way to think through what your code must be able to do before your write it.
+
+    </p>
+      
+    
+    <h3>JUnit Tests</h3>
+<p class="normal">
+JUnit is an open source framework designed for the purpose of writing and running tests for java programs.<br>
+<br>
+Tests can be written that specify the expected return value from running some code. 
+    <br>The syntax for the tests looks like this:    </p>
+                    <br>
+    <p class="code">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   assertEquals(expected, actual)<br>
+</p>
+                    <br>
+    <p class="normal">
+    
+    If the "expected" value matches the "actual" value, the results bar displayed after running the tests will be <font color="green">green</font>.<br> If they are different (or there are errors), the results bar will be <font color="red">red</font>.<br>
+<br>
+For example, in the context of the "real world"<br>
+    <br></p>
+    <p class="normal">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   assertEquals(true, Is water wet?)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;results bar will be <font color="green">green</font><br>
+
+<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   assertEquals(true, Are zombies  real?)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;results bar will be <font color="red">red</font><br>
+
+<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   assertEquals(false, Is coding lame?)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;results bar will be <font color="green">green</font><br>
+<br>
+<br></p>
+
+   <p class="normal"> 
+Now for some real code. Will the results bar be <font color="green">green</font> or <font color="red">red</font> for these asserts?<br>
+<br></p>
+<p class="code">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(4, add(2,2));<br>
+
+<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(“brains”, getZombieFood());<br>
+
+<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(2, getLargest(3,2));<br>
+
+<br><br><br>
+</p>
+                </div>
+    </div>
+    </div>                
+                
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body>
+</html>

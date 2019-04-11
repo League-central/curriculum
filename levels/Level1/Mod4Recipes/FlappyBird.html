@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Flappy Bird</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level0.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-level0.github.io/copyrightFooter.js"></script>
+    
+<body>
+
+<h1>Flappy Bird</h1>
+
+<p class="normal">
+
+1. Start a new sketch with <b>draw</b> and <b>setup</b> methods.<br>
+<br>
+2. Set your canvas size in the setup method</p>
+    <p class="code">
+    size(width, height)<br>
+</p>
+
+<p class="normal">
+3. In your draw method, set a background, and draw a ball (bird) on the screen.
+</p>
+   <p class="code">
+    background(red, green, blue)
+	fill(red, green, blue);<br>
+	stroke(red, green, blue);<br>
+	ellipse(x, y, width, height);<br>
+</p>  
+    
+    
+<p class="normal">
+4. Make the bird fall down<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>Hint:</u> make variables for the bird's X and Y position and use them for the ellipse in the draw method.
+</p>
+
+
+<p class="normal">
+5. Add velocity to the bird. <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Hint:</u> make a variable for the velocity of the bird in the Y direction (up). Changing its value should change the velocity of your bird.</p>
+    <p class="code">int birdYVelocity = 30;</p>
+    
+
+<p class="normal">
+6.  Give the bird gravity.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Hint:</u> make a variable for the gravity pulling the bird down. Gravity should continually increase the value of y . 
+</p>
+    <p class="code">int gravity = 1;</p>
+
+
+<p class="normal">
+7. Make the bird jump (flap) when the mouse is clicked.<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Hint:</u> construct a mousePressed() method the same way setup() and draw() were made. <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this method, apply the bird’s velocity to its y position to make the bird rise.
+    </p>
+    
+<p class="normal">
+8.  Draw a pipe coming down from the top of the sketch.<br>
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the draw() method: 
+    </p>
+   <p class="code">
+    fill(red, green, blue);<br>
+    rect(x, y, width, height);<br>
+    </p>
+      
+<p class="normal">
+9. Make the pipe move from right to left.<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Hint:</u> make a variable for the pipe X position and change it in the draw method.
+    </p>
+    
+<p class="normal">
+10. Make the pipe teleport back to the right side of the screen once it has passed through the left. This will simulate the repeating pipes coming from the right of the screen.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>Tip:</u> Put this code into a teleportPipes() method and you can also call it from the setup() method to create the first pipes.
+    </p>
+    
+<p class="normal">    
+11. Set the upper pipe's height to a new random number each time it teleports
+    </p>
+   <p class="code">
+    int upperPipeHeight = (int) random(100, 400);
+    </p> 
+    
+
+<p class="normal">
+12. Make a second pipe that does down to the bottom of the sketch
+<br>   In the draw() method: 
+    <p class="code">
+    fill(red, green, blue);<br>
+    rect(x, y, width, height);<br>
+    </p>
+    
+ <p class="normal">
+13. Repeat steps 9 &amp; 10 for this pipe.</p>
+    
+  <p class="normal">
+14. Create a gap between the pipes.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The x values of both pipes will be the same.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Make sure the gap is big enough for the ball to go through.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the lower pipe y value by adding the upper pipe height and pipe gap. Ex:<br>
+         <p class="code">
+    lowerY = upperY + upperPipeHeight + pipeGap;<br>
+    </p>    
+    
+  
+<p class="normal">
+15. Make the game end when the bird hits the pipe. Figure it out by yourself, or use this method:
+</p>
+         <p class="code"> 
+        boolean intersectsPipes() { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (birdY &lt; upperPipeHeight && birdX &gt; pipeX && birdX &lt; (pipeX+pipeWidth)){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (birdY&gt;lowerPipeTop && birdX &gt; pipeX && birdX &lt; (pipeX+pipeWidth)) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else { return false; }<br>
+             }
+    </p>      
+<p class="normal">    
+16. End the game when the bird hits the ground.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Make a rectangle for the ground.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use a boolean variable at the top of the sketch to indicate if game has ended.</p>
+    
+    <p class="normal">
+        17.  Create a score and make it increase each time the bird passes through a pipe.</p>
+             <p class="code">
+    text(text, xPosition, yPosition);
+    </p> 
+    <p class="normal">
+        18. OPTIONAL.   Make a sound when the bird flaps.<br>
+    <br>
+        Drop a sound file (Ex. "flap.mp3") onto your sketch.
+       
+ <div style="float: left; width: 50%;">
+ <p class="code">import ddf.minim.*;<br>	 		
+	Minim minim;		<br>		
+	AudioSample sound;	<br>		
+	minim = new Minim (this);<br>		
+	sound = minim.loadSample("flap.mp3", 128);<br>
+	sound.trigger();				</p>
+    </div>
+    <div style="float: left; width: 50%;"> 
+     <p class="code">//at the very top of your sketch<br>
+        //as a member variable<br>
+        //as a member variable<br>
+        //in the setup method<br>
+        //in the setup method<br>
+        //in mouseReleased() method (when the bird flaps)<br>
+     </p>
+    </div>  
+        
+        
+<a href="https://processing.org/reference">
+    <img src="https://league-level0.github.io/p3logo.jpeg" class="footer" alt="Processing Reference"></a>
+
+<div id="copyright">
+<script>copyright();</script>
+</div>
+
+</body></html>

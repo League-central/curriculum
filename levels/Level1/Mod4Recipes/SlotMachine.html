@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Slot Machine</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+<h1>Slot Machine</h1>
+<br>
+    <p class="normal">
+We are going to make a slot machine. 
+    </p><br>    
+        
+ <p class="normal">
+     The slot machine we are going to make, will look a little like the middle row on this image:
+     <br>
+     <br>
+     <img alt="" src="images/slotMachine.png" style="width: 444.00px; height: 163.00px; margin-left: 100.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+<br>
+    </p><br>
+
+        <p class="normal">  
+        First, find 3 images for the slot machine to display, e.g. cherry, orange, lime.<br>
+            <br>
+            Each "reel" of the slot machine will randomly display one of 3 images you have chosen (you can add more images later if there is time).
+    
+    
+<p class="normal">
+    Put a "SPIN" button onto the frame that causes each of the 3 "reels" to randomly change the image they are showing.
+    </p><br>
+
+    <p class="normal">
+    If all 3 reels have the same image showing (like in the picture above), the player wins. Display a "YOU WIN" message, optionally add a sound of success, and if you are still having fun - update a win counter to show the user how many times they have won.
+    </p><br>
+                        
+                          <p class="normal">
+    You may find the code below helpfulP:
+    </p><br>
+    <pre>
+private JLabel createLabelImage(String fileName) throws MalformedURLException{
+        URL imageURL = getClass().getResource(fileName);
+	if (imageURL == null){
+		System.err.println("Could not find image " + fileName);
+		return new JLabel();
+	}
+	Icon icon = new ImageIcon(imageURL);
+	JLabel imageLabel = new JLabel(icon);
+	return imageLabel;
+}
+    </pre>
+    
+                </div>
+    </div>
+    </div>                
+                
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body>
+</html>

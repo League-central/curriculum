@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<title>Level 1 - Running Race</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level0.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-level0.github.io/copyrightFooter.js"></script>
+    
+<body>
+
+<h1>Running Race - Explaining Static</h1>
+
+<p class="normal">
+ 
+Trying to understand static can be difficult ….<br>
+    <br>
+You use static when you don’t want to use an instance, or you don’t have an instance of the class (so you haven't made a "new" object or instance). For example, the main method is always static because when the program starts, no instances have been created.<br>
+<br>
+Static variables belong to the class, which means that all instances of the class share the same value of the variable. <br>
+    <br>
+    Here is an example:<br>
+<br>
+<br>	
+Task:  	Create a class for athlete/marathon runners in a single race.<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Requirements:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sequential bib-numbers <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Count the number of athletes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the race location & start time<br>
+    </p>
+<p class="normal">    Copy the code below, then modify it so that each athlete gets a unique, sequential bib number.</p>
+    
+    
+    
+   <p class="code"> 
+    public class Athlete {<br>
+    <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static int count;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static String raceLocation = "New York";<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static String raceStartTime = "9.00am";<br>
+       <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String name;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int speed;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int bibNumber;<br>
+    <br>
+    Athlete (String name, int speed){<br>
+   	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.name = name;<br>
+   	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.speed = speed;<br>
+    }<br>
+    <br>
+    public static void main(String[] args) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//create two athletes
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//print their names, bibNumbers, and the location of their race. 
+    }<br>
+}
+    </p>
+ <p class="normal">      
+So the static variables belong to the class and the other variables belong to the instance.<br>
+    <br>
+What happens to the variables when the 2 constructors run? How does count change, and when is bib number is assigned?<br>
+     <br>
+How can you update the location? Is it updated for all the athletes?
+<br><br><br><br><br><br>
+     
+    </p>
+    
+<div id="copyright">
+<script>copyright();</script>
+</div>
+
+</body></html>

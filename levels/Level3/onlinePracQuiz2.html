@@ -1,0 +1,416 @@
+<html>
+
+<head>
+  <h1 align="center">LEVEL 3 PRACTICE QUIZ 2</h1>
+</head>
+
+<body onload="startup()" style="background-color:#bbccdd;font-weight:bold;font-size:22px;">
+  <pre style="white-space:pre-wrap;"><code>
+  <div id="docBody"style="overflow:visible;"></div>
+</code></pre>
+</body>
+
+<script>
+  function Question(){
+    this.question = "";
+    this.choices = [];
+    this.correctAnswer = "";
+    this.userAnswer = "";
+    this.visited = false;
+  }
+  
+  var body;
+  
+  var questions = [];
+  
+  var currentQuestion;
+    
+  function startup(){
+    currentQuestion = 0;
+    
+    body = document.getElementById("docBody");
+    
+questions[0] = new Question();
+questions[0].question = "<br>What is an algorithm?<br>";
+questions[0].choices[0] = "An efficient way of organizing data in a computer program.<br>";
+questions[0].choices[1] = "A type of data structure.<br>";
+questions[0].choices[2] = "A sequence of steps to accomplish a task.<br>";
+questions[0].choices[3] = "Another word for artificial intelligence.<br>";
+questions[0].choices[4] = "A style of latin music.<br>";
+questions[0].correctAnswer = 2;
+questions[1] = new Question();
+questions[1].question = "Which of the following is NOT a true statement?<br>";
+questions[1].choices[0] = "There are more than three data structures in Java.<br>";
+questions[1].choices[1] = "Java is the only programming language that uses data structures.<br>";
+questions[1].choices[2] = "A Matrix is a type of data structure.<br>";
+questions[1].choices[3] = "Data structures can improve the readability of code<br>";
+questions[1].choices[4] = "Data strucutres can improve the efficiency of code.<br>";
+questions[1].correctAnswer = 1;
+questions[2] = new Question();
+questions[2].question = "If a programmer wanted to store each character of a word as a separate entry in a Stack, which Stack declaration is best?<br>";
+questions[2].choices[0] = "Stack&ltchar> characterStack = new Stack&ltchar>(); <br>";
+questions[2].choices[1] = "Stack&ltInteger> characterStack = new Stack&ltInteger>();<br>";
+questions[2].choices[2] = "Stack&ltObject> characterStack = new Stack&ltObject>();<br>";
+questions[2].choices[3] = "Stack&ltint> characterStack = new Stack&ltint>();<br>";
+questions[2].choices[4] = "Stack&ltCharacter> characterStack = new Stack&ltCharacter>();<br>";
+questions[2].correctAnswer = 4;
+questions[3] = new Question();
+questions[3].question = "What is the value of answer after the folllowing code executes?<br><br>HashMap&ltInteger, String> map = new HashMap&ltInteger, String>();<br>map.put(100, &quotAAA&quot);<br>map.put(001, &quotAAB&quot);<br>map.put(102, &quotAAC&quot);<br><br>String answer = &quot&quot;<br>for(Integer i : map.keyset()){<br>	answer += map.get(i);<br>}<br>";
+questions[3].choices[0] = "AAA<br>";
+questions[3].choices[1] = "AAAAABAAC<br>";
+questions[3].choices[2] = "AAC<br>";
+questions[3].choices[3] = "ABC<br>";
+questions[3].choices[4] = "AAAAAAAAA<br>";
+questions[3].correctAnswer = 1;
+questions[4] = new Question();
+questions[4].question = "Which statement best applies to a Stack?<br>";
+questions[4].choices[0] = "first in first out<br>";
+questions[4].choices[1] = "inside out<br>";
+questions[4].choices[2] = "last in first out<br>";
+questions[4].choices[3] = "once in never out<br>";
+questions[4].choices[4] = "last in last out<br>";
+questions[4].correctAnswer = 2;
+questions[5] = new Question();
+questions[5].question = "What is wrong with the following code?<br><br>ArrayList&ltInteger> intList = new ArrayList&ltInteger>();<br><br>for(int i = 0; i &lt 10; i++){<br>	intlist.add(i);<br>}<br><br>for(Integer i : intList){<br>	intList.remove(i);<br>}<br>";
+questions[5].choices[0] = "intList is an invalid object name.<br>";
+questions[5].choices[1] = "Nothing is added to intList.<br>";
+questions[5].choices[2] = "All references to Integer should be replaced with int.<br>";
+questions[5].choices[3] = "The size of a list cannot change inside a for-each loop.<br>";
+questions[5].choices[4] = "Nothing is wrong with the code.<br>";
+questions[5].correctAnswer = 3;
+questions[6] = new Question();
+questions[6].question = "What is the value of x after the following code executes?<br><br>ArrayList&ltInteger> nums = new ArrayList&ltInteger>();<br><br>nums.add(5);<br>nums.add(6);<br><br>int temp = nums.get(0);<br>nums.set(0, nums.get(1);<br>nums.set(1, temp);<br><br>int x = nums.get(0);<br>";
+questions[6].choices[0] = "0<br>";
+questions[6].choices[1] = "1<br>";
+questions[6].choices[2] = "5<br>";
+questions[6].choices[3] = "6<br>";
+questions[6].choices[4] = "11<br>";
+questions[6].correctAnswer = 3;
+questions[7] = new Question();
+questions[7].question = "Which method will make the JUnit Test Pass?<br><br>@Test<br>public void testStuff(){<br>	assertEquals('C', getFirstChar(&quotConglomerate&quot));<br>}<br>";
+questions[7].choices[0] = "public char getFirstChar(String word){ return word.charAt(0); }<br>";
+questions[7].choices[1] = "public void getFirstChar(){ return 'C'; }<br>";
+questions[7].choices[2] = "public String getFirstChar(String word){ return word.charAt(0); }<br>";
+questions[7].choices[3] = "public char getFirstChar(){ return word.charAt(0); }<br>";
+questions[7].choices[4] = "public Character getFirstChar(String word){ return word.charAt(1); }<br>";
+questions[7].correctAnswer = 0;
+questions[8] = new Question();
+questions[8].question = "Given the following line of code, what should be the return type for the countChars method?<br><br>assertEquals(24, countChars(&quothere are some characters&quot));<br>";
+questions[8].choices[0] = "int<br>";
+questions[8].choices[1] = "double<br>";
+questions[8].choices[2] = "char<br>";
+questions[8].choices[3] = "String<br>";
+questions[8].choices[4] = "boolean<br>";
+questions[8].correctAnswer = 0;
+questions[9] = new Question();
+questions[9].question = "Given the following line of code, what should be the return type for isWeatherGood method?<br><br>assertFalse(isWeatherGood(Date.getTodaysDate()));<br>";
+questions[9].choices[0] = "int<br>";
+questions[9].choices[1] = "Date<br>";
+questions[9].choices[2] = "char<br>";
+questions[9].choices[3] = "String<br>";
+questions[9].choices[4] = "boolean<br>";
+questions[9].correctAnswer = 4;
+questions[10] = new Question();
+questions[10].question = "Which method from the JUnit Test library can be used to test a method that returns void?<br>";
+questions[10].choices[0] = "assertEquals<br>";
+questions[10].choices[1] = "assertTrue<br>";
+questions[10].choices[2] = "assertFalse<br>";
+questions[10].choices[3] = "assertVoid<br>";
+questions[10].choices[4] = "(no such method exists)<br>";
+questions[10].correctAnswer = 4;
+questions[11] = new Question();
+questions[11].question = "Which class can be used to write to a file?<br>";
+questions[11].choices[0] = "File<br>";
+questions[11].choices[1] = "Writer<br>";
+questions[11].choices[2] = "FileWriter<br>";
+questions[11].choices[3] = "FileReader<br>";
+questions[11].choices[4] = "WriteToFile<br>";
+questions[11].correctAnswer = 2;
+questions[12] = new Question();
+questions[12].question = "Which method from the FileReader class can be used to close a file?<br>";
+questions[12].choices[0] = "close<br>";
+questions[12].choices[1] = "closeFile<br>";
+questions[12].choices[2] = "discard<br>";
+questions[12].choices[3] = "exit<br>";
+questions[12].choices[4] = "(no such method exists)<br>";
+questions[12].correctAnswer = 0;
+questions[13] = new Question();
+questions[13].question = "How can it be determined if a FileReader object has reached the end of a file?<br>";
+questions[13].choices[0] = "The computer will beep.<br>";
+questions[13].choices[1] = "The read method will return -1.<br>";
+questions[13].choices[2] = "The file will no longer appear on the desktop.<br>";
+questions[13].choices[3] = "The read method will be disabled.<br>";
+questions[13].choices[4] = "It's impossible to tell.<br>";
+questions[13].correctAnswer = 1;
+questions[14] = new Question();
+questions[14].question = "Which of the following is a true statement?<br>";
+questions[14].choices[0] = "File Input/Output is not possible in Java.<br>";
+questions[14].choices[1] = "Files in Java are automatically encrypted.<br>";
+questions[14].choices[2] = "Once a file is deleted, that memory can never be recovered.<br>";
+questions[14].choices[3] = "Accessing a computer's hard-drive from a Java program can result in many errors or exceptions.<br>";
+questions[14].choices[4] = "Only Strings can be written to files.<br>";
+questions[14].correctAnswer = 3;
+questions[15] = new Question();
+questions[15].question = "What is the maximum size of a file that can be created in Java?<br>";
+questions[15].choices[0] = "128KB<br>";
+questions[15].choices[1] = "64MB<br>";
+questions[15].choices[2] = "500GB<br>";
+questions[15].choices[3] = "It depends on the computer's available memory.<br>";
+questions[15].choices[4] = "There is no limit.<br>";
+questions[15].correctAnswer = 3;
+questions[16] = new Question();
+questions[16].question = "Which of the following is NOT a true statement?<br><br>";
+questions[16].choices[0] = "A for loop can be used to iterate through a file's data.<br>";
+questions[16].choices[1] = "A while loop can be used to iterate through a file's data.<br>";
+questions[16].choices[2] = "Files can be modified from a Java program.<br>";
+questions[16].choices[3] = "Java does not allow appending data to an existing file.<br>";
+questions[16].choices[4] = "Java has a built-in File class.<br>";
+questions[16].correctAnswer = 3;
+questions[17] = new Question();
+questions[17].question = "<br>When is a BufferedReader object perferable to FileReader object?<br>";
+questions[17].choices[0] = "It depends on the application.<br>";
+questions[17].choices[1] = "Never.<br>";
+questions[17].choices[2] = "In cases where memory is limited.<br>";
+questions[17].choices[3] = "Always.<br>";
+questions[17].choices[4] = "In cases where computer speed is limited.<br>";
+questions[17].correctAnswer = 0;
+questions[18] = new Question();
+questions[18].question = "<br>Fill in the blank.<br><br>abstract class Metal{<br>}<br><br>public class Tin __________ Metal{<br>}";
+questions[18].choices[0] = "implements<br>";
+questions[18].choices[1] = "extends<br>";
+questions[18].choices[2] = "run<br>";
+questions[18].choices[3] = "inherits<br>";
+questions[18].choices[4] = "elaborates<br>";
+questions[18].correctAnswer = 1;
+questions[19] = new Question();
+questions[19].question = "Fill in the blank.<br><br>interface Flyable{<br>}<br><br>public class Bird __________ Flyable{<br>}";
+questions[19].choices[0] = "implements<br>";
+questions[19].choices[1] = "extends<br>";
+questions[19].choices[2] = "run<br>";
+questions[19].choices[3] = "inherits<br>";
+questions[19].choices[4] = "elaborates<br>";
+questions[19].correctAnswer = 0;
+questions[20] = new Question();
+questions[20].question = "What is the maximum number of interfaces that can be implemented by a class?<br>";
+questions[20].choices[0] = "0<br>";
+questions[20].choices[1] = "1<br>";
+questions[20].choices[2] = "256<br>";
+questions[20].choices[3] = "1028<br>";
+questions[20].choices[4] = "There is no limit.<br>";
+questions[20].correctAnswer = 4;
+questions[21] = new Question();
+questions[21].question = "What is the maximum number of abstract classes that can be inherited by a class?<br>";
+questions[21].choices[0] = "0<br>";
+questions[21].choices[1] = "1<br>";
+questions[21].choices[2] = "256<br>";
+questions[21].choices[3] = "1028<br>";
+questions[21].choices[4] = "There is no limit.<br>";
+questions[21].correctAnswer = 1;
+questions[22] = new Question();
+questions[22].question = "Which line of the following code will cause an error?<br><br>1:	abstract class Reptile{}<br>2:	class Lizard extends Reptile{}<br>3:	public class Terrarium{<br>4:		public void addReptile(Reptile r){<br>5:			//code<br>6:		}<br>7:	<br>8:		public static void main(String[] args){<br>9:			Lizard larry = new Lizard();<br>10:			Reptile ralph = new Lizard();<br>11:			Reptile rich = new Reptile();<br>12:			<br>13:			Terrarium tank = new Terrarium();<br>14:			tank.addReptile(larry);<br>15:		}<br>16:	}<br><br><br>";
+questions[22].choices[0] = "9<br>";
+questions[22].choices[1] = "10<br>";
+questions[22].choices[2] = "11<br>";
+questions[22].choices[3] = "13<br>";
+questions[22].choices[4] = "14<br>";
+questions[22].correctAnswer = 2;
+questions[23] = new Question();
+questions[23].question = "Which of the following is a true statement?<br>";
+questions[23].choices[0] = "A class can extend one abstract class and one concrete class.<br>";
+questions[23].choices[1] = "A class can only implement one interface.<br>";
+questions[23].choices[2] = "An interface cannot be instantiated.<br>";
+questions[23].choices[3] = "An interface must have at least one abstract method.<br>";
+questions[23].choices[4] = "An abstract class must have at least one abstract method.<br>";
+questions[23].correctAnswer = 2;
+questions[24] = new Question();
+questions[24].question = "What is the purpose of using Java's Thread class?<br>";
+questions[24].choices[0] = "To stitch together multiple sections of code.<br>";
+questions[24].choices[1] = "To automatically optimize a Java program.<br>";
+questions[24].choices[2] = "To iterate through the contents of a file.<br>";
+questions[24].choices[3] = "To run multiple sections of code simultaneously.<br>";
+questions[24].choices[4] = "There is no purpose.<br>";
+questions[24].correctAnswer = 3;
+questions[25] = new Question();
+questions[25].question = "What is the value of x after the following code executes?<br><br>static int x = 0;<br>public static void main(String[] args) {	<br>	Thread t1 = new Thread(new Runnable()){<br>		@Override<br>		public void run() {<br>			for(int i = 0; i &lt 5; i++){<br>				x += i;<br>			}	<br>		}<br>	});<br>	<br>	t1.start();<br>	try {<br>		t1.join();<br>	} catch (InterruptedException e) {<br>		e.printStackTrace();<br>	}<br>}<br><br>";
+questions[25].choices[0] = "0<br>";
+questions[25].choices[1] = "10<br>";
+questions[25].choices[2] = "25<br>";
+questions[25].choices[3] = "50<br>";
+questions[25].choices[4] = "It's impossible to know the value of x from the given code.<br>";
+questions[25].correctAnswer = 1;
+questions[26] = new Question();
+questions[26].question = "Which is a valid constructor for Java's Thread class?<br>";
+questions[26].choices[0] = "Thread(Runnable r)<br>";
+questions[26].choices[1] = "Thread(Runnable, int i)<br>";
+questions[26].choices[2] = "Thread(char c)<br>";
+questions[26].choices[3] = "Thread(Runnable r, String s, int i)<br>";
+questions[26].choices[4] = "Thread(String s, Runnable r)<br>";
+questions[26].correctAnswer = 0;
+questions[27] = new Question();
+questions[27].question = "Given the following code, which line can go in the main method to successfully start a Thread?<br><br>class Cookie implements Runnable <br>{ <br>    public static void main(String args[]) <br>    {<br>        //code goes here<br>    } <br>    public void run() {} <br>}<br>";
+questions[27].choices[0] = "Thread t1 = new Thread(Cookie);<br>";
+questions[27].choices[1] = "Thread t1 = new Thread(Cookie); t.start();<br>";
+questions[27].choices[2] = "Cookie oreo = new Cookie(); Thread t1 = new Thread(oreo); t1.start();<br>";
+questions[27].choices[3] = "Thread t1 = new Thread(); t1.run();<br>";
+questions[27].choices[4] = "Thread.run();<br>";
+questions[27].correctAnswer = 2;
+questions[28] = new Question();
+questions[28].question = "Which line will stop the execution of a Thread?<br>";
+questions[28].choices[0] = "wait()<br>";
+questions[28].choices[1] = "pause()<br>";
+questions[28].choices[2] = "notifyAll()<br>";
+questions[28].choices[3] = "exit()<br>";
+questions[28].choices[4] = "synchronize()<br>";
+questions[28].correctAnswer = 0;
+questions[29] = new Question();
+questions[29].question = "What is the value of ans after for following code executes?<br><br>String ans = \"\";<br>HashMap&ltInteger, String> hm = new HashMap&ltInteger, String>();<br><br>for(int i = 0; i &lt 5; i++){<br>	hm.put(i, &quotnum&quot + i);<br>}<br><br>for(Integer i : hm.keyset()){<br>	ans = hm.get(i);<br>}<br>";
+questions[29].choices[0] = "12345<br>";
+questions[29].choices[1] = "num1num2num3num4num5<br>";
+questions[29].choices[2] = "num0num1num2num3num4<br>";
+questions[29].choices[3] = "num4<br>";
+questions[29].choices[4] = "num5<br>";
+questions[29].correctAnswer = 3;
+
+
+    setDivText(questions[0]);
+    setButtons(questions[0]);
+  }
+  
+  function setDivText(q){
+    body.innerHTML += currentQuestion + 1 + ".<br>";
+    body.innerHTML += q.question + "<br><br><hr size=\"1\">";
+    
+    if(q.choices.length == 0){
+      body.innerHTML += "<br><textarea id=\"answer\" rows=\"10\" cols=\"80\">" +
+                         q.userAnswer + "</textarea><br>"; 
+    }else{
+      for(var i = 0; i < q.choices.length; i++){
+        if(i == q.userAnswer && q.visited){
+          body.innerHTML += convertChar(i) + "<input type=\"radio\" checked=\"true\"name=\"answer\" id=\"" + i + "\">" +q.choices[i] + "</input><br><br>";
+        }else{
+          body.innerHTML += "<input type=\"radio\" name=\"answer\" id=\"" + i + "\"><br>" +q.choices[i] + "</input><br><hr size=\"1\">";
+        }
+      }
+      
+      q.visited = true;
+    }
+  }
+  
+  function convertChar(a){
+    switch(a){
+        case 0: 
+        case "0": return "A";
+        case 1: 
+        case "1": return "B";
+        case 2: 
+        case "2": return "C";
+        case 3: 
+        case "3": return "D";
+        case 4: 
+        case "4": return "E";
+    }
+  }
+  
+  function setButtons(q){
+    if(q == questions[0]){
+      if(questions.length > 1){
+        body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+      }else{
+        body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+      }
+    } 
+    else if(q == questions[questions.length - 1]){
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+    }else{
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+    }
+  }
+  
+  function nextQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion++;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function previousQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion--;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function setUserAnswer(){
+    var q = questions[currentQuestion];
+    
+    if(q.choices.length > 0){
+      try{
+     		q.userAnswer = document.querySelector('input[name="answer"]:checked').id;
+        return true;
+      }catch(err){
+        alert("Make a choice. You can come back and change it later.");
+        return false;
+      }
+    }else{
+      q.userAnswer = document.getElementById("answer").value.trim();
+      return true;
+    }
+  }
+  
+  function checkQuiz(){
+    var total = 0;
+    for(var i = 0; i < questions.length; i++){
+      var q = questions[i];
+      if(q.choices.length == 0){
+        if(q.userAnswer.trim() == q.correctAnswer){
+          total++;
+        }
+      } else {
+        if(q.correctAnswer == q.userAnswer){
+          total++;
+        }
+      }
+    }
+    return total;
+  }
+  
+  function reloadPage(){
+    location = location;
+  }
+  
+  function submit(){
+    setUserAnswer();
+    
+    body.innerHTML = "You got " + checkQuiz() + " out of " + questions.length + " correct.<br><hr size=\"3\">";
+    for(var i = 0; i < questions.length; i++){
+      if(questions[i].choices.length > 0){
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += questions[i].choices[questions[i].userAnswer] + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += questions[i].choices[questions[i].correctAnswer] + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }else{
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += questions[i].userAnswer + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += questions[i].correctAnswer + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }
+    }
+            body.innerHTML += "<button onclick=\"reloadPage()\">START OVER</button>";
+  }
+</script>
+<script src="http://league-level0.github.io/copyrightFooter.js"></script>
+<div id="copyright"><script>copyright();</script></div>
+  
+</html>

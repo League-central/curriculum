@@ -1,0 +1,241 @@
+<html>
+
+<head>
+  <h1 align="center">LEVEL 3 MODULE 2 QUIZ</h1>
+</head>
+
+<body onload="startup()" style="background-color:#bbccdd;font-weight:bold;font-size:22px;">
+  <pre style="white-space:pre-wrap;"><code>
+  <div id="docBody"style="overflow:visible;"></div>
+</code></pre>
+</body>
+
+<script>
+  function Question(){
+    this.question = "";
+    this.choices = [];
+    this.correctAnswer = "";
+    this.userAnswer = "";
+    this.visited = false;
+  }
+  
+  var body;
+  
+  var questions = [];
+  
+  var currentQuestion;
+    
+  function startup(){
+    currentQuestion = 0;
+    
+    body = document.getElementById("docBody");
+    
+questions[0] = new Question();
+questions[0].question = "Which class can be used to read from a file?";
+questions[0].choices[0] = "File";
+questions[0].choices[1] = "Java";
+questions[0].choices[2] = "FileWriter";
+questions[0].choices[3] = "FileReader";
+questions[0].choices[4] = "Reader";
+questions[0].correctAnswer = 3;
+questions[1] = new Question();
+questions[1].question = "Which method in the FileWriter class is used to write a string to a file?";
+questions[1].choices[0] = "write";
+questions[1].choices[1] = "read";
+questions[1].choices[2] = "writeContents";
+questions[1].choices[3] = "writeToFile";
+questions[1].choices[4] = "(no such method exists)";
+questions[1].correctAnswer = 0;
+questions[2] = new Question();
+questions[2].question = "Which class is used to read from a file one line at a time?";
+questions[2].choices[0] = "Exception";
+questions[2].choices[1] = "String";
+questions[2].choices[2] = "BufferedReader";
+questions[2].choices[3] = "File";
+questions[2].choices[4] = "FileReader";
+questions[2].correctAnswer = 2;   
+questions[3] = new Question();
+questions[3].question = "If a programmer wants to append more data to an existing file, what must be passed into the constructor as a second parameter when creating an object of the FileWriter class?";
+questions[3].choices[0] = "append";
+questions[3].choices[1] = "attach";
+questions[3].choices[2] = "false";
+questions[3].choices[3] = "reload";
+questions[3].choices[4] = "true";
+questions[3].correctAnswer = 4;
+questions[4] = new Question();
+questions[4].question = "What is wrong with the following creation of the FileReader object?<br><br>" +
+"public static void main(String[] args){<br>"+
+"\tFileReader fr = new FileReader(\"src/intro_to_file_io/test.txt\");<br>" +
+"\tint c = fr.read();<br>"+
+"\twhile(c != -1){<br>"+
+  "\t\tSystem.out.print((char)c);<br>"+
+  "\t\tc = fr.read();<br>"+
+"\t}<br>"+
+"\tfr.close();<br>"+
+"}<br>";
+questions[4].choices[0] = "The FileReader object is not static.";
+questions[4].choices[1] = "It needs to be surrounded in a try-catch block.";
+questions[4].choices[2] = "The while loop will never run its code.";
+questions[4].choices[3] = "There is nothing wrong.";
+questions[4].choices[4] = "System.out.println() does not work with char variables";
+questions[4].correctAnswer = 1;   
+questions[5] = new Question();
+questions[5].question = "Which Java class can be used display a file selection window for the user?";
+questions[5].choices[0] = "FileChooser";
+questions[5].choices[1] = "FileWriter";
+questions[5].choices[2] = "BufferedWriter";
+questions[5].choices[3] = "FileReader";
+questions[5].choices[4] = "JFileChooser";
+questions[5].correctAnswer = 4; 
+questions[6] = new Question();
+questions[6].question = "What is the maximum number of objects that can be stored in an ArrayList?";
+questions[6].choices[0] = "0";
+questions[6].choices[1] = "1";
+questions[6].choices[2] = "it depends on the computer running the program";
+questions[6].choices[3] = "1,000,000,000";
+questions[6].choices[4] = "it depends on the computer's internet speed";
+questions[6].correctAnswer = 2;    
+
+    setDivText(questions[0]);
+    setButtons(questions[0]);
+  }
+  
+  function setDivText(q){
+    body.innerHTML += currentQuestion + 1 + ".<br>";
+    body.innerHTML += q.question + "<br><br><hr size=\"1\">";
+    
+    if(q.choices.length == 0){
+      body.innerHTML += "<br><textarea id=\"answer\" rows=\"10\" cols=\"80\">" +
+                         q.userAnswer + "</textarea><br>"; 
+    }else{
+      for(var i = 0; i < q.choices.length; i++){
+        if(i == q.userAnswer && q.visited){
+          body.innerHTML += convertChar(i) + "<input type=\"radio\" checked=\"true\"name=\"answer\" id=\"" + i + "\">" +q.choices[i] + "</input><br><br>";
+        }else{
+          body.innerHTML += "<input type=\"radio\" name=\"answer\" id=\"" + i + "\"><br>" +q.choices[i] + "</input><br><hr size=\"1\">";
+        }
+      }
+      
+      q.visited = true;
+    }
+  }
+  
+  function convertChar(a){
+    switch(a){
+        case 0: 
+        case "0": return "A";
+        case 1: 
+        case "1": return "B";
+        case 2: 
+        case "2": return "C";
+        case 3: 
+        case "3": return "D";
+        case 4: 
+        case "4": return "E";
+    }
+  }
+  
+  function setButtons(q){
+    if(q == questions[0]){
+      if(questions.length > 1){
+        body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+      }else{
+        body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+      }
+    } 
+    else if(q == questions[questions.length - 1]){
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+    }else{
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+    }
+  }
+  
+  function nextQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion++;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function previousQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion--;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function setUserAnswer(){
+    var q = questions[currentQuestion];
+    
+    if(q.choices.length > 0){
+      try{
+     		q.userAnswer = document.querySelector('input[name="answer"]:checked').id;
+        return true;
+      }catch(err){
+        alert("Make a choice. You can come back and change it later.");
+        return false;
+      }
+    }else{
+      q.userAnswer = document.getElementById("answer").value.trim();
+      return true;
+    }
+  }
+  
+  function checkQuiz(){
+    var total = 0;
+    for(var i = 0; i < questions.length; i++){
+      var q = questions[i];
+      if(q.choices.length == 0){
+        if(q.userAnswer.trim() == q.correctAnswer){
+          total++;
+        }
+      } else {
+        if(q.correctAnswer == q.userAnswer){
+          total++;
+        }
+      }
+    }
+    return total;
+  }
+  
+  function reloadPage(){
+    location = location;
+  }
+  
+  function submit(){
+    setUserAnswer();
+    
+    body.innerHTML = "You got " + checkQuiz() + " out of " + questions.length + " correct.<br><hr size=\"3\">";
+    for(var i = 0; i < questions.length; i++){
+      if(questions[i].choices.length > 0){
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += questions[i].choices[questions[i].userAnswer] + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += questions[i].choices[questions[i].correctAnswer] + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }else{
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += questions[i].userAnswer + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += questions[i].correctAnswer + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }
+    }
+            body.innerHTML += "<button onclick=\"reloadPage()\">START OVER</button>";
+  }
+</script>
+
+<script src="http://league-level0.github.io/copyrightFooter.js"></script>
+<div id="copyright"><script>copyright();</script></div>
+
+</html>

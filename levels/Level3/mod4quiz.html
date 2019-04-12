@@ -1,0 +1,247 @@
+<html>
+
+<head>
+  <h1 align="center">LEVEL 3 MODULE 4 QUIZ</h1>
+</head>
+
+<body onload="startup()" style="background-color:#bbccdd;font-weight:bold;font-size:22px;">
+  <pre style="white-space:pre-wrap;"><code>
+  <div id="docBody"style="overflow:visible;"></div>
+</code></pre>
+</body>
+
+<script>
+  function Question(){
+    this.question = "";
+    this.choices = [];
+    this.correctAnswer = "";
+    this.userAnswer = "";
+    this.visited = false;
+  }
+  
+  var body;
+  
+  var questions = [];
+  
+  var currentQuestion;
+    
+  function startup(){
+    currentQuestion = 0;
+    
+    body = document.getElementById("docBody");
+    
+questions[0] = new Question();
+questions[0].question = "Which line of code properly creates and initializes a new Thread object?";
+questions[0].choices[0] = "Thread&ltString> myThread = new Thread&ltString>();";
+questions[0].choices[1] = "Thread myThread;";
+questions[0].choices[2] = "Thread myThread = new Thread();";
+questions[0].choices[3] = "Thread myThread = new Thread(new Runnable());";
+questions[0].choices[4] = "Thread myThread = new Runnable();";
+questions[0].correctAnswer = 2;
+questions[1] = new Question();
+questions[1].question = "What method of the Thread class allows a thread to begin running its code?";
+questions[1].choices[0] = "begin";
+questions[1].choices[1] = "start";
+questions[1].choices[2] = "stop";
+questions[1].choices[3] = "run";
+questions[1].choices[4] = "startThread";
+questions[1].correctAnswer = 1;
+questions[2] = new Question();
+questions[2].question = "Which method from the Runnable interface must be overridden?";
+questions[2].choices[0] = "run";
+questions[2].choices[1] = "start";
+questions[2].choices[2] = "override";
+questions[2].choices[3] = "execute";
+questions[2].choices[4] = "runnable";
+questions[2].correctAnswer = 0;
+questions[3] = new Question();
+questions[3].question = "What method allows one thread to wait for the completion of another thread?";
+questions[3].choices[0] = "wait";
+questions[3].choices[1] = "pause";
+questions[3].choices[2] = "sleep";
+questions[3].choices[3] = "execute";
+questions[3].choices[4] = "join";
+questions[3].correctAnswer = 4; 
+    questions[4] = new Question();
+questions[4].question = "Which thread will finish running its code first?<br><br>"+
+"Thread t1 = new Thread(new Runnable(){<br>"+
+  "\tpublic void run(){<br>"+
+	"\t\tfor(int i = 0; i < 1000000; i++){<br>"+
+		"\t\t\tSystem.out.println(i);<br>"+
+	"\t\t}<br>"+
+  "\t}<br>"+
+"});<br><br>"+
+"Thread t2 = new Thread(new Runnable(){<br>"+
+  "\tpublic void run(){<br>"+
+	"\t\tfor(int i = 0; i < 1000000; i++){<br>"+
+		"\t\t\tSystem.out.println(i);<br>"+
+	"\t\t}<br>"+
+  "\t}<br>"+
+"});<br><br>"+
+"t1.start();<br>"+
+"t2.start();"
+questions[4].choices[0] = "t1 will finish first.";
+questions[4].choices[1] = "t2 will finish first.";
+questions[4].choices[2] = "They will finish at the same time.";
+questions[4].choices[3] = "It is impossible to know which thread will finish first.";
+questions[4].choices[4] = "Neither thread will finish because an error will occur.";
+questions[4].correctAnswer = 3;
+questions[5] = new Question();
+questions[5].question = "How many threads (including the main thread) are running simultaneously at the end of the following code segment?<br><br>"+
+"for(int i = 0; i < 10; i++){<br>"+
+	"\tnew Thread(new Runnnable(){<br>"+
+  "\t\tpublic void run(){<br>" +
+		"\t\t\tfor(int i = 0; i < 1000000; i++){<br>"+
+			"\t\t\t\tSystem.out.println(i);<br>"+
+		"\t\t\t}<br>"+
+  "\t\t}<br>"+
+	"\t}).start();<br>"+
+"}";
+questions[5].choices[0] = "9";
+questions[5].choices[1] = "10";
+questions[5].choices[2] = "11";
+questions[5].choices[3] = "0";
+questions[5].choices[4] = "1,000,000";
+questions[5].correctAnswer = 2;  
+    setDivText(questions[0]);
+    setButtons(questions[0]);
+  }
+  
+  function setDivText(q){
+    body.innerHTML += currentQuestion + 1 + ".<br>";
+    body.innerHTML += q.question + "<br><br><hr size=\"1\">";
+    
+    if(q.choices.length == 0){
+      body.innerHTML += "<br><textarea id=\"answer\" rows=\"10\" cols=\"80\">" +
+                         q.userAnswer + "</textarea><br>"; 
+    }else{
+      for(var i = 0; i < q.choices.length; i++){
+        if(i == q.userAnswer && q.visited){
+          body.innerHTML += convertChar(i) + "<input type=\"radio\" checked=\"true\"name=\"answer\" id=\"" + i + "\">" +q.choices[i] + "</input><br><br>";
+        }else{
+          body.innerHTML += "<input type=\"radio\" name=\"answer\" id=\"" + i + "\"><br>" +q.choices[i] + "</input><br><hr size=\"1\">";
+        }
+      }
+      
+      q.visited = true;
+    }
+  }
+  
+  function convertChar(a){
+    switch(a){
+        case 0: 
+        case "0": return "A";
+        case 1: 
+        case "1": return "B";
+        case 2: 
+        case "2": return "C";
+        case 3: 
+        case "3": return "D";
+        case 4: 
+        case "4": return "E";
+    }
+  }
+  
+  function setButtons(q){
+    if(q == questions[0]){
+      if(questions.length > 1){
+        body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+      }else{
+        body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+      }
+    } 
+    else if(q == questions[questions.length - 1]){
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+    }else{
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+    }
+  }
+  
+  function nextQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion++;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function previousQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion--;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function setUserAnswer(){
+    var q = questions[currentQuestion];
+    
+    if(q.choices.length > 0){
+      try{
+     		q.userAnswer = document.querySelector('input[name="answer"]:checked').id;
+        return true;
+      }catch(err){
+        alert("Make a choice. You can come back and change it later.");
+        return false;
+      }
+    }else{
+      q.userAnswer = document.getElementById("answer").value.trim();
+      return true;
+    }
+  }
+  
+  function checkQuiz(){
+    var total = 0;
+    for(var i = 0; i < questions.length; i++){
+      var q = questions[i];
+      if(q.choices.length == 0){
+        if(q.userAnswer.trim() == q.correctAnswer){
+          total++;
+        }
+      } else {
+        if(q.correctAnswer == q.userAnswer){
+          total++;
+        }
+      }
+    }
+    return total;
+  }
+  
+  function reloadPage(){
+    location = location;
+  }
+  
+  function submit(){
+    setUserAnswer();
+    
+    body.innerHTML = "You got " + checkQuiz() + " out of " + questions.length + " correct.<br><hr size=\"3\">";
+    for(var i = 0; i < questions.length; i++){
+      if(questions[i].choices.length > 0){
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += questions[i].choices[questions[i].userAnswer] + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += questions[i].choices[questions[i].correctAnswer] + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }else{
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += questions[i].userAnswer + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += questions[i].correctAnswer + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }
+    }
+            body.innerHTML += "<button onclick=\"reloadPage()\">START OVER</button>";
+  }
+</script>
+
+	<script src="http://league-level0.github.io/copyrightFooter.js"></script>
+<div id="copyright"><script>copyright();</script></div>
+</html>

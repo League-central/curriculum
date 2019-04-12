@@ -1,0 +1,384 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: "Raleway", sans-serif;
+}
+
+h1 {
+    font-family: verdana;
+    color: #fa591a;
+    text-align: center;
+    font-size: 48px;
+}
+
+h2 {
+    font-family: verdana;
+    color: #fa591a;
+    font-size: 32px;
+    text-align: center;
+}
+
+h3 {
+    font-family: "Raleway", sans-serif;
+    font-size: 24px;
+    text-align: center;
+}
+
+h4 {
+    font-family: verdana;
+}
+
+p {
+    font-size: 1em;
+}
+
+p.normal {
+    font-family: verdana;
+    font-size: 16px;
+}
+
+p.code {
+    color: #1E9806;
+    font-family: Courier;
+    font-size: 16px;
+    padding-left: 50px;
+}
+
+
+pre{
+    font-size:1.15em;
+    font-family:Courier New;
+    color: black;
+    font-family: Courier;
+    font-size: 16px;
+    border-style:solid;
+    border-width: 2px;
+    background:#c1d3bc;
+    border-color:#1E9806;
+    font-weight:300;
+    margin: 0 auto;
+    margin-top: 1em;
+
+}
+
+hr {
+    margin:auto;
+    margin-top:.5em;
+    margin-bottom:.5em;
+    width:40%
+}
+
+.module .titleBar {
+    background-color:#f26522;
+    border: 1px solid black;
+    border-radius: 25px 25px 0px 0px;
+    padding:.5em;
+}
+
+.module .description {
+    background-color:#d6d8db;
+    border: 1px solid black;
+    border-radius: 0px 0px 25px 25px;
+    border-top: 0px;
+    padding:1em;
+}	
+
+.module .links {
+    text-align:center;
+    padding-left:2em;
+}
+
+.module .links a {
+    padding-right:2em;
+    color:#d2d4d8;
+}
+
+.module ul {
+    padding-left: 2em;
+    list-style-type: circle;
+}
+
+.module p {
+    padding:1em;
+}
+
+#teachersPage {
+    max-width:50em;
+    min-width:20em;
+    margin: 0 auto;
+    padding-top:1em;
+}
+
+#teachersPage .module {
+    padding: 1em;
+}
+
+#overviewPage {
+    width: 1500px;
+    padding:1em;
+    margin: 0 auto;
+}
+
+#overviewPage .module {
+    padding:.5em;
+    float: left;
+    min-width: 12em;
+    text-align: center;
+    width:15%;
+    height:55em;
+}
+
+#overviewPage .module ul {
+    padding: 0em;
+    list-style: none;
+    width: 100%; 
+}
+
+#overviewPage .module h4{
+    padding-top:1em;
+    font-size: 1.1em;
+}
+
+#overviewPage .description {
+    padding-top: .5em;
+    border-radius: 0px 0px 0px 0px;
+}
+
+#overviewPage .checkpoint{
+    background-color:#acadaf;
+    border: 1px solid black;
+    border-radius: 0px 0px 25px 25px;
+    border-top: 0px;
+    padding:1em;
+    padding-top: 0em;
+}
+
+#overviewLegend{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2em;
+    font-family:monospace;
+}
+
+#linkPageBody {
+    padding: 5em 0;
+}
+
+#linkPageBody h3 {
+    font-family: "Raleway", sans-serif;
+    padding:.5em;
+} 
+
+#contributingBody {
+    margin:0 auto;
+    width:80%;
+    padding-top: 5em;
+    padding-bottom: 5em;
+}
+
+#contributingBody h2 {
+    font-family: "Raleway", sans-serif;
+    padding:.5em;
+}
+
+#moduleIndex {
+    margin:auto;
+    width:80%;
+    padding: 80px;
+}
+
+#moduleIndex h1 {
+    padding:none;
+}
+
+#moduleIndex h2 {
+    font-family: "Raleway", sans-serif;
+    padding:.5em;
+}
+
+#moduleIndex h3 {
+    font-family: "Raleway", sans-serif;
+    padding:.5em;
+}
+
+#recipePage {
+    padding-top:5em;
+    margin: 0 auto;
+    background:#d2d4d8;
+    padding:1em;
+    width:80%;
+    height:100%;
+    margin-top:1em;
+}
+
+#recipePage h1 {
+    font-family: "Raleway", sans-serif;
+}
+
+#recipePage img {
+    width:30%;
+    display:block;
+    margin: 0 auto;
+    padding-top:1em;
+}
+
+#recipeTitle {
+    
+}
+
+#recipeBody{
+    
+}
+
+#recipeBody h2 {
+    float:left;
+}
+
+#recipePage ol {
+    float:left;
+    width:100%;
+    padding-left:1em;
+    font-size: 1.15em;
+    font-weight: bold;
+    padding-top:.5em;
+}
+
+#recipePage li {
+   padding-bottom:1em;
+}
+
+#recipePage p {
+    float:left;
+    width:100%;
+    font-size: 1.15em;
+    padding-top:.5em;
+}
+
+#recipeBody #recipeGoal {
+    padding:5em;
+    padding-bottom:7em;
+}
+
+#recipeBody #recipeSteps {
+    padding:5em;
+    padding-top:0em;
+}
+#moduleButtonForm{
+    padding-bottom: 1.5em;
+    min-width: 15%;
+}
+
+#acceptModuleButton {
+    font-family: "Raleway", sans-serif;
+    background-color: #abaca5;
+    border-radius: 25px;
+    color: white;
+    padding: .3em 1.5em;
+    display:block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.3em;
+    margin: 0 auto;
+    outline:none;
+    cursor: pointer;
+    min-width: 3em;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#acceptModuleButton:hover {
+    background-color: #f26522;
+    color: white;
+    border-radius: 10px;
+}
+
+#acceptModuleButton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+#acceptModuleButton span:after {
+    content: '\00bb';
+    padding-left:.5em;
+}
+
+#backArrows {
+    font-size: 5em;
+    background:red;
+}
+
+.moduleIndexColumn {
+    float: left; 
+    width: 33%;
+    min-width: 20em;
+}
+
+
+/*the wrap, main, and footer divs make the footer stick to the bottom of the screen*/
+#wrap {
+    min-height: 100%;
+}
+
+#main {
+    overflow: auto;
+    padding-bottom: 75px;
+}
+
+#footer {
+    position: relative;
+    margin-top: -75px;
+    height: 75px;
+    clear: both;
+    font-size: .7em;
+}
+
+#leftColumn {
+    float: left;
+    width: 50%;
+}
+
+#rightColumn {
+    float: right;
+    width: 50%;
+}
+
+img.footer {
+    max-height: 75px;
+    width: auto;
+    display:inline-block;
+}
+
+/* Opera fix for footer*/
+body:before {
+    content: "";
+    height: 100%;
+    float: left;
+    width: 0;
+    margin-top: -32767px;
+}
+
+@media only screen and (max-width: 768px) {
+    #overviewPage {
+        width:100%;
+    }
+    #overviewPage .module {
+        float:none;
+        width:70%;
+        margin:0 auto;
+        margin-left: 8%;
+        height:100%;
+    }
+    
+}
+
+@media (max-width: 1000px) {
+    body {
+        overflow-x: auto;
+    }
+}

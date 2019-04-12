@@ -39,20 +39,20 @@ If a projectile collides with an alien, both objects are marked inactive. If an 
                         <h2>ObjectManager</h2>
 <br>
 <p class="normal"> 
-    4. Create a method called checkCollision. Add code that iterates through every alien and checks if it collides with any &quot;enemy&quot; (Rocket or Projectile). If they collide, set the Alien AND &quot;enemy's&quot; isActive variables to false. NOTE: you will need nested for loops! Collision can be checked using the Rectangle intersects() method - see example below:<br>
+    5. Create a method called checkCollision. Add code that iterates through every alien and checks if it collides with any &quot;enemy&quot; (Rocket or Projectile). If they collide, set the Alien AND &quot;enemy's&quot; isActive variables to false. NOTE: you will need nested for loops! Collision can be checked using the Rectangle intersects() method - see example below:<br>
     
 <pre>rocket.collisionBox.intersects(alien.collisionBox)</pre>
                     </p>                  
 <br>                              
  
 <p class="normal">      
-    5. In the update() method call the checkCollision() and the purgeObjects() methods after you have updated all the game objects.</p>                   
+    6. In the update() method call the checkCollision() and the purgeObjects() methods after you have updated all the game objects.</p>                   
  <br>
  
     
      <h3><u>TESTING</u></h3>
  <p class="normal">                   
-6. Run the program. Do the aliens and projectiles disappear when they are supposed to?
+7. Run the program. Do the aliens and projectiles disappear when they are supposed to?
 </p>                         
 <br>
 

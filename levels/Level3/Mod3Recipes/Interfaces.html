@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<title>Level 3- Interfaces</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level3.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+    
+<script src="https://league-level3.github.io/copyrightFooter.js"></script>
+
+<body>
+
+<h1>Interfaces</h1>
+
+<p class="normal">
+An interface is a way of grouping methods that will support a related function. A class declares that it supports a specific interface as follows:
+    </p>    
+   <p class = "code">
+	public class MyProgram implements MyInterface { ... }<br>
+</p> 
+
+<p class="normal">
+Interfaces are written using the <b>interface</b> keyword as follows:    
+    </p>    
+     <p class = "code">
+	public interface MyInterface { <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;void myFirstMethod();<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;int mySecondMethod(String param);  <br>       
+    }
+</p>   
+ <p class="normal">
+    In the above example, the class MyProgram must have actual methods called myFirstMethod() and mySecondMethod() whose signatures match those defined in the MyInterface interface.
+    </p>    
+    
+    <p class="normal">
+     An example of an interface that we used in Level 1, is the KeyListener interface. Any class that implements the KeyListener interface, must also have the following methods, <u>whether or not they have any code inside their curly brackets</u>:
+    </p>
+<p class = "code">
+	public void keyTyped(KeyEvent e) { }<br>
+	public void keyPressed(KeyEvent e) {  }<br>
+	public void keyReleased(KeyEvent e) {  }<br>
+</p>
+
+<p class="normal">
+A single class can implement more than one interface. For example, if a program will respond to key presses AND mouse clicks, the class can be declared as follows:    
+    </p>    
+<p class="code">
+    public class MyProgram implements KeyListener, MouseListener { .... }
+</p>    
+    <p class="normal">Now the class must have all the following methods:</p>
+  <p class = "code">
+	public void keyTyped(KeyEvent e) {  }<br>
+	public void keyPressed(KeyEvent e) {  }<br>
+	public void keyReleased(KeyEvent e) {  }<br>
+	public void mouseClicked(MouseEvent e) {  }<br>
+	public void mousePressed(MouseEvent e) {  }<br>
+	public void mouseReleased(MouseEvent e) {  }<br>
+	public void mouseEntered(MouseEvent e) {  }<br>
+	public void mouseExited(MouseEvent e) {  }<br>
+</p>  
+    
+<p class="normal">
+Prior to Java 8, interfaces could only contain abstract methods (i.e. method signatures only), but later versions allow for interfaces to contain a default implementation of method function. However, if a non-abstract class implements an interface, it must have a method for every <b>abstract</b> method in the interface (see "Abstract" tutorial for more information about abstract elements).
+</p>    
+    
+     <p align="center"> <b>Things to find out before you finish this module:</b></p>
+    
+    <p class="normal">
+	<li>How to implement an interface</li><br>
+    <li>The similarities and differences between a Java abstract class and a Java interface</li><br>
+	<li>When to use an abstract class or an interface</li><br>
+   
+    
+    
+    <div style="float: left; width: 50%;">
+    
+           <h2>Sample Program</h2>
+        <p align="center"> <b> </b></p>
+    </div>
+    
+     <div style="float: left; width: 50%;">
+    <h2>Student Recipes</h2>
+
+       <p align="center"> <b>TextFunkifier</b></p>
+       
+      </div>
+         
+   
+<br><br>
+ <div id="copyright" style="float: left; width: 100%;">      
+        <script>copyright();</script>
+    </div>
+ 
+   
+</body></html>

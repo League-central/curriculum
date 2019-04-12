@@ -1,0 +1,231 @@
+
+<html>
+<head>
+  <h1 align="center">LEVEL 3 MODULE 0 QUIZ</h1>
+</head>
+
+<body onload="startup()" style="background-color:#bbccdd;font-weight:bold;font-size:22px;">
+  <pre style="white-space:pre-wrap;"><code>
+  <div id="docBody"style="overflow:visible;"></div>
+</code></pre>
+</body>
+
+<script>
+  function Question(){
+    this.question = "";
+    this.choices = [];
+    this.correctAnswer = "";
+    this.userAnswer = "";
+    this.visited = false;
+  }
+  
+  var body;
+  
+  var questions = [];
+  
+  var currentQuestion;
+    
+  function startup(){
+    currentQuestion = 0;
+    
+    body = document.getElementById("docBody");
+    
+questions[0] = new Question();
+questions[0].question = "What is a data structure?";
+questions[0].choices[0] = "an organization of data in a computer program";
+questions[0].choices[1] = "a structure for which all programs must follow";
+questions[0].choices[2] = "the main method";
+questions[0].choices[3] = "a tall building";
+questions[0].choices[4] = "anything that utilizes an ArrayList";
+questions[0].correctAnswer = 0;
+questions[1] = new Question();
+questions[1].question = "In Java, what is the most common way to create a data structure?";
+questions[1].choices[0] = "a struct";
+questions[1].choices[1] = "a method";
+questions[1].choices[2] = "a class";
+questions[1].choices[3] = "variables";
+questions[1].choices[4] = "objects";
+questions[1].correctAnswer = 2;
+questions[2] = new Question();
+questions[2].question = "Which of the following properly defines an ArrayList of String objects?";
+questions[2].choices[0] = "ArrayList list = new ArrayList< String \>();";
+questions[2].choices[1] = "ArrayList< String \> = new ArrayList< String \>();";
+questions[2].choices[2] = "ArrayList list< String \> = new ArrayList();";
+questions[2].choices[3] = "ArrayList< String \> list = new ArrayList< String \>();";
+questions[2].choices[4] = "ArrayList list = new ArrayList();";
+questions[2].correctAnswer = 3;
+questions[3] = new Question();
+questions[3].question = "After the following code executes, what will be the value of num?\n\nint num = 0;\nStack< Integer \> intStack = new Stack< Integer \>();\nintStack.push(0);\nintStack.push(1);\nintStack.push(2);\nintStack.push(3);\nnum = intStack.pop();";
+questions[3].choices[0] = "0";
+questions[3].choices[1] = "1";
+questions[3].choices[2] = "2";
+questions[3].choices[3] = "3";
+questions[3].choices[4] = "(an error would occur)";
+questions[3].correctAnswer = 3;
+questions[4] = new Question();
+questions[4].question = "Which of the following would NOT be a good use of a hashmap?";
+questions[4].choices[0] = "A list of English words with their Spanish translations";
+questions[4].choices[1] = "A list of students along with their ID number";
+questions[4].choices[2] = "A list of projects and the person assigned to the projects";
+questions[4].choices[3] = "A list of supplies and their location";
+questions[4].choices[4] = "A list of dates";
+questions[4].correctAnswer = 4;
+questions[5] = new Question();
+questions[5].question = "Which line of code properly creates and initializes a HashMap?";
+questions[5].choices[0] = "HashMap< String \> hm = new HashMap< String \>();";
+questions[5].choices[1] = "HashMap< String, String \>  hm = new HashMap< Integer, Double \>();";
+questions[5].choices[2] = "HashMap< Integer, Double \> hm = new HashMap< Integer, Double \>();";
+questions[5].choices[3] = "HashMap h;";
+questions[5].choices[4] = "HashMap hm = new HashMap();";
+questions[5].correctAnswer = 2;
+questions[6] = new Question();
+questions[6].question = "What is the value of x and y after the following code executes?\n\nint x = 5;\nint y = 6;\n\nint temp = x;\nx = y;\ny = temp;";
+questions[6].choices[0] = "x = 5\ny = 6";
+questions[6].choices[1] = "x = 6\ny = 5";
+questions[6].choices[2] = "x = 0\ny = 0";
+questions[6].choices[3] = "x = 5\ny = 5";
+questions[6].choices[4] = "x = 6\ny = 6";
+questions[6].correctAnswer = 1;
+    
+    setDivText(questions[0]);
+    setButtons(questions[0]);
+  }
+  
+  function setDivText(q){
+    body.innerHTML += currentQuestion + 1 + ".<br>";
+    body.innerHTML += q.question + "<br><br><hr size=\"1\">";
+    
+    if(q.choices.length == 0){
+      body.innerHTML += "<br><textarea id=\"answer\" rows=\"10\" cols=\"80\">" +
+                         q.userAnswer + "</textarea><br>"; 
+    }else{
+      for(var i = 0; i < q.choices.length; i++){
+        if(i == q.userAnswer && q.visited){
+          body.innerHTML += convertChar(i) + "<input type=\"radio\" checked=\"true\"name=\"answer\" id=\"" + i + "\">" +q.choices[i] + "</input><br><br>";
+        }else{
+          body.innerHTML += "<input type=\"radio\" name=\"answer\" id=\"" + i + "\"><br>" +q.choices[i] + "</input><br><hr size=\"1\">";
+        }
+      }
+      
+      q.visited = true;
+    }
+  }
+  
+  function convertChar(a){
+    switch(a){
+        case 0: 
+        case "0": return "A";
+        case 1: 
+        case "1": return "B";
+        case 2: 
+        case "2": return "C";
+        case 3: 
+        case "3": return "D";
+        case 4: 
+        case "4": return "E";
+    }
+  }
+  
+  function setButtons(q){
+    if(q == questions[0]){
+      if(questions.length > 1){
+        body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+      }else{
+        body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+      }
+    } 
+    else if(q == questions[questions.length - 1]){
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+    }else{
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+    }
+  }
+  
+  function nextQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion++;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function previousQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion--;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function setUserAnswer(){
+    var q = questions[currentQuestion];
+    
+    if(q.choices.length > 0){
+      try{
+     		q.userAnswer = document.querySelector('input[name="answer"]:checked').id;
+        return true;
+      }catch(err){
+        alert("Make a choice. You can come back and change it later.");
+        return false;
+      }
+    }else{
+      q.userAnswer = document.getElementById("answer").value.trim();
+      return true;
+    }
+  }
+  
+  function checkQuiz(){
+    var total = 0;
+    for(var i = 0; i < questions.length; i++){
+      var q = questions[i];
+      if(q.choices.length == 0){
+        if(q.userAnswer.trim() == q.correctAnswer){
+          total++;
+        }
+      } else {
+        if(q.correctAnswer == q.userAnswer){
+          total++;
+        }
+      }
+    }
+    return total;
+  }
+  
+  function reloadPage(){
+    location = location;
+  }
+  
+  function submit(){
+    setUserAnswer();
+    
+    body.innerHTML = "You got " + checkQuiz() + " out of " + questions.length + " correct.<br><hr size=\"3\">";
+    for(var i = 0; i < questions.length; i++){
+      if(questions[i].choices.length > 0){
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += questions[i].choices[questions[i].userAnswer] + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += questions[i].choices[questions[i].correctAnswer] + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }else{
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += questions[i].userAnswer + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += questions[i].correctAnswer + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }
+    }
+            body.innerHTML += "<button onclick=\"reloadPage()\">START OVER</button>";
+  }
+</script>
+
+  <script src="http://league-level0.github.io/copyrightFooter.js"></script>
+<div id="copyright"><script>copyright();</script></div>
+</html>

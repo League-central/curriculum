@@ -1,0 +1,260 @@
+<html>
+
+<head>
+  <h1 align="center">LEVEL 3 MODULE 3 QUIZ</h1>
+</head>
+
+<body onload="startup()" style="background-color:#bbccdd;font-weight:bold;font-size:22px;">
+  <pre style="white-space:pre-wrap;"><code>
+  <div id="docBody"style="overflow:visible;"></div>
+</code></pre>
+</body>
+
+<script>
+  function Question(){
+    this.question = "";
+    this.choices = [];
+    this.correctAnswer = "";
+    this.userAnswer = "";
+    this.visited = false;
+  }
+  
+  var body;
+  
+  var questions = [];
+  
+  var currentQuestion;
+    
+  function startup(){
+    currentQuestion = 0;
+    
+    body = document.getElementById("docBody");
+    
+questions[0] = new Question();
+questions[0].question = "Fill in the blank.<br><br>"+
+"abstract class Shape{<br>"+
+"}<br><br>"+
+"public class Square _______ Shape{<br>"+
+"}<br>";
+questions[0].choices[0] = "implements";
+questions[0].choices[1] = "extends";
+questions[0].choices[2] = "run";
+questions[0].choices[3] = "inherits";
+questions[0].choices[4] = "elaborates";
+questions[0].correctAnswer = 1;
+questions[1] = new Question();
+questions[1].question = "Fill in the blank.<br><br>"+
+"interface Clickable{<br>"+
+"}<br><br>"+
+"public class Button _______ Clickable{<br>"+
+"}<br>";
+questions[1].choices[0] = "implements";
+questions[1].choices[1] = "extends";
+questions[1].choices[2] = "run";
+questions[1].choices[3] = "inherits";
+questions[1].choices[4] = "elaborates";
+questions[1].correctAnswer = 0;
+questions[2] = new Question();
+questions[2].question = "Why will the following code fail to compile?<br><br>"+
+"interface ActionItem{<br>"+
+"\tpublic void performAction();<br>"+
+"}<br><br>"+
+"public class Junction implements ActionItem{<br>"+
+"}<br>";
+questions[2].choices[0] = "\"implements\" should be changed to \"extends\".";
+questions[2].choices[1] = "ActionItem must define the performAction method.";
+questions[2].choices[2] = "Junction must define the performAction method.";
+questions[2].choices[3] = "A third data structure is needed to link Junction with ActionItem.";
+questions[2].choices[4] = "The code should compile just fine.";
+questions[2].correctAnswer = 2; 
+questions[3] = new Question();
+questions[3].question = "Why will the following code fail to compile?<br><br>"+
+"abstract class Block{<br>"+
+"}<br><br>"+
+"public class House{<br>"+
+	"\tpublic static void main(String[] args){<br>"+
+		"\t\tBlock b = new Block();<br>"+
+	"\t}<br>"+
+"}<br>"
+questions[3].choices[0] = "Block can not be instantiated.";
+questions[3].choices[1] = "The Block constructor needs a parameter.";
+questions[3].choices[2] = "The Block class needs at least one method.";
+questions[3].choices[3] = "The House class must extend Block.";
+questions[3].choices[4] = "The code should compile fine.";
+questions[3].correctAnswer = 0;
+    
+questions[4] = new Question();
+questions[4].question = "Why will the following code fail to compile?<br><br>"+
+"abstract class Building{<br>"+
+  "\t//code<br>"+
+"}<br><br>"+
+  "class Tower extends Building{<br>"+
+  "\t//code<br>"+
+"}<br><br>"+
+"public class BuildingBuilder{<br>"+
+	"\tpublic static void main(String[] args){<br>"+
+		"\t\tBuilding eiffelTower = new Tower();<br>"+
+		"\t\tnew BuildingBuilder().constructBuilding(eiffelTower);<br>"+
+	"\t}<br><br>"+
+	"\tpublic constructBuilding(Building b){<br>"+
+	  "\t\t//some code<br>"+ 
+	"\t}<br>"+
+"}";
+questions[4].choices[0] = "Tower can not be instantiated.";
+questions[4].choices[1] = "The Tower constructor needs a parameter.";
+questions[4].choices[2] = "constructBuilding cannot take a Building object as a parameter.";
+questions[4].choices[3] = "The BuildingBuilder class must extend Building.";
+questions[4].choices[4] = "The code should compile fine.";
+questions[4].correctAnswer = 4;
+    
+    questions[5] = new Question();
+questions[5].question = "Which of the following is NOT a true statement?";
+questions[5].choices[0] = "Interfaces can only have abstract methods and statically defined methods.";
+questions[5].choices[1] = "Abstract classes can have non-abstract methods.";
+questions[5].choices[2] = "A class can only extend one abstract class.";
+questions[5].choices[3] = "A class can only implement one interface.";
+questions[5].choices[4] = "An interface cannot have any private methods.";
+questions[5].correctAnswer = 3;
+    setDivText(questions[0]);
+    setButtons(questions[0]);
+  }
+  
+  function setDivText(q){
+    body.innerHTML += currentQuestion + 1 + ".<br>";
+    body.innerHTML += q.question + "<br><br><hr size=\"1\">";
+    
+    if(q.choices.length == 0){
+      body.innerHTML += "<br><textarea id=\"answer\" rows=\"10\" cols=\"80\">" +
+                         q.userAnswer + "</textarea><br>"; 
+    }else{
+      for(var i = 0; i < q.choices.length; i++){
+        if(i == q.userAnswer && q.visited){
+          body.innerHTML += convertChar(i) + "<input type=\"radio\" checked=\"true\"name=\"answer\" id=\"" + i + "\">" +q.choices[i] + "</input><br><br>";
+        }else{
+          body.innerHTML += "<input type=\"radio\" name=\"answer\" id=\"" + i + "\"><br>" +q.choices[i] + "</input><br><hr size=\"1\">";
+        }
+      }
+      
+      q.visited = true;
+    }
+  }
+  
+  function convertChar(a){
+    switch(a){
+        case 0: 
+        case "0": return "A";
+        case 1: 
+        case "1": return "B";
+        case 2: 
+        case "2": return "C";
+        case 3: 
+        case "3": return "D";
+        case 4: 
+        case "4": return "E";
+    }
+  }
+  
+  function setButtons(q){
+    if(q == questions[0]){
+      if(questions.length > 1){
+        body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+      }else{
+        body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+      }
+    } 
+    else if(q == questions[questions.length - 1]){
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+    }else{
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+    }
+  }
+  
+  function nextQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion++;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function previousQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion--;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function setUserAnswer(){
+    var q = questions[currentQuestion];
+    
+    if(q.choices.length > 0){
+      try{
+     		q.userAnswer = document.querySelector('input[name="answer"]:checked').id;
+        return true;
+      }catch(err){
+        alert("Make a choice. You can come back and change it later.");
+        return false;
+      }
+    }else{
+      q.userAnswer = document.getElementById("answer").value.trim();
+      return true;
+    }
+  }
+  
+  function checkQuiz(){
+    var total = 0;
+    for(var i = 0; i < questions.length; i++){
+      var q = questions[i];
+      if(q.choices.length == 0){
+        if(q.userAnswer.trim() == q.correctAnswer){
+          total++;
+        }
+      } else {
+        if(q.correctAnswer == q.userAnswer){
+          total++;
+        }
+      }
+    }
+    return total;
+  }
+  
+  function reloadPage(){
+    location = location;
+  }
+  
+  function submit(){
+    setUserAnswer();
+    
+    body.innerHTML = "You got " + checkQuiz() + " out of " + questions.length + " correct.<br><hr size=\"3\">";
+    for(var i = 0; i < questions.length; i++){
+      if(questions[i].choices.length > 0){
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += questions[i].choices[questions[i].userAnswer] + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += questions[i].choices[questions[i].correctAnswer] + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }else{
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += questions[i].userAnswer + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += questions[i].correctAnswer + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }
+    }
+            body.innerHTML += "<button onclick=\"reloadPage()\">START OVER</button>";
+  }
+</script>
+	
+	<script src="http://league-level0.github.io/copyrightFooter.js"></script>
+<div id="copyright"><script>copyright();</script></div>
+	
+</html>

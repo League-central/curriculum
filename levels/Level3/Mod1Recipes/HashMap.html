@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<title>Level 3- HashMap</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level3.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-level3.github.io/copyrightFooter.js"></script>
+    
+<body>
+
+<h1>HashMap</h1>
+
+<p class="normal">
+The <font color="green">HashMap</font> class allows you to store information (a value) that can be retrieved using its "key". Each key in a HashMap is unique.</p>
+
+    <p class="normal">
+        An example of when a HashMap could be used is in a school. There may be more than one student with the same name, but each student is given a unique ID number that allows you to find the correct student. In this case, the HashMap "keys" are ID numbers, and the "values" are Student records (objects). See below:
+    </p>
+
+    <p class="code">
+    Student s1 = new Student("Sarah", 123);<br>
+    Student s2 = new Student("Sarah", 555);<br>
+    Student s3 = new Student("Joe", 345);<br><br>
+    HashMap&lt;Integer, Student&gt;  students = new HashMap();<br>
+    students.put(s1.ID, s1);<br>
+	students.put(s2.ID, s2);<br>
+	students.put(s3.ID,s3);<br>
+        <br>
+    String student = students.get(555);   //student will be Sarah with ID 555
+        
+</p>
+    
+    <p align="center"> <b>Things to find out before you finish this module:</b></p>
+    
+    <p class="normal">
+<li>How to create and inititialize a HashMap</li><br>
+<li>How to put/get keys and values into/out of a HashMap</li><br>
+<li>How to loop through all the elements of a HashMap (advantages and disadvantages of different types of loop)</li><br>
+<li>Advantages and disadvantages of HashMaps</li>   
+    </p>
+    <div style="float: left; width: 50%;">
+    
+           <h2>Sample Program</h2>
+        <p align="center"> <b>HashMapDemo</b></p>
+    </div>
+    
+     <div style="float: left; width: 50%;">
+    <h2>Student Recipes</h2>
+
+   <p align="center"> <b>IntroToHashMaps<br>
+         LogSearch</b></p>
+       
+      </div>
+    
+
+    
+<br><br>   
+ <div id="copyright" style="float: left; width: 100%;">      
+        <script>copyright();</script>
+    </div>
+
+</body></html>

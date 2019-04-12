@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<title>Level 3- Array List</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level3.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+    
+<script src="http://league-level3.github.io/copyrightFooter.js"></script>
+
+<body>
+
+<h1>Array List</h1>
+
+<p class="normal">
+Variables are used to hold a single value. For example:<br>
+    
+  </p>
+<p class="code">
+int age = 12; <br>
+String name = “Sarah”;
+</p>
+
+    <p class="normal">
+    However, what if a program needed a list of names? We don't want to declare multiple variables with meaningless names like name1, name2, name3, etc.<br><br>
+Arrays allow us to store multiple values of the same type. E.g. <br>
+</p>
+    <p class="code">
+
+	String[] names = {"Sarah", "Joe","Ali", "Jose"};<br>
+	String[] moreNames = new String[4];
+</p>
+
+    <p class="normal">
+    Unfortunately, we need to know exactly how many elements we are going to get before we can declare the array, which limits their use in our programs.
+ <br><br> 
+    
+    This is where <font color="green">ArrayList</font> comes in handy. <br><br>
+
+  ArrayLists grow and shrink according to how many elements are currently stored in them, i.e. they are "dynamic". In addition, you can add a mixture of object types in a single ArrayList.
+   </p> 
+    <p class="code">
+    ArrayList namesList = new ArrayList();<br>
+    namesList.add("Sarah");<br>
+	namesList.add(10);<br>
+	namesList.add(3.14);<br>
+</p>
+
+    
+    <p class="normal">
+However, if you want to limit an ArrayList to a specific type of object, you can declare its type when you create it:
+    </p>
+    <p class="code">
+    ArrayList&lt;String&gt; namesList = new ArrayList();<br>
+    namesList.add("Sarah");<br>
+    </p>
+    
+    <p align="center"> <b>Things to find out before you finish this module:</b></p>
+    
+    <p class="normal">
+<li>How to create and inititialize an ArrayList</li><br>
+<li>How to add and remove items from an ArrayList</li><br>
+<li>How to loop through all the elements of an ArrayList (advantages and disadvantages of different types of loop)</li><br>
+<li>Advantages and disadvantages of ArrayLists</li>   
+    </p>
+    <div style="float: left; width: 50%;">
+    
+           <h2>Sample Program</h2>
+        <p align="center"> <b>ArrayListDemo</b></p>
+    </div>
+    
+     <div style="float: left; width: 50%;">
+    <h2>Student Recipes</h2>
+
+   <p align="center"> <b>IntroToArrayList<br>
+         GuestBook</b></p>
+       
+      </div>
+         
+   
+<br><br>
+ <div id="copyright" style="float: left; width: 100%;">      
+        <script>copyright();</script>
+    </div>
+ 
+   
+</body></html>

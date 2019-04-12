@@ -1,0 +1,64 @@
+<html>
+    <div id="quizDiv"></div>
+    <input type='text' id='inputId'>
+    <script>
+        var quizDiv;
+        var input;
+        var winningStreak;
+        var lArg;
+        var rArg;
+        var isRightShift;
+        window.onload = function(){
+            quizDiv = document.getElementById("quizDiv");
+            input = document.getElementById("inputId");
+            quizDiv.addEventListener('keydown', function(event) {
+                if (event.keyCode == 13) {
+                    checkAnswer();
+                }
+            });
+            winningStreak = 0;
+            genQuestion();
+        } 
+
+        function genQuestion(){
+            isRightShift = Math.random() >= 0.5;
+            lArg = Math.floor((Math.random() * 256));
+            rArg = Math.floor((Math.random() * 8));
+
+            quizDiv.innerHTML = "<h1>Winning Streak: "+winningStreak+"</h1><br>"
+            if(isRightShift){
+                quizDiv.innerHTML += lArg + " >> " + rArg + " = ";
+            }else{
+                quizDiv.innerHTML += lArg + " << " + rArg + " = ";
+            }
+            
+    
+            quizDiv.appendChild(input);
+
+            quizDiv.innerHTML += "<button onclick='checkAnswer()'>check your answer</button>";
+        }
+
+        function checkAnswer(){
+            let answer = document.getElementById('inputId').value;
+            if(isRightShift){
+                if(answer == (lArg >> rArg)){
+                    document.body.style.backgroundColor = "lightgreen";
+                    winningStreak++;
+                }else{
+                    document.body.style.backgroundColor = "pink";
+                    winningStreak = 0;
+                }
+            }else{
+                if(answer == (lArg << rArg)){
+                    document.body.style.backgroundColor = "lightgreen";
+                    winningStreak++;
+                }else{
+                    document.body.style.backgroundColor = "pink";
+                    winningStreak = 0;
+                }
+            }
+            
+            genQuestion();
+        }
+    </script>
+</html>

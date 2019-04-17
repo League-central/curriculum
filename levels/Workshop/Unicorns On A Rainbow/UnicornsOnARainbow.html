@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<title>Unicorns on Rainbow</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}    
+</style>
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+
+<h1>Unicorns on a Rainbow</h1>
+<hr>
+                    <br>
+<p class="normal">You are going to make a unicorn follow the mouse.
+<br>
+<br>
+
+1. Create a new sketch in Processing and add setup() and draw() methods.<br>
+    <br>
+
+2. Find a photo of a rainbow:<br>
+    <br></p>
+  <img src="images/RainbowUnicorn.png" style="width: 150px; height=241px; margin: 0px 40px" align="left"> 
+                    <ul>
+        <li>Find an image on google</li>
+        <li>Right click on the image and select "Save Image As"</li>
+        <li>Rename your image something short (e.g. "rainbow")</li>
+        <li>Save the image on your desktop</li>
+        <li>Drag the image from your desktop and drop it into your sketch</li>
+</ul>
+<br>
+<br>                    
+<p class="normal">
+        3. On line 1 of your sketch, add the following code:<br></p>
+<pre>
+PImage rainbow;
+PImage unicorn;</pre>
+
+<br>
+<p class="normal">4. Load your image by adding the following code to your setup() method:<br>    </p>                   
+<pre>
+rainbow = loadImage(&quot;rainbow.jpg&quot;);
+size(800, 600);
+rainbow.resize(width,height);</pre>
+                
+<br>
+<p class="normal">                    
+5. If needed, change “rainbow.jpg” from the previous step so that it matches the name of your image.<br>
+<br>
+6. At the beginning of your draw() method, set rainbow  as your background using the background() method.<br>   
+<br>                   
+7. Find an image of a unicorn on google.  Make sure it has a transparent background.  Search for “unicorn transparent” or “unicorn png”. Repeat the instructions in step 2 to add it to your program.<br> 
+<br>                  
+8. In your setup()method, load your unicorn image using the following code:<br>    </p>
+<pre>
+ unicorn = loadImage(&quot;unicorn.png&quot;);</pre>
+ <br>
+<p class="normal">                  
+9. If needed, change “unicorn.png” from the previous step so that it matches the name of your image.<br>
+<br>
+10. In your draw() method, add the unicorn using:<br>    </p>
+<pre>
+image(unicorn, 400, 300);
+</pre>                
+ <br>
+<p class="normal">                  
+11. Change the previous line of code so that the unicorn moves with your mouse (HINT: use mouseX and mouseY).<br>
+    <br></p>
+<p class="normal">
+12. Inside of your draw statement, redraw the background just like you did in the setup() method.  This will make it so that only one unicorn appears at a time.  <br>    </p>
+
+                
+                </div>
+    </div>
+                    
+    </div> 
+
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body>
+</html>

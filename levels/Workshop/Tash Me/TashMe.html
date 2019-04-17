@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<title>Tash Me</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}    
+</style>
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+
+<h1>Tash Me</h1>
+<hr>
+                    <br>
+<p class="normal">You are going to make a program that allows the user to put a mustache onto a face.
+<br>
+<br>
+
+1. Create a new sketch in Processing and add setup() and draw() methods.<br>
+    <br>
+
+2. Find a photo of a face, it can be anyone you want:<br>
+    <br>
+  <img src="images/RonaldWithTash.png" style="width: 150px; height=241px; margin: 0px 40px" align="left">  <ul>
+        <li>Find an image on google</li>
+        <li>Right click on the image and select "Save Image As"</li>
+        <li>Rename your image something short (e.g. "face")</li>
+        <li>Save the image on your desktop</li>
+        <li>Drag the image from your desktop and drop it into your sketch</li>
+</ul>
+<br>
+<br>                    
+                    <p class="normal">
+                    3. On line 1 of your sketch, add the following code:<br>
+<pre>
+PImage mustache;
+PImage face;</pre>
+
+<br>
+<p class="normal">4. Load your image by adding the following code to your setup() method:<br>                   
+<pre>
+face = loadImage(&quot;face.jpg&quot;);
+size(800, 600);
+face.resize(width,height);</pre>
+
+<br>
+<p class="normal">                    
+5. If needed, change “face.jpg” from the previous step so that it matches the name of your image.<br>
+<br>
+6. At the beginning of your draw() method, set friend  as your background using the background() method.<br>   
+<br>                   
+7. Find an image of a mustache on google.  Make sure it has a transparent background.  Search for “mustache transparent” or “mustache png”. Repeat the instructions in step 2 to add it to your program.<br> 
+<br>                  
+8. In your setup()method, load your mustache image using the following code:<br>
+<pre>
+ mustache = loadImage(&quot;mustache.png&quot;);</pre>
+ <br>
+<p class="normal">                  
+9. If needed, change “mustache.png” from the previous step so that it matches the name of your image.<br>
+<br>
+10. In your draw() method, add the mustache using:<br>
+<pre>
+image(mustache, 400, 300);
+</pre>                
+ <br>
+<p class="normal">                  
+11. Change the previous line of code so that the mustache moves with your mouse (HINT: use mouseX and mouseY).<br>
+<br>
+<p class="normal">     
+12. Use an if statement to make the mustache appear only when the mouse is pressed. <br>
+<br>
+<p class="normal">
+13. Inside of your if statement, redraw the background just like you did in the setup() method.  This will make it so that only one mustache appears at a time.  <br>
+<br>
+<p class="normal">
+<b>OPTIONAL</b>
+<br><br>
+<p class="normal">
+ 14. Resize your mustache so that it fits better using:<br>
+<pre> mustache.resize(w, h);</pre>    
+    <br>
+<p class="normal">
+ 15. Add or subtract a number from mouseX and mouseY so that your mustache appears exactly where you click your mouse.  <br><br>
+<p class="normal">
+<b>CHALLENGE</b>
+<br><br>
+16. Draw a hat on your image when the right mouse button is clicked using:<br>
+<pre>
+if (mouseButton == RIGHT){
+}</pre>
+                
+                
+                </div>
+    </div>
+                    
+    </div>          
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body>
+</html>

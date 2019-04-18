@@ -26,7 +26,7 @@
 <pre>
 public static BufferedImage image;
 public static boolean needImage = true;
-public static boolean gotImage = true;	</pre>                
+public static boolean gotImage = false;	</pre>                
 <br>
 <p class="normal">
 3. Add this method that tries to load the image.</p>
@@ -35,8 +35,9 @@ void loadImage(String imageFile) {
     if (needImage) {
         try {
             image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+	    gotImage = true;
         } catch (Exception e) {
-            gotImage = false;
+            
         }
         needImage = false;
     }

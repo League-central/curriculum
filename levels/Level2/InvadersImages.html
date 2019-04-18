@@ -55,11 +55,10 @@ if (needImage) {
 5. In the draw method, draw the image if there is one, otherwise keep drawing the rectangle.</p><br>
 <pre>
 if (gotImage) {
-		g.drawImage(image, x, y, width, height, null);
-	} else {
-		g.setColor(Color.BLUE);
-		g.fillRect(x, y, width, height);
-	}
+	g.drawImage(image, x, y, width, height, null);
+} else {
+	g.setColor(Color.BLUE);
+	g.fillRect(x, y, width, height);
 }
 </pre>
 <br>                    

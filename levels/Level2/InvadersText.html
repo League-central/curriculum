@@ -25,7 +25,7 @@
     1. In the <code>GamePanel</code> class, create a Font variable called <code>titleFont</code>.</p>
 <br>                     
 <p class="normal">    
-    2. In the constructor, initialize the <code>titleFont</code> variable as follows. The constructor of the Font class takes three parameters. The first is a String for the type of font you want to display. For now, set it to "Arial". The second parameter is for any stylization you would like to apply to the font. For now, set it to <code>Font.PLAIN</code> . The third parameter is for the size of the font. Set it to 48 for now.</p>
+    2. Create a constructor, and initialize the <code>titleFont</code> variable as follows. The constructor of the Font class takes three parameters. The first is a String for the type of font you want to display. For now, set it to "Arial". The second parameter is for any stylization you would like to apply to the font. For now, set it to <code>Font.PLAIN</code> . The third parameter is for the size of the font. Set it to 48 for now.</p>
 <pre>
     titleFont = new Font("Arial", Font.PLAIN, 48);</pre>
                     
@@ -34,7 +34,7 @@
     3. Go to the drawMenuState method and set the font for the graphics to use before drawing the menu text. Don't forget that you need to set the color of your text so that it will show up on your background color. E.g.</p>
 <pre>
 g.setFont(titleFont);
-g.setColor(Color.CYAN);
+g.setColor(Color.YELLOW);
 g.drawString("text", x, y);
 </pre>
                     
@@ -45,13 +45,9 @@ g.drawString("text", x, y);
  <br>                        
 <p class="normal">                   
 5. Add the text for the Game Over screen in the drawEndState method (you may need a different color). You will need to change this at the end of the game when you have implemented the code that keeps a score.</p>
-                    
-
-                    
-     <h3><u>TESTING</u></h3>
- <p class="normal">                   
-6. Check the MENU window to make sure it has the correct appearance. We cannot check the END window until later.
-                    </p>                         
+<br>                    
+     <img src="images/InvadersMenu.png" style="width: 150px; height=241px; margin: 0px 20px" align="left"> <h3><u>TESTING</u></h3><p class="normal"> 6. Check the MENU window to make sure it has the correct appearance. We cannot check the END window until later.</p>
+                       
 
                 </div></div></div>                   
 <div id="footer">

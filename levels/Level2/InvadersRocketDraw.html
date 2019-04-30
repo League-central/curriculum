@@ -43,13 +43,13 @@ All of the game characters share common characteristics. They all have to be dra
                         <h2>Rocketship</h2>
                                     
 <p class="normal"> 
-4. Create a Rocketship class that extends the GameObject class.</p>
+5. Create a Rocketship class that extends the GameObject class.</p>
 <pre>
 public class Rocketship extends GameObject { }</pre>
                                         
 <br>        
 <p class="normal">      
-5. Add a constructor for this class that takes the same parameters as the inherited GameObject constructor (see step 2), and pass the parameters to the GameObject (superclass) constructor (see below). Note: Eclipse can generate this for you</p>
+6. Add a constructor for this class that takes the same parameters as the inherited GameObject constructor (see step 2), and pass the parameters to the GameObject (superclass) constructor (see below). Note: Eclipse can generate this for you</p>
 <pre>
 super(x,y,width,height);
 </pre>                    
@@ -57,7 +57,7 @@ super(x,y,width,height);
 
 
 <p class="normal">           
-    6. In the <code>Rocketship</code> class, create a void <code>draw()</code> method. The draw method takes a parameter that is a <code>Graphics</code> object (g). For now we will draw a blue square to represent the rocketship by putting the following code in its <code>draw()</code> method:</p>
+    7. In the <code>Rocketship</code> class, create a void <code>draw()</code> method. The draw method takes a parameter that is a <code>Graphics</code> object (g). For now we will draw a blue square to represent the rocketship by putting the following code in its <code>draw()</code> method:</p>
  <pre>
         g.setColor(Color.BLUE);
         g.fillRect(x, y, width, height);</pre>
@@ -65,11 +65,11 @@ super(x,y,width,height);
 <h2>GamePanel</h2>
 <br>
 <p class="normal">
-7. In the <code>GamePanel</code>, create a new member variable to hold a Rocketship object that has x,y of 250,700 and width/height of 50,50.</p>
+8. In the <code>GamePanel</code>, create a new member variable to hold a Rocketship object that has x,y of 250,700 and width/height of 50,50.</p>
 
  <br>
 <p class="normal">   
-   8. In the drawGameState() method, add code to call the rocketship's draw method (pass it the Graphics object).</p>  
+   9. In the drawGameState() method, add code to call the rocketship's draw method (pass it the Graphics object).</p>  
     <br>
   
      <img src="images/InvadersBlueSquare.png" style="width: 150px; height=241px; margin: 0px 20px" align="left"> <h3><u>TESTING</u></h3><p class="normal"> 9. Run the program. Press the Enter key to put the game into the GAME state (black background). Does the blue rocketship (square) appear at the bottom?

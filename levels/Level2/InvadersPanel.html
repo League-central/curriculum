@@ -36,7 +36,6 @@
 3. The <code>GamePanel</code> class needs to override the JPanel's <code>paintComponent()</code> method. To do this, copy the method below <b>exactly as written</b> and put it into the <code>GamePanel</code> class.<br>
     </p>
 <pre>@Override
-
 public void paintComponent(Graphics g){
 
 }</pre> <br><p class="normal">Make sure the <code>java.awt.Graphics</code> class has been imported into <code>GamePanel</code>.</p><br>
@@ -49,7 +48,7 @@ public void paintComponent(Graphics g){
     The parameters for the rectangle are the exact same as Processing: (x, y, width, height). So this code will draw a square that is located at (x,y) = (10,10) and whose sides are 100 pixels long.</p>
                                        <h2>LeagueInvaders</h2>
 <p class="normal">
-5. <u>In the <code>LeagueInvaders</code> class</u>, add a member variable for a <code>GamePanel</code> object. Initialize it in the <code>LeagueInvaders</code> constructor. At the top of the setup() method, add the <code>GamePanel</code> to your <code>JFrame</code>.                                    
+5. Add a member variable for a <code>GamePanel</code> object. Initialize it in the <code>LeagueInvaders</code> constructor. <b>At the beginning of the setup() method</b>, add the <code>GamePanel</code> to your <code>JFrame</code>.                                    
                     </p><br>
                   
      <img src="images/InvadersBlackSquare.png" style="width: 150px; height=241px; margin: 0px 20px" align="left"> <h3>TESTING</h3><p class="normal"> 6. Run the program. Do you see a square appear in your window? If not, get this part working before you move on to the next step.

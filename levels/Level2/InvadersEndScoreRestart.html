@@ -26,28 +26,28 @@ The game score will increase each time a projectile deactivates an alien i.e. th
 2. Create a getter for the score variable.</p><br>
 <p class="normal"> 
 3. Increment the score by one, every time an enemy is deactivated by a projectile (checkCollision).</p><br>                    
-<p class="normal"> 
-   4. In the draw method, display the score on the graphics.</p><br>
+<p class="normal">    
 
                     
 
                     <h2>GamePanel</h2>
-                
+                    
+<p class="normal"> 
+   4. Use the getScore method in the ObjectManager class to get the player's score and display it on the panel.</p><br>
+
 <p class="normal">    
 
 5. In the keyPressed method, when the ENTER key is pressed, check if the current state is equal to END. If it is, replace the existing inactive rocketship with a new Rocketship object.</p><br>
 
 <br>
 <p class="normal"> 
-    6. Replace the existing ObjectManager with a new ObjectMangaer object, passing the rocketship object to the constructor.<br></p>
+    6. Replace the existing ObjectManager with a new ObjectMangaer object, passing the rocketship object to the constructor.<br>
     
-<br>
-<p class="normal"> 
-    7. Add the score to the information on the END screen.</p>
+
     
      <h3><u>TESTING</u></h3>
  <p class="normal">                   
-8. Run the program. Does it reset to the beginning after a Game Over? Have you removed all your printing to the console? 
+7. Run the program. Is the score displayed and does it update as you shoot the aliens? Does it reset to zero when you restart after a Game Over? Have you removed all your printing to the console? If so....congratulations! You have completed League Invaders!
 </p>                         
 <br>
 

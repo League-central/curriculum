@@ -35,7 +35,7 @@ Since the game characters share common properties, we can manage them via a sing
 <pre>aliens.add(new Alien(random.nextInt(LeagueInvaders.WIDTH),0,50,50));</pre>
 <br>
 <p class="normal"> 
-    5. Create a method called <code>update()</code>. Iterate through all the aliens and call the update method on each alien. After updating, test the alien's y value. If it is outside the game window (use LeagueInvaders.HEIGHT), set the alien's isActive variable to false. Note: Iteration will require the use of a for loop of some kind! Next do a similar thing for all the projectiles.</p>                  
+    5. Create a method called <code>update()</code>. Call the update method on the rocketship. Iterate through all the aliens and call the update method on each alien. After updating, test the alien's y value. If it is outside the game window (use LeagueInvaders.HEIGHT), set the alien's isActive variable to false. Note: Iteration will require the use of a for loop of some kind! Next do a similar thing for all the projectiles.</p>                  
 <br>                              
 <p class="normal"> 
     6. Create a method called <code>draw()</code> that has a Graphics parameter. Add code to call the rocket's draw method (pass it the graphics object). Then iterate through all the aliens and call the draw method on each. Now do the same thing for all the projectiles.</p>

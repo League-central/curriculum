@@ -28,30 +28,27 @@ Start with a new sketch that contains <b>setup()</b> and <b>draw()</b> methods. 
     </p><br>
 <p class="normal">
 1. Find an image of a record.<br>
-<br>
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i) Save the image.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii) Drop the image file onto your sketch.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iii) Load it with code like this...<br>
 </p><br>
-    <p class="code"> 
-		PImage pictureOfRecord;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//as member variable<br>
-        size(600,600);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//in setup method	<br>		pictureOfRecord= loadImage("record.png");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//in setup method	<br>
-
-		image(pictureOfRecord, xPosition, yPosition);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//in draw method<br>
-    </p><br>
+    <pre>	PImage pictureOfRecord;                        //as member variable
+        size(600,600);                                 //in setup method
+        pictureOfRecord= loadImage("record.png");      //in setup method
+        image(pictureOfRecord, xPosition, yPosition);  //in draw method</pre>
+<br>
 <p class="normal">    
-    2. Set the size of your image to match the size of your canvas (after you have loaded it).</p><br>
-    <p class="code">
-                pictureOfRecord.resize(height,width);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//in setup method</p><br>
+    2. Set the size of your image to match the size of your canvas (after you have loaded it).</p>
+    <pre>        pictureOfRecord.resize(height,width);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//in setup method</pre>
+<br>
 <p class="normal">
-3. Use this method to rotate your image. Make sure you use the image() command after you call rotateImage().			
-</p><br>
-    <p class="code"> 	void rotateImage(PImage image, int amountToRotate) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;translate(width/2, height/2);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotate(amountToRotate*TWO_PI/360);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;translate(-image.width/2, -image.height/2);<br>
-}<br>
-    </p><br>
+3. Use this method to rotate your image. Make sure you use the image() command after you call rotateImage().</p>
+    <pre>   void rotateImage(PImage image, int amountToRotate) {
+        translate(width/2, height/2);
+        rotate(amountToRotate*TWO_PI/360);
+        translate(-image.width/2, -image.height/2);
+    }</pre><br>
 <p class="normal">
     5. Adjust the speed of the record player. Make the record spin.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i) Make a variable to keep track of the image angle.<br>
@@ -59,28 +56,22 @@ Start with a new sketch that contains <b>setup()</b> and <b>draw()</b> methods. 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iii) Use this variable when you call the rotateImage() method.<br>
     </p><br>
 <p class="normal">
-6. Only spin the record when the user clicks the mouse button.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="magenta">mousePressed</font>
+6. Only spin the record when the user clicks the mouse button. Hint: use <font color="magenta">mousePressed</font>
     </p><br>
 <p class="normal">    
-7. Add a song.<br>
-//drop the song file onto your sketch
-</p><br>
-    <p class="code"> 
-	import ddf.minim.*;	 	//at the very top of your sketch<br>
-	Minim minim;				//as a member variable<br>
-	AudioPlayer song;			//as a member variable<br>
-	minim = new Minim(this);		//in the setup method<br>
-	song = minim.loadFile("awesomeTrack.mp3", 512);//in the setup method<br>
-song.play();<br>
+7. Add a song.  First drop the song file (ex. awesomeTrack.mp3) onto your sketch.
+</p>
+    <pre> 	import ddf.minim.*;	 	        //at the very top of your sketch
+	Minim minim;				//as a member variable
+	AudioPlayer song;			//as a member variable
+	minim = new Minim(this);		//in the setup method
+	song = minim.loadFile("awesomeTrack.mp3", 512);   //in the setup method</pre>
 	<br>
 <p class="normal">
-8. Only play the song when the mouse is pressed.
-</p><br>
-    <p class="code"> 	mousePressed<br>
-	song.play()<br>
-	song.pause()
-    </p><br>
+8. Only play the song when the mouse is pressed. Hint: use the methods below.
+</p>
+    <pre>	song.play()
+	song.pause()</pre><br>
 <p class="normal">
 9. Make the record spin as fast as possible
     </p><br>

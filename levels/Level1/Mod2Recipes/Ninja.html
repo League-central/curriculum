@@ -23,33 +23,31 @@
 
 <br>
 
-    <p class="code">
-public class Ninja {<br>
-        <br>
-/* Assume the Enemy class exists and has the required methods. */<br>
-        <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private Ninja(Enemy enemy, String alliegence) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.alliegence = alliegence;
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.enemy = enemy;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
- <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void sabotage() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infiltrate( );<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setOnFire(enemy.getLocation());<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
- <br>
- <br>
-String infiltrate(String who) {<br>
+    <pre>public class Ninja {
+        
+/* Assume the Enemy class exists and has the required methods. */
+        
+    private Ninja(Enemy enemy, String alliegence) {
+        this.alliegence = alliegence;
+        this.enemy = enemy;
+    } 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nagato nagato =   Ninja("Nagato", "Nobunaga");<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Momochi momochi =  Ninja("Momochi", new Enemy());<br>
+    void sabotage() {
+        infiltrate( );
+        setOnFire(enemy.getLocation());
+    } 
+ 
+ 
+    String infiltrate(String who) {
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
-} <br>
+    }
+
+    {
+        Nagato nagato =   Ninja("Nagato", "Nobunaga");
+        Momochi momochi =  Ninja("Momochi", new Enemy());
+
+    } 
+} 
 
 
 

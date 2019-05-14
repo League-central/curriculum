@@ -5,11 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-
+<style>
+   #moduleIndex {
+   padding: 0;
+}
+</style>
 <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
 <body>
         <div id ="wrap">
             <div id ="main">
+                 <div id="header">
+                    <script>addRecipeHeader();</script>
+                </div>         
                 <div id = "moduleIndex">   
 
 
@@ -30,15 +37,14 @@
 
 <p class="normal">
 3. In your draw method, set a background, and draw a ball (bird) on the screen.
-</p><br>
-   <p class="code">
-    background(red, green, blue);<br>
-	fill(red, green, blue);<br>
-	stroke(red, green, blue);<br>
-	ellipse(x, y, width, height);<br>
-</p><br>  
+</p>
+   <pre>background(red, green, blue);
+fill(red, green, blue);
+stroke(red, green, blue);
+ellipse(x, y, width, height);
+</pre>
     
-    
+ <br>   
 <p class="normal">
 4. Make the bird fall down<br>
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>Hint:</u> make variables for the bird's X and Y position and use them for the ellipse in the draw method.
@@ -54,7 +60,7 @@
 <p class="normal">
 6.  Give the bird gravity.<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Hint:</u> make a variable for the gravity pulling the bird down. Gravity should continually increase the value of y . 
-</p><br>
+</p>
     <p class="code">int gravity = 1;</p><br>
 
 
@@ -117,15 +123,13 @@
 <p class="normal">
 15. Make the game end when the bird hits the pipe. Figure it out by yourself, or use this method:
 </p><br>
-         <p class="code"> 
-        boolean intersectsPipes() { <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (birdY &lt; upperPipeHeight && birdX &gt; pipeX && birdX &lt; (pipeX+pipeWidth)){<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true; }<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (birdY&gt;lowerPipeTop && birdX &gt; pipeX && birdX &lt; (pipeX+pipeWidth)) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true; }<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else { return false; }<br>
-             }
-    </p><br>      
+         <pre>boolean intersectsPipes() { 
+         if (birdY &lt; upperPipeHeight &amp;&amp; birdX &gt; pipeX &amp;&amp; birdX &lt; (pipeX+pipeWidth)){
+            return true; }
+        else if (birdY&gt;lowerPipeTop &amp;&amp; birdX &gt; pipeX &amp;&amp; birdX &lt; (pipeX+pipeWidth)) {
+            return true; }
+        else { return false; }
+}</pre><br>      
 <p class="normal">    
 16. End the game when the bird hits the ground.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Make a rectangle for the ground.<br>

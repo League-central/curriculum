@@ -5,11 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-
+<style>
+   #moduleIndex {
+   padding: 0;
+    }
+</style>
 <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
 <body>
         <div id ="wrap">
             <div id ="main">
+                 <div id="header">
+                    <script>addRecipeHeader();</script>
+                </div>    
                 <div id = "moduleIndex">   
 <h1>Get Latest Tweet</h1>
 <br>
@@ -38,29 +45,26 @@ We are going to display the latest tweet that matches the user's search criteria
     <br>
     <b>Make sure you import from twitter4j </b></p><br>
 <br>
-    <p class="code">
-   	private String getLatestTweet(String searchingFor) {<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Twitter twitter = new TwitterFactory().getInstance();<br>
-        <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AccessToken accessToken = new AccessToken(<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"2453751158-IVD2VGZsvwZiRKxNe3Gs2lMjg30nvSkV1xSuPFf",<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vBa5PjKfuMTK1LLBG51nCUI9r5d6Ph5cAHrS73spg6Nvu");<br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;twitter.setOAuthConsumer("YqeZdD2hYxOKv4QOkmp0i2djN",<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"6XUB1r8KXBvd8Pk9HHW3NgphMxHvHWBLAr5TihnckMU0ttyGST");<br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;twitter.setOAuthAccessToken(accessToken);<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Query query = new Query(searchingFor);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QueryResult result = twitter.search(query);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return result.getTweets().get(0).getText();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (Exception e) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.err.print(e.getMessage());<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "What the heck is that?";<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-	}<br>
+    <pre>private String getLatestTweet(String searchingFor) {
 
-    </p><br>
+    Twitter twitter = new TwitterFactory().getInstance();
+
+    AccessToken accessToken = new AccessToken(
+        "2453751158-IVD2VGZsvwZiRKxNe3Gs2lMjg30nvSkV1xSuPFf",
+        "vBa5PjKfuMTK1LLBG51nCUI9r5d6Ph5cAHrS73spg6Nvu");
+    twitter.setOAuthConsumer("YqeZdD2hYxOKv4QOkmp0i2djN",
+        "6XUB1r8KXBvd8Pk9HHW3NgphMxHvHWBLAr5TihnckMU0ttyGST");
+    twitter.setOAuthAccessToken(accessToken);
+
+Query query = new Query(searchingFor);
+    try {
+        QueryResult result = twitter.search(query);
+        return result.getTweets().get(0).getText();
+    } catch (Exception e) {
+        System.err.print(e.getMessage());
+        return "What the heck is that?";
+    }
+}</pre><br>
 <p class="normal"><br>     
 5. Now display the contents of the latest tweet on the User Interface.<br>
  </p><br>

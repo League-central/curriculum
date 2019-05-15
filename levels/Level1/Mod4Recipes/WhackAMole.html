@@ -5,11 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-
+<style>
+   #moduleIndex {
+   padding: 0;
+    }
+</style>
 <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
 <body>
         <div id ="wrap">
             <div id ="main">
+                 <div id="header">
+                    <script>addRecipeHeader();</script>
+                </div>    
                 <div id = "moduleIndex">   
 
 <h1>Whack-a-Mole</h1>
@@ -32,43 +39,37 @@ We are going to make a game where the user has to click on a "mole". The game is
      <br>
 <br>     
 3. If they click on a button other than “mole!”, use this speak() method to tell them they missed.
-</p><br>
-    <p class="code">
-        void speak(String words) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Runtime.getRuntime().exec("say " + words).waitFor();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (Exception e) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-}<br>
-    </p><br>
+</p>
+    <pre>void speak(String words) { 
+    try { 
+        Runtime.getRuntime().exec("say " + words).waitFor();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}</pre><br>
         
-<p class="normal"><br>     
+<p class="normal">
 4. Dispose of the frame and draw the buttons anew.
 <br><br>
-    5. After they’ve whacked 10 moles, call this endGame() method.  </p><br>
-    <p class="code">
-        private void endGame(Date timeAtStart, int molesWhacked) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date timeAtEnd = new Date();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JOptionPane.showMessageDialog(null, "Your whack rate is "<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked)<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ " moles per second.");<br>
-}<br>
-    </p><br>
+    5. After they’ve whacked 10 moles, call this endGame() method.  </p>
+    <pre>private void endGame(Date timeAtStart, int molesWhacked) { 
+    Date timeAtEnd = new Date();
+    JOptionPane.showMessageDialog(null, "Your whack rate is "
+            + ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked)
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ " moles per second.");
+}</pre><br>
 <p class="normal">
     6. Count how many times they hit something other than the mole! button and change the "missed" comments each time (be nice). When they have missed five times, tell them they have lost, and end the game.<br><br>
     Option: find out how you can use the switch statement to code this.
     </p><br> 
     
- <p class="normal"><br>     
+ <p class="normal">
 7. Find a sound file (.wav) and place it in your Java package. Call this playSound() method when they hit a mole.
-    </p><br>
-    <p class="code">
-        private void playSound(String fileName) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName));<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound.play();<br>
-}<br>
-    </p><br>
+    </p>
+    <pre>private void playSound(String fileName) { 
+    AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName));
+    sound.play();
+}</pre><br>
                 </div>
     </div>
     </div>                

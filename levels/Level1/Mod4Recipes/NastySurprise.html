@@ -5,11 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-
+<style>
+   #moduleIndex {
+   padding: 0;
+    }
+</style>
 <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
 <body>
         <div id ="wrap">
             <div id ="main">
+                 <div id="header">
+                    <script>addRecipeHeader();</script>
+                </div>    
                 <div id = "moduleIndex">   
 
 <h1>Nasty Surprise</h1>
@@ -25,21 +32,19 @@ To show the pictures, use the showPictureFromTheInternet() method below.<br>
 
         </p> <br>
 
-<p class="code">
- private void showPictureFromTheInternet(String imageUrl) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL url = new URL(imageUrl);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Icon icon = new ImageIcon(url);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JLabel imageLabel = new JLabel(icon);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JFrame frame = new JFrame();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.add(imageLabel);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.setVisible(true);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame.pack();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (MalformedURLException e) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-	}<br>
-    </p>
+<pre>private void showPictureFromTheInternet(String imageUrl) {
+    try {
+        URL url = new URL(imageUrl);
+        Icon icon = new ImageIcon(url);
+        JLabel imageLabel = new JLabel(icon);
+        JFrame frame = new JFrame();
+        frame.add(imageLabel);
+        frame.setVisible(true);
+        frame.pack();
+    } catch (MalformedURLException e) {
+        e.printStackTrace();
+    }
+}</pre>
 
                 </div>
     </div>

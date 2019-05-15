@@ -100,29 +100,17 @@ ellipse(x, y, width, height);
     
 
 <p class="normal">
-12. Make a second pipe that does down to the bottom of the sketch. In the draw() method: 
-                    </p><br>
-    <p class="code">
-    fill(red, green, blue);<br>
-    rect(x, y, width, height);<br>
-    </p><br>
-    
- <p class="normal">
-13. Repeat steps 9 &amp; 10 for this pipe.</p><br>
-    
-  <p class="normal">
-14. Create a gap between the pipes.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The x values of both pipes will be the same.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Make sure the gap is big enough for the ball to go through.<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the lower pipe y value by adding the upper pipe height and pipe gap. Ex:</p><br>
+12. Create a variable, pipeGap, to represent the gap between the pipes. Make sure the gap is big enough for the ball to go through. The gap between the pipes will not change.</p><br> 
+
+<p class="normal">
+ 13. Make a second pipe that will go down to the bottom of the sketch, leaving a space between the two pipes that is the size of the gap (see step 12). Make sure both pipes use the same value for their x position. Set the lower pipe y value by adding the upper pipe height and pipe gap. Ex:</p><br>
          <p class="code">
-    lowerY = upperY + upperPipeHeight + pipeGap;<br>
-    </p><br>    
-    
+    lowerY = upperPipeHeight + pipeGap;<br>
+    </p><br>
   
 <p class="normal">
-15. Make the game end when the bird hits the pipe. Figure it out by yourself, or use this method:
-</p><br>
+14. Make the game end when the bird hits the pipe. Figure it out by yourself, or use this method:
+</p>
          <pre>boolean intersectsPipes() { 
          if (birdY &lt; upperPipeHeight &amp;&amp; birdX &gt; pipeX &amp;&amp; birdX &lt; (pipeX+pipeWidth)){
             return true; }
@@ -131,7 +119,7 @@ ellipse(x, y, width, height);
         else { return false; }
 }</pre><br>      
 <p class="normal">    
-16. End the game when the bird hits the ground.<br>
+15. End the game when the bird hits the ground.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Make a rectangle for the ground.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use a boolean variable at the top of the sketch to indicate if game has ended.</p><br>
     

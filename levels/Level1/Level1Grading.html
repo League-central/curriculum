@@ -52,9 +52,14 @@
 <div id="grades">
     <table id="gradesTable"></table>
 </div>
+<div id="score">
+</div>
 <div id="nav">
     <div id="footer"></div>
 </div>
+
+
+
 
 <script>
 
@@ -306,8 +311,8 @@ function scoreQuiz(){
         
 	}   
 	score = (pointsScored/pointsAvailable*100).toFixed(2);
-	var hdr = document.getElementById("header");
-	hdr.innerHTML = "<h1>Level 1 Exam Grading</h1><center><h1><b>Score: "+score+"%</b></h1></center>";
+	var grade = document.getElementById('score');
+	grade.innerHTML = "<center><h2><b>Score: "+score+"%</b></h2></center>";
 }
 
 

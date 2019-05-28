@@ -1,0 +1,316 @@
+<html>
+<head>
+            <title>Level 1 Exam Grading</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <style>
+            table{
+                padding-left: 1em;
+            }
+            td {
+                padding-left: 1em;
+                padding-top: 0.5em;
+            }
+            td.skill {
+                color: blue;
+            }
+            th {
+                    font-family: verdana;
+                    color: #fa591a;
+                    font-size: 32px;
+                    text-align: center;
+                    border: 1px solid black;
+            }  
+            
+            #quiz {
+                margin-left:50px;    
+            }
+            #nav {
+                margin-left:50px;    
+                position: relative;
+            }
+            #footer {
+                position: absolute;
+                bottom: -100;
+                width: 100%;
+            } 
+            button {background-color:yellow; border-radius: 3px; font-size: 125%;
+           }
+        </style>
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>    
+<div id="header">
+	<center> <h1>
+		Level 1 Exam Grading
+	</h1>    <br>
+    <hr>
+    <br></center>
+</div>
+<div id="grades">
+    <table id="gradesTable"></table>
+</div>
+<div id="nav">
+    <div id="footer"></div>
+</div>
+
+<script>
+
+
+var gradesTable;
+
+var pointsAvailable;
+var points = [];
+    
+    window.onload = function(){
+	
+    qDiv = document.getElementById('grades');
+	navDiv = document.getElementById('nav');
+    gradesTable = document.getElementById("gradesTable");
+    
+	buildRubric();
+	
+    for(var i = 0; i < pointsAvailable; i++){
+		points[i]=0;
+	}    
+        
+	navDiv.innerHTML += "<br><button onclick='scoreQuiz()'>Calculate Score</button><br>";
+
+    addFooter();
+}
+
+
+function setPoints(q) {
+if (q>0) {   
+    var checkBox = document.getElementById("myCheck"+q);
+
+  // If the checkbox is checked, add a point
+  if (checkBox.checked == true){
+      points[q-1]=1;
+  } else {
+      points[q-1]=0;
+  }
+
+    var pts = document.getElementById("q"+q+"Points");
+        
+    pts.innerHTML = points[q-1];
+    
+}
+}
+
+
+function buildRubric(){
+       
+    var qNum;
+    var ptNum = 1;
+    var rowEnd;
+    
+    gradesTable.innerHTML += "<tr><th>Goal</th><th>&#x2705;</th><th>Score</th></tr>"
+    
+    qNum = 1;   
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Make an object using a parameterized constructor</h4></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr>";
+    
+        buildRow(ptNum,"<tr><td>Class constructor called</td>");      
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>Correct parameter values used</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>Object assigned to a variable</td>"); 
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
+       
+    qNum = 2; 
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Code a parameterized constructor</h4></td><td>&nbsp;</td><td>&nbsp;</td>";
+    
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>Constructor name matches class</td>");        
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>Parameters have correct types and appropriate names</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>Member variables are initialized from parameters</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");    
+       
+     qNum = 3; 
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Declare and initialize variables (4 examples)</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";
+
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>a) Correct data type</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Appropriate variable name</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Correct syntax (will compile)</td>");
+
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>b) Correct data type</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Appropriate variable name</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Correct syntax (will compile)</td>");
+
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>c) Correct data type</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Appropriate variable name</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Correct syntax (will compile)</td>");
+    
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>d) Correct data type</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Appropriate variable name</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Correct syntax (will compile)</td>");
+    
+    qNum = 4;    
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Identify Swing component names</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+    
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>JFrame</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>JPanel</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>JButton</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>JLabel</td>");
+//******** How to code subtraction cound  ***********//
+    
+      qNum = 5;     
+         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Identify Swing components from GUI</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+    
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>JFrame</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>JPanel</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>JButton</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>JLabel</td>");   
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>JTextField</td>");   
+    
+    qNum = 6;    
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Adding listener to component</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+      
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>correct method call</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>listener added to component object</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>correct parameter passed to method</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Correct syntax (will compile)</td>");
+       
+    qNum = 7;    
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Swing component layout</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+      
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>correct method call</td>");   
+    
+    qNum = 8;   
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Method signatures (2 examples)</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+  
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>a) correct return type</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;correct parameters</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;appropriate return value</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>b) correct return type</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;correct parameters</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;appropriate return value</td>");
+  
+    qNum = 9;  
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Wrting methods </h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+  
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>correct method signature</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td> method name matches purpose</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>method returns correct value</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>correct return type</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
+    
+    qNum = 10;  
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Variable scope</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+ 
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>correct method signature</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td> method name matches purpose</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>method returns correct value</td>");
+        ptNum++; 
+         buildRow(ptNum,"<tr><td>correct return type</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
+    
+    qNum = 11;  
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Read and understand code (1)</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
+    
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>create object using constructor</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>pass correct value to constructor</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>place created object into variable</td>");  
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>call method</td>");  
+
+    qNum = 12;  
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Read and understand code (2)</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
+    
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>create EmailSender object using constructor</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>place created object into variable</td>");  
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>set email address</td>");  
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>use if statement to check for success</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>catch send failure</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>print warning on failure</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>use reasonable values for variables</td>");
+        ptNum++; 
+        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
+    
+    pointsAvailable = ptNum;
+    
+}
+
+function buildCell(num) {
+    return ("<td> <input type=\"checkbox\" id=\"myCheck"+num+"\" onclick=\"setPoints("+num+")\"></td><td id=\"q"+num+"Points\">0</td></tr>");
+}
+    
+function buildRow(row, skill) {
+    gradesTable.innerHTML += (skill+buildCell(row));
+}
+
+
+
+function scoreQuiz(){
+    var score =0;
+    var pointsScored = 0;
+    for(var i = 0; i < points.length; i++){
+		pointsScored = pointsScored + points[i];
+        
+	}   
+	score = (pointsScored/pointsAvailable*100).toFixed(2);
+	var hdr = document.getElementById("header");
+	hdr.innerHTML = "<h1>Level 1 Exam Grading</h1><center><h1><b>Score: "+score+"%</b></h1></center>";
+}
+
+
+</script>
+
+</html>

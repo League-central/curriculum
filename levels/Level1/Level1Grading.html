@@ -88,29 +88,45 @@ var points = [];
 
 
 function setPoints(q) {
-if (q>0) {   
-    var checkBox = document.getElementById("myCheck"+q);
+    if (q>0) {   
+        var checkBox = document.getElementById("myCheck"+q);
 
-  // If the checkbox is checked, add a point
-  if (checkBox.checked == true){
-      points[q-1]=1;
-  } else {
-      points[q-1]=0;
-  }
+      // If the checkbox is checked, add a point
+      if (checkBox.checked == true){
+          points[q-1]=1;
+      } else {
+          points[q-1]=0;
+      }
 
-    var pts = document.getElementById("q"+q+"Points");
-        
-    pts.innerHTML = points[q-1];
+        var pts = document.getElementById("q"+q+"Points");
+
+        pts.innerHTML = points[q-1];
+
+    }
+}
+
+function removePoint(q) {
+    if (q>0) {
+        var checkBox = document.getElementById("myCheck"+q);
+
+          // If the checkbox is checked, subtract a point
+          if (checkBox.checked == true){
+              points[q-1]= -1;
+          } else {
+              points[q-1]=0;
+          }
+        var pts = document.getElementById("q"+q+"Points");
+        pts.innerHTML = points[q-1];
+    }    
+}    
     
-}
-}
-
 
 function buildRubric(){
        
     var qNum;
     var ptNum = 1;
     var rowEnd;
+    var negativePoints = 0;
     
     gradesTable.innerHTML += "<tr><th>Goal</th><th>&#x2705;</th><th>Score</th></tr>"
     
@@ -179,7 +195,13 @@ function buildRubric(){
         buildRow(ptNum,"<tr><td>JButton</td>");
         ptNum++; 
         buildRow(ptNum,"<tr><td>JLabel</td>");
-//******** How to code subtraction cound  ***********//
+    
+    
+// Subtract one for wrong answer(s)
+        negativePoints++;  //This is a count of questions that can subtract from score.
+         ptNum++;
+        gradesTable.innerHTML +="<tr><td><font color=\"red\">Incorrect answers given (will subtract a point)</font></td><td> <input type=\"checkbox\" id=\"myCheck"+ptNum+"\" onclick=\"removePoint("+ptNum+")\"></td><td id=\"q"+ptNum+"Points\">0</td></tr>";
+  
     
       qNum = 5;     
          gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Identify Swing components from GUI</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
@@ -289,7 +311,7 @@ function buildRubric(){
         ptNum++; 
         buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
     
-    pointsAvailable = ptNum;
+   pointsAvailable = ptNum-negativePoints;
     
 }
 

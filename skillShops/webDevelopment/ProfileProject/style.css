@@ -1,0 +1,29 @@
+body {
+    background-color: AliceBlue;
+}
+
+h1 {
+    color: navy;
+    margin-left: 5em;
+    font-weight: bold;
+    font-family:"Arial Black", Gadget, sans-serif;
+}
+
+h2 {
+	color: mediumBlue;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+p {
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+ul {
+	list-style-type: square;
+	list-style-position: outside;
+	
+}
+
+img { 
+   border:1px solid #021a40;
+}

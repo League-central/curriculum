@@ -1,0 +1,368 @@
+<html>
+<head>
+            <title>Level 0 - Variable Types Quiz</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <style>
+            #quiz {
+                margin-left:50px;
+            }
+            #nav {
+                margin-left:50px;
+                position: relative;
+            }
+            #footer {
+                position: absolute;
+                bottom: -100;
+                width: 100%;
+            }
+            button {background-color:yellow; border-radius: 3px; font-size: 125%;
+            }
+            code {font-size: 125%; color: forestgreen}
+        </style>
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+<div id="header">
+	<center> <h1>
+		Level 0 - Variable Types Quiz
+	</h1>    <br>
+    <hr>
+    <br></center>
+</div>
+<div id="quiz"></div>
+<div id="nav">
+    <div id="footer"></div>
+</div>
+
+<script>
+
+var totalQuestions;
+
+var qDiv;
+var navDiv;
+
+var currentQuestion;
+var questions = [];
+var qIndex = 0;
+
+var quizComplete = false;
+var score = 0;
+
+function Question(){
+	this.type;
+	this.number;
+	this.question;
+	this.choices = [];
+	this.correctAnswers = [];
+	this.userAnswers = [];
+	this.isCorrect = false;
+}
+
+window.onload = function(){
+	qDiv = document.getElementById('quiz');
+	navDiv = document.getElementById('nav');
+	buildQuiz();
+
+	navDiv.innerHTML += "NAVIGATION:<br>";
+	for(var i = 0; i < totalQuestions; i++){
+		navDiv.innerHTML += "<button onclick='navigateTo("+i+")'>"+(i + 1)+"</button>";
+	}
+	navDiv.innerHTML += "<br><br>";
+	navDiv.innerHTML += "<button onclick='submitQuiz()'>Submit Quiz</button><br>";
+
+    addFooter();
+}
+
+function buildQuiz(){
+// These constants map answer indexes to letters shown on UI
+const A = 0;
+const B = 1;
+const C = 2;
+const D = 3;
+const E = 4;
+
+
+questions[qIndex] = new Question();
+questions[qIndex].number=qIndex+1;
+questions[qIndex].type="SING_ANS";
+questions[qIndex].question = "Which of these variables should be used to represent a loop counter?<br>";
+questions[qIndex].choices[0] = "&nbsp;&nbsp;&nbsp;int counter";
+questions[qIndex].choices[1] = "&nbsp;&nbsp;&nbsp;String counter";
+questions[qIndex].choices[2] = "&nbsp;&nbsp;&nbsp;double counter";
+questions[qIndex].choices[3] = "&nbsp;&nbsp;&nbsp;char counter";
+questions[qIndex].choices[4] = "&nbsp;&nbsp;&nbsp;boolean counter";
+
+questions[qIndex].correctAnswers = A;
+ 
+qIndex=qIndex+1;
+    
+questions[qIndex] = new Question();
+questions[qIndex].number=qIndex+1;
+questions[qIndex].type="SING_ANS";
+questions[qIndex].question = "Which of these variables should be used to indicate if a student has passed an exam?<br> ";
+questions[qIndex].choices[0] = "&nbsp;&nbsp;&nbsp;int hasPassedExam";
+questions[qIndex].choices[1] = "&nbsp;&nbsp;&nbsp;String hasPassedExam";
+questions[qIndex].choices[2] = "&nbsp;&nbsp;&nbsp;double hasPassedExam";
+questions[qIndex].choices[3] = "&nbsp;&nbsp;&nbsp;char hasPassedExam";
+questions[qIndex].choices[4] = "&nbsp;&nbsp;&nbsp;boolean hasPassedExam";
+
+questions[qIndex].correctAnswers = E;      
+    
+qIndex=qIndex+1;  
+    
+questions[qIndex] = new Question();
+questions[qIndex].number=qIndex+1;
+questions[qIndex].type="SING_ANS";
+questions[qIndex].question = "Which of these variables should be used to represent the name of a school?<br>";
+questions[qIndex].choices[0] = "&nbsp;&nbsp;&nbsp;int school";
+questions[qIndex].choices[1] = "&nbsp;&nbsp;&nbsp;String school";
+questions[qIndex].choices[2] = "&nbsp;&nbsp;&nbsp;double school";
+questions[qIndex].choices[3] = "&nbsp;&nbsp;&nbsp;char school";
+questions[qIndex].choices[4] = "&nbsp;&nbsp;&nbsp;boolean school";
+
+questions[qIndex].correctAnswers = B;
+
+qIndex=qIndex+1;
+    
+questions[qIndex] = new Question();
+questions[qIndex].number=qIndex+1;
+questions[qIndex].type="SING_ANS";
+questions[qIndex].question = "Which of these variables should be used to represent the first letter of a name?<br> ";
+questions[qIndex].choices[0] = "&nbsp;&nbsp;&nbsp;int initial";
+questions[qIndex].choices[1] = "&nbsp;&nbsp;&nbsp;String initial";
+questions[qIndex].choices[2] = "&nbsp;&nbsp;&nbsp;double initial";
+questions[qIndex].choices[3] = "&nbsp;&nbsp;&nbsp;char initial";
+questions[qIndex].choices[4] = "&nbsp;&nbsp;&nbsp;boolean initial";
+
+questions[qIndex].correctAnswers = D;
+
+qIndex=qIndex+1;        
+
+questions[qIndex] = new Question();
+questions[qIndex].number=qIndex+1;
+questions[qIndex].type="SING_ANS";
+questions[qIndex].question = "Which of these variables should be used to represent the result of the math expression 20/3<br>";
+questions[qIndex].choices[0] = "&nbsp;&nbsp;&nbsp;int result";
+questions[qIndex].choices[1] = "&nbsp;&nbsp;&nbsp;String result";
+questions[qIndex].choices[2] = "&nbsp;&nbsp;&nbsp;double result";
+questions[qIndex].choices[3] = "&nbsp;&nbsp;&nbsp;char result";
+questions[qIndex].choices[4] = "&nbsp;&nbsp;&nbsp;boolean result";
+
+questions[qIndex].correctAnswers = C;
+
+
+  
+    
+	totalQuestions = qIndex+1;
+	currentQuestion = questions[0];
+	displayQuestion();
+}
+
+function displayQuestion(){
+	qDiv.innerHTML = "Question " + currentQuestion.number + ":<br><br>";
+	qDiv.innerHTML += currentQuestion.question + "<br>";
+	if(currentQuestion.type == "MULT_ANS"){
+		qDiv.innerHTML += "<br>	(choose all that apply)<br>";
+
+		for(var i = 0; i < currentQuestion.choices.length; i++){
+            qDiv.innerHTML += "&nbsp;" + numToChar(i) + ":&nbsp;&nbsp;";
+			if(currentQuestion.userAnswers.includes(i)){
+				qDiv.innerHTML += "<input type='checkbox' checked></input>";
+			}else{
+				qDiv.innerHTML += "<input type='checkbox'></input>";
+			}
+
+
+			qDiv.innerHTML += currentQuestion.choices[i] + "<br>";
+
+		}
+
+		if(quizComplete){
+			qDiv.innerHTML += "<b>Correct Answer:</b><br>";
+			for(var j = 0; j < currentQuestion.correctAnswers.length; j++){
+				qDiv.innerHTML += currentQuestion.choices[currentQuestion.correctAnswers[j]] + "<br><br>";
+			}
+			qDiv.innerHTML += "<b>Your Answer:</b><br>";
+			for(var j = 0; j < currentQuestion.userAnswers.length; j++){
+				qDiv.innerHTML += currentQuestion.choices[currentQuestion.userAnswers[j]] + "<br><br>";
+			}
+		}
+
+	}else if(currentQuestion.type == "SING_ANS"){
+
+		for(var i = 0; i < currentQuestion.choices.length; i++){
+			qDiv.innerHTML += numToChar(i) + ":&nbsp;&nbsp;";
+
+			if(currentQuestion.userAnswers == i){
+				qDiv.innerHTML += "<input type='radio' name='q"+currentQuestion.number+"' checked></input>";
+			}else{
+				qDiv.innerHTML += "<input type='radio' name='q"+currentQuestion.number+"'></input>";
+			}
+			qDiv.innerHTML += currentQuestion.choices[i] + "<br>";
+
+		}
+
+		if(quizComplete){
+			qDiv.innerHTML += "<b><br>Correct Answer:</b><br>";
+			qDiv.innerHTML += currentQuestion.choices[currentQuestion.correctAnswers] + "<br><br>";
+
+			qDiv.innerHTML += "<b>Your Answer:</b><br>";
+			qDiv.innerHTML += currentQuestion.choices[currentQuestion.userAnswers] + "<br><br>";
+		}
+	}else if(currentQuestion.type == "FILL_IN"){
+		qDiv.innerHTML += "<textarea rows='7' cols='60'>"+currentQuestion.userAnswers+"</textarea>";
+		if(quizComplete){
+			qDiv.innerHTML += "<br><b>Correct Answer:</b><br>";
+			qDiv.innerHTML += currentQuestion.correctAnswers + "<br><br>";
+
+			qDiv.innerHTML += "<b>Your Answer:</b><br>";
+			qDiv.innerHTML += currentQuestion.userAnswers + "<br><br>";
+		}
+	}
+	qDiv.innerHTML += "<br>";
+
+	if(currentQuestion.number != 1){
+		qDiv.innerHTML += "<button onclick='previousQuestion()'>Previous Question</button>";
+	}
+    if (currentQuestion.number >1 && currentQuestion.number < questions.length) {
+        qDiv.innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;"
+    }
+    if(currentQuestion.number != questions.length){
+		qDiv.innerHTML += "<button onclick='nextQuestion()'>Next Question</button>";
+	}
+
+	qDiv.innerHTML += "<hr size='3'>";
+}
+
+function submitQuiz(){
+	if(quizComplete) return;
+	if(!confirm("Are you sure you want to submit your quiz for grading?")) return;
+	quizComplete = true;
+	saveQuestionState();
+
+	scoreQuiz();
+	highlightButtons();
+
+	currentQuestion = questions[0];
+	displayQuestion();
+}
+
+function specialParseStr(str){
+	var nstr = "";
+	for(var i = 0; i < str.length; i++){
+		var c = str.charAt(i);
+		if(c == '\"'){
+			nstr += "\\\"";
+		}else if(c == '<'){
+			nstr += "&lt";
+		}else if(c == '\n' || c == ' '){
+
+		}else{
+			nstr += c;
+		}
+	}
+	return nstr.trim();
+}
+
+function scoreQuiz(){
+	for(var i = 0; i < questions.length; i++){
+		if(questions[i].type == "MULT_ANS"){
+			var ca = compareArray(questions[i].correctAnswers, questions[i].userAnswers);
+			questions[i].isCorrect = ca;
+			if(ca) score++;
+		}else if(questions[i].type == "SING_ANS"){
+			if(questions[i].correctAnswers == questions[i].userAnswers){
+				questions[i].isCorrect = true;
+				score++;
+			}
+		}else if(questions[i].type == "FILL_IN"){
+			if(specialParseStr(questions[i].correctAnswers) == specialParseStr(questions[i].userAnswers)){
+				questions[i].isCorrect = true;
+				score++;
+			}
+		}
+	}
+
+	score /= totalQuestions;
+	score *= 100;
+
+	var hdr = document.getElementById("header");
+	hdr.innerHTML += "<center><h1><b>Score: "+score.toFixed(2)+"%</b></h1></center>";
+}
+
+function nextQuestion(){
+	saveQuestionState();
+	currentQuestion = questions[currentQuestion.number];
+	displayQuestion();
+}
+
+function previousQuestion(){
+	saveQuestionState();
+	currentQuestion = questions[currentQuestion.number - 2];
+	displayQuestion();
+}
+
+function navigateTo(i){
+	saveQuestionState();
+	currentQuestion = questions[i];
+	displayQuestion();
+}
+
+function highlightButtons(){
+	var btns = navDiv.getElementsByTagName("button");
+	for(var i = 0; i < questions.length; i++){
+		if(questions[i].isCorrect){
+			btns[i].style="background-color:green";
+		}else{
+			btns[i].style="background-color:red";
+		}
+	}
+}
+
+function saveQuestionState(){
+	if(currentQuestion.type == "MULT_ANS"){
+		currentQuestion.userAnswers = [];
+		var cbx = qDiv.getElementsByTagName("input");
+		for(var i = 0; i < cbx.length; i++){
+			if(cbx[i].checked){
+				currentQuestion.userAnswers.push(i);
+			}
+		}
+	}else if(currentQuestion.type == "SING_ANS"){
+		currentQuestion.userAnswers = [];
+		var cbx = qDiv.getElementsByTagName("input");
+		for(var i = 0; i < cbx.length; i++){
+			if(cbx[i].checked){
+				currentQuestion.userAnswers = i;
+			}
+		}
+	}else if(currentQuestion.type == "FILL_IN"){
+		var tbx = qDiv.getElementsByTagName("textarea");
+		currentQuestion.userAnswers = tbx[0].value;
+	}
+}
+
+function numToChar(num){
+	return String.fromCharCode("A".charCodeAt(0) + num);
+}
+
+function compareArray(arr1, arr2){
+	if(arr1.length != arr2.length){
+		return false;
+	}
+
+	for(var i = 0; i < arr1.length; i++){
+		if(arr1[i] != arr2[i]){
+			return false;
+		}
+	}
+
+	return true;
+}
+
+</script>
+
+</html>

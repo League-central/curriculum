@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+<title>League Invaders - Game Loop</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+<h1>Alien Timer</h1>
+
+ 
+<br>                    
+<p class="normal">A Timer will control the rate at which enemies will appear in the game. The following steps will create and start the timer as part of the GamePanel function, but the aliens will be added as part of the ObjetManager function.
+</p>
+                    
+                                  <h2>ObjectManager</h2>      
+                    
+                    
+ <br>                    
+<p class="normal">                   
+1. The <code>ObjectManager</code> is going to use the <code>ActionListener</code> interface to add an alien to the game each time it expires. Make the <code>ObjectManager</code> class implement the <code>ActionListener</code> interface as shown below:<br>
+
+<pre>public class ObjectManager implements ActionListener
+{ ... }</pre>
+<br>                    
+<p class="normal">
+ Add the unimplemented method (Eclipse can help). You should now have an <code>actionPerformed()</code> method in this class.</p>
+<br>                                    
+<p class="normal">
+2. To make a new alien appear when the timer expires, call the addAlien() method:</p>
+<pre>
+addAlien();</pre>    
+ <br>                    
+                      <h2>Rocketship</h2>
+<p class="normal"> 
+    3. Projectiles are launched from the rocket. Create the following method to make a projectile from the center of the rocket.</p>
+<pre>
+public Projectile getProjectile() {
+        return new Projectile(x+width/2, y, 10, 10);
+} 
+</pre>                    
+                                    <h2>GamePanel</h2>                         
+                   
+<p class="normal">
+
+    4.  In the <code>GamePanel</code> class add another <code>Timer</code> member variable called <code>alienSpawn</code>. You should already have imported <code>javax.swing.Timer</code> when you set up the main game timer. DO NOT INITIALIZE THIS VARIABLE YET.<br></p>
+<br>                    
+<p class="normal">
+    5. We only want the aliens to be created while the game is running, so create a new method <code>startGame()</code>. This method should initialize the <code>alienSpawn</code> member variable <u>and start this timer</u>. The constructor of the Timer class takes two parameters. The first parameter is an int for how fast your want the timer to repeat in milliseconds. Let's start by having one alien spawn every second. So the first parameter will be 1000. The second parameter takes a reference to an ActionListener object. We are going to implement the alienSpawn code in the <code>ObjectManager</code>, so we put objectManager as the second parameter (see below).<br>
+    
+     <pre>
+    alienSpawn = new Timer(1000 , objectManager);
+    alienSpawn.start();</pre>
+<br>                    
+<p class="normal">     
+                    
+    6. Call the startGame() method when the game state changes from MENU to GAME (in the keyPressed() method). Also add code to stop this timer when the game state changes from GAME to END.</p>
+    <br>
+                         
+<p class="normal"> 
+    7. Add code to create new projectiles when the Space Bar is pressed in the GAME state. The ObjectManger has an addProjectile() method for this and the rocket will create the projectile in the correct location.</p>
+    <br>
+<pre>
+objectManager.addProjectile(rocket.getProjectile());
+</pre>
+                    
+<br>                    
+ <img src="images/InvadersWithImages.png" style="width: 150px; height=241px; margin: 0px 20px" align="left">           <h3><u>TESTING</u></h3>
+ <p class="normal">                   
+8. Run the program. In the game state (space background) aliens should be falling from the top of the frame at a rate of about 1 per second. When you press the space bar, do projectiles go up from the rocket?
+</p>        
+                        
+                    
+  
+                  
+                </div></div></div>                   
+<div id="footer">
+<script>addFooter();</script>
+</div>
+   
+</body></html>

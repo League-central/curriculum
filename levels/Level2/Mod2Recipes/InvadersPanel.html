@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<title>League Invaders - Drawing Shapes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}    
+</style>
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+<h1>Drawing Shapes</h1>
+<h2>paintComponent()</h2>
+ 
+<br>                    
+<p class="normal">
+1. Create a new class called <code>GamePanel</code>. This class will draw the game in the game's window (<code>JFrame</code>).<br>
+<br>
+<p class="normal">
+    2.  Add <code>extends JPanel</code> to the end of your class declaration (see below). This makes <code>GamePanel</code> a subclass of <code>JPanel</code> and allows it to inherit its properties. By creating our own class, we can customize the panel's code to better suit our game.<br>
+</p>
+<pre>public class GamePanel extends JPanel{ ... }</pre><br>
+
+<p class="normal">
+3. The <code>GamePanel</code> class needs to override the JPanel's <code>paintComponent()</code> method. To do this, copy the method below <b>exactly as written</b> and put it into the <code>GamePanel</code> class.<br>
+    </p>
+<pre>@Override
+public void paintComponent(Graphics g){
+
+}</pre> <br><p class="normal">Make sure the <code>java.awt.Graphics</code> class has been imported into <code>GamePanel</code>.</p><br>
+<p class="normal">      
+    4. We will use the paintComponent parameter, a Graphics object called g, to draw our game on the GamePanel. First draw a rectangle using the following code:</p> 
+
+<pre>g.fillRect(10, 10, 100, 100);</pre>
+<br>
+<p class="normal">
+    The parameters for the rectangle are the exact same as Processing: (x, y, width, height). So this code will draw a square that is located at (x,y) = (10,10) and whose sides are 100 pixels long.</p>
+                                       <h2>LeagueInvaders</h2>
+<p class="normal">
+5. Add a member variable for a <code>GamePanel</code> object. Initialize it in the <code>LeagueInvaders</code> constructor. <b>At the beginning of the setup() method</b>, add the <code>GamePanel</code> to your <code>JFrame</code>.                                    
+                    </p><br>
+                  
+     <img src="images/InvadersBlackSquare.png" style="width: 150px; height=241px; margin: 0px 20px" align="left"> <h3>TESTING</h3><p class="normal"> 6. Run the program. Do you see a square appear in your window? If not, get this part working before you move on to the next step.
+                    
+               </p>                    
+                       
+
+                </div></div></div>                   
+<div id="footer">
+<script>addFooter();</script>
+</div>
+   
+</body></html>

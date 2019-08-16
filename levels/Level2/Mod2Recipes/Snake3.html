@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<title>Level 2 - Snake</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+   #moduleIndex {
+   padding: 0;
+}
+</style>
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+		    <div id="header">
+                    <script>addRecipeHeader();</script>
+                </div>
+                <div id = "moduleIndex">   
+
+<h1>Snake - Part 3</h1>
+ <br>
+<p class="normal">
+    Now we will get the snake to grow as it eats the food. You will use an ArrayList to hold all the segments of the snake because ArrayLists can grow as new elements are added.
+    
+                            <h2>1. More Game Variables</h2>  
+    
+<p class="normal">
+ In the Game Variables section of the code, create and initialize an ArrayList of Segments. (This will be your snake tail!)
+</p>
+
+                                                <h2>2. Tail Management Methods</h2>  
+                    
+                    <h4>drawTail()</h4>
+<br>
+                    <ul><li> Add code to draw a 10 by 10 rectangle for each Segment in your snake's tail.</li></ul>
+
+<br>
+
+                      <h4>manageTail()</h4>  
+                    <br>
+<ul><li>Call the checkTailCollision method</li>
+    <li>Call the drawTail method</li>
+    <li>To make the tail "move" towards the new location of its head, add a new segment to the tail with the same x and y values as the head segment.</li>
+    <li>Remove the first segment from the tail, so the tail stays the same length</li>
+                    </ul>                    
+                    <br>
+                      <h4>checkTailCollision()</h4>
+                    <br>
+       
+    If the snake crosses over its own tail, the game resets. So....If the snake head is in the same location as one of its tail segments:  <br>
+                    <br>
+   <ul><li>Set the count of food eaten back to 1.</li> 
+       <li>Reset the tail to a new empty ArrayList</li>
+       <li>Add a new segment to the tail that has the same x and y as the snake's head</li>
+                  </ul>
+                    <br>
+                      <h4>drawSnake()</h4>   
+                    <br>
+  
+      Call manageTail from the drawSnake method after the head has been drawn.<br>
+    <br>
+                      <h4>eat()</h4>   
+    <br>
+    When food is eaten, add a new segment to the tail, that has the same x and y as the snake's head. <br>
+
+
+                                              <h2>3. Testing</h2> 
+  <img src="images/SnakePart3.png" style="width: 200px;  margin: 0px 20px" align="left"><p class="normal"> Now run your code to see if it works. </p>  <br>
+                    <ul>
+                    <li>Test that the tail grows when food is eaten</li>
+                        <li>Test that the snake reappears on the opposite side of the game when it should</li>
+                    <li>When the tail is long enough, test the snake shrinks when the head crosses the tail</li>
+                    </ul>
+              <br><br>
+<a href="https://processing.org/reference">
+    <img src="https://league-level0.github.io/p3logo.jpeg" class="footer" alt="Processing Reference"></a>
+
+                </div>
+    </div>
+    </div>                
+                
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body>
+</html>

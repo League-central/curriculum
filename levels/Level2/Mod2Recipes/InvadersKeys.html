@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<title>League Invaders - Drawing Shapes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+<h1>Game Controls</h1>
+<h2>Enter and Arrow Keys</h2>
+ 
+<br>                    
+ <br>                   
+<p class="normal">
+1. The game will change states each time the ENTER key is pressed. This means the <code>GamePanel</code> class must implement the <code>KeyListener</code> interface (and all its unimplemented methods). The GamePanel class should now look like this:</p>                    
+<pre>
+public class GamePanel extends JPanel 
+                    implements ActionListener, KeyListener{  }
+</pre>
+                    
+<br>
+ <p class="normal">
+     2. In the <code>keyPressed()</code> method, if ENTER is pressed, we want the game to change to the next state as shown below:
+</p>
+<pre>
+if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+    if (currentState == END) {
+        currentState = MENU;
+    } else {
+        currentState++;
+    }
+}   
+</pre>
+<br>                    
+<p class="normal">
+    3. We also want to be notified if any of the arrow keys are pressed, since they will eventually be controlling the movement of our game character. For now, just add print statements to verify that the arrow keys are "working". See below for an example of how this would work for the "up arrow" key. NOTE: Only check the arrow keys when the game is in GAME state.  
+<pre>
+if (e.getKeyCode()==KeyEvent.VK_UP) {
+    System.out.println("UP");
+}
+</pre>
+<br>
+<p class="normal">
+    4. Add code for the other 3 arrow keys on the keyboard (DOWN, LEFT, RIGHT).</p>
+ <br>                   
+                                       <h2>LeagueInvaders</h2>
+                    
+<p class="normal">
+    5.   In the <code>LeagueInvaders</code> class. Add a <code>KeyListener</code> to your <code>JFrame</code>. The <code>GamePanel</code> object is the listener, so the code might look something like this:</p>               
+<pre>
+frame.addKeyListener(panel);
+</pre>                    
+ <br>
+ <p class="normal">                   
+    
+<img src="images/InvadersEnd.png" style="width: 150px; height=241px; margin: 0px 20px" align="left"> <h3>TESTING</h3><p class="normal"> 6. Run your program. Every time the ENTER key is pressed, you should see the game window change color (blue, black, red, blue, black, red, etc.) When the window is red, you should now see your END game text. Each of the arrow keys should print a message to the console (the timer events are still printing "action"). <br>
+    <u>Do not continue until you have this working</u></p>                         
+
+
+                </div></div></div>                   
+<div id="footer">
+<script>addFooter();</script>
+</div>
+   
+</body></html>

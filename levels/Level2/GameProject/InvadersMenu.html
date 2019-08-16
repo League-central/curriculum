@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>League Invaders - Menu</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+    
+    <body>
+            <div id="wrap">
+            <div id="main">
+                <div id = "linkPageBody">
+                    <h1>League Invaders</h1>
+          <hr> 
+                    <br>
+                    <h2><u>The Game View</u></h2>
+                    <h3>(frame, panel, and graphics)</h3>
+
+  <h3> <a href="InvadersRunner.html">Runner (main method)</a></h3>
+  <h3> <a href="InvadersPanel.html">Game Background (GamePanel)</a></h3>
+  <h3>  <a href="InvadersDraw.html">Changing the View (Game States)</a></h3>
+<h3>  <a href="InvadersText.html">Adding Text</a></h3>
+ <br><br>
+                    <h2><u>The Game Controllers</u></h2>
+                    <h3>(timer and arrow keys)</h3>
+                    
+    <h3>  <a href="InvadersTimer.html">Game Loop (Timer)</a></h3>
+    <h3>  <a href="InvadersKeys.html">Game Controls (Enter Key)</a></h3>
+                    
+                    <br><br>
+                    <h2><u>The Game Model</u></h2>
+                    <h3>(rocket, aliens, and projectiles)</h3>
+                   
+    <h3>  <a href="InvadersRocketDraw.html">Rocket (draw)</a></h3>
+  <h3>  <a href="InvadersRocketUpdate.html">Rocket (move)</a></h3>
+<h3>  <a href="InvadersAlienProjectile.html">Alien and Projectile</a></h3>
+<h3>  <a href="InvadersModelDraw.html">Model Management</a></h3>
+<h3>  <a href="InvadersAlienTimer.html">Alien and Projectile Generation</a></h3>
+<h3>  <a href="InvadersCollision.html">Collision Management</a></h3>
+<h3>  <a href="InvadersEndScoreRestart.html">Game End and Restart</a></h3>
+<div id='demo'></div>
+<script>
+
+function fileUpload(){
+	var inFile = document.getElementById("inputFile");
+	var txt = "";
+	if ('files' in inFile) {
+        if (inFile.files.length == 0) {
+            txt = "Select one or more files.";
+        } else {
+            for (var i = 0; i < inFile.files.length; i++) {
+                txt += "<br><strong>" + (i+1) + ". file</strong><br>";
+                var file = inFile.files[i];
+                if ('name' in file) {
+                    txt += "name: " + file.name + "<br>";
+                }
+                if ('size' in file) {
+                    txt += "size: " + file.size + " bytes <br>";
+                }
+            }
+        }
+    } 
+    else {
+        if (inFile.value == "") {
+            txt += "Select one or more files.";
+        } else {
+            txt += "The files property is not supported by your browser!";
+            txt  += "<br>The path of the selected file: " + inFile.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
+        }
+    }
+    document.getElementById("demo").innerHTML = txt;
+
+}
+
+</script>
+   </div>
+    </div>
+    </div>
+        <div id="footer">
+            <script>addFooter();</script>
+        </div>   
+    
+    
+    </body>
+    </html>

@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<title>League Invaders - End and Restart</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+<h1>Game End, Score, and Restart</h1>
+ 
+<br>                    
+<p class="normal">
+The game score will increase each time a projectile deactivates an alien i.e. the projectile reaches an alien. The game ends when the rocket is no longer active, i.e. an alien has crashed into the rocket. </p>
+                    
+                    <h2>ObjectManager</h2>
+ <p class="normal">                    
+     1. In the ObjectManager class, create a member integer called score and initialize it to zero.</p><br>
+<p class="normal"> 
+2. Create a getter for the score variable.</p><br>
+<p class="normal"> 
+3. Increment the score by one, every time an enemy is deactivated by a projectile (checkCollision).</p><br>                    
+<p class="normal">    
+
+                    
+
+                    <h2>GamePanel</h2>
+                    
+<p class="normal"> 
+   4. Use the getScore method in the ObjectManager class to get the player's score and display it on the panel.</p><br>
+
+<p class="normal">    
+
+5. In the keyPressed method, when the ENTER key is pressed, check if the current state is equal to END. If it is, replace the existing inactive rocketship with a new Rocketship object.</p><br>
+
+<br>
+<p class="normal"> 
+    6. Replace the existing ObjectManager with a new ObjectMangaer object, passing the rocketship object to the constructor.<br>
+    
+
+    
+     <h3><u>TESTING</u></h3>
+ <p class="normal">                   
+7. Run the program. Is the score displayed and does it update as you shoot the aliens? Does it reset to zero when you restart after a Game Over? Have you removed all your printing to the console? If so....congratulations! You have completed League Invaders!
+</p>                         
+<br>
+
+                </div></div></div>                   
+<div id="footer">
+<script>addFooter();</script>
+</div>
+   
+</body></html>

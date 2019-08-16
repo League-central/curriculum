@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<title>League Invaders - Game Objects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id = "moduleIndex">   
+
+<h1>Alien</h1>
+            
+<br>                        
+<p class="normal"> 
+1. Create a Alien class that extends the GameObject class.</p>
+<br>        
+<p class="normal">      
+    2. Add a constructor for this class that takes parameters to initialize all of the inherited GameObject member variables in the same way as you did for the Rocketship class. Set its speed variable to 1.</p>                    
+<br>
+<p class="normal">           
+    3. In the <code>Alien</code> class, create 2 void methods, <code>update()</code> and <code>draw()</code> just like for Rocketship, but this time the draw method will draw a yellow rectangle.</p>
+ <pre>
+        g.setColor(Color.YELLOW);
+        g.fillRect(x, y, width, height);</pre>
+<br>
+
+<p class="normal">
+    4. In the <code>update()</code> method, add code to increment its y value by the value of speed (<code>y+=speed</code>). This code will cause the Aliens to travel downwards as the game is played.</p>
+<br>
+<h1>Projectile</h1>                    
+                    
+<br>                        
+<p class="normal"> 
+5. Create a Projectile class that extends the GameObject class. Repeat steps 2 and 3 above, but in the constructor and set its speed variable to 10 and make the color of the rectangle RED in its draw method.</p>
+<br>      
+                    
+<p class="normal">
+    6. In the <code>update()</code> method, add code to deccrement its y value by the value of speed (<code>y-=speed</code>). This code will cause the Projectiles to travel upwards as the game is played.</p>
+ <br>                   
+                   
+ <img src="images/InvadersBlueSquare.png" style="width: 150px; height=241px; margin: 0px 20px" align="left">      <h3><u>TESTING</u></h3>
+  <p class="normal">                   
+7. Run the program. Press the Enter key to put the game into the GAME state (black background). Does the blue rocketship (square) still appear at the bottom? No other changes will appear yet as we have not yet added aliens or projectiles to the game panel.
+                    </p>                         
+<br>
+
+                </div></div></div>                   
+<div id="footer">
+<script>addFooter();</script>
+</div>
+   
+</body></html>

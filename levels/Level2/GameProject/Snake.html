@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<title>Level 2 - Snake</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+   #moduleIndex {
+   padding: 0;
+}
+</style>
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+<body>
+        <div id ="wrap">
+            <div id ="main">
+		    <div id="header">
+                    <script>addRecipeHeader();</script>
+                </div>
+                <div id = "moduleIndex">   
+
+<h1>Snake</h1>
+ <br>
+<p class="normal">
+    In this game, the player controls the movement of a snake. The snake is made up of a collection of Segments. Each Segment is drawn as a 10 by 10 square. Snake food is also square, and as the snake eats the food, it grows an additional Segment. More food then appears in a new location.
+    
+                    </p>
+                    <h2>1. The Segment Class</h2>
+
+                    <p class="normal">Find the Segment class in the starter code.</p>
+                    <br>
+                    <ul>
+                    <li> Add x and y member variables. They will hold the corner location of each segment of the snake.</li><br>
+ <li>Add a constructor with parameters to initialize each variable.</li>
+<br>
+
+
+</ul>
+                    <h2>2. Game Variables</h2>   
+                    <p class="normal">Find the Game Variables section of the starter code.</p><br>
+<ul>
+                    <li> 
+Create (but do not initialize) a Segment variable to hold the head of the Snake.
+</li>
+<br>
+ <li>
+Create (but do not initialize) foodX and foodY variables to hold the location of the food.
+    </li> </ul> <br>
+                    <h2>3. Setup Methods</h2>  
+
+
+                     <h4>setup()</h4>                      
+ <br>
+<ul>
+                    <li>
+Set the size of your sketch (default: 500 by 500).
+</li>
+<br>
+<li>
+Initialize your head variable to a new segment.
+</li>
+<br>
+<li>                    
+Use the Processing frameRate(int rate) method to set the rate to 20. Go to the <a href="https://processing.org/reference/frameRate_.html">Processing Reference</a> for a full explanation of what this method does.
+    </li>          
+                    <br>
+<li>                    
+Call the dropFood() method.
+                  </ul>  
+    <br>
+    
+                         <h4>dropFood() </h4>  
+                    <br>
+<p class="normal">
+In the dropFood method,  set the x and y values of the food to a random location in the game. 
+    Hint: Since the food is 10 by 10, if the screen width is 500, you could use the following code to initialize the x variable:
+    </p>
+<pre>foodX = ((int)random(50)*10);</pre>
+<br>
+                  <h2>4. Draw Methods</h2>                          
+                    
+                    <h4>draw() </h4>  
+                    <br>
+ <ul><li>                  
+Set the background to a solid color
+</li>                    
+   <li>                    
+Call the drawFood and drawSnake methods.
+</li>                   
+                    </ul>    
+                    <br>
+                     <h4>drawFood() </h4>                     
+                    
+                    <br>
+                    <ul><li>Draw a piece of food that is a 10 by 10 square. (Use the food variables you declared earlier)</li>
+                        <li> Make it an interesting color</li>
+</ul>                   
+                         
+                    
+
+               <br>
+                     <h4>drawSnake() </h4>
+                    <br>
+<ul><li>                   
+    Draw the snake's head. Hint: Draw a rectangle using the head's co-ordinates. </li>
+    <li> Make it a different color from the food so you can tell which is which.</li>
+                    </ul>
+                    <br>
+                           <h2>5. Testing</h2>   
+     <img src="images/SnakePart1.png" style="width: 200px;  margin: 0px 20px" align="left"> <p class="normal"> Now run your code to see if it works so far. You should see one square for the snake's head and another for the food.
+                    
+               </p>  
+
+ <br> <br> <br> 
+<a href="https://processing.org/reference">
+    <img src="https://league-level0.github.io/p3logo.jpeg" class="footer" alt="Processing Reference"></a>
+
+                </div>
+    </div>
+    </div>                
+                
+<div id="footer">
+<script>addFooter();</script>
+</div>
+
+</body>
+</html>

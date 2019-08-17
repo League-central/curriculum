@@ -1,0 +1,642 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Notable">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spirax">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Mono">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Unlock">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie Flower">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chicle">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+    </head>
+    <style>
+        html{
+            background-color: rgb(241, 241, 241);
+        }
+        h1{
+            text-align:center;
+            font-size:36pt;   
+        }
+        button{
+            background-color: lightsalmon;
+        }
+        .section {
+            font-size:24pt;   
+        }
+        .description {
+            font-size:18pt;
+        }
+    </style>
+
+    <h1>
+        The League of Amazing Programmers<br>
+        Level 2 Game Webpage Template
+        
+    </h1>
+    <div class="section">
+            Title of Your Game <input type="text" id="gameTitle" class="section">
+    </div>
+    <hr size="3">
+    <div class="section">
+        Who are you? <input type="text" id="studentName" class="section">
+    </div>
+    <hr size="3">
+    <div class="section">
+        Enter Your Game's Download Link <input id="downloadLink" type="text" style="width:500px" class="section">
+    </div>
+    <hr size="3">
+    <div class="section">
+        Upload Game Screenshots <input id="screenshot" type="file" accept="image/png, image/jpeg" class="section" onchange="imageUploaded()" multiple>
+    </div>
+    <div id="imagePreviewDiv"></div>
+    <hr size="3">
+    <div class="section">
+            <select id="selectFontFamily" name="selectFontFamily" onchange="updateFontText();" class="section" >
+                <option> Tangerine </option>
+                <option> Roboto </option>
+                <option> Serif </option>
+                <option selected="selected"> Arial </option>
+                <option> Notable </option>
+                <option> Spirax </option>  
+                <option> Unlock </option>  
+                <option> Indie Flower </option>  
+                <option> Chicle </option>  
+                <option> Pacifico </option>  
+            </select>
+        <h3 id="fontText">Select the font for your webpage</h3>
+    </div>
+    <hr size="3">
+    <div id="colorSelectionDiv" class="section">
+        Select the background color for your page.<br>
+        red<input type="range" min="0" max="255" value="0" class="section" id="redSlider"><br>
+        green<input type="range" min="0" max="255" value="0" class="section" id="greenSlider"><br>
+        blue<input type="range" min="0" max="255" value="0" class="section" id="blueSlider"><br>
+    </div>
+    <hr size="3">
+    <div class="section">
+        Why did you decide to make this game? Write a few sentences describing your decision 
+        to make this game as opposed to any other game you could have made.<br>
+        <textarea id="ques1" rows="10" cols="70" class="description"></textarea>
+    </div>
+    <hr size="3">
+    <div class="section">
+        What did you learn from user testing? What feedback did you get from teachers and classmates that led to changes in your game?<br>
+        <textarea id="ques2" rows="10" cols="70" class="description"></textarea>
+    </div>
+    <hr size="3">
+    <div class="section">
+        Describe the different parts of your game and how they interact with eachother. 
+        Write a few sentences that describe the overall architechture of your game. Describe how the different classes interact.<br>
+        <textarea id="ques3" rows="10" cols="70" class="description" ></textarea>
+    </div>
+    <hr size="3">
+    <div class="section">
+        Explain the technical implementation of part or all of your game. Go in detail about a particular aspect of the game that 
+        you are proud of. Describe the steps you took to accomplish your goal.<br>
+        <textarea id="ques4" rows="10" cols="70" class="description"></textarea>
+    </div>
+    <hr size="3">
+    <div class="section">
+        What was the most challenging part of this project? Write a few sentences about the difficulties you faced and how you overcame them.<br>
+        <textarea id="ques5" rows="10" cols="70" class="description"></textarea>
+    </div>
+    <hr size="3">
+    <div class="section">
+        What improvements or fixes whould you like to make in the future? If you were to continue working on this game, how would you improve it?<br>
+        <textarea id="ques6" rows="10" cols="70" class="description"></textarea>
+    </div>
+    <div id="customTopicsDiv">
+    </div>
+    <div>
+        <button id="addTopic" onclick="addTopic();" class="section">
+            Add an additional catagory
+        </button>
+    </div>
+
+    <hr size="3">
+    
+    <div>
+        <button id="previewButton" onclick="showPreview();" class="section">
+            Preview
+        </button>
+        <button id="submitButton" onclick="downloadFile();" class="section">
+            Submit and Download
+        </button>
+        <button id="saveButton" onclick="savePage();" class="section">
+            Save
+        </button>
+        <input id="savedFileInput" type="file" style="display:none;"></input>
+        <button id="loadButton" onclick="loadPage();" class="section">Load Page</button>
+    </div>
+    <br>
+    If the buttons are not working, try opening this page in a new private or incognito window.<br>
+                
+    <footer>
+        <hr size="3">
+        We are a 501c(3) non-profit programming school. Tax ID: 20-4744610.
+        © 2018 The LEAGUE of Amazing Programmers, a Wintriss Technical Schools campus. All Rights Reserved.
+        <img src="https://github.com/jointheleague/league-images/blob/master/league%20logo.jpg?raw=true" width="10%">
+    </footer>
+
+    <script>
+        var totalQuestions = 6;
+        var imgUploadButton;
+        var previewButton;
+        var submitButton;
+        var questions = [];
+        var imageFile;
+        var titleDiv;
+        var studentName;
+        var downloadLink;
+        var fr;
+        var images = [];
+        var imagePreviewDiv;
+        var totalAdditionalCatagories = 0;
+        var redSlider;
+        var greenSlider;
+        var blueSlider;
+        var colorSelectionDiv;
+        var currentColor;
+
+        var base64 = [
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'
+        ];
+
+        window.onload = function(){
+            imgUploadButton = document.getElementById("imgUploadButton");
+            previewButton = document.getElementById("previewButton");
+            submitButton = document.getElementById("submitButton");
+            imageFile = document.getElementById("screenshot")
+            titleDiv = document.getElementById("gameTitle");
+            studentName = document.getElementById("studentName");
+            downloadLink = document.getElementById("downloadLink");
+            imagePreviewDiv = document.getElementById("imagePreviewDiv");
+            colorSelectionDiv = document.getElementById("colorSelectionDiv");
+            redSlider = document.getElementById('redSlider');
+            greenSlider = document.getElementById('greenSlider');
+            blueSlider = document.getElementById('blueSlider');
+
+            document.getElementById('fontText').style.fontFamily = "Arial";
+
+            for(var i = 0; i < totalQuestions; i++){
+                questions.push(document.getElementById("ques" + (i + 1)));
+            }
+
+            colorSelectionDiv.style.backgroundColor = "rgb(220, 220, 220)"
+            currentColor = colorSelectionDiv.style.backgroundColor;
+            var rgb = currentColor;
+            rgb = rgb.replace(/[^\d,]/g, '').split(',');
+            redSlider.value = rgb[0];
+            greenSlider.value = rgb[1];
+            blueSlider.value = rgb[2];
+
+            redSlider.oninput = function(){
+                changeColor("red");
+            }
+            greenSlider.oninput = function(){
+                changeColor("green");
+            }
+            blueSlider.oninput = function(){
+                changeColor("blue");
+            }
+        }
+
+        function savePage(){
+            var fileName = prompt("Provide the name of the save file:");
+            if(fileName.length == 0){
+                return;
+            }
+            fileName += ".l2pm";
+            
+            var fileText = "*<*GAMETITLE*>*\n"; 
+            fileText += titleDiv.value + '\n';
+            fileText += "*<*NAME*>*\n";
+            fileText += studentName.value + '\n';
+            fileText += "*<*LINK*>*\n";
+            fileText += downloadLink.value + '\n';
+
+            fileText += "*<*IMAGES*>*\n";
+            var imgs = imagePreviewDiv.getElementsByTagName("img");
+            for(var i = 0; i < imgs.length; i++){
+                fileText += imgs[i].src + '\n';   
+                fileText += "*<*ENDIMAGE*>*\n";      
+            }
+            fileText += "*<*ENDALLIMAGES*>*\n";
+
+            fileText += "*<*FONT*>*\n";
+            fileText += document.getElementById('fontText').style.fontFamily + '\n';
+            fileText += "*<*COLORS*>*\n";
+            fileText += redSlider.value + '\n';
+            fileText += greenSlider.value + '\n';
+            fileText += blueSlider.value + '\n';
+
+            fileText += "*<*QUESTIONS*>*\n";
+            for(var i = 0; i < questions.length; i++){
+                fileText += questions[i].value + '\n';
+                fileText += "*<*ENDQUESTION*>*\n";
+            }
+
+            var titles = customTopicsDiv.getElementsByTagName("input");
+            var discussions = customTopicsDiv.getElementsByTagName("textArea");
+            fileText += "*<*CUSTOMTOPICS*>*\n";
+            for(var i = 0; i < titles.length; i++){
+                fileText += "*<*TITLE*>*\n";
+                fileText += titles[i].value + '\n';
+                fileText += "*<*DISCUSSION*>*\n";
+                fileText += discussions[i].value + '\n';
+            }
+            fileText += "*#*EOF*#*"
+
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(fileText));
+            element.setAttribute('download', fileName);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        function loadPage(){
+            var text = "";
+            var inpt = document.getElementById('savedFileInput');
+            inpt.click();
+            inpt.onchange = function(e){
+                var reader = new FileReader();
+                reader.onload = function(){
+                    text = reader.result;
+                    var lines = [];
+                    var line = "";
+                    for(var i = 0; i < text.length; i++){
+                        var c = text[i];
+                        
+                        if(c == '\n'){
+                            lines.push(line);
+                            line = "";
+                        }else{
+                            line += c;
+                        }
+                    }
+                    lines.push(line);
+                    while(lines[0] != "*#*EOF*#*"){
+                        var cLine = lines.shift();
+                        switch(cLine){
+                            case "*<*GAMETITLE*>*":{
+                                titleDiv.value = lines.shift();
+                                break;
+                            }
+                            case "*<*NAME*>*":{
+                                studentName.value = lines.shift();
+                                break;
+                            }
+                            case "*<*LINK*>*":{
+                                downloadLink.value = lines.shift();
+                                break;
+                            }
+                            case "*<*IMAGES*>*":{
+                                imagePreviewDiv.innerHTML += "";
+                                var imgCtr = 0;
+                                while(lines[0] != "*<*ENDALLIMAGES*>*"){
+                                    while(lines[0] != "*<*ENDIMAGE*>*"){
+                                        imagePreviewDiv.innerHTML += "<img id='previewImage" + imgCtr + "' src='"+ lines.shift() + "' height='25%' title='click to remove' onclick='removeImage(" + imgCtr + ")'>";
+                                        imgCtr++;
+                                    }
+                                    lines.shift();
+                                }
+                                break;
+                            }
+                            case "*<*FONT*>*":{
+                                document.getElementById('fontText').style.fontFamily = lines.shift();
+                                break;
+                            }
+                            case "*<*COLORS*>*":{
+                                redSlider.value = lines.shift();
+                                greenSlider.value = lines.shift();
+                                blueSlider.value = lines.shift();
+                                colorSelectionDiv.style.backgroundColor = "rgb(" + redSlider.value + "," + greenSlider.value + "," + blueSlider.value + ")";
+                                break;
+                            }
+                            case "*<*QUESTIONS*>*":{
+                                var qCtr = 0;
+                                while(lines[0] != "*<*CUSTOMTOPICS*>*"){
+                                    
+                                    var str = "";
+                                    while(lines[0] != "*<*ENDQUESTION*>*"){
+                                        str += lines.shift() + '\n';
+                                    }
+                                    questions[qCtr].value = str;
+                                    qCtr++;
+                                    lines.shift();
+                                }
+                                break;
+                            }
+                            case "*<*CUSTOMTOPICS*>*":{
+                                var customTopicsDiv = document.getElementById("customTopicsDiv");
+                                var newTopicDiv;
+                                var totalAdditionalCatagories = 0;
+                                while(lines[0] != "*#*EOF*#*"){
+                                    switch(lines[0]){
+                                        case "*<*TITLE*>*":{
+                                            lines.shift();
+                                            newTopicDiv = document.createElement('div');
+                                            newTopicDiv.className = "section";
+                                            newTopicDiv.id = "newTopic" + totalAdditionalCatagories;
+                                            newTopicDiv.innerHTML += "<hr size='3'>";
+                                            newTopicDiv.innerHTML += "Topic: <input type='text' class='section' style='width:700px' value='"+lines.shift()+"'></input>";
+                                            newTopicDiv.innerHTML += "<button onclick='removeExtraTopic(" + totalAdditionalCatagories + ")'>X</button><br>"
+                                            customTopicsDiv.appendChild(newTopicDiv);
+                                            break;
+                                        }
+                                        case "*<*DISCUSSION*>*":{
+                                            lines.shift();
+                                            var str = "";
+                                            while(lines[0] != "*<*TITLE*>*" && lines[0] != "*#*EOF*#*"){
+                                                str += lines.shift() + '\n';
+                                            }
+                                            newTopicDiv.innerHTML += "Discussion: <textarea rows='10' cols='70' class='description'>" + str + "</textarea>";
+                                            newTopicDiv.innerHTML += "</div>";
+                                            totalAdditionalCatagories++;
+                                            break;
+                                        }
+                                        default:{
+                                            lines.shift();
+                                            break;
+                                        }
+                                    }
+                                }                                
+                                break;
+                            }
+                        }
+                    }
+                };
+                reader.readAsText(inpt.files[0]);
+            }
+        }
+
+        function changeColor(color){
+            var rgb = colorSelectionDiv.style.backgroundColor;
+            rgb = rgb.replace(/[^\d,]/g, '').split(',');
+            if(color == "red"){
+                colorSelectionDiv.style.backgroundColor = "rgb(" + redSlider.value + "," + rgb[1] + "," + rgb[2] + ")";
+            }else if(color == "green"){
+                colorSelectionDiv.style.backgroundColor = "rgb(" + rgb[0] + "," + greenSlider.value + "," + rgb[2] + ")";
+            }else if(color == "blue"){
+                colorSelectionDiv.style.backgroundColor = "rgb(" + rgb[0] + "," + rgb[1] + "," + blueSlider.value + ")";
+            }
+        }
+
+        function byteArrayToB64String(str){
+            if(str.length < 3){
+                return "";
+            }
+            var num = (str[0] << 16) | (str[1] << 8) | str[2];
+
+            var b64str = "";
+            b64str += base64[(num >> 18) & 0x3f];
+            b64str += base64[(num >> 12) & 0x3f];
+            b64str += base64[(num >> 6) & 0x3f];
+            b64str += base64[num & 0x3f];
+            return b64str;
+        }
+
+        function u8ArrayToBase64String(u8Array){
+            var b64Str = "";
+            for(var i = 0; i < u8Array.length; i += 3){
+                if(i + 3 < u8Array.length){
+                    var arr = [u8Array[i], u8Array[i + 1], u8Array[i + 2]];
+                    b64Str += byteArrayToB64String(arr);
+                }else if(i + 2 < u8Array.length){
+                    var num = u8Array[i] << 16 | u8Array[i + 1] << 8;
+                    b64Str += base64[(num >> 18) & 0x3f];
+                    b64Str += base64[(num >> 12) & 0x3f];
+                    b64Str += base64[(num >> 6) & 0x3f];
+                }else{
+                    var num = u8Array[i] << 16;
+                    b64Str += base64[(num >> 18) & 0x3f];
+                    b64Str += base64[(num) >> 12 & 0x3f];
+                }
+            }
+            return b64Str;
+        }
+
+        function validateEntries(){
+            if(!titleDiv.value){
+                alert("You must enter the title of your game.");
+                return false;
+            }else if(!studentName.value){
+                alert("You must enter your name.");
+                return false;
+            }else if(!downloadLink.value){
+                alert("You must provide a link to download your finished game.");
+                return false;
+            }else if(!document.getElementById("previewImage1")){
+                alert("You must upload at least one screen shot for your game.");
+                return false;
+            }
+
+            for(var i = 0; i < questions.length; i++){
+                if(!questions[i].value){
+                    alert("You must provide an answer for all the questions.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function showPreview(){
+            if(validateEntries()){
+                var pageText = getPageText();
+                var newWindow = window.open();
+                newWindow.document.write(pageText);
+            }
+        }
+
+        function getPageText(){
+            var pageText = "\
+            <html>\
+                <head>\
+                    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Tangerine'>\
+                    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>\
+                    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Notable'>\
+                    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Spirax'>\
+                    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto Mono'>\
+                    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Unlock'>\
+                    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Indie Flower'>\
+                    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Chicle'>\
+                    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Pacifico'>\
+                </head>\
+                <style>  \
+                    body{ \
+                        background-color: " + colorSelectionDiv.style.backgroundColor + "; \
+                        font-family: " + document.getElementById("selectFontFamily").value + ";\
+                    }\
+                    h1{ \
+                        font-size: 72;\
+                    }   \
+                    h2{ \
+                        font-size: 48;\
+                    }   \
+                    h3{ \
+                        font-size: 36;\
+                    }   \
+                    footer{ \
+                        font-family: arial;\
+                    }\
+                </style>\
+                <body>\
+                <h1>\
+                    <center>"+ titleDiv.value +"</center>\
+                </h1>\
+                <h2>\
+                    <center>by: "+ studentName.value +"</center>\
+                </h2><center>";
+
+                var imgs = imagePreviewDiv.getElementsByTagName("img");
+                for(var i = 0; i < imgs.length; i++){
+                    pageText += "<img src='" + imgs[i].src + "' height='75%'> ";
+                }
+
+                pageText += "</center>\
+                <h3><center>\
+                This game was made for my level 2 project at <a href='http://jointheleague.org'>The League of Amazing Programmers.</a><br>\
+                    Click <a href='" + downloadLink.value + "'>here</a> to download and play!</center>\
+                </h3>\
+                <hr size='3'>\
+                <h2>\
+                    1. Why I Made This Game\
+                </h2>\
+                <h3>\
+                    "+ questions[0].value +"\
+                </h3>\
+                <hr size='3'>\
+                <h2>\
+                    2. What I Learned\
+                </h2>\
+                <h3>\
+                    "+ questions[1].value +"\
+                </h3>\
+                <hr size='3'>\
+                <h2>\
+                    3. Architecture of My Game\
+                </h2>\
+                <h3>\
+                    "+ questions[2].value +"\
+                </h3>\
+                <hr size='3'>\
+                <h2>\
+                    4. Technical Implementation\
+                </h2>\
+                <h3>\
+                    "+ questions[3].value +"\
+                </h3>\
+                <hr size='3'>\
+                <h2>\
+                    5. Most Challenging Part\
+                </h2>\
+                <h3>\
+                    "+ questions[4].value +"\
+                </h3>\
+                <hr size='3'>\
+                <h2>\
+                    6. Future Fixes and Updates\
+                </h2>\
+                <h3>\
+                    "+ questions[5].value +"\
+                </h3>";
+
+                var titles = customTopicsDiv.getElementsByTagName("input");
+                var discussions = customTopicsDiv.getElementsByTagName("textArea");
+                for(var i = 0; i < titles.length; i++){
+                    pageText += "<hr size='3'>\
+                    <h2>\
+                        "+ (i + totalQuestions + 1) + ". " + titles[i].value + "\
+                    </h2>\
+                    <h3>\
+                        "+ discussions[i].value +"\
+                    </h3>";
+                }
+                
+                pageText += "</body>\
+                <hr size='3'>\
+                <footer>\
+                    We are a 501c(3) non-profit programming school. Tax ID: 20-4744610.\
+                    © 2018 The LEAGUE of Amazing Programmers, a Wintriss Technical Schools campus. All Rights Reserved.\
+                </footer>\
+            </html>\
+            ";
+            return pageText;
+        }
+
+        function loadImage(){
+            var pageText = getPageText();
+            var newWindow = window.open();
+            newWindow.document.write(pageText);
+        }
+
+        function downloadFile(){
+            if(validateEntries()){
+                var pageText = getPageText();
+                var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(pageText));
+                element.setAttribute('download', "index.html");
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+            }
+        }
+
+        function removeImage(len){
+            if(confirm("Remove this image?")){
+                images.splice(len - 1, 1);
+                var elm = document.getElementById("previewImage" + len);
+                elm.parentElement.removeChild(elm);
+            }
+        }
+
+        function imageUploaded(){
+            images.push(imageFile.files[0]);
+            var fread = new FileReader();
+            fread.onload = function(){ 
+                var u8Buffer = new Uint8Array(fread.result);
+                var imgDat = u8ArrayToBase64String(u8Buffer);
+                imagePreviewDiv.innerHTML += "<img id='previewImage" + images.length + "' src='data:image/png;base64," + imgDat + "' height='25%' title='click to remove' onclick='removeImage(" + images.length + ")'>";
+            }
+            fread.readAsArrayBuffer(imageFile.files[0]);
+        }
+
+        function updateFontText(){
+            var selector = document.getElementById('selectFontFamily');
+            var family = selector.options[selector.selectedIndex].value;
+            var text = document.getElementById('fontText');
+            text.style.fontFamily = family;        
+        }
+
+        function removeExtraTopic(topicId){
+            if(confirm("Remove this topic?")){
+                var elm = document.getElementById("newTopic" + topicId);
+                customTopicsDiv.removeChild(elm);
+            }
+        }
+
+        function addTopic(){
+            var customTopicsDiv = document.getElementById("customTopicsDiv");
+            var newTopicDiv = document.createElement('div');
+            newTopicDiv.className = "section";
+            newTopicDiv.id = "newTopic" + totalAdditionalCatagories;
+            newTopicDiv.innerHTML += "<hr size='3'>";
+            newTopicDiv.innerHTML += "Topic: <input type='text' class='section' style='width:700px'>";
+            newTopicDiv.innerHTML += "<button onclick='removeExtraTopic(" + totalAdditionalCatagories + ")'>X</button><br>"
+            newTopicDiv.innerHTML += "Discussion: <textarea rows='10' cols='70' class='description'></textarea>";
+            newTopicDiv.innerHTML += "</div>";
+            customTopicsDiv.appendChild(newTopicDiv);
+            totalAdditionalCatagories++;
+        }
+
+    </script>
+</html>

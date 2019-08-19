@@ -1,0 +1,362 @@
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+
+<html>
+
+<body>
+  <div style="position:absolute; left:20px;">
+    <canvas id="canvas" width="500" height="800">
+      Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+  </div>
+</body>
+
+<img id="alien" src="https://github.com/League-level2/League-Level2.github.io/blob/master/alien.png?raw=true" style="display: none;">
+<img id="ship" src="https://github.com/League-level2/League-Level2.github.io/blob/master/rocket.png?raw=true" style="display: none;">
+<img id="bullet" src="https://github.com/League-level2/League-Level2.github.io/blob/master/bullet.png?raw=true" style="display: none;">
+<img id="space" src="https://github.com/League-level2/League-Level2.github.io/blob/master/space.png?raw=true" style="display: none;">
+
+
+<script>
+  var can = document.getElementById("canvas");
+  var x = 0;
+  var y = 0;
+  var leftKey = 37;
+  var rightKey = 39;
+  var upKey = 38;
+  var downKey = 40;
+  var spaceKey = 32;
+  var enterKey = 13;
+  var left = false;
+  var right = false;
+  var up = false;
+  var down = false;
+  var space = false;
+  var gameObjects = [];
+  var menuState = 0;
+  var gameState = 1;
+  var endState = 2;
+  var currentState = menuState;
+  var gameScore = 0;
+  
+  var alienImg = document.getElementById("alien");
+  var shipImg = document.getElementById("ship");
+  var bulletImg = document.getElementById("bullet");
+  var spaceImg = document.getElementById("space");
+  
+  var p = new Player(250, 700, 5, 50, 50);
+  gameObjects.push(p);
+  window.onload = function init() {
+    var d = can.getContext("2d");
+    document.addEventListener("keydown", function(event) {
+      keyDown(event);
+    });
+    document.addEventListener("keyup", function(event) {
+      keyUp(event);
+    });
+    setInterval(function go() {
+      interval();
+      draw(d);
+    }, 1000 / 60);
+  };
+  function interval() {
+    if (currentState == menuState) {
+      updateMenuState();
+    } else if (currentState == gameState) {
+      updateGameState();
+    } else if (currentState == endState) {
+      updateEndState();
+    }
+  }
+  function objectCheck() {
+    for (var i = 0; i < gameObjects.length; i++) {
+      for (var j = 0; j < gameObjects.length; j++) {
+        if (i == j) {
+          continue;
+        }
+  
+        var o1 = gameObjects[i];
+        var o2 = gameObjects[j];
+  
+        if (o1.type == "player" && o2.type == "enemy") {
+          if (checkCollision(o1, o2)) {
+            o1.hit();
+            o2.hit();
+          }
+        }
+        if (o1.type == "bullet" && o2.type == "enemy") {
+          if (checkCollision(o1, o2)) {
+            gameScore++;
+            o1.hit();
+            o2.hit();
+          }
+        }
+      }
+    }
+  }
+  function checkCollision(o1, o2) {
+    if (
+      o1.x < o2.x + o2.w &&
+      o1.x + o1.w > o2.x &&
+      o1.y < o2.y + o2.h &&
+      o1.h + o1.y > o2.y
+    ) {
+      return true;
+    }
+  }
+  function generateEnemy() {
+    if (Math.floor(Math.random() * 21) == 20) {
+      var e = new Enemy(Math.floor(Math.random() * can.width), -50, 5, 50, 50);
+      gameObjects.push(e);
+    }
+  }
+  function clearDeadObjects() {
+    for (var i = 0; i < gameObjects.length; i++) {
+      if (gameObjects[i].dead) {
+        gameObjects.splice(i, 1);
+      }
+    }
+  }
+  function updateMenuState() {}
+  function updateGameState() {
+    generateEnemy();
+    objectCheck();
+    clearDeadObjects();
+  
+    p.update();
+  
+    for (var i = 0; i < gameObjects.length; i++) {
+      gameObjects[i].update();
+    }
+  }
+  function updateEndState() {}
+  function drawMenuState(d) {
+    d.clearRect(0, 0, can.width, can.height);
+    d.fillStyle = "#0000FF";
+    d.fillRect(0, 0, can.width, can.height);
+    d.fillStyle = "#FFFF00";
+    d.font = "48px Arial";
+    d.fillText("LEAGUE INVADERS", 25, 200);
+    d.font = "24px Arial";
+    d.fillText("Press ENTER to start", 120, 350);
+    d.font = "24px Arial";
+    d.fillText("Press SPACE for instructions", 85, 500);
+  }
+  function drawGameState(d) {
+    d.clearRect(0, 0, can.width, can.height);
+    d.drawImage(spaceImg, 0, 0, 500, 800);
+    p.render(d);
+  
+    for (var i = 0; i < gameObjects.length; i++) {
+      gameObjects[i].render(d);
+    }
+  }
+  function drawEndState(d) {
+    d.clearRect(0, 0, can.width, can.height);
+    d.fillStyle = "#FF0000";
+    d.fillRect(0, 0, can.width, can.height);
+    d.fillStyle = "#000000";
+    d.font = "48px Arial";
+    d.fillText("Game Over", 125, 200);
+    d.font = "24px Arial";
+    d.fillText("You killed " + gameScore + " enemies", 140, 350);
+    d.font = "24px Arial";
+    d.fillText("Press ENTER to restart", 120, 500);
+  }
+  function draw(d) {
+    if (currentState == menuState) {
+      drawMenuState(d);
+    } else if (currentState == gameState) {
+      drawGameState(d);
+    } else if (currentState == endState) {
+      drawEndState(d);
+    }
+  }
+  function keyDown(e) {
+    if (e.keyCode == leftKey) {
+      left = true;
+    }
+    if (e.keyCode == rightKey) {
+      right = true;
+    }
+    if (e.keyCode == upKey) {
+      up = true;
+    }
+    if (e.keyCode == downKey) {
+      down = true;
+    }
+    if (e.keyCode == spaceKey) {
+      if (currentState == menuState) {
+        alert("Use arrow keys to move. Press SPACE to fire. Try not to die");
+      } else {
+        space = true;
+      }
+    }
+    if (e.keyCode == enterKey) {
+      currentState++;
+  
+      if (currentState > endState) {
+        gameObjects = [];
+        p = new Player(250, 700, 5, 50, 50);
+        gameScore = 0;
+        gameObjects.push(p);
+        currentState = menuState;
+      }
+    }
+  }
+  function keyUp(e) {
+    if (e.keyCode == leftKey) {
+      left = false;
+    }
+    if (e.keyCode == rightKey) {
+      right = false;
+    }
+    if (e.keyCode == upKey) {
+      up = false;
+    }
+    if (e.keyCode == downKey) {
+      down = false;
+    }
+    if (e.keyCode == spaceKey) {
+      space = false;
+    }
+  }
+  function Player(x, y, speed, w, h) {
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
+    this.w = w;
+    this.h = h;
+  
+    this.type = "player";
+  
+    var gunlock = false;
+  
+    this.update = function() {
+      if (left) {
+        this.x -= this.speed;
+      }
+      if (right) {
+        this.x += this.speed;
+      }
+      if (up) {
+        this.y -= this.speed;
+      }
+      if (down) {
+        this.y += this.speed;
+      }
+      if (space) {
+        if (!gunlock) {
+          var b = new Bullet(this.x + 25, this.y, 10, 6, 15);
+          gameObjects.push(b);
+          gunlock = true;
+        }
+      } else {
+        gunlock = false;
+      }
+  
+      if (this.x < 0) {
+        this.x = 0;
+      }
+      if (this.x > can.width - this.w) {
+        this.x = can.width - this.w;
+      }
+      if (this.y < 0) {
+        this.y = 0;
+      }
+      if (this.y > can.height - this.h) {
+        this.y = can.height - this.h;
+      }
+    };
+    this.render = function(d) {
+      d.fillStyle = "#00EEFF";
+      //d.fillRect(this.x, this.y, this.w, this.h);
+      d.drawImage(shipImg, this.x, this.y, this.w, this.h);
+    };
+  
+    this.hit = function() {
+      currentState = endState;
+    };
+  }
+  function Bullet(x, y, speed, w, h) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.speed = speed;
+  
+    this.type = "bullet";
+    this.dead = false;
+  
+    this.update = function() {
+      this.y -= this.speed;
+  
+      if (this.y < 0) {
+        dead = true;
+      }
+    };
+    this.render = function(d) {
+      d.fillStyle = "#FF1616";
+      //d.fillRect(this.x, this.y, this.w, this.h);
+      d.drawImage(bulletImg, this.x, this.y, this.w, this.h);
+    };
+  
+    this.hit = function() {
+      this.dead = true;
+    };
+  }
+  function Enemy(x, y, speed, w, h) {
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
+    this.ySpeed = speed;
+    this.w = w;
+    this.h = h;
+  
+    this.type = "enemy";
+    this.dead = false;
+
+    this.ctr = 0;
+  
+    this.mode = Math.floor(Math.random() * 3);
+    if(this.mode == 2){
+      if(Math.floor(Math.random() * 2) == 0){
+        this.speed = - this.speed;
+      }
+    }
+
+    this.update = function() {
+      switch(this.mode){
+        case 0:{
+          this.y += this.speed;
+          break;
+        }
+        case 1: {
+          this.y += this.ySpeed;
+          this.x += this.speed;
+          if(this.x >= 500 || this.x <= 0){
+            this.speed = -this.speed;
+          }
+          break;
+        }
+        default: {
+          this.y += Math.sin(this.ctr * 0.5) * 20;
+          this.x += Math.cos(this.ctr++ * 0.5) * 20;
+          this.y += this.speed;
+        }
+      }
+      
+    };
+    this.render = function(d) {
+      d.fillStyle = "#AA2211";
+      //d.fillRect(this.x, this.y, this.w, this.h);
+      d.drawImage(alienImg, this.x, this.y, this.w, this.h);
+    };
+  
+    this.hit = function() {
+      this.dead = true;
+    };
+  }
+</script>
+
+</html>

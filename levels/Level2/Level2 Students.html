@@ -1,167 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head>
-        <title>League Level 2</title>
+    <head>
+<title>Level 2 - Student Modules</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>    
 <style>
-   #moduleIndex {
-   padding: 0;
-}
+    table{
+        margin-left: auto;
+        margin-right: auto;
 
-</style>
-    
-    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
-    </head>
-    
+        }
+        td{
+            font-family: "Raleway", sans-serif;
+            font-size: 24px;
+            padding: 10px;
+        }
+
+    </style>
     <body>
-            <div id="wrap">
+       <div id="wrap">
             <div id="main">
-
                 <div id = "linkPageBody">
-                    <h1>League Level 2</h1>
-<br>
-
+                    <h1>Level 2 Modules</h1>
                     
-         <div class="moduleIndexColumn">
-           <h2>Learn</h2>
-            <hr>
- <h3> Arrays</h3>
-           <h3> <a href="arrays.html">What are arrays?</a></h3>
-               <h3><br></h3>  
-               <h3><br></h3>  
-               <h3><br></h3>  
-
-             <hr>
-           
-           
-<h3>ArrayLists</h3>         
-            <h3><br></h3>  
-                     <h3><br></h3>  
-
-                     <h3><br></h3>  
-
-             <hr>
-
-   
-<h3>Leauge Games</h3>
-        <h3><br></h3>  
-              <h3><br></h3>  
-             <hr>
-<h3>Student Game</h3>
+<hr>
+                    <br><br>
+                    <table>
+                        <tr>
+                            <td><a href="Mod0Recipes/index.html">Module 0</a></td>    
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;array</td>
+                        </tr><tr>
+                            <td><a href="Mod1Recipes/index.html">Module 1</a></td>    
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;ArrayList</td>
+                        </tr><tr>
+                            <td><a href="Mod2Recipes/index.html">Module 2</a></td>    
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;League Games: Snake and League Invaders</td>
+                        </tr><tr>
+                        <td><a href="GameProject/index.html">Design and Build Your Own Game</a></td>    
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;Individual student project</td>
+                        </tr>
+                    </table>
+                    <br><br>
                 <hr>
-      </div>
-      
-      
-            <div class="moduleIndexColumn">
 
-        <h2>Recipes</h2>
-   <hr>
-                
-                           <form id="moduleButtonForm" method="get" action="https://classroom.github.com/a/ghN_LK_B">
-        <button id="acceptModuleButton" type="submit"><span>Accept Module</span></button>
-        </form>
-                
-                
- 
-       <h3>Cheat Sheet</h3>
-                <h3>Robot Race</h3>
-                <h3>Find the Hidden Button</h3>
-                <h3>Visual Array Sorter</h3>
-            <hr>
-                                          <form id="moduleButtonForm" method="get" action="https://classroom.github.com/a/gZ6FwZni">
-        <button id="acceptModuleButton" type="submit"><span>Accept Module</span></button>
-        </form>
-
-       <h3>ArrayList Demo</h3>
-                <h3>Intro to ArrayLists</h3>
-                <h3>Guest Book</h3>
-                <hr>
- <h3>  <a href="SnakeOverview.html">League Snake (Processing)</a> </h3>
-               <h3>League Invaders: <a href="InvadersOverview.html">NEW</a></h3>
-                <h3>League Invaders: <a href="league_invaders_contents.html">old</a></h3>
-                <hr>
-<h3><a href="project_info.html">Level 2 Project Info</a><br></h3>
-               
-   <hr>
-
+           </div> 
+        </div>
     </div>
- 
-    <div class="moduleIndexColumn">
-     <h2>Checkpoints</h2>
-         <hr>
-   <h3> <a href="ArraysQuiz.html">Arrays Checkpoint</a></h3>
-        <h3> <br></h3>
-        <h3><br></h3>
-        <h3><br></h3>  
-        <h3><br></h3>  
-        <hr>
-	  <h3> <a href="ArrayList Quiz.html">ArrayLists Checkpoint</a></h3>
-        <h3><br></h3>
-                <h3><br></h3>  
-
-                <h3><br></h3>  
-
-                   <hr>
-       <h3>Demo Snake Game<br></h3>
-            <h3>Demo League Invaders<br></h3>  
-         <h3><br></h3>     
-                   <hr>
-            <h3>Presentation<br></h3>
-           
-                   <hr>
-        <br>
- 
-            </div>
-            
-            </div>
-            </div>                     
-                    
-
-<div id='demo'></div>
-<script>
-
-function fileUpload(){
-	var inFile = document.getElementById("inputFile");
-	var txt = "";
-	if ('files' in inFile) {
-        if (inFile.files.length == 0) {
-            txt = "Select one or more files.";
-        } else {
-            for (var i = 0; i < inFile.files.length; i++) {
-                txt += "<br><strong>" + (i+1) + ". file</strong><br>";
-                var file = inFile.files[i];
-                if ('name' in file) {
-                    txt += "name: " + file.name + "<br>";
-                }
-                if ('size' in file) {
-                    txt += "size: " + file.size + " bytes <br>";
-                }
-            }
-        }
-    } 
-    else {
-        if (inFile.value == "") {
-            txt += "Select one or more files.";
-        } else {
-            txt += "The files property is not supported by your browser!";
-            txt  += "<br>The path of the selected file: " + inFile.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
-        }
-    }
-    document.getElementById("demo").innerHTML = txt;
-
-}
-
-</script>
-   </div>
-    </div>
-    </div>
-        <div id="footer">
+       <div id="footer">
             <script>addFooter();</script>
-        </div>   
-    
-    
+        </div>
+
     </body>
-    </html>
+</html>

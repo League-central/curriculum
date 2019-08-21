@@ -1,0 +1,74 @@
+<html>
+    <div id="quizDiv"></div>
+    <input type="text" id="inputId">
+    <script>
+        var quizDiv;
+        var input;
+        var binNum;
+        var decNum;
+        var winningStreak; 
+        window.onload = function(){
+            winningStreak = 0;
+            quizDiv = document.getElementById("quizDiv");
+            quizDiv.addEventListener('keydown', function(event) {
+                if (event.keyCode == 13) {
+                    checkQuestion();
+                }
+            });
+            input = document.getElementById("inputId");
+            genQuestion();
+        }
+
+        function decToBin(dec){
+            let  bin = "";
+            bin += (dec & 0b10000000) >> 7;
+            bin += (dec & 0b01000000) >> 6;
+            bin += (dec & 0b00100000) >> 5;
+            bin += (dec & 0b00010000) >> 4;
+            bin += (dec & 0b00001000) >> 3;
+            bin += (dec & 0b00000100) >> 2;
+            bin += (dec & 0b00000010) >> 1;
+            bin += (dec & 0b00000001) >> 0;
+            return bin;
+        }
+
+        function genQuestion(){
+            decNum = Math.floor(Math.random() * 256);
+            binNum = decToBin(decNum);
+            quizDiv.innerHTML = "<h1>Winning Streak: "+winningStreak+"</h1><br>"
+            quizDiv.innerHTML += "" + decNum + " in decimal = ";
+            quizDiv.appendChild(input);
+            quizDiv.innerHTML += " in binary. "
+            quizDiv.innerHTML += "<button onclick='checkQuestion()'>submit</button>";
+        }
+
+    function checkQuestion(){
+        input = document.getElementById("inputId");
+        let ans = input.value;
+        let trimmedAns = "";
+        let trimmedCA = "";
+        
+        for(let i = 0; i < ans.length; i++){
+            if(ans[i] == 1){
+                trimmedAns = ans.substring(i, ans.length);
+                break;
+            }
+        }
+        for(let i = 0; i < binNum.length; i++){
+            if(binNum[i] == 1){
+                trimmedCa = binNum.substring(i, binNum.length);
+                break;
+            }
+        }
+
+        if(trimmedAns == trimmedCa){
+            document.body.style.backgroundColor = "lightgreen";
+            winningStreak++;
+        }else{
+            document.body.style.backgroundColor = "pink";
+            winningStreak = 0;
+        }
+        genQuestion();
+    }
+    </script>
+</html>

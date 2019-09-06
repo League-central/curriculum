@@ -130,186 +130,187 @@ function buildRubric(){
     qNum = 1;   
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Select the correct variable type</h4></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr>";
     
-        buildRow(ptNum,"<tr><td>String</td>");      
+        buildRow(ptNum,"String");      
         ptNum++; 
-        buildRow(ptNum,"<tr><td>int</td>");
+        buildRow(ptNum,"int");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>char</td>"); 
+        buildRow(ptNum,"char"); 
         ptNum++; 
-        buildRow(ptNum,"<tr><td>double</td>");
+        buildRow(ptNum,"double");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>boolean</td>");
+        buildRow(ptNum,"boolean");
         
     qNum = 2; 
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Compound if condition</h4></td><td>&nbsp;</td><td>&nbsp;</td>";
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>first condition is correct</td>");        
+        buildRow(ptNum,"first condition is correct");        
         ptNum++; 
-        buildRow(ptNum,"<tr><td>logical operator correct, e.g. &&</td>");
+        buildRow(ptNum,"logical operator correct, e.g. &&");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>second condition is correct</td>");       
+        buildRow(ptNum,"second condition is correct");       
        
      qNum = 3; 
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": \"Mustche\" placement </h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";
 
         ptNum++; 
-        buildRow(ptNum,"<tr><td>class</td>");
+        buildRow(ptNum,"class");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>main method</td>");
+        buildRow(ptNum,"main method");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>if statement</td>");
+        buildRow(ptNum,"if statement");
     
     qNum = 4;    
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Joining Strings</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>String variable initialized correctly</td>");
+        buildRow(ptNum,"Declares and initializes a String variable");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Print statement correct</td>");
+        buildRow(ptNum,"Correct print statement");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Corretly join literal string to variable</td>");
+        buildRow(ptNum,"Joins literal strings to String variable (+)");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Corretly join variable to literal string</td>");
+        buildRow(ptNum,"Syntax correct - will compile");
     
       qNum = 5;     
          gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Modulo</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct modulo syntax</td>");
+        buildRow(ptNum,"Uses modulo (%) ");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>correct checking of remainder value</td>"); 
+        buildRow(ptNum,"Checks remainder"); 
     
     qNum = 6;    
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Random</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
       
         ptNum++; 
-        buildRow(ptNum,"<tr><td>correctly create a Random object</td>");
+        buildRow(ptNum,"Creates a Random object");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>using nextInt with correct bounds</td>");
+        buildRow(ptNum,"Uses nextInt() with correct bounds");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>adjusting random number to get correct range</td>");
+        buildRow(ptNum,"Adjusts random number to get correct range");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>place random number into a named int variable</td>");
+        buildRow(ptNum,"Places number into a declared int variable");
        
     qNum = 7;    
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": String equality check</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
       
         ptNum++; 
-        buildRow(ptNum,"<tr><td>uses .equals with correct value (1)</td>");   
+        buildRow(ptNum,"Uses .equals() to check String values");   
         ptNum++; 
-        buildRow(ptNum,"<tr><td>uses .equals with correct value (2)</td>");
-        ptNum++; 
-        buildRow(ptNum,"<tr><td>correct values for desired logic</td>");       
+        buildRow(ptNum,"Uses correct values for desired logic");
+        
     
     qNum = 8;   
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+"a: Input dialog</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
   
         ptNum++; 
-        buildRow(ptNum,"<tr><td>correct syntax of JOptionPane.showInputDialog</td>");
+        buildRow(ptNum,"Uses JOptionPane.showInputDialog to request value");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>capture user response in a String variable</td>");
+        buildRow(ptNum,"Declares a String variable and captures dialog return value");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
+        buildRow(ptNum,"Syntax correct - will compile");
   
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+"b: Stringt to int conversion </h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
   
         ptNum++; 
-        buildRow(ptNum,"<tr><td>String will convert to int</td>");
+        buildRow(ptNum,"Converts String to int");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>capture int in a named variable</td>");
+        buildRow(ptNum,"Declares int variable and captures converted value");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>int value altered (increased or decreased)</td>");
+        buildRow(ptNum,"Changes int value (increment or decrement)");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
+        buildRow(ptNum,"Syntax correct - will compile");
     
 
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+"c: Output dialog</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>correct syntax of JOptionPane.showMessageDialog</td>");
+        buildRow(ptNum,"correct syntax of JOptionPane.showMessageDialog");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>literal String and variable correctly joined</td>");
+        buildRow(ptNum,"literal String and variable correctly joined");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>variable and literal String correctly joined</td>");
+        buildRow(ptNum,"variable and literal String correctly joined");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
+        buildRow(ptNum,"Syntax correct - will compile");
     
     qNum = 9;  
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Processing</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>ellipse x parameters</td>");
+        buildRow(ptNum,"Identifies correct value (x,y)");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>ellipse width parameter </td>");
+        buildRow(ptNum,"Identifies correct value (width,height)");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>color from fill() statement</td>");  
+        buildRow(ptNum,"Identifies correct value (color)");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>x,y understanding direction</td>");  
+        buildRow(ptNum,"Identifies correct direction (x,y - up,down,left,right)");  
 
     qNum = 10;  
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Reading code and finding errors</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Initialize variable before it is used</td>");
+        buildRow(ptNum,"Must initialize a variable before it is used");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct equality test for ints</td>");  
+        buildRow(ptNum,"Correct equality test for ints");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Assign result of increment to variable</td>");  
+        buildRow(ptNum,"Assign result of math operation to a variable");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct syntax of if/else if/else</td>");
+        buildRow(ptNum,"Syntax correct for if, else if, else - will compile");
         
     qNum = 11;  
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": For Loops</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Initialize \"counter\" variable</td>");
+        buildRow(ptNum,"Initialize \"counter\" variable");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct loop condition</td>");  
+        buildRow(ptNum,"Correct loop condition");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct \"counter\" variabale modification</td>");  
+        buildRow(ptNum,"Correct \"counter\" variabale modification");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Use of loop variable in body of loop</td>");
+        buildRow(ptNum,"Use of loop variable in body of loop");
          
     qNum = 12;  
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Calling methods with parameters</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Use correct method name</td>");
+        buildRow(ptNum,"Uses correct method name");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct type for 1st parameter value</td>");  
+        buildRow(ptNum,"Provides correct 1st parameter value");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct type for 2nd parameter value</td>");  
+        buildRow(ptNum,"Provides correct 2nd parameter value");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
+        buildRow(ptNum,"Syntax correct - will compile");
     
     
     qNum = 13;  
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Using for loops and modulo</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Initialize \"counter\" variable</td>");
+        buildRow(ptNum,"Uses a for loop or while loop");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct loop condition</td>");  
+        buildRow(ptNum,"Initializes a variable to correct \"start\" number");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct \"counter\" variabale modification</td>");  
+        buildRow(ptNum,"Correct loop condition");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct use of modulo in if </td>");
+        buildRow(ptNum,"Correctly modifies variabale in loop");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Use of loop variable in body of loop</td>");   
+        buildRow(ptNum,"Uses modulo operation correctly");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");       
+        buildRow(ptNum,"Uses a correct print statement");   
+        ptNum++; 
+        buildRow(ptNum,"Syntax correct - will compile");       
 
     
    qNum = 14;  
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Reading code - if / else if</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct 1st line of output (\"dogs\")</td>");
+        buildRow(ptNum,"Correct 1st line of output");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct 2nd line of output (\"pigeons\")</td>");  
+        buildRow(ptNum,"Correct 2nd line of output");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct 3rd line of output (\"spiders\")</td>");  
+        buildRow(ptNum,"Correct 3rd line of output");  
        
     
 // Subtract one for wrong answer(s)
@@ -322,15 +323,15 @@ function buildRubric(){
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Write a method with parameters</h4></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>"; 
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct return type (void)</td>");
+        buildRow(ptNum,"Correct return type (void)");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct name of method </td>");  
+        buildRow(ptNum,"Correct name of method ");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct parameter data type</td>");      
+        buildRow(ptNum,"Correct parameter specification");      
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct code in method body</td>");     
+        buildRow(ptNum,"Method body matches method purpose");     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");       
+        buildRow(ptNum,"Syntax correct - will compile");       
    
     pointsAvailable = ptNum-negativePoints;
     
@@ -341,7 +342,7 @@ function buildCell(num) {
 }
     
 function buildRow(row, skill) {
-    gradesTable.innerHTML += (skill+buildCell(row));
+    gradesTable.innerHTML += ("<tr><td>"+skill+"</td>"+buildCell(row));
 }
 
 
@@ -355,7 +356,8 @@ function scoreQuiz(){
 	}   
 	score = (pointsScored/pointsAvailable*100).toFixed(2);
 	var grade = document.getElementById('score');
-	grade.innerHTML = "<center><h2><b>Score: "+score+"%</b></h2></center>";
+    grade.innerHTML = "<center><h2><b>Score: "+pointsScored+"/"+pointsAvailable+"="+score+"%</b></h2></center>";
+	//grade.innerHTML = "<center><h2><b>Score: "+score+"%</b></h2></center>";
 }
 
 

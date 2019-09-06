@@ -135,70 +135,75 @@ function buildRubric(){
     qNum = 1;   
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Make an object using a parameterized constructor</h4></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr>";
     
-        buildRow(ptNum,"<tr><td>Class constructor called</td>");      
+        buildRow(ptNum,"Class constructor called");      
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct parameter values used</td>");
+        buildRow(ptNum,"Correct parameter values used");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Object assigned to a variable</td>"); 
+        buildRow(ptNum,"Object assigned to a variable"); 
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
+        buildRow(ptNum,"Correct syntax (will compile)");
        
     qNum = 2; 
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Code a parameterized constructor</h4></td><td>&nbsp;</td><td>&nbsp;</td>";
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Constructor name matches class</td>");        
+        buildRow(ptNum,"Constructor name matches class");        
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Parameters have correct types and appropriate names</td>");
+        buildRow(ptNum,"Parameters have correct types and appropriate names");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Member variables are initialized from parameters</td>");
+        buildRow(ptNum,"Member variables are initialized from parameters");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
+        buildRow(ptNum,"Correct syntax (will compile)");
     
 //VARIABLES       
      qNum = 3; 
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Declare and initialize variables (4 examples)</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";
 
         ptNum++; 
-        buildRow(ptNum,"<tr><td>a) Correct data type</td>");
+        buildRow(ptNum,"a) Correct data type");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Appropriate variable name</td>");
+        buildRow(ptNum,"&nbsp;&nbsp;&nbsp;Appropriate variable name");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Correct syntax (will compile)</td>");
+        buildRow(ptNum,"&nbsp;&nbsp;&nbsp;Correct syntax (will compile)");
 
         ptNum++; 
-        buildRow(ptNum,"<tr><td>b) Correct data type</td>");
-        ptNum++; 
-        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Appropriate variable name</td>");
-        ptNum++; 
-        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Correct syntax (will compile)</td>");
-
-        ptNum++; 
-        buildRow(ptNum,"<tr><td>c) Correct data type</td>");
-        ptNum++; 
-        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Appropriate variable name</td>");
-        ptNum++; 
-        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Correct syntax (will compile)</td>");
+        buildRow(ptNum,"b) Correct data type");
+        
+    ptNum++; 
+     buildRow(ptNum,"&nbsp;&nbsp;&nbsp;Appropriate variable name");
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>d) Correct data type</td>");
+        buildRow(ptNum,"&nbsp;&nbsp;&nbsp;Correct syntax (will compile)");
+
         ptNum++; 
-        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Appropriate variable name</td>");
+        buildRow(ptNum,"c) Correct data type");
+        
+    ptNum++; 
+     buildRow(ptNum,"&nbsp;&nbsp;&nbsp;Appropriate variable name");
+    
         ptNum++; 
-        buildRow(ptNum,"<tr><td>&nbsp;&nbsp;&nbsp;Correct syntax (will compile)</td>");
+        buildRow(ptNum,"&nbsp;&nbsp;&nbsp;Correct syntax (will compile)");
+    
+        ptNum++; 
+        buildRow(ptNum,"d) Correct data type");
+
+    ptNum++;     buildRow(ptNum,"&nbsp;&nbsp;&nbsp;Appropriate variable name");
+    
+        ptNum++; 
+        buildRow(ptNum,"&nbsp;&nbsp;&nbsp;Correct syntax (will compile)");
     
 //SWING GUI         
     qNum = 4;    
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Identify Swing component names (any 4 correct)</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>JFrame, JPanel, JButton, JLabel, or JOptionPane</td>");
+        buildRow(ptNum,"JFrame, JPanel, JButton, JLabel, or JOptionPane");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>JFrame, JPanel, JButton, JLabel, or JOptionPane</td>");
+        buildRow(ptNum,"JFrame, JPanel, JButton, JLabel, or JOptionPane");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>JFrame, JPanel, JButton, JLabel, or JOptionPane</td>");
+        buildRow(ptNum,"JFrame, JPanel, JButton, JLabel, or JOptionPane");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>JFrame, JPanel, JButton, JLabel, or JOptionPane</td>");
+        buildRow(ptNum,"JFrame, JPanel, JButton, JLabel, or JOptionPane");
     
     
         // Subtract one for wrong answer(s)
@@ -211,106 +216,106 @@ function buildRubric(){
          gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Identify Swing components from GUI</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>JFrame</td>");
+        buildRow(ptNum,"JFrame");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>JPanel</td>");
+        buildRow(ptNum,"JPanel");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>JButton</td>");
+        buildRow(ptNum,"JButton");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>JLabel</td>");   
+        buildRow(ptNum,"JLabel");   
         ptNum++; 
-        buildRow(ptNum,"<tr><td>JTextField</td>");   
+        buildRow(ptNum,"JTextField");   
     
     qNum = 6;    
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Adding listener to component</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
       
         ptNum++; 
-        buildRow(ptNum,"<tr><td>correct method name</td>");
+        buildRow(ptNum,"correct method name");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>listener added to component object</td>");
+        buildRow(ptNum,"listener added to component object");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>correct parameter passed to method (this)</td>");
+        buildRow(ptNum,"correct parameter passed to method (this)");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>correct syntax (will compile)</td>");
+        buildRow(ptNum,"correct syntax (will compile)");
        
     qNum = 7;    
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Swing component layout</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
       
         ptNum++; 
-        buildRow(ptNum,"<tr><td>correct method used</td>");   
+        buildRow(ptNum,"correct method used");   
     
     qNum = 8;   
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Method signature(s)</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
   
         ptNum++; 
-        buildRow(ptNum,"<tr><td>correct return type(s)</td>");
+        buildRow(ptNum,"correct return type(s)");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>correct parameters</td>");
+        buildRow(ptNum,"correct parameters");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>appropriate return value(s)</td>");
+        buildRow(ptNum,"appropriate return value(s)");
 
  //METHODS
     qNum = 9;  
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Wrting methods </h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
   
         ptNum++; 
-        buildRow(ptNum,"<tr><td>correct method signature</td>");
+        buildRow(ptNum,"correct method signature");
         ptNum++; 
-        buildRow(ptNum,"<tr><td> method name matches purpose</td>");
+        buildRow(ptNum," method name matches purpose");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>method returns correct value</td>");
+        buildRow(ptNum,"method returns correct value");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>return value matches return type</td>");
+        buildRow(ptNum,"return value matches return type");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
+        buildRow(ptNum,"Correct syntax (will compile)");
     
  //VARIABLE SCOPE   
     qNum = 10;  
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Variable scope</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>correct method signature</td>");
+        buildRow(ptNum,"correct method signature");
         ptNum++; 
-        buildRow(ptNum,"<tr><td> method name matches purpose</td>");
+        buildRow(ptNum," method name matches purpose");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>method returns correct value</td>");
+        buildRow(ptNum,"method returns correct value");
         ptNum++; 
-         buildRow(ptNum,"<tr><td>return value matches return type</td>");
+         buildRow(ptNum,"return value matches return type");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
+        buildRow(ptNum,"Correct syntax (will compile)");
  
  //READ AND UNDERSTAND CODE 
     qNum = 11;  
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Read and understand code (1)</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>create object using constructor</td>");
+        buildRow(ptNum,"create object using constructor");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>pass correct value to constructor</td>");
+        buildRow(ptNum,"pass correct value to constructor");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>place created object into variable</td>");  
+        buildRow(ptNum,"place created object into variable");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>call method</td>");  
+        buildRow(ptNum,"call method");  
 
     qNum = 12;  
         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Read and understand code (2)</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
     
         ptNum++; 
-        buildRow(ptNum,"<tr><td>create instance of class using constructor</td>");
+        buildRow(ptNum,"create instance of class using constructor");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>place created object into variable</td>");  
+        buildRow(ptNum,"place created object into variable");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>use setter to initialize variable</td>");  
+        buildRow(ptNum,"use setter to initialize variable");  
         ptNum++; 
-        buildRow(ptNum,"<tr><td>use if statement to check for success</td>");
+        buildRow(ptNum,"use if statement to check for success");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>catch failure condition (else)</td>");
+        buildRow(ptNum,"catch failure condition (else)");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>print warning on failure</td>");
+        buildRow(ptNum,"print warning on failure");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>use reasonable values for variables</td>");
+        buildRow(ptNum,"use reasonable values for variables");
         ptNum++; 
-        buildRow(ptNum,"<tr><td>Correct syntax (will compile)</td>");
+        buildRow(ptNum,"Correct syntax (will compile)");
     
    pointsAvailable = ptNum-negativePoints;
     
@@ -321,7 +326,9 @@ function buildCell(num) {
 }
     
 function buildRow(row, skill) {
-    gradesTable.innerHTML += (skill+buildCell(row));
+//    gradesTable.innerHTML += (skill+buildCell(row));
+    gradesTable.innerHTML += ("<tr><td>"+skill+"</td>"+buildCell(row));
+
 }
 
 

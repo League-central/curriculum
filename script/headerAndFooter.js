@@ -42,6 +42,18 @@ function addRecipeHeader(){
     
 }
 
+function addRecipeHeaderSmall(){
+    
+        
+    var links;
+
+    links = document.getElementById("header");
+    
+    links.innerHTML += "<span>";
+     links.innerHTML += "<a style='font-size:3em;color: #fa591a;text-decoration: none;cursor: pointer;padding:.1.5em;' onclick=' window.history.back();'>&#171;</a>"
+    
+}
+
 function addRecipeFooter(){
     var footer = document.getElementById("footer");
 

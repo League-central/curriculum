@@ -5,11 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<style>
-   #moduleIndex {
-   padding: 0;
-}
-</style>
+
 <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
 <body>
         <div id ="wrap">
@@ -17,48 +13,50 @@
                 <div id="header">
                     <script>addRecipeHeader();</script>
                 </div>
-                
-                <div id = "moduleIndex">   
 
  
 <h1>Cuteness TV</h1>
 <br>
-    <p class="normal">
-1. Make a user interface with 3 buttons that will play different videos depending on which button is clicked. <br>
-     
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you need help, take a look at the instructions for the Fortune Cookie recipe. <br>
-    <br>
+                
+ <p id="recipePage">
+Goal: Make a program using Swing and Model-View-Controller design architecture.<br><br>
+The program will have a window (frame) with a number of buttons that will show different videos when clicked. There will be FOUR Java classes to complete this program.
+</p><br>                 
+                
+                
+                
+                
+<ol id="recipePage">
+       <h4>Make the View</h4><br>     
+  <li>This class will have a frame, a panel, and some buttons. NOTE: because this GUI has more than one button, you must add a JPanel to your JFrame and put the buttons on the panel! The View will need to have a variable for the controller (because it will need a mouse listener).</li>
     
-  2.  Use the methods below to play the cutest videos ever. <br>
+     <li>The runner class needs a main method and will create the view object when the program is run.</li> 
+   
     
-    </p><br> 
-<p class="code">
- void showDucks() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;playVideo("https://www.youtube.com/watch?v=MtN1YnoL46Q");<br>
-}<br>
-    <br>
-  void showFrog() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;playVideo("https://www.youtube.com/watch?v=cBkWhkAZ9ds");<br>
-}<br>
-    <br>
-     void showFluffyUnicorns() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;playVideo("https://www.youtube.com/watch?v=a-xWhG4UU_Y");<br>
-}<br>
-    <br>
-     void playVideo(String videoID) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URI uri = new URI(videoID);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java.awt.Desktop.getDesktop().browse(uri);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (Exception e) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br>
+<h4>Connect a Controller</h4><br>   
+      <li>Make the controller a mouse listener so it can process mouse clicks.</li>    
+    
+    <li>Connect the controller to the model.</li>
+        
+     <li>Add code to the controller for each of the buttons on the view.</li>
+    
+    
+ <h4>Complete the Model</h4><br>     
+ 
+            <li>Use the code below for the cutest videos ever. <br>
+<pre>
+String ducks = "https://www.youtube.com/watch?v=MtN1YnoL46Q";
+String frog ="https://www.youtube.com/watch?v=cBkWhkAZ9ds";
+String unicorns = "https://www.youtube.com/watch?v=a-xWhG4UU_Y"; 
+</pre>
+                <br>
+              
+Note: If any of these video links no longer work, go to youtube and get replacements. Use the String names to give you a hint about what the videos contain
+       
+            </li>
+        If you need help, take a look at the previous recipes in this module.<br>
+                </ol>                
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-	}<br>
-    </p><br> 
-   <p class="normal">
-Note: If any of these video links no longer work, go to youtube and get replacements. Use the method names to give you a hint about what the videos should contain :)<br>
-        </p> 
-                </div>
     </div>
     </div>                
                 

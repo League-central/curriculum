@@ -5,11 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<style>
-   #moduleIndex {
-   padding: 0;
-}
-</style>
+
 <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
 <body>
         <div id ="wrap">
@@ -18,29 +14,39 @@
                     <script>addRecipeHeader();</script>
                 </div>
 
-                <div id = "moduleIndex">   
 
 <h1>Sound Effects Machine</h1>
 <br>
-    <p class="normal">
-1.  Create a GUI for a sound effects machine that will play different sounds when the buttons are pressed. If you need help, take a look at the instructions for the Fortune Cookie recipe. <br>
-        <br>
-NOTE: because this GUI has more than one button, you must add a JPanel to your JFrame and put the buttons on the panel!<br>
-<br>
-        2. Gather sound bites. <u>They must be .wav files.</u> Free sound effects can be found <a href="http://soundbible.com/free-sound-effects-1.html">here</a>. The League also has an account at <a href="https://freesound.org/">freesound</a>. Ask your teacher for our login.<br><br>
-        The .wav files must be placed into your Java package (drag and drop).<br>
-<br>        
-3. Call this playSound() method when they click on a button. You will need to import java.applet.AudioClip
-<br>
-        </p>
+                
+<p id="recipePage">
+Goal: Make a program using Swing and Model-View-Controller design architecture.<br><br>
+The program will have a window (frame) with a number of buttons that will play different sound effects when clicked. There will be FOUR Java classes to complete this program.
+</p><br>                
+                
+                
+<ol id="recipePage">
+      <h4>Make the View</h4><br>  
 
-<pre>private void playSound(String fileName) {<br>
-    AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName)); <br>
-    sound.play();<br>
-}</pre><br>
+       <li>This class will have a frame, a panel, and some buttons. NOTE: because this GUI has more than one button, you must add a JPanel to your JFrame and put the buttons on the panel! The View will need to have a variable for the controller (because it will need a mouse listener).</li>
+            
+    <li>The runner class creates the view object when the program is run</li> 
+            
+            
+         <h4>Connect a Controller</h4><br>          
+      <li>Make the controller a mouse listener so it can process mouse clicks. The controller acts as the go-between so has variables for the view and model</li>      
+     <li>Add code to the controller for each of the buttons on the view.</li>
+    
+           <h4>Complete the Model</h4><br>  
+            <li>A sample sound effect has been provided. Add some more of your own here.<br>
+            <br>
+             <u>They must be .wav files.</u> Free sound effects can be found <a href="http://soundbible.com/free-sound-effects-1.html">here</a>. The League also has an account at <a href="https://freesound.org/">freesound</a>. Ask your teacher for our login.<br><br>
+            The .wav files must be <u>placed into your sound effects recipe package</u> (drag and drop).</li>
+
+        If you need help, take a look at the previous recipes in this module. Drum Kit is a good one to look at since it also plays sound files and will have a lot of methods you can use.<br>
+        
+                </ol>
                 </div>
-    </div>
-    </div>                
+    </div>           
                 
 <div id="footer">
 <script>addFooter();</script>

@@ -158,7 +158,6 @@
         var blueSlider;
         var colorSelectionDiv;
         var currentColor;
-
         var base64 = [
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
             'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -166,7 +165,6 @@
             'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
             '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'
         ];
-
         window.onload = function(){
             imgUploadButton = document.getElementById("imgUploadButton");
             previewButton = document.getElementById("previewButton");
@@ -180,13 +178,10 @@
             redSlider = document.getElementById('redSlider');
             greenSlider = document.getElementById('greenSlider');
             blueSlider = document.getElementById('blueSlider');
-
             document.getElementById('fontText').style.fontFamily = "Arial";
-
             for(var i = 0; i < totalQuestions; i++){
                 questions.push(document.getElementById("ques" + (i + 1)));
             }
-
             colorSelectionDiv.style.backgroundColor = "rgb(220, 220, 220)"
             currentColor = colorSelectionDiv.style.backgroundColor;
             var rgb = currentColor;
@@ -194,7 +189,6 @@
             redSlider.value = rgb[0];
             greenSlider.value = rgb[1];
             blueSlider.value = rgb[2];
-
             redSlider.oninput = function(){
                 changeColor("red");
             }
@@ -205,7 +199,6 @@
                 changeColor("blue");
             }
         }
-
         function savePage(){
             var fileName = prompt("Provide the name of the save file:");
             if(fileName.length == 0){
@@ -219,7 +212,6 @@
             fileText += studentName.value + '\n';
             fileText += "*<*LINK*>*\n";
             fileText += downloadLink.value + '\n';
-
             fileText += "*<*IMAGES*>*\n";
             var imgs = imagePreviewDiv.getElementsByTagName("img");
             for(var i = 0; i < imgs.length; i++){
@@ -227,20 +219,17 @@
                 fileText += "*<*ENDIMAGE*>*\n";      
             }
             fileText += "*<*ENDALLIMAGES*>*\n";
-
             fileText += "*<*FONT*>*\n";
             fileText += document.getElementById('fontText').style.fontFamily + '\n';
             fileText += "*<*COLORS*>*\n";
             fileText += redSlider.value + '\n';
             fileText += greenSlider.value + '\n';
             fileText += blueSlider.value + '\n';
-
             fileText += "*<*QUESTIONS*>*\n";
             for(var i = 0; i < questions.length; i++){
                 fileText += questions[i].value + '\n';
                 fileText += "*<*ENDQUESTION*>*\n";
             }
-
             var titles = customTopicsDiv.getElementsByTagName("input");
             var discussions = customTopicsDiv.getElementsByTagName("textArea");
             fileText += "*<*CUSTOMTOPICS*>*\n";
@@ -251,16 +240,18 @@
                 fileText += discussions[i].value + '\n';
             }
             fileText += "*#*EOF*#*"
-
+            var blob = new Blob([ fileText ], {
+                type : "application/csv;charset=utf-8;"
+            });
             var element = document.createElement('a');
-            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(fileText));
-            element.setAttribute('download', fileName);
+            var csvUrl = URL.createObjectURL(blob);
+            element.href = csvUrl;
+            element.download = fileName;
             element.style.display = 'none';
             document.body.appendChild(element);
             element.click();
             document.body.removeChild(element);
         }
-
         function loadPage(){
             var text = "";
             var inpt = document.getElementById('savedFileInput');
@@ -298,12 +289,14 @@
                                 break;
                             }
                             case "*<*IMAGES*>*":{
+                                images = [];
                                 imagePreviewDiv.innerHTML += "";
                                 var imgCtr = 0;
                                 while(lines[0] != "*<*ENDALLIMAGES*>*"){
                                     while(lines[0] != "*<*ENDIMAGE*>*"){
                                         imagePreviewDiv.innerHTML += "<img id='previewImage" + imgCtr + "' src='"+ lines.shift() + "' height='25%' title='click to remove' onclick='removeImage(" + imgCtr + ")'>";
                                         imgCtr++;
+                                        images.push("");
                                     }
                                     lines.shift();
                                 }
@@ -376,7 +369,6 @@
                 reader.readAsText(inpt.files[0]);
             }
         }
-
         function changeColor(color){
             var rgb = colorSelectionDiv.style.backgroundColor;
             rgb = rgb.replace(/[^\d,]/g, '').split(',');
@@ -388,13 +380,11 @@
                 colorSelectionDiv.style.backgroundColor = "rgb(" + rgb[0] + "," + rgb[1] + "," + blueSlider.value + ")";
             }
         }
-
         function byteArrayToB64String(str){
             if(str.length < 3){
                 return "";
             }
             var num = (str[0] << 16) | (str[1] << 8) | str[2];
-
             var b64str = "";
             b64str += base64[(num >> 18) & 0x3f];
             b64str += base64[(num >> 12) & 0x3f];
@@ -402,7 +392,6 @@
             b64str += base64[num & 0x3f];
             return b64str;
         }
-
         function u8ArrayToBase64String(u8Array){
             var b64Str = "";
             for(var i = 0; i < u8Array.length; i += 3){
@@ -422,7 +411,6 @@
             }
             return b64Str;
         }
-
         function validateEntries(){
             if(!titleDiv.value){
                 alert("You must enter the title of your game.");
@@ -433,21 +421,18 @@
             }else if(!downloadLink.value){
                 alert("You must provide a link to download your finished game.");
                 return false;
-            }else if(!document.getElementById("previewImage1")){
+            }else if(document.getElementsByTagName("img").length == 1){
                 alert("You must upload at least one screen shot for your game.");
                 return false;
             }
-
             for(var i = 0; i < questions.length; i++){
                 if(!questions[i].value){
                     alert("You must provide an answer for all the questions.");
                     return false;
                 }
             }
-
             return true;
         }
-
         function showPreview(){
             if(validateEntries()){
                 var pageText = getPageText();
@@ -455,7 +440,6 @@
                 newWindow.document.write(pageText);
             }
         }
-
         function getPageText(){
             var pageText = "\
             <html>\
@@ -495,12 +479,10 @@
                 <h2>\
                     <center>by: "+ studentName.value +"</center>\
                 </h2><center>";
-
                 var imgs = imagePreviewDiv.getElementsByTagName("img");
                 for(var i = 0; i < imgs.length; i++){
                     pageText += "<img src='" + imgs[i].src + "' height='75%'> ";
                 }
-
                 pageText += "</center>\
                 <h3><center>\
                 This game was made for my level 2 project at <a href='http://jointheleague.org'>The League of Amazing Programmers.</a><br>\
@@ -548,7 +530,6 @@
                 <h3>\
                     "+ questions[5].value +"\
                 </h3>";
-
                 var titles = customTopicsDiv.getElementsByTagName("input");
                 var discussions = customTopicsDiv.getElementsByTagName("textArea");
                 for(var i = 0; i < titles.length; i++){
@@ -571,20 +552,17 @@
             ";
             return pageText;
         }
-
         function loadImage(){
             var pageText = getPageText();
             var newWindow = window.open();
             newWindow.document.write(pageText);
         }
-
         function downloadFile(){
             if(validateEntries()){
                 var pageText = getPageText();
                 var blob = new Blob([ pageText ], {
                     type : "application/csv;charset=utf-8;"
                 });
-
                 var element = document.createElement('a');
                 var csvUrl = URL.createObjectURL(blob);
                 element.href = csvUrl;
@@ -595,7 +573,6 @@
                 document.body.removeChild(element);
             }
         }
-
         function removeImage(len){
             if(confirm("Remove this image?")){
                 images.splice(len - 1, 1);
@@ -603,7 +580,6 @@
                 elm.parentElement.removeChild(elm);
             }
         }
-
         function imageUploaded(){
             images.push(imageFile.files[0]);
             var fread = new FileReader();
@@ -614,21 +590,18 @@
             }
             fread.readAsArrayBuffer(imageFile.files[0]);
         }
-
         function updateFontText(){
             var selector = document.getElementById('selectFontFamily');
             var family = selector.options[selector.selectedIndex].value;
             var text = document.getElementById('fontText');
             text.style.fontFamily = family;        
         }
-
         function removeExtraTopic(topicId){
             if(confirm("Remove this topic?")){
                 var elm = document.getElementById("newTopic" + topicId);
                 customTopicsDiv.removeChild(elm);
             }
         }
-
         function addTopic(){
             var customTopicsDiv = document.getElementById("customTopicsDiv");
             var newTopicDiv = document.createElement('div');
@@ -642,6 +615,5 @@
             customTopicsDiv.appendChild(newTopicDiv);
             totalAdditionalCatagories++;
         }
-
     </script>
 </html>

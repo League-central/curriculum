@@ -19,30 +19,39 @@
 <br>
                 
 <p id="recipePage">
-Goal: Make a program using Swing and Model-View-Controller design architecture.<br><br>
-The program will have a window (frame) with a number of buttons that will play different sound effects when clicked. There will be FOUR Java classes to complete this program.
+Goal: Make a program that uses Model-View-Controller (MVC) design architecture.
+<br><br>
+This program will have a window (frame) with a number of buttons that will play different sound effects when clicked.
 </p><br>                
                 
                 
 <ol id="recipePage">
-      <h4>Make the View</h4><br>  
+        If you need help with any of these steps, take a look at the previous recipes in this module.<br> 
+    All the classes for this program are in the  in the <font color="green">sound_effects_machine</font> package.<br> <br> 
+      <h4>Complete the Model</h4><br>  
+    <li>Find the <font color="green">SoundEffectsModel</font> class. A sample sound effect (drum) has been provided. Add some more of your own here.<br>
+    <br>
+     <u>They must be .wav files.</u> Free sound effects can be found <a href="http://soundbible.com/free-sound-effects-1.html">here</a>. The League also has an account at <a href="https://freesound.org/">freesound</a>. Ask your teacher for our login.<br><br>
+    The .wav files must be placed into your <font color="green">sound_effects_machine</font> package (drag and drop).</li>
 
-       <li>This class will have a frame, a panel, and some buttons. NOTE: because this GUI has more than one button, you must add a JPanel to your JFrame and put the buttons on the panel! The View will need to have a variable for the controller (because it will need a mouse listener).</li>
-            
-    <li>The runner class creates the view object when the program is run</li> 
-            
-            
-         <h4>Connect a Controller</h4><br>          
-      <li>Make the controller a mouse listener so it can process mouse clicks. The controller acts as the go-between so has variables for the view and model</li>      
-     <li>Add code to the controller for each of the buttons on the view.</li>
     
-           <h4>Complete the Model</h4><br>  
-            <li>A sample sound effect has been provided. Add some more of your own here.<br>
-            <br>
-             <u>They must be .wav files.</u> Free sound effects can be found <a href="http://soundbible.com/free-sound-effects-1.html">here</a>. The League also has an account at <a href="https://freesound.org/">freesound</a>. Ask your teacher for our login.<br><br>
-            The .wav files must be <u>placed into your sound effects recipe package</u> (drag and drop).</li>
+    
+    
+    
+      <h4>Make the View</h4><br>  
+    <li>Find the <font color="green">SoundEffects</font> class. Complete the makeFrame() method to create a frame, a panel, and a button for each sound effect in your machine. NOTE: you must add a JPanel to your JFrame because there will be more than one button! Make a variable for the controller (which will be a MouseListener).</li>
+    
+     <h4>Runner</h4><br>         
+    <li>Run the <font color="green">SoundEffectsRunner</font> class (has a main method). Make sure it is showing your frame with buttons before proceeding.</li> 
 
-        If you need help, take a look at the previous recipes in this module. Drum Kit is a good one to look at since it also plays sound files and will have a lot of methods you can use.<br>
+    
+    
+    
+    
+    <h4>Connect a Controller</h4><br>          
+    <li>Find the <font color="green">SoundEffectsController </font>class and follow the instructions to complete it. Don't forget to add this MouseListener to all the buttons on the View!</li>
+       <li>Run the SoundEffectsRunner and check that each of the buttons plays the right sound.</li>  
+<br>
         
                 </ol>
                 </div>

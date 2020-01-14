@@ -5,11 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<style>
-   #moduleIndex {
-   padding: 0;
-}
-</style>
+
 <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
 <body>
         <div id ="wrap">
@@ -18,29 +14,48 @@
                     <script>addRecipeHeader();</script>
                 </div>
 
-                <div id = "moduleIndex">   
 
 <h1>Sound Effects Machine</h1>
 <br>
-    <p class="normal">
-1.  Create a GUI for a sound effects machine that will play different sounds when the buttons are pressed. If you need help, take a look at the instructions for the Fortune Cookie recipe. <br>
-        <br>
-NOTE: because this GUI has more than one button, you must add a JPanel to your JFrame and put the buttons on the panel!<br>
-<br>
-        2. Gather sound bites. <u>They must be .wav files.</u> Free sound effects can be found <a href="http://soundbible.com/free-sound-effects-1.html">here</a>. The League also has an account at <a href="https://freesound.org/">freesound</a>. Ask your teacher for our login.<br><br>
-        The .wav files must be placed into your Java package (drag and drop).<br>
-<br>        
-3. Call this playSound() method when they click on a button. You will need to import java.applet.AudioClip
-<br>
-        </p>
+                
+<p id="recipePage">
+Goal: Make a program that uses Model-View-Controller (MVC) design architecture.
+<br><br>
+This program will have a window (frame) with a number of buttons that will play different sound effects when clicked.
+</p><br>                
+                
+                
+<ol id="recipePage">
+        If you need help with any of these steps, take a look at the previous recipes in this module.<br> 
+    All the classes for this program are in the <font color="green">sound_effects_machine</font> package.<br> <br> 
+      <h4>Complete the Model</h4><br>  
+    <li>Find the <font color="green">SoundEffectsModel</font> class. A sample sound effect (drum) has been provided. Add some more of your own here.<br>
+    <br>
+     <u>They must be .wav files.</u> Free sound effects can be found <a href="http://soundbible.com/free-sound-effects-1.html">here</a>. The League also has an account at <a href="https://freesound.org/">freesound</a>. Ask your teacher for our login.<br><br>
+    The .wav files must be placed into your <font color="green">sound_effects_machine</font> package (drag and drop).</li>
 
-<pre>private void playSound(String fileName) {<br>
-    AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName)); <br>
-    sound.play();<br>
-}</pre><br>
+    
+    
+    
+    
+      <h4>Make the View</h4><br>  
+    <li>Find the <font color="green">SoundEffects</font> class. Complete the makeFrame() method to create a frame, a panel, and a button for each sound effect in your machine. NOTE: you must add a JPanel to your JFrame because there will be more than one button! Make a variable for the controller (which will be a MouseListener).</li>
+    
+     <h4>Runner</h4><br>         
+    <li>Run the <font color="green">SoundEffectsRunner</font> class (has a main method). Make sure it is showing your frame with buttons before proceeding.</li> 
+
+    
+    
+    
+    
+    <h4>Connect a Controller</h4><br>          
+    <li>Find the <font color="green">SoundEffectsController </font>class and follow the instructions to complete it. Don't forget to add this MouseListener to all the buttons on the View!</li>
+       <li>Run the SoundEffectsRunner and check that each of the buttons plays the right sound.</li>  
+<br>
+        
+                </ol>
                 </div>
-    </div>
-    </div>                
+    </div>           
                 
 <div id="footer">
 <script>addFooter();</script>

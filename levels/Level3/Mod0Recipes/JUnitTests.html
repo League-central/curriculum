@@ -3,69 +3,51 @@
 <title>Level 3- JUnit Tests and Algorithms</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://league-level3.github.io/style.css">
+<link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 
 
-<script src="https://league-level3.github.io//copyrightFooter.js"></script>
+<script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
 
 <body>
-
+        <div id ="wrap">
+            <div id ="main">
+                 <div id="header">
+                    <script>addRecipeHeader();</script>
+                </div>
+               <div id = "moduleIndex">   
 <h1>JUnit Tests</h1>
 
 <p class="normal">
 When you have written a new program, you need to test if it is working properly. Also, if you need to make changes to an existing program, you need to make sure you haven't broken anything that worked before.</p>
+    <br>
    <p class="normal">
     When you develop new code, you sometimes add print statements to check what is happening, but after you have done that, you need to go back and remove the print statements and you might break something in the process. So how can you test a program without changing its code?</p>
-
+    <br>
     <p class="normal">JUnit provides us with a framework to test code "from the outside".</p>
-
+    <br>
     <p class="normal">For example, The code below runs the static method <b>add()</b> on the Algorithms class. This test is not part of the Algorithms class, but an external testing class, and checks that when given the numbers 3 and 1, the add method returns the number 4.</p>
-
+    <br>
     <p class="code">
     @Test<br>
 	public void testAdd() {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(4, Algorithms.add(3,1));<br>
 	}
     </p>
-
+    <br>
         <p class="normal">If a programmer later changes other parts of the Algorithms class for any reason, they can re-run this test to see if the add() method still works correctly.</p>
-
+    <br>
     <p class="normal">You can use a variety of <b>assertions</b> that allow the program to test for different conditions. In the above example, the code is testing for the <b>equals</b> condition.  Ask your teacher, or search the Internet for a complete overview of the JUnit class and its capabilities.</p>
+    <br>
 
 
-
-    <!--
-    <p align="center"> <b>Things to find out before you finish this module:</b></p>
-
-    <p class="normal">
-<li>The purpose of a JUnitTest</li><br>
-<li>The function of assertEquals, assertTrue, assertFalse</li><br>
-<li>How to create a JUnitTest</li><br>
-<li>How to identify the requirements to make a JUnitTest pass</li><br>
-
-    </p>
-    <div style="float: left; width: 50%;">
-
-           <h2>Sample Program</h2>
-        <p align="center"> <b>IntroToJUnitTest<br>
-            MoreAndMoreTests<br></b></p>
     </div>
-
-     <div style="float: left; width: 50%;">
-    <h2>Student Recipes</h2>
-
-   <p align="center"> <b>
-       Algorithms<br>
-         SearchingAndSortingAlgorithms</b></p>
-
-      </div>
-    -->
-
-<br><br>
- <div id="copyright" style="float: left; width: 100%;">
-        <script>copyright();</script>
     </div>
+    </div>                
+                
+<div id="footer">
+<script>addFooter();</script>
+</div>
 
-
-</body></html>
+</body>
+</html>

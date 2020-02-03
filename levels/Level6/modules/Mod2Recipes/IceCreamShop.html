@@ -1,0 +1,69 @@
+<!DOCTYPE html><html><head><title> Ice Cream Shop - League Level 0</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"><link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png"><script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script></head><body><div id ="wrap"><div id ="main"><div id="header"><script>addRecipeHeader();</script></div><div id = "recipePage"><div id="recipeTitle"><h1>Ice Cream Shop</h1><hr></div><div id ="recipeBody"><div id="recipeGoal"><h2>Goal:</h2><p id="goal">Make an ice cream cone! </p></div><div id="recipeSteps"><h2>Steps:</h2><ol id="stepList"><li>Start a new Processing sketch.
+</li><li>Copy the code below into the sketch.
+<pre>
+void setup(){
+     size(500,500);
+     //call the makeIceCreamCone() method below to make an ice cream cone
+
+     //use the addScoop method below to add as many scoops of ice cream as you want
+
+     //Use the method to add sprinkles to your ice cream
+
+     //Write code to add a cherry to the top of your ice cream. hint: ellipse
+
+}
+
+/******************************************************************/
+
+//Icecream recipe
+int SCOOPSIZE = 150;
+int scoops = 0;
+int coneY = 320;
+
+//Don't Touch this method; Call it!!
+void makeIceCreamCone(){
+     //noStroke();
+     fill(188,126,49);
+     triangle(190,320,310,300,255,500);
+}
+
+//Don't touch this method; call it!!!
+void addScoop(String flavor){
+     noStroke();
+     if(flavor.equalsIgnoreCase("chocolate")){
+         fill(116,71,16);
+     }
+     else if(flavor.equalsIgnoreCase("Strawberry")){
+         fill( 232 ,144,129);
+     }
+     else if(flavor.equalsIgnoreCase("Vanilla")){
+         fill(245, 243, 227);
+     } else{
+         println("ERROR: We don't have the flavor "+ flavor); 
+         return;
+     }
+     ellipse(width/2,coneY - 50 - (SCOOPSIZE*scoops)/2,SCOOPSIZE,SCOOPSIZE);
+     scoops++;
+}
+
+//Don't Touch this method!!
+void addSprinkle(int numberOfSprinkles){
+    for(int i = 0; i &lt numberOfSprinkles; i++){
+         fill(random(256),random(256),random(256));
+         int minX = width/2-SCOOPSIZE/2 + 10;
+         int maxX = SCOOPSIZE/3 +width/2 +10;
+         int minY = coneY-((SCOOPSIZE)*scoops)/2-40;
+         int maxY = coneY;
+         int sprinkleAreaX = (int)random(minX, maxX);
+         int sprinkleAreaY = (int)random(minY, maxY);
+         int sprinkleWidth = (int)random(2,9);
+         int sprinkleHeight = (int)random(2,9);
+         ellipse(sprinkleAreaX,sprinkleAreaY,sprinkleHeight,sprinkleWidth);
+     }
+}
+</pre>
+</li><li>Write code in the setup method to make your ice cream cone.
+</li></ol>
+    <a href="https://processing.org/reference">
+    <img src="https://league-level0.github.io/p3logo.jpeg" class="footer" alt="Processing Reference"></a>
+    <div style="clear:both;"></div></div></div></div></div></div><div id="footer"><script>addRecipeFooter();</script></div></body></html>

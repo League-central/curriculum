@@ -1,0 +1,366 @@
+<html>
+<head>
+            <title>Level 0 Exam Grading</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <style>
+            table{
+                padding-left: 1em;
+            }
+            td {
+                padding-left: 1em;
+                padding-top: 0.5em;
+            }
+            td.skill {
+                color: blue;
+            }
+            th {
+                    font-family: verdana;
+                    color: #fa591a;
+                    font-size: 32px;
+                    text-align: center;
+                    border: 1px solid black;
+            }  
+            
+            #quiz {
+                margin-left:50px;    
+            }
+            #nav {
+                margin-left:50px;    
+                position: relative;
+            }
+            #footer {
+                position: absolute;
+                bottom: -100;
+                width: 100%;
+            } 
+            button {background-color:yellow; border-radius: 3px; font-size: 125%;
+           }
+        </style>
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>    
+<div id="header">
+	<center> <h1>
+		Level 0 Exam Grading
+	</h1>    <br>
+    <hr>
+    <br></center>
+</div>
+<div id="grades">
+    <table id="gradesTable"></table>
+</div>
+<div id="score">
+</div>
+<div id="nav">
+    <div id="footer"></div>
+</div>
+
+
+
+
+<script>
+
+
+var gradesTable;
+
+var pointsAvailable;
+var points = [];
+    
+    window.onload = function(){
+	
+    qDiv = document.getElementById('grades');
+	navDiv = document.getElementById('nav');
+    gradesTable = document.getElementById("gradesTable");
+    
+	buildRubric();
+	
+    for(var i = 0; i < pointsAvailable; i++){
+		points[i]=0;
+	}    
+        
+	navDiv.innerHTML += "<br><button onclick='scoreQuiz()'>Calculate Score</button><br>";
+
+    addFooter();
+}
+
+
+function setPoints(q) {
+    if (q>0) {   
+        var checkBox = document.getElementById("myCheck"+q);
+
+          // If the checkbox is checked, add a point
+          if (checkBox.checked == true){
+              points[q-1]=1;
+          } else {
+              points[q-1]=0;
+          }
+        var pts = document.getElementById("q"+q+"Points");
+        pts.innerHTML = points[q-1];
+    }
+}
+    
+function removePoint(q) {
+    if (q>0) {
+        var checkBox = document.getElementById("myCheck"+q);
+
+          // If the checkbox is checked, subtract a point
+          if (checkBox.checked == true){
+              points[q-1]= -1;
+          } else {
+              points[q-1]=0;
+          }
+        var pts = document.getElementById("q"+q+"Points");
+        pts.innerHTML = points[q-1];
+    }    
+}
+
+
+function buildRubric(){
+       
+    var qNum;
+    var ptNum = 1;
+    var rowEnd;
+    var negativePoints = 0;
+    
+    gradesTable.innerHTML += "<tr><th>Goal</th><th>&#x2705;</th><th>Score</th></tr>"
+    
+    qNum = 1;   
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Select the correct variable type</h4></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr>";
+    
+        buildRow(ptNum,"String");      
+        ptNum++; 
+        buildRow(ptNum,"int");
+        ptNum++; 
+        buildRow(ptNum,"char"); 
+        ptNum++; 
+        buildRow(ptNum,"double");
+        ptNum++; 
+        buildRow(ptNum,"boolean");
+        
+    qNum = 2; 
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Compound if condition</h4></td><td>&nbsp;</td><td>&nbsp;</td>";
+    
+        ptNum++; 
+        buildRow(ptNum,"first condition is correct");        
+        ptNum++; 
+        buildRow(ptNum,"logical operator correct, e.g. &&");
+        ptNum++; 
+        buildRow(ptNum,"second condition is correct");       
+       
+     qNum = 3; 
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": \"Mustche\" placement </h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";
+
+        ptNum++; 
+        buildRow(ptNum,"class");
+        ptNum++; 
+        buildRow(ptNum,"main method");
+        ptNum++; 
+        buildRow(ptNum,"if statement");
+    
+    qNum = 4;    
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Joining Strings</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+    
+        ptNum++; 
+        buildRow(ptNum,"Declares and initializes a String variable");
+        ptNum++; 
+        buildRow(ptNum,"Correct print statement");
+        ptNum++; 
+        buildRow(ptNum,"Joins literal strings to String variable (+)");
+        ptNum++; 
+        buildRow(ptNum,"Syntax correct - will compile");
+    
+      qNum = 5;     
+         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Modulo</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+    
+        ptNum++; 
+        buildRow(ptNum,"Uses modulo (%) ");
+        ptNum++; 
+        buildRow(ptNum,"Checks remainder"); 
+    
+    qNum = 6;    
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Random</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+      
+        ptNum++; 
+        buildRow(ptNum,"Creates a Random object");
+        ptNum++; 
+        buildRow(ptNum,"Uses nextInt() with correct bounds");
+        ptNum++; 
+        buildRow(ptNum,"Adjusts random number to get correct range");
+        ptNum++; 
+        buildRow(ptNum,"Places number into a declared int variable");
+       
+    qNum = 7;    
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": String equality check</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+      
+        ptNum++; 
+        buildRow(ptNum,"Uses .equals() to check String values");   
+        ptNum++; 
+        buildRow(ptNum,"Uses correct values for desired logic");
+        
+    
+    qNum = 8;   
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+"a: Input dialog</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+  
+        ptNum++; 
+        buildRow(ptNum,"Uses JOptionPane.showInputDialog to request value");
+        ptNum++; 
+        buildRow(ptNum,"Declares a String variable and captures dialog return value");
+        ptNum++; 
+        buildRow(ptNum,"Syntax correct - will compile");
+  
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+"b: Stringt to int conversion </h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+  
+        ptNum++; 
+        buildRow(ptNum,"Converts String to int");
+        ptNum++; 
+        buildRow(ptNum,"Declares int variable and captures converted value");
+        ptNum++; 
+        buildRow(ptNum,"Changes int value (increment or decrement)");
+        ptNum++; 
+        buildRow(ptNum,"Syntax correct - will compile");
+    
+
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+"c: Output dialog</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+ 
+        ptNum++; 
+        buildRow(ptNum,"correct syntax of JOptionPane.showMessageDialog");
+        ptNum++; 
+        buildRow(ptNum,"literal String and variable correctly joined");
+        ptNum++; 
+        buildRow(ptNum,"variable and literal String correctly joined");
+        ptNum++; 
+        buildRow(ptNum,"Syntax correct - will compile");
+    
+    qNum = 9;  
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Processing</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
+    
+        ptNum++; 
+        buildRow(ptNum,"Identifies correct value (x,y)");
+        ptNum++; 
+        buildRow(ptNum,"Identifies correct value (width,height)");
+        ptNum++; 
+        buildRow(ptNum,"Identifies correct value (color)");  
+        ptNum++; 
+        buildRow(ptNum,"Identifies correct direction (x,y - up,down,left,right)");  
+
+    qNum = 10;  
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Reading code and finding errors</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
+    
+        ptNum++; 
+        buildRow(ptNum,"Must initialize a variable before it is used");
+        ptNum++; 
+        buildRow(ptNum,"Correct equality test for ints");  
+        ptNum++; 
+        buildRow(ptNum,"Assign result of math operation to a variable");  
+        ptNum++; 
+        buildRow(ptNum,"Syntax correct for if, else if, else - will compile");
+        
+    qNum = 11;  
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": For Loops</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
+    
+        ptNum++; 
+        buildRow(ptNum,"Initialize \"counter\" variable");
+        ptNum++; 
+        buildRow(ptNum,"Correct loop condition");  
+        ptNum++; 
+        buildRow(ptNum,"Correct \"counter\" variabale modification");  
+        ptNum++; 
+        buildRow(ptNum,"Use of loop variable in body of loop");
+         
+    qNum = 12;  
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Calling methods with parameters</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
+    
+        ptNum++; 
+        buildRow(ptNum,"Uses correct method name");
+        ptNum++; 
+        buildRow(ptNum,"Provides correct 1st parameter value");  
+        ptNum++; 
+        buildRow(ptNum,"Provides correct 2nd parameter value");  
+        ptNum++; 
+        buildRow(ptNum,"Syntax correct - will compile");
+    
+    
+    qNum = 13;  
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Using for loops and modulo</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
+    
+        ptNum++; 
+        buildRow(ptNum,"Uses a for loop or while loop");
+        ptNum++; 
+        buildRow(ptNum,"Initializes a variable to correct \"start\" number");
+        ptNum++; 
+        buildRow(ptNum,"Correct loop condition");  
+        ptNum++; 
+        buildRow(ptNum,"Correctly modifies variabale in loop");  
+        ptNum++; 
+        buildRow(ptNum,"Uses modulo operation correctly");
+        ptNum++; 
+        buildRow(ptNum,"Uses a correct print statement");   
+        ptNum++; 
+        buildRow(ptNum,"Syntax correct - will compile");       
+
+    
+   qNum = 14;  
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Reading code - if / else if</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
+    
+        ptNum++; 
+        buildRow(ptNum,"Correct 1st line of output");
+        ptNum++; 
+        buildRow(ptNum,"Correct 2nd line of output");  
+        ptNum++; 
+        buildRow(ptNum,"Correct 3rd line of output");  
+       
+    
+// Subtract one for wrong answer(s)
+        negativePoints++;  //This is a count of questions that can subtract from score.
+         ptNum++;
+        gradesTable.innerHTML +="<tr><td><font color=\"red\">Incorrect answers given (will subtract a point)</font></td><td> <input type=\"checkbox\" id=\"myCheck"+ptNum+"\" onclick=\"removePoint("+ptNum+")\"></td><td id=\"q"+ptNum+"Points\">0</td></tr>";
+   
+    
+   qNum = 15;  
+        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Write a method with parameters</h4></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>"; 
+    
+        ptNum++; 
+        buildRow(ptNum,"Correct return type (void)");
+        ptNum++; 
+        buildRow(ptNum,"Correct name of method ");  
+        ptNum++; 
+        buildRow(ptNum,"Correct parameter specification");      
+        ptNum++; 
+        buildRow(ptNum,"Method body matches method purpose");     
+        ptNum++; 
+        buildRow(ptNum,"Syntax correct - will compile");       
+   
+    pointsAvailable = ptNum-negativePoints;
+    
+}
+
+function buildCell(num) {
+    return ("<td> <input type=\"checkbox\" id=\"myCheck"+num+"\" onclick=\"setPoints("+num+")\"></td><td id=\"q"+num+"Points\">0</td></tr>");
+}
+    
+function buildRow(row, skill) {
+    gradesTable.innerHTML += ("<tr><td>"+skill+"</td>"+buildCell(row));
+}
+
+
+
+function scoreQuiz(){
+    var score =0;
+    var pointsScored = 0;
+    for(var i = 0; i < points.length; i++){
+		pointsScored = pointsScored + points[i];
+        
+	}   
+	score = (pointsScored/pointsAvailable*100).toFixed(2);
+	var grade = document.getElementById('score');
+    grade.innerHTML = "<center><h2><b>Score: "+pointsScored+"/"+pointsAvailable+"="+score+"%</b></h2></center>";
+	//grade.innerHTML = "<center><h2><b>Score: "+score+"%</b></h2></center>";
+}
+
+
+</script>
+
+</html>

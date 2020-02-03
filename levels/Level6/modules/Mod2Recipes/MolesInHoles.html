@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><title> Moles in Holes - League Level 0</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"><link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png"><script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script></head><body><div id ="wrap"><div id ="main"><div id="header"><script>addRecipeHeader();</script></div><div id = "recipePage"><div id="recipeTitle"><h1>Moles in Holes</h1><hr><img src=http://level0.jointheleague.org/modules/Mod2Recipes/images/molesInHoles.png alt="Moles in Holes image"></div><div id ="recipeBody"><div id="recipeGoal"><h2>Goal:</h2><p id="goal">Put the moles in their holes! </p></div><div id="recipeSteps"><h2>Steps:</h2><ol id="stepList"><li>Start a new Processing sketch.
+</li><li>Copy the code below into the sketch.
+<pre>
+void draw() {
+
+/* Use the method below to put moles in the holes. */
+
+
+}
+
+void drawMole(int moleX, int moleY) {
+     noStroke();
+     fill(125, 93, 43);
+     ellipse(moleX, moleY, 60, 60); // face
+     fill(255, 237, 209);
+     ellipse(moleX, moleY+10, 33, 28); 
+     fill(0, 0, 0);
+     ellipse(moleX-10, moleY-15, 10, 10); // eyes
+     ellipse(moleX+10, moleY-15, 10, 10);
+     ellipse(moleX, moleY-5, 10, 10); // nose
+     ellipse(moleX, moleY+10, 20, 5); // mouth
+}
+
+void setup() {
+     size(400, 400);
+     background(78, 166, 51); // green grass
+     fill(0, 0, 0);
+     ellipse(200, 200, 100, 30); // holes!
+     ellipse(70, 119, 100, 30);
+     ellipse(300, 60, 100, 30);
+     ellipse(297, 350, 100, 30);
+}
+</pre>
+</li><li>Run the program to see the holes.
+</li><li>Write code in the draw method, to put moles in the holes.
+</li></ol>
+    <a href="https://processing.org/reference">
+    <img src="https://league-level0.github.io/p3logo.jpeg" class="footer" alt="Processing Reference"></a>
+    <div style="clear:both;"></div></div></div></div></div></div><div id="footer"><script>addRecipeFooter();</script></div></body></html>

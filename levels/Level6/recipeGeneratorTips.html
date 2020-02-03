@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recipe Generator Tips</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://central.jointheleague.org/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="http://central.jointheleague.org/img/favicon.png">
+        <script src="http://central.jointheleague.org/script/headerAndFooter.js"></script>
+
+    </head>
+
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id="header">
+                    <script>addRecipeHeader();</script>
+                </div>
+                <div id = "tipsPage">
+                    <div id="tipsTitle">
+                        <h1>Recipe Generator Tips</h1>
+                        <hr>
+                    </div>
+                    <div id ="tipsBody">
+
+                        <h2>Just give it a shot!</h2>
+                        <p style = "font-weight: 900;">
+                            You're probably not going to break anything.  This generator was designed to handle most things you might have to do to convert the text to valid HTML, so all you need to think about is creating your recipe.
+                        </p>
+
+                        <h2>Adding Steps</h2>
+                        <p style = "font-weight: 900;">
+                            The only rule here is that you should label each step using a number, period, then space.
+                        </p> 
+
+                        <pre>
+1. This step will work.
+2.  This step will also work.
+3.                          
+
+
+Even this will be formatted properly. 
+3.  Don't worry about messing up your numbering, it will still be displayed correctly! 
+</pre>
+
+                        <h2>Adding Code into Your Steps</h2>
+                        <p style = "font-weight: 900;">
+                            Many recipes benefit from having snippets of code within the steps.  This is the one area where there are a few rules that you should follow:
+
+                        </p> 
+                        <ol>
+                            <li>Put all code snippets inide of &lt;pre&gt; tags.</li>
+                            <li>Since this block of text is therefore preformatted, any indentation you use will be represented in the recipe.</li>
+                            <li>Left justify the first line of your code block (again, it will display exactly as you have entered it).</li>
+                        </ol>
+                        <pre>
+3.  Here is a step in my recipe.  It needs a little bit of code to make sense.
+&lt;pre&gt;
+import ddf.minim.*;
+boolean soundPlayed = false;
+void playSound() {
+    if (!soundPlayed) {
+        Minim minim = new Minim(this);
+        AudioSample sound = minim.loadSample("ding2.wav");
+        sound.trigger();
+        soundPlayed = true;
+    }
+}
+&lt;/pre&gt;
+4.  And on to the next step!
+
+</pre>
+
+                        <h2>Adding an Image</h2>
+                        <p style = "font-weight: 900;">
+                            Since JavaScript doesn't easily allow you to download entire folders, there is currently not a way to upload a photo into the recipe generator.  The easiest way to add a photo for those with access to the repositories is to upload the image in the correct folder on the respository, then paste the URL into the appropriate field on the recipe generator.  For example, the googlyEyes recipe is in level 0 module 4, and the associated image can be found here:
+                        </p> 
+                        <pre>
+https://github.com/LEAGUE-Level0/LEAGUE-Level0.github.io
+    /modules
+        /Mod4Recipes
+            /images
+                googlyEyes.png
+</pre>
+
+                        <h2>What About Escaping Certain Characters?</h2>
+                        <p style = "font-weight: 900;">
+                            You might wonder if you need to escape &lt;, &gt;, or &amp; in your recipe.  Don't worry, the recipe generator will do that for you!  However, if you try to use any HTML within the body of the recipe that isn't a &lt;pre&gt; or anchor (i.e. link) tag the recipe generator will strip out the angle brackets and it will be dispalyed as text.  
+                        </p>
+
+                        <h2>Creating Good Recipes</h2>
+                        <p style = "font-weight: 900;">
+                           Here are a few tips to help improve your recipes:
+                        </p>
+                        <ol>
+                            <li>Use your imagination!  Try to come up with a fun backstory for your program.  For example, "Write a bunch of if statements to check user input" is a lot less fun than "write a program that allows the user to enter a name and tell them that person's superpower".</li>
+                            <li>Students will stop reading a step at their earliest possible convenience.  Try and keep recipe steps to one sentence if possible.</li>
+                            <li>For lower level recipes, try not to leave out any steps no matter how obvious they seem.  For example, for Processing recipes you likely want the first step to mention creating a new sketch at adding setup() and draw() methods.</li>
+                            <li>Adding a list of steps inside of a step is <span style="font-weight: bold;">strongly discouraged</span> (see point two), but if you must do so then please use the code below so that it is properly formatted:
+<pre>
+1.  Here is a step that requires clarification:
+&lt;ol class="insetRecipeStepsOL"&gt;
+    &lt;li>Do this first&lt;/li&gt;
+    &lt;li>Then do this&lt;/li&gt;
+    &lt;li>Finally do this&lt;/li&gt;
+&lt;/ol&gt;
+</pre></li>
+                        </ol>
+                        
+                        <div style="clear:both;"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body>   
+</html>

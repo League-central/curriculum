@@ -1,0 +1,291 @@
+<html>
+<head>
+  <h1 align="center">QUIZ</h1>
+</head>
+
+<body onload="startup()" style="background-color:#bbccdd;font-weight:bold;font-size:22px;">
+  <pre style="white-space:pre-wrap;"><code>
+  <div id="docBody"style="overflow:visible;"></div>
+</code></pre>
+</body>
+
+<script>
+  function Question(){
+    this.question = "";
+    this.choices = [];
+    this.correctAnswer = "";
+    this.userAnswer = "";
+    this.visited = false;
+  }
+  
+  var body;
+  
+  var questions = [];
+  
+  var currentQuestion;
+    
+  function startup(){
+    currentQuestion = 0;
+    
+    body = document.getElementById("docBody");
+    
+    questions[0] = new Question();
+questions[0].question = "Consider the following method oddArray, which changes every even number value in the array to 0. By the end of the method, only odd numbers will be present in the array. Which line correctly completes /* to be determined */ to make the code work as intended?\n\npublic void oddArray (int[] arr)\n{\n    for (int i = 0; i < arr.length; i++)\n    {\n        //if the number at arr[i] is even, it becomes 0\n        if( /* to be determined */ )\n            arr[i] = 0;\n    }\n}";
+questions[0] = new Question();
+questions[0].question = "Which line has an error?\n\n1: String name = \"Thadius\";\n2: \n3: if(name == \"Thadius\"){\n4:   System.out.println(\"Axlerod\");\n5: }else{\n6:   System.out.println(\"Marbrand\");\n7: }";
+questions[0].choices[0] = "1";
+questions[0].choices[1] = "3";
+questions[0].choices[2] = "4";
+questions[0].choices[3] = "5";
+questions[0].choices[4] = "6";
+questions[0].correctAnswer = 1;
+questions[1] = new Question();
+questions[1].question = "What will print as a result of running the following program?\n\npublic class JavaClass{\n  public static void main(String[] args){\n    int x = 10;\n    for(int i = x; i >= 0; i -= 5){\n      System.out.println(i);\n    }\n  }\n}";
+questions[1].correctAnswer = "10\n5\n0";
+questions[1].userAnswer = "";
+questions[2] = new Question();
+questions[2].question = "Fill in the blank to create an object of the Random class.\n\nRandom randGen = _____________";
+questions[2].correctAnswer = "new Random();";
+questions[2].userAnswer = "";
+questions[3] = new Question();
+questions[3].question = "How many times will the loop run?\n\nfor(int i = 0; i > 3; i++){\n  //code\n}";
+questions[3].correctAnswer = "0";
+questions[3].userAnswer = "";
+questions[4] = new Question();
+questions[4].question = "How many times will the loop run?\n\nfor(int i = 0; i < 5; i += 6){\n  //code\n}";
+questions[4].correctAnswer = "1";
+questions[4].userAnswer = "";
+questions[5] = new Question();
+questions[5].question = "What is the return type of this method?\n\nint doMath(String x, double y){\n  //code\n}";
+questions[5].choices[0] = "String";
+questions[5].choices[1] = "void";
+questions[5].choices[2] = "int";
+questions[5].choices[3] = "double";
+questions[5].choices[4] = "doMath";
+questions[5].correctAnswer = 2;
+questions[6] = new Question();
+questions[6].question = "What is the name of this method?\n\nJPanel getCurrentFrame(int num){\n  //code\n}";
+questions[6].correctAnswer = "getCurrentFrame";
+questions[6].userAnswer = "";
+questions[7] = new Question();
+questions[7].question = "Write a line of code to call the following method.\n\nvoid printCalculations();";
+questions[7].correctAnswer = "printCalculations();";
+questions[7].userAnswer = "";
+questions[8] = new Question();
+questions[8].question = "What will the value of x be after running this code?\n\nint x = 0;\n\nif(x < 1){\n  x++;\n}else{\n  x--;\n}\n\nif(x == 1){\n  x++;\n}else{\n  x--;\n}";
+questions[8].correctAnswer = "2";
+questions[8].userAnswer = "";
+questions[9] = new Question();
+questions[9].question = "In Java, when setting an object or a variable equal to something for the first time, this is called ____________ the variable.";
+questions[9].choices[0] = "mobilizing";
+questions[9].choices[1] = "equalizing";
+questions[9].choices[2] = "varying";
+questions[9].choices[3] = "initializing";
+questions[9].choices[4] = "diminishing";
+questions[9].correctAnswer = 3;
+questions[10] = new Question();
+questions[10].question = "What are the values of h1 and h2 after this code executes?\n\nint h1 = 70;\nint h2 = 72;\n\nif(h1 < h2){\n  int t = h2;\n  h2 = h1;\n  h1 = t;\n}\n";
+questions[10].choices[0] = "h1 = 72;\nh2 = 70;";
+questions[10].choices[1] = "h1 = 70;\nh2 = 72;";
+questions[10].choices[2] = "h1 = 72;\nh2 = 72;";
+questions[10].choices[3] = "h1 = 70;\nh2 = 70;";
+questions[10].choices[4] = "h1 = 0;\nh2 = 0;";
+questions[10].correctAnswer = 0;
+questions[11] = new Question();
+questions[11].question = "How many parameters does the following method take?\n\nvoid doJava(int x, float y, double z, String val){\n  //code\n}";
+questions[11].correctAnswer = "4";
+questions[11].userAnswer = "";
+questions[12] = new Question();
+questions[12].question = "What is printed after the following code executes?\n\nString fileName = \"document\";\nString extension = \".txt\";\nString filePath = fileName + extension;\nSystem.out.println(filePath);";
+questions[12].correctAnswer = "document.txt";
+questions[12].userAnswer = "";
+questions[13] = new Question();
+questions[13].question = "13 % 4 = __ ";
+questions[13].choices[0] = "3";
+questions[13].choices[1] = "3.25";
+questions[13].choices[2] = "0.3077";
+questions[13].choices[3] = "1";
+questions[13].choices[4] = "0";
+questions[13].correctAnswer = 3;
+questions[14] = new Question();
+questions[14].question = "What would be the output after the following code executes?\n\nfor(int i = 0; i <= 9; i++){\n  if(i % 3 == 0){\n    System.out.print(i);\n  }\n}";
+questions[14].correctAnswer = "0369";
+questions[14].userAnswer = "";
+questions[15] = new Question();
+questions[15].question = "A placeholder for information in java is a(n) ________.";
+questions[15].choices[0] = "java";
+questions[15].choices[1] = "variable";
+questions[15].choices[2] = "for loop";
+questions[15].choices[3] = "if statement";
+questions[15].choices[4] = "syso";
+questions[15].correctAnswer = 1;
+questions[16] = new Question();
+questions[16].question = "What is the value of x after the following code executes?\n\npublic class MyProgram{\n  public static void main(String[] args){\n    int x = startup(-4);\n  }\n\n  static int startup(int v){\n    if(v >= 0){\n      return 1;\n    }else{\n      return 0;\n    }\n  }\n}";
+questions[16].choices[0] = "0";
+questions[16].choices[1] = "1";
+questions[16].choices[2] = "-4";
+questions[16].choices[3] = "x";
+questions[16].choices[4] = "an error would occur";
+questions[16].correctAnswer = 0;
+questions[17] = new Question();
+questions[17].question = "How many times will the following loop run?\n\nfor(int x = 5; x > 0; x--){\n  //code\n}";
+questions[17].correctAnswer = "5";
+questions[17].userAnswer = "";
+questions[18] = new Question();
+questions[18].question = "What will print after the following code executes?\n\nString ans = \"yEs\";\n\nif(ans.equals(\"yes\")){\n  System.out.println(\"ONE\");\n}\nelse if(ans.equalsIgnoreCase(\"yes\")){\n  System.out.println(\"TWO\");\n}\nelse{\n  System.out.println(\"THREE\");\n}";
+questions[18].choices[0] = "ONE\nTWO\nTHREE";
+questions[18].choices[1] = "yEs";
+questions[18].choices[2] = "THREE";
+questions[18].choices[3] = "ONE";
+questions[18].choices[4] = "TWO";
+questions[18].correctAnswer = 4;  
+questions[19] = new Question();
+questions[19].question = "Which if-statement will not run?";
+questions[19].choices[0] = "if(0 == 0){\n  //code\n}";
+questions[19].choices[1] = "int x = 5;\n\nif(x == 5){\n  //code\n}";
+questions[19].choices[2] = "int x = 5;\n\nif(x < 10 && x > 0){\n  //code\n}";
+questions[19].choices[3] = "int y = 10;\n\nif(y > 0 && y > 100){\n  //code\n}";
+questions[19].choices[4] = "int x = 5;\n\nif(x < 10 || x > 0){\n  //code\n}";
+questions[19].correctAnswer = 3;
+    
+    setDivText(questions[0]);
+    setButtons(questions[0]);
+  }
+  
+  function setDivText(q){
+    body.innerHTML += currentQuestion + 1 + ". ";
+    body.innerHTML += q.question + "<br><br><hr size=\"1\">";
+    
+    if(q.choices.length == 0){
+      body.innerHTML += "<br><textarea id=\"answer\" rows=\"10\" cols=\"80\">" +
+                         q.userAnswer + "</textarea><br>"; 
+    }else{
+      for(var i = 0; i < q.choices.length; i++){
+        if(i == q.userAnswer && q.visited){
+          body.innerHTML += convertChar(i) + "<input type=\"radio\" checked=\"true\"name=\"answer\" id=\"" + i + "\">" +q.choices[i] + "</input><br><br>";
+        }else{
+          body.innerHTML += "<input type=\"radio\" name=\"answer\" id=\"" + i + "\"><br>" +q.choices[i] + "</input><br><hr size=\"1\">";
+        }
+      }
+      
+      q.visited = true;
+    }
+  }
+  
+  function convertChar(a){
+    switch(a){
+        case 0: 
+        case "0": return "A";
+        case 1: 
+        case "1": return "B";
+        case 2: 
+        case "2": return "C";
+        case 3: 
+        case "3": return "D";
+        case 4: 
+        case "4": return "E";
+    }
+  }
+  
+  function setButtons(q){
+    if(q == questions[0]){
+      if(questions.length > 1){
+        body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+      }else{
+        body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+      }
+    } 
+    else if(q == questions[questions.length - 1]){
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+    }else{
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+    }
+  }
+  
+  function nextQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion++;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function previousQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion--;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function setUserAnswer(){
+    var q = questions[currentQuestion];
+    
+    if(q.choices.length > 0){
+      try{
+     		q.userAnswer = document.querySelector('input[name="answer"]:checked').id;
+        return true;
+      }catch(err){
+        alert("Make a choice. You can come back and change it later.");
+        return false;
+      }
+    }else{
+      q.userAnswer = document.getElementById("answer").value.trim();
+      return true;
+    }
+  }
+  
+  function checkQuiz(){
+    var total = 0;
+    for(var i = 0; i < questions.length; i++){
+      var q = questions[i];
+      if(q.choices.length == 0){
+        if(q.userAnswer.trim() == q.correctAnswer){
+          total++;
+        }
+      } else {
+        if(q.correctAnswer == q.userAnswer){
+          total++;
+        }
+      }
+    }
+    return total;
+  }
+  
+  function reloadPage(){
+    location = location;
+  }
+  
+  function submit(){
+    setUserAnswer();
+    
+    body.innerHTML = "You got " + checkQuiz() + " out of " + questions.length + " correct.<br><hr size=\"3\">";
+    for(var i = 0; i < questions.length; i++){
+      if(questions[i].choices.length > 0){
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += convertChar(questions[i].userAnswer) + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += convertChar(questions[i].correctAnswer) + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }else{
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += questions[i].userAnswer + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += questions[i].correctAnswer + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }
+    }
+            body.innerHTML += "<button onclick=\"reloadPage()\">START OVER</button>";
+  }
+</script>
+<script src="http://league-level0.github.io/copyrightFooter.js"></script>
+<div id="copyright"><script>copyright();</script></div>
+</html>

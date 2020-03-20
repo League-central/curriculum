@@ -1,4 +1,10 @@
-<!DOCTYPE html><html><head><title> Ice Cream Shop - League Level 0</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"><link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png"><script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script></head><body><div id ="wrap"><div id ="main"><div id="header"><script>addRecipeHeader();</script></div><div id = "recipePage"><div id="recipeTitle"><h1>Ice Cream Shop</h1><hr></div><div id ="recipeBody"><div id="recipeGoal"><h2>Goal:</h2><p id="goal">Make an ice cream cone! </p></div><div id="recipeSteps"><h2>Steps:</h2><ol id="stepList"><li>Start a new Processing sketch.
+<!DOCTYPE html><html><head><title> Ice Cream Shop - League Level 0</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"><link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png"><script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script></head><body><div id ="wrap"><div id ="main">
+    
+    <div id="recipeLeftColumn"><h1>Ice Cream Shop</h1><hr>
+    
+    <img src=images/iceCreamShop.png>
+    <div id="recipeGoal"><h2>Goal:</h2><p id="goal">Make an ice cream cone! </p></div>
+    </div><div id ="recipeRightColumn"><div id="recipeSteps"><h2>Steps:</h2><ol id="stepList"><li>Start a new Processing sketch.
 </li><li>Copy the code below into the sketch.
 <pre>
 void setup(){
@@ -48,7 +54,7 @@ void addScoop(String flavor){
 
 //Don't Touch this method!!
 void addSprinkle(int numberOfSprinkles){
-    for(int i = 0; i &lt numberOfSprinkles; i++){
+    for(int i = 0; i &lt; numberOfSprinkles; i++){
          fill(random(256),random(256),random(256));
          int minX = width/2-SCOOPSIZE/2 + 10;
          int maxX = SCOOPSIZE/3 +width/2 +10;
@@ -66,4 +72,4 @@ void addSprinkle(int numberOfSprinkles){
 </li></ol>
     <a href="https://processing.org/reference">
     <img src="https://league-level0.github.io/p3logo.jpeg" class="footer" alt="Processing Reference"></a>
-    <div style="clear:both;"></div></div></div></div></div></div><div id="footer"><script>addRecipeFooter();</script></div></body></html>
+    <div style="clear:both;"></div></div></div></div></div><div id="footer"><script>addRecipeFooter();</script></div></body></html>

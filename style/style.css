@@ -286,6 +286,71 @@ hr {
     margin:5em;
 }
 
+
+/*** Recipe Column Support ***/
+
+#recipeLeftColumn {
+    padding-top:2em;
+    	float: left;
+       width: 40%;
+}
+	#recipeLeftColumn h1 {
+	    font-family: "Raleway", sans-serif;
+		font-size: 32px;
+	}
+
+    #recipeLeftColumn img {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 33%;
+   }
+    #recipeLeftColumn p {
+       padding-left: 1em;
+        width:100%;
+        padding-top:1em;
+    }
+
+#recipeRightColumn {
+    padding-top:1em;
+    padding-right: 1em;
+    float: right;
+    width: 55%;
+}
+
+    #recipeRightColumn ol {
+        float:left;
+        width:100%;
+        padding-left:1em;
+        padding-top:.5em;
+    }
+    #recipeRightColumn li {
+            padding-bottom:1em;
+    }
+    #recipeRightColumn pre{
+        font-size:1.15em;
+        color: black;
+        font-family: Courier;
+        font-size: 16px;
+        border-style:solid;
+        border-width: 2px;
+        background:#c1d3bc;
+        border-color:#1E9806;
+        font-weight:200;
+        margin-top: .5em;
+        margin-bottom: .5em;
+        margin-right: .5em;
+        overflow:auto;
+    }
+
+    #recipeRightColumn img {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 25%;
+   }
+
+
 #tipsPage {
     padding-top:5em;
     margin: 0 auto;

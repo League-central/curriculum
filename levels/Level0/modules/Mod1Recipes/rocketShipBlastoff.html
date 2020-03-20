@@ -12,22 +12,20 @@
     <body>
         <div id ="wrap">
             <div id ="main">
-                <div id="header">
-                    <script>addRecipeHeader();</script>
-                </div>
-                <div id = "recipePage">
-                    <div id="recipeTitle">
+
+                    <div id="recipeLeftColumn">
                         <h1>Rock Ship Blastoff</h1>
                         <hr>
                         <img src="http://level0.jointheleague.org/modules/Mod1Recipes/images/rocketship.png " alt="Rock Ship Blastoff image">
-                    </div>
-                    <div id ="recipeBody">
                         <div id="recipeGoal">
                             <h2>Goal:</h2>
                             <p id="goal">
                                 The goal is to make the Rocketship blast off and move from the bottom of the screen to the top of the screen.
                             </p>
                         </div>
+                    </div>
+                    <div id ="recipeRightColumn">
+
                         <div id="recipeSteps">
                             <h2>Steps:</h2>
                             <ol id="stepList">
@@ -68,7 +66,7 @@ void draw() {
                     </div>
                 </div>
             </div>
-        </div>
+        
         <div id="footer">
             <script>addRecipeFooter();</script>
         </div>

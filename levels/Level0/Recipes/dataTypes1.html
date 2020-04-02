@@ -1,0 +1,91 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <script type="text/javascript">
+    function submitClick() {
+      var ans = ["int", "int", "String", "String", "int", "String", "String", "int"];
+    
+      var usrAns = [];
+    
+      for (var i = 0; i < ans.length; i++) {
+        usrAns[i] = document.getElementById("answer" + (i + 1));
+        if (usrAns[i].value.trim() == ans[i]) {
+          usrAns[i].style.backgroundColor = "lightgreen";
+        } else {
+          usrAns[i].style.backgroundColor = "pink";
+        }
+      }
+    }
+  </script>
+
+  <title>Which Data Type?</title>
+  <style>
+    h1 {
+      text-align: center;
+    }
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      text-align: center;
+    }
+    body {
+      background-color: rgb(125, 200, 255);
+    }
+    
+    a:link {
+      color: rgb(100, 25, 0);
+    }
+    a:visited {
+      color: rgb(100, 25, 0);
+    }
+    a:hover {
+      color: rgb(100, 25, 0);
+    }
+    a:active {
+      color: rgb(100, 25, 0);
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1>The League of Amazing Programmers</h1>
+  <h2>Which Data Type?</h2>
+  <h3>Fill in the blank with the correct data type.<br>
+	</h3>
+
+  <pre><code>
+  <textarea rows="1" cols="5" id="answer1"></textarea> x = 5; <br>
+  <hr size="3">
+  <textarea rows="1" cols="5" id="answer2"></textarea> age = 12; <br>
+  <hr size="3">
+  <textarea rows="1" cols="5" id="answer3"></textarea> name = "Thadius"; <br>
+  <hr size="3">
+  <textarea rows="1" cols="5" id="answer4"></textarea> location = "San Diego"; <br>
+  <hr size="3">
+  <textarea rows="1" cols="5" id="answer5"></textarea> totalParties = 5400; <br>
+  <hr size="3">
+  <textarea rows="1" cols="5" id="answer6"></textarea> value =  JOptionPane.showInputDialog("Enter some data");<br>
+  <hr size="3">
+  <textarea rows="1" cols="5" id="answer7"></textarea> input = JOptionPane.showInputDialog("Enter your age"); <br>
+  <textarea rows="1" cols="5" id="answer8"></textarea> inputAsInteger = Integer.parseInt(input); <br>
+  <hr size="3">
+
+
+
+
+<button type="button" style="width:500px;height:100px;font-size:40px;" onclick="submitClick()">SUBMIT YOUR ANSWERS</button>
+
+  </code></pre>
+
+  <hr size="3">
+</body>
+
+<script src="http://league-level0.github.io/copyrightFooter.js"></script>
+<div id="copyright"><script>copyright();</script></div>
+</html>

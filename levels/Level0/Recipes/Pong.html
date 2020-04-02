@@ -1,0 +1,66 @@
+<!DOCTYPE html><html><head><title> Pong - League Level 0</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"><link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png"><script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script></head>
+    
+    <body><div id ="wrap"><div id ="main">
+        
+        <div id="recipeLeftColumn"><h1>Pong</h1><hr>
+            <img src="images/pong.png">
+        <div id="recipeGoal"><h2>Goal:</h2><p id="goal">Make a Pong game using Processing!</p></div>
+        </div>
+        
+        <div id ="recipeRightColumn"><div id="recipeSteps"><h2>Steps:</h2><ol id="stepList">
+            <li>Create a new sketch and add setup and draw methods.</li>
+            
+            <li>Draw a ball on the screen.
+<pre>
+ellipse(x, y, width, height) //in draw method
+fill(red, green, blue) //in draw method
+stroke(red, green, blue) //in draw method
+</pre>
+</li><li>Make the ball move across the screen (left to right).
+...make a variable for the ball's X position and change it in the draw method.
+
+</li><li>Change the speed of the ball.
+<ol class="insetRecipeStepsOL">
+<li>make a variable for the speed of the ball in the X direction (from left to right).</li>
+<li>changing this variable should change the speed of your ball</li>
+</ol>
+
+</li><li>Make the ball bounce off of the walls.
+<pre>
+if(x > width){
+    xSpeed = -xSpeed;
+}
+</pre>
+</li><li>Do the same in the Y (up and down) direction.
+(hint) height
+
+</li><li>Add a background image for your game.
+<pre>
+PImage backgroundImage; //at the top of your sketch
+backgroundImage = loadImage("image.jpg"); //in the setup method
+image(backgroundImage, 0, 0); //in draw method
+image(backgroundImage, 0, 0, width, height); //if you want to resize
+</pre>
+</li><li>Draw a paddle at the bottom of the screen
+<pre>
+rect(x, y, width, height);
+</pre>
+</li><li>Use mouseX to make the paddle move over and back with the mouse.
+
+</li><li>Make the ball change Y direction when it hits the paddle. Figure it out by yourself, or use this
+method:
+<pre>
+boolean intersects(int ballX, int ballY, int paddleX, int paddleY,
+int paddleLength) {
+    if (ballY &gt; paddleY &amp;&amp; ballX &gt; paddleX &amp;&amp; ballX &lt; paddleX + paddleLength)
+        return true;
+    else
+        return false;
+}
+</pre>
+</li>            <li>Make sure you SAVE YOUR CODE when you are done. 
+            </li>    
+    </ol>
+    <a href="https://processing.org/reference">
+    <img src="https://league-level0.github.io/p3logo.jpeg" class="footer" alt="Processing Reference"></a>
+    <div style="clear:both;"></div></div></div></div></div><div id="footer"><script>addRecipeFooter();</script></div></body></html>

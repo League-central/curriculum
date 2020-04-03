@@ -46,9 +46,22 @@
 }<br>
     <br>
      void playVideo(String videoID) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Workaround for Linux because "Desktop.getDesktop().browse()" doesn't <br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//work on some Linux implementations <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (System.getProperty("os.name").toLowerCase().contains("linux")) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Runtime.getRuntime().exec(new String[] { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "which", "xdg- open" }).getInputStream().read() != -1) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Runtime.getRuntime().exec(new String[] { "xdg-open", videoID }); <br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URI uri = new URI(videoID);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java.awt.Desktop.getDesktop().browse(uri);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (Exception e) {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br>
 

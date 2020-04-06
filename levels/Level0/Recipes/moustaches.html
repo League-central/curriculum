@@ -1,0 +1,101 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <script type="text/javascript">
+    function submitClick() {
+      var ans = "public class Moustache2{public static void main(String[] args){for(int j = 0; j < 10; j++){"+
+       "if(input.equals(\"are cool\")){for (int i = 0; i < 50; i++){System.out.println(\"{}\");"+
+    "}}else{System.out.println(\"you don't like moustaches... no soup for you\");}}}}";
+    
+      ans = ans.replace(/\s+/g, '');
+      
+      var usrAns = document.getElementById("answer");
+      var content = usrAns.value.trim();
+      content = content.replace(/\s+/g, '');
+      console.log(content);
+      console.log(ans);
+      
+      if (content == ans) {
+          usrAns.style.backgroundColor = "lightgreen";
+        } else {
+          usrAns.style.backgroundColor = "pink";
+        }
+      
+    }
+  </script>
+
+  <title>MOUSTACHES 2</title>
+  <style>
+    h1 {
+      text-align: center;
+    }
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      text-align: center;
+    }
+    body {
+      background-color: rgb(125, 200, 255);
+    }
+    
+    a:link {
+      color: rgb(100, 25, 0);
+    }
+    a:visited {
+      color: rgb(100, 25, 0);
+    }
+    a:hover {
+      color: rgb(100, 25, 0);
+    }
+    a:active {
+      color: rgb(100, 25, 0);
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1>The League of Amazing Programmers</h1>
+  <h2>Moustaches</h2>
+  <h3>Put the moustaches where they belong<br>
+	</h3>
+
+  <pre><code>
+  <textarea rows="20" cols="80" id="answer" style="font-size: 24pt">
+public class Moustache2
+
+      public static void main(String[] args) 
+
+          	for (int j = 0; j &lt 10; j++) 
+
+                  if (input.equals("are cool"))
+
+                      for (int i = 0; i &lt 50; i++) 
+
+                            System.out.println("{}");
+
+                  else 
+
+                        System.out.println("you don't like moustaches... no soup for you");
+
+
+</textarea> <br>
+  <hr size="3">
+  
+
+
+
+<button type="button" style="width:500px;height:100px;font-size:40px;" onclick="submitClick()">SUBMIT YOUR ANSWER</button>
+
+  </code></pre>
+
+  <hr size="3">
+</body>
+
+
+</html>

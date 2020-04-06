@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Greeter - League Level 0</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+
+                    <div id="recipeLeftColumn">
+                        <h1>Greeter</h1>
+                        <hr>
+                        <img src="images/greeter.png">
+                         <div id="recipeGoal">
+                            <h2>Goal:</h2>
+                            <p id="goal">
+                                Ask the user for their name, then use it to greet them!
+                            </p>
+                        </div>
+                    </div>
+                    <div id ="recipeRightColumn">
+
+                        <div id="recipeSteps">
+                            <h2>Steps:</h2>
+                            <ol id="stepList">
+                                <li>Create a class called Greeter.
+                                </li>
+                                <li>Add a main method.
+                                </li>
+                                <li>Ask the user for their name:
+<pre>
+String input = JOptionPane.showInputDialog("What is your name?");
+</pre>
+                                </li>
+                                <li>Say hi to them:
+<pre>
+JOptionPane.showMessageDialog(null,"Hello "+input);
+</pre>
+                                </li>
+                            </ol>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body></html>

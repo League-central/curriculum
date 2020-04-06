@@ -1,0 +1,269 @@
+<html>
+<head>
+  <h1 align="center">QUIZ</h1>
+</head>
+
+<body onload="startup()" style="background-color:lightblue">
+  <pre><code>
+  <div id="docBody" style="font-size:22px;">
+    
+</div>
+</code></pre>
+</body>
+
+<script>
+  function Question(){
+    this.question = "";
+    this.choices = [];
+    this.correctAnswer = "";
+    this.userAnswer = "";
+    this.visited = false;
+  }
+  
+  var body;
+  
+  var questions = [];
+  
+  var currentQuestion;
+    
+  function startup(){
+    currentQuestion = 0;
+    
+    body = document.getElementById("docBody");
+    
+    questions[0] = new Question();
+questions[0].question = "How many times will ole! print to the screen when the following code runs?\n\npublic class MyJavaProgram{\n  public static void main(String[] args){\n    for(int i = 0; i <= 12; i++){\n      if(i % 2 == 0){\n        System.out.println(\"ole!\");\n      }\n    }\n  }\n}";
+questions[0].choices[0] = "0";
+questions[0].choices[1] = "2";
+questions[0].choices[2] = "6";
+questions[0].choices[3] = "7";
+questions[0].choices[4] = "12";
+questions[0].correctAnswer = 3;
+questions[1] = new Question();
+questions[1].question = "write a line of code to call the following method.\n\nvoid doMagic(){}";
+questions[1].correctAnswer = "doMagic();";
+questions[1].userAnswer = "";
+questions[2] = new Question();
+questions[2].question = "What would print to the screen after the following code executes?\n\nint i = 5;\n\nif(i < 10){\n  System.out.println(\"Success\");\n}else if(i == 5){\n  System.out.println(\"Failure\");\n}";
+questions[2].correctAnswer = "Success";
+questions[2].userAnswer = "";
+questions[3] = new Question();
+questions[3].question = "Which line of code contains an error?\n\n1: int x = 5;\n2: int y = 2;\n3:\n4: if(x > 0){\n5:   x = 0;\n6: }\n7: else if(y = 2){\n8:   y = 0;\n9: }";
+questions[3].choices[0] = "1";
+questions[3].choices[1] = "4";
+questions[3].choices[2] = "5";
+questions[3].choices[3] = "7";
+questions[3].choices[4] = "There are no errors.";
+questions[3].correctAnswer = 3;
+questions[4] = new Question();
+questions[4].question = "What is the value of x after the following code executes?\n\nint x = 7;\n\nif(x == 0){\n  x = 10;\n}else if(x < 5){\n  x = 11;\n}else{\n  x = 12;\n}";
+questions[4].choices[0] = "7";
+questions[4].choices[1] = "0";
+questions[4].choices[2] = "5";
+questions[4].choices[3] = "10";
+questions[4].choices[4] = "12";
+questions[4].correctAnswer = 4;
+questions[5] = new Question();
+questions[5].question = "What is the value of sushi after the following code executes?\n\nint sushi = 3;\n\nif(sushi == 3){\n  sushi = 5;\n} \nif(sushi == 5){\n  sushi = 7;\n}\nif(sushi == 7){\n  x = 7;\n}\n\nsushi = 9;";
+questions[5].choices[0] = "9";
+questions[5].choices[1] = "7";
+questions[5].choices[2] = "5";
+questions[5].choices[3] = "3";
+questions[5].choices[4] = "0";
+questions[5].correctAnswer = 0;
+questions[6] = new Question();
+questions[6].question = "What is the value of port after the following code executes?\n\nString port = \"\";\n\nfor(int i = 0; i < 3; i++){\n  port = port + i;\n}";
+questions[6].choices[0] = "123";
+questions[6].choices[1] = "012";
+questions[6].choices[2] = "0";
+questions[6].choices[3] = "01210";
+questions[6].choices[4] = "12321";
+questions[6].correctAnswer = 1;
+    
+    questions[7] = new Question();
+questions[7].question = "What is the name of the following method?\n\nint getInformation(String filename){\n  //code\n}";
+questions[7].correctAnswer = "getInformation";
+questions[7].userAnswer = "";
+questions[8] = new Question();
+questions[8].question = "What is the output of this code?\n\nint x = 5;\n\nif(x < 10)\n{\n    System.out.println(“JUMP!”);\n}\nelse\n{\n    System.out.println(“DUCK!”);\n}";
+questions[8].choices[0] = "JUMP!";
+questions[8].choices[1] = "DUCK!";
+questions[8].choices[2] = "JUMP!\nDUCK!";
+questions[8].choices[3] = "JUMP!DUCK!";
+questions[8].choices[4] = "(nothing)";
+questions[8].correctAnswer = 0;
+questions[9] = new Question();
+questions[9].question = "A placeholder for information is a(n) ____________.";
+questions[9].choices[0] = "data stream";
+questions[9].choices[1] = "method";
+questions[9].choices[2] = "variable";
+questions[9].choices[3] = "main";
+questions[9].choices[4] = "exection";
+questions[9].correctAnswer = 2;
+questions[10] = new Question();
+questions[10].question = "Which method call will draw a box in the top left corner of a window?";
+questions[10].choices[0] = "rect(0, 0, 100, 100);";
+questions[10].choices[1] = "rect(45, 45, 100, 100);";
+questions[10].choices[2] = "rect(x, y, 100, 100);";
+questions[10].choices[3] = "rect(0, 100, 100, 100);";
+questions[10].choices[4] = "rect(WIDTH, HEIGHT, 100, 100);";
+questions[10].correctAnswer = 0;
+questions[11] = new Question();
+questions[11].question = "What is the height of the following box?\n\nrect(0, 0, 200, 300);";
+questions[11].correctAnswer = "300";
+questions[11].userAnswer = "";
+questions[12] = new Question();
+questions[12].question = "What is the largest number that the variable num can possibly be?\n\nRandom rand = new Random();\nint num = rand.nextInt(100);";
+questions[12].correctAnswer = "99";
+questions[12].userAnswer = "";
+questions[13] = new Question();
+questions[13].question = "Which block of code will make the Robot draw a square?";
+questions[13].choices[0] = "Robot rob = new Robot();\n\nrob.move(10);\nrob.turn(10);\nrob.move(10);\nrob.turn(10);\nrob.move(10);\nrob.turn(10);\nrob.move(10);\nrob.turn(10);";
+questions[13].choices[1] = "Robot rob = new Robot();\n\nfor(int i = 0; i < 4; i++){\n  rob.move(100);\n}";
+questions[13].choices[2] = "Robot rob = new Robot();\n\nrob.drawSquare();";
+questions[13].choices[3] = "Robot rob = new Robot();\n\nrob.rect(0, 0, 200, 200);";
+questions[13].choices[4] = "Robot rob = new Robot();\n\nfor(int i = 0; i < 4; i++){\n  rob.move(100);\n  rob.turn(90);\n}";
+questions[13].correctAnswer = 4;
+questions[14] = new Question();
+questions[14].question = "What is the value of superCode after this code executes?\n\nString superCode = \"\";\nsuperCode = \"123456\";";
+questions[14].correctAnswer = "123456";
+questions[14].userAnswer = "";
+    
+    setDivText(questions[0]);
+    setButtons(questions[0]);
+  }
+  
+  function setDivText(q){
+    body.innerHTML += currentQuestion + 1 + ". ";
+    body.innerHTML += q.question + "<br><br><hr size=\"1\">";
+    
+    if(q.choices.length == 0){
+      body.innerHTML += "<br><textarea id=\"answer\" rows=\"10\" cols=\"80\">" +
+                         q.userAnswer + "</textarea><br>"; 
+    }else{
+      for(var i = 0; i < q.choices.length; i++){
+        if(i == q.userAnswer && q.visited){
+          body.innerHTML += convertChar(i) + "<input type=\"radio\" checked=\"true\"name=\"answer\" id=\"" + i + "\">" +q.choices[i] + "</input><br><br>";
+        }else{
+          body.innerHTML += "<input type=\"radio\" name=\"answer\" id=\"" + i + "\"><br>" +q.choices[i] + "</input><br><hr size=\"1\">";
+        }
+      }
+      
+      q.visited = true;
+    }
+  }
+  
+  function convertChar(a){
+    switch(a){
+        case 0: 
+        case "0": return "A";
+        case 1: 
+        case "1": return "B";
+        case 2: 
+        case "2": return "C";
+        case 3: 
+        case "3": return "D";
+        case 4: 
+        case "4": return "E";
+    }
+  }
+  
+  function setButtons(q){
+    if(q == questions[0]){
+      if(questions.length > 1){
+        body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+      }else{
+        body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+      }
+    } 
+    else if(q == questions[questions.length - 1]){
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"submit()\">SUBMIT</button>";
+    }else{
+      body.innerHTML += "<button onclick=\"previousQuestion()\">PREVIOUS</button>";
+      body.innerHTML += "<button onclick=\"nextQuestion()\">NEXT</button>";
+    }
+  }
+  
+  function nextQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion++;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function previousQuestion(){
+    if(setUserAnswer()){
+      body.innerHTML = "";
+    	currentQuestion--;
+    	setDivText(questions[currentQuestion]);
+    	setButtons(questions[currentQuestion]);
+    }
+  }
+  
+  function setUserAnswer(){
+    var q = questions[currentQuestion];
+    
+    if(q.choices.length > 0){
+      try{
+     		q.userAnswer = document.querySelector('input[name="answer"]:checked').id;
+        return true;
+      }catch(err){
+        alert("Please make a choice. You can come back and change it later.");
+        return false;
+      }
+    }else{
+      q.userAnswer = document.getElementById("answer").value.trim();
+      return true;
+    }
+  }
+  
+  function checkQuiz(){
+    var total = 0;
+    for(var i = 0; i < questions.length; i++){
+      var q = questions[i];
+      if(q.choices.length == 0){
+        if(q.userAnswer.trim() == q.correctAnswer){
+          total++;
+        }
+      } else {
+        if(q.correctAnswer == q.userAnswer){
+          total++;
+        }
+      }
+    }
+    return total;
+  }
+  
+  function submit(){
+    setUserAnswer();
+    
+    body.innerHTML = "You got " + checkQuiz() + " out of " + questions.length + " correct.<br><hr size=\"3\">";
+    for(var i = 0; i < questions.length; i++){
+      if(questions[i].choices.length > 0){
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += convertChar(questions[i].userAnswer) + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += convertChar(questions[i].correctAnswer) + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }else{
+        body.innerHTML += i + 1 + ". ";
+        body.innerHTML += questions[i].question + "<br><br>";
+        body.innerHTML += "Your Answer: <br>";
+        body.innerHTML += questions[i].userAnswer + "<br>";
+        body.innerHTML += "Correct Answer: <br>";
+        body.innerHTML += questions[i].correctAnswer + "<br>";
+        body.innerHTML += "<hr size=\"3\">";
+      }
+    }
+  }
+  
+</script>
+  
+  <script src="http://league-level0.github.io/copyrightFooter.js"></script>
+<div id="copyright"><script>copyright();</script></div>
+</html>

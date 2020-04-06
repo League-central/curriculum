@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<title>Level 0- Study Guide</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://league-level0.github.io/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+<body>
+
+<h1>Level 0 Study Guide</h1>
+
+<h3>
+Variables
+</h3>
+
+    ‘Declare and initialize a variable’ means make a variable and give it a value.
+  
+<p class="code">
+int age = 12; <br>
+String name = “Sarah”;
+</p>
+Remember, String is capitalized and the value always has quotes around it.<br>
+
+Every time you want to hold a new piece of information you need to declare the variable and initialize it, by setting it equal to something.<br>
+
+If you want to generate a random number you do it like this.
+<p class="code">
+int x = new Random().nextInt(10);
+</p>
+The number in parenthesis limits the value of the random number you will get. In this case, x will be a number between 0 and 9.<br>
+
+<h3>
+if Statements
+</h3>
+<p class="code">
+if (condition){<br>
+<br>
+}<br>
+else if (next condition){<br>
+<br>
+}<br>
+else{<br>
+  <br>
+}<br>
+</p>
+The question looks like this for a String
+<p class="code">(name .equals (“Sarah”))</p>
+You use .equals to compare a String. The String value is in parenthesis and in quotes.
+<br>
+The question looks like this for an int
+<p class="code">(age == 12)</p>
+Remember you use == for a comparison.<br>
+
+It is a good idea to use an else with an if statement to catch any options you didn’t think of.<br>
+
+    
+<h3>
+for loop
+</h3>
+    
+    
+<p class="code">
+for ( int i = 0; i&lt;10; i++){
+
+}
+</p>
+<font color="green">
+ int i = 0; </font><br>  This is the starting point of the loop. You must declare the int.<br>
+<font color="green"> i&lt;10; </font> <br>  This is the finishing point for the loop. The loop will continue as long as i is less than 10.
+ i++ This is how much the loop counter changes by each time. In this case it increments (goes up) by 1.
+<p class="code">
+for ( int i = 10; i>0; i-=2){<br>
+<br>
+}<br>
+</p>
+This loop counts down in 2s starting at 10.
+10, 8 , 6, 4, 2.  It doesn’t go to 0 because it must be greater than 0.
+Notice that you have to change from less than (&lt;) to greater than (&gt;) when you count down.<br>
+    
+    
+<h3>
+JOptionPane
+  </h3>
+    
+    
+If you want a pop up to give the user a message use
+ <p class="code">
+JOptionPane.showMessageDialog(null, “Hello ”+ name);
+</p>
+Don’t forget the <b>null</b>, or that any text needs to be in quotes.<br>
+
+If you want to get an answer from the user, use:
+<p class="code">
+	String ageString = JOptionPane.showInputDialog(“How old are you?”);
+        </p>
+Remember you must catch the user’s answer in a String, otherwise you can’t use it.<br><br>
+
+Because the answer is always a String, you sometimes want to convert it to a number so you can do a calculation. This is how you do it.
+     <p class="code">
+	int age = Integer.parseInt(ageString);
+    </p>
+If you want to write something to the console, instead of using a pop-up
+ <p class="code">
+	System.out.println(age);
+</p>
+
+<h3>Methods</h3>
+    You must have a <b>main method</b> in order to start your class running.
+ <p class="code">
+public static void main(String[] args){<br>
+<br>
+}<br>
+</p>
+
+Other methods looks like this
+ <p class="code">
+	void drawSquare(){<br>
+&nbsp;for (int i= 0; i<4; i++){<br>
+&nbsp;&nbsp;Tortoise.move(100);<br>
+&nbsp;&nbsp;Tortoise.turn(90);<br>
+&nbsp;}<br>
+}<br>
+</p>
+    <font color="green">void</font><br> This tells you what the method will return - in this case nothing.<br><br>
+<font color="green">drawSquare</font><br>  This is the name of the method, that you use to call it.<br><br>
+    <font color="green">(  )</font><br> This tells you what parameters the method needs. In this case it doesn’t need any.<br><br>
+You call the method like this:
+  <p class="code">
+	drawSquare();
+ </p>
+Look at this method:
+  <p class="code">
+int sevenTimes(int number){<br>
+	&nbsp;return number * 7;<br>
+}<br>
+ </p>
+<font color="green">int</font><br> 
+This method is going to a return an int so you need to create an int variable to store it. In the example below, the variable is named "answer".<br><br>
+<font color="green">sevenTimes</font><br>  This is the name of the method, that you use when you call it.<br><br>
+    <font color="green">(int number)</font><br> This tells you what parameters the method needs. In this case it needs you to give an int. In the example below, the int is the number 2.<br><br>
+    
+    <p class="code">
+	int answer = sevenTimes(2);
+  </p>
+The value of answer will be 14.
+<h3>
+Modulo
+</h4>
+Modulo means remainder.<br>
+The value of 11%5 is 1, because 5 goes into 11, 2 times (5x2=10) with a remainder of 1.
+<br><br>
+It is useful to use modulo to alternate between options. e.g.
+ <p class="code">
+for (int i = 0; i<1000;i+=10){<br>
+&nbsp;	if (i%3==0){<br>
+&nbsp;&nbsp;		fill(255,0,0);<br>
+&nbsp;	}<br>
+&nbsp;	else if (i%3==1){<br>
+&nbsp;&nbsp;		fill(0,255,0);<br>
+&nbsp;	}<br>
+&nbsp;else if (i%3==2){<br>
+	&nbsp;&nbsp;	fill(0,0,255);<br>
+	&nbsp;}<br>
+	&nbsp;ellipse(i,i,10,10);<br>
+}<br>
+
+                          </p>
+This code will draw a line of circles alternating in red, green and blue.
+ <br><br> <br><br>
+      
+ <script src="https://league-level0.github.io/copyright.js"></script>
+
+</body></html>

@@ -208,6 +208,8 @@ hr {
     padding:.5em;
 }
 
+/*** Recipe Pages ***/
+
 #recipePage {
     padding-top:5em;
     margin: 0 auto;
@@ -267,8 +269,6 @@ hr {
 #recipePage #recipeTitle {
     margin-top:1em;
 }
-
-
 
 #recipeBody #recipeGoal {
     padding:3em;
@@ -350,6 +350,8 @@ hr {
           width: 25%;
    }
 
+
+/*** Tips Pages ***/
 
 #tipsPage {
     padding-top:5em;
@@ -561,6 +563,7 @@ body:before {
     #recipePage #recipeSteps{
         
         margin-left:0em;
+        padding-left: 2em;
         margin-right:0em;
         margin-top:0em;
         padding-top:1em;

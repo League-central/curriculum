@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Venn Diagram of Me - League Level 0</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+
+            <div id="recipeLeftColumn">
+                <h1>Venn Diagram of Me</h1>
+                <hr>
+                <img src="images/vennDiagram.png" alt="Venn Diagram of me image">
+                <div id="recipeGoal">
+                    <h2>Goal:</h2>
+                    <p id="goal">
+                        Use the RGB color model to create a Venn Diagram that showcases your personality.
+                    </p>
+                </div>
+            </div>
+
+            <div id ="recipeRightColumn">
+                <div id="recipeSteps">
+                    <h2>Steps:</h2>
+                    <ol id="stepList">
+                        <li>Find the Venn Diagram recipe program ( VennDiagram.pde ) and open it using Processing.</li>
+                        <li>Run the program and you should see an empty gray window.</li>
+                        <li>After the size() command, add code to draw 3 circles to form a Venn Diagram (see picture).
+                            The command to draw a circle in Processing is:<br>
+<pre>ellipse (centerX, centerY, circleWidth, circleHeight);</pre>
+                        <li>Change the x and y of each ellipse until they overlap as in the picture. 
+                        </li>                               
+
+                        <li>Run the program. It should look a bit like this<img src="images/whiteCircles.png"></li>
+
+                        <li>Now to add the colors. Processing uses the following command to draw in color:<br>
+<pre>fill(red, green, blue, opacity);</pre><br>
+where red, green, blue, and opacity are all numbers between 0 and 255. So to make see-through red circles, we add the following line of code BEFORE we draw the circles.<br>
+<pre>fill(255, 0, 0, 100);</pre><br>                       
+<li>Run the program. It should look a bit like this<img src="images/redCircles.png"> We can now see the edges of all the circles because we made them "see-through" by setting the opacity to 100 (which is &lt; 255)</li>
+<li>Add more fill commands (you will have to figure out where to put them) so that each ellipse has its own unique color.<img src="images/colorfulCircles.png"></li>
+                        <li>Label each of the circles with an aspect of your personality. Processing uses the following command to draw text. You will need to put numbers in place of xLocation, and yLocation. Play around with the x and y until it works with your diagram.<br>
+<pre>text("TEXT", xLocation, yLocation);</pre>                                   
+                        </li>
+                        <li>You can also make the text larger by changing the sizeOfLetters (you will have to figure out where to put this)
+<pre>textSize(sizeOfLetters);</pre>                                
+                        </li>
+                    </ol>
+        <a href="https://processing.org/reference">
+<img src="https://league-level0.github.io/p3logo.jpeg" class="footer" alt="Processing Reference"></a>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body></html>

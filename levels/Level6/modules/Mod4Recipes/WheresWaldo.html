@@ -1,40 +1,0 @@
-<!DOCTYPE html><html><head><title> Where's Waldo? - League Level 0</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"><link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png"><script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script></head><body><div id ="wrap"><div id ="main"><div id="header"><script>addRecipeHeader();</script></div><div id = "recipePage"><div id="recipeTitle"><h1>Where's Waldo?</h1><hr><img src=http://level0.jointheleague.org/modules/Mod4Recipes/images/waldo.jpg alt="Where's Waldo? image"></div><div id ="recipeBody"><div id="recipeGoal"><h2>Goal:</h2><p id="goal">Make a program where the user has to find Waldo!</p></div><div id="recipeSteps"><h2>Steps:</h2><ol id="stepList"><li>Create a new Processing sketch and import the minim library.  </li><li>Copy the following code into the sketch:
-<pre>
-void setup() {
-	PImage waldo = loadImage("waldo.jpg"); // Change this to match your file name.
-	size(500, 500);
-	image(waldo, 0, 0);
-	doh = minim.loadSample("homer-doh.wav"); //drag and drop from project onto sketch
-	woohoo = minim.loadSample("homer-woohoo.wav"); //drag and drop from project onto sketch } 
-}
-
-void draw() {
-    	// Use this print statement to find out the coordinates of Waldo
-    	// println("X: " + mouseX + " Y: " + mouseY); 
-
-    	// If the mouse is on Waldo, print “Waldo found!”
-
-    	// If Waldo is found, also use the method below to play “Woohoo”
-    	// Change the name of the sound file if you need to 
-    	// If the mouse is pressed and they’re not on Waldo, play “Doh”
-    	// Change the name of the sound file if you need to 
-}
-
-void playWoohoo() {
-     woohoo.stop();
-     woohoo.trigger();
-}
-
-void playDoh() {
-     doh.stop();
-     doh.trigger();
-}
-
-import ddf.minim.*;
-Minim minim = new Minim(this); 
-AudioSample doh;
-AudioSample woohoo;
-</pre>
-</li><li>Find a really hard Where's Waldo picture and drop it into your sketch.
-    </li><li>Follow the remaining recipe instructions in the setup and draw methods.
-</li></ol><div style="clear:both;"></div></div></div></div></div></div><div id="footer"><script>addRecipeFooter();</script></div></body></html>

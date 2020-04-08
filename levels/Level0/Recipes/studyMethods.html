@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Sudy Guide - methods</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+
+            <div id="recipeLeftColumn">
+
+<h1>methods</h1>
+
+ <div id="recipeGoal">
+                
+            <p id="goal">
+            Know how to write methods and how to call methods based on their signature.
+            </p>                      
+                </div>
+            </div>
+
+<div id ="recipeRightColumn">
+    
+You can write and call methods in your program to perform specific functions. Here is an example of a method called drawSquare:
+    
+ <pre>void drawSquare(){
+    for (int i= 0; i &lt; 4; i++){
+        rob.move(100);
+        rob.turn(90);
+    }
+}</pre>
+    The first line of a method is called its signature. In the above method the signature contains the following:<br><br>
+    <font color="green">void</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is an example of the type of information the method will return. In this case 'void' means nothing will be returned by this method.<br><br>
+<font color="green">drawSquare</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is the name of the method, that you will use to call it.<br><br>
+    <font color="green">(  )</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tells you what parameters the method needs. In this case it doesn’t need any so they are empty.<br><br>
+    <font color="green">{ }</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; put all the code that the method will contain between its curly brackets.<br><br>
+The method signature tells you what code you need to write when you call it. You would call the above method like this:
+    <pre>drawSquare();</pre>
+Here is another method:
+<pre>int sevenTimes(int number){
+	return number * 7;
+}</pre>
+    <font color="green">int</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tells you this method is going to a return an int so the code to call it will need an int variable for this information. 
+    In the method, you see a return statement. A method that is not void, must have a return statement.
+    <br><br>
+<font color="green">sevenTimes</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is the name of the method, that you will use when you call it.<br><br>
+    <font color="green">(int number)</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tells you what parameters the method needs. In this case it needs you to pass it an int. In the example below, we are passing in the number 2.
+    
+    <pre>int answer = sevenTimes(2);</pre>
+    The value of answer after the method finishes will be 14.
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+
+      
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body></html>

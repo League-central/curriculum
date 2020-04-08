@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Sudy Guide - JOptionPane</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+
+            <div id="recipeLeftColumn">
+
+<h1>JOptionPane</h1>
+
+ <div id="recipeGoal">
+                   
+                    <p id="goal">
+                       Know how to create input and output dialogs using the JOptionPane class.
+                    </p>
+                </div>
+            </div>
+
+            <div id ="recipeRightColumn">
+    
+
+If you want a pop up to give the user a message use:
+ <pre>
+JOptionPane.showMessageDialog(null, “This is a message");
+</pre>
+Don’t forget the null, and that your message needs to be in quotes.<br>
+<br>
+If you want to get an answer from the user, you  need an input dialog:
+<pre>
+String answer = JOptionPane.showInputDialog(“Question?”);</pre>
+
+Remember, you must catch the user’s answer in a String, otherwise you won't know what they typed.<br><br>
+
+Because the answer is always placed in a String, you sometimes need to convert it to a number so you can do calculations with it. Use code like this to convert it to an integer:
+     <pre>
+int number = Integer.parseInt(answer);</pre>
+or code like this to convert it to a decimal:
+      <pre>
+double decimal = Double.parseDouble(answer);</pre>   
+    
+    
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+ 
+      
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body></html>

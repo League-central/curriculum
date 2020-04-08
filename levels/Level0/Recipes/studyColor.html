@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Sudy Guide - Robot</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+
+            <div id="recipeLeftColumn">
+
+<h1>color</h1>
+
+ <div id="recipeGoal">
+                
+            <p id="goal">
+            Know that colors are made by combining red, green, and blue in different amounts ( within the range 0-255 ).<br>
+                <br>
+            Know how to set a Robot's pen color and to set a shape's color in Processing.
+            </p>                      
+                </div>
+            </div>
+
+            <div id ="recipeRightColumn">
+    
+Colors are made by combining red, green and blue light (RGB). The amount of each color is determined by a number between 0 and 255 for each of Red, Green, and Blue (RGB).
+<br><br>
+
+Processing provides the fill() command to set the current color like this:
+<pre>
+fill(255,0,0);
+</pre>
+The first number reperesents the amount of red, the second green, the third blue. So the above code sets the drawing color to red. 
+<br><br>                
+If we wanted to set a Robot's pen color to red in a Java program, we could use either of the following:
+<pre>
+rob.setPenColor(Color.RED);
+rob.setPenColor(new Color(255,0,0));
+</pre>
+
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+
+      
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body></html>

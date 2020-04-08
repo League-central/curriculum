@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Sudy Guide - Random</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+
+            <div id="recipeLeftColumn">
+
+<h1>Random</h1>
+
+ <div id="recipeGoal">
+                   
+                    <p id="goal">
+Know how to create a Random object and use it to create a random integer within a specified range.                    </p>
+                </div>
+            </div>
+
+            <div id ="recipeRightColumn">
+ If you want to make anything random, you need to first make a Random object like this:
+<pre>
+Random generator = new Random();
+</pre>
+If you then need a random integer, you can ask the Random object to make you one like this:
+
+  <pre>int x = generator.nextInt(100);</pre>  
+The number in parentheses limits the range of the number you might get. In this case, x will be a number between 0 and 99 (inclusive).<br><br>
+                
+Random objects can also generate a random double (between 0.0 and 1.0) or random a boolean (true or false) as follows:
+<pre>double decimal = generator.nextDouble();
+boolean simonSays = generator.nextBoolean();</pre>
+                
+                
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+ 
+      
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body></html>

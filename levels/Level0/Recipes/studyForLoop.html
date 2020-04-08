@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Sudy Guide - for loop</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+
+            <div id="recipeLeftColumn">
+
+<h1>for loop</h1>
+
+ <div id="recipeGoal">
+                   
+                    <p id="goal">
+Know how to write a for loop. <br><br>
+Understand what each part of the for loop does.<br><br>
+Know how to use the for loop variable inside the loop.<br><br>
+Know how to nest a for loop inside another for loop.
+                    </p>
+                </div>
+            </div>
+
+            <div id ="recipeRightColumn">
+      There are 3 parts of a for loop separated by semi-colons. Here is an example:
+   
+<pre>for ( int i = 0; i &lt; 10; i++){
+}
+</pre>
+In the above example:<br><br>
+<font color="green">
+ int i = 0 ; </font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is an example of code executed once, before the loop starts. It is often used to initialize a counter with a value of zero. In this example the counter is called i but it can be any legal variable name.<br><br>
+<font color="green"> i &lt; 10 ;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is an example of a boolean condition ( just like the ones used in if statements). The loop will continue to repeat as long as this condition is true <br><br>
+<font color="green"> i++</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is an example of code that is executed at the end of the loop every time the loop repeats. In the example, it is adding one to the counter.<br><br>
+
+Here is another example of a for loop:
+<pre>
+for ( int i = 10; i > 0; i-=2){
+}</pre>                
+          
+In this example, the start code sets the counter to 10, then subtracts 2 each time the loop repeats until it reaches 0.<br>
+Notice that the condition is i greater than 0 ( i &gt; 0 ) because the counter is now counting down.<br><br>
+You can put a for loop inside another for loop (this is called nesting), but they usually use different variables like this:
+<pre>
+for ( int i = 10; i &gt; 0; i-- ){
+    for ( int j = 0; j &lt; 10; j++ ) {
+        System.out.println("Loop");
+    }
+}</pre>
+In the above example, the inside loop will repeat 10 times for every one execution of the outside loop. This will result in "Loop" being printed 100 times.
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+   
+      
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body></html>

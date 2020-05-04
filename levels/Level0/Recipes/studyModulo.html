@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Sudy Guide - modulo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+
+            <div id="recipeLeftColumn">
+
+<h1>modulo - %</h1>
+
+ <div id="recipeGoal">
+                
+            <p id="goal">
+            Know how to use the modulo operator.
+            </p>                      
+                </div>
+            </div>
+
+<div id ="recipeRightColumn">
+    
+    Modulo means 'remainder after division'. The value of <font face="couier">11 % 5</font> is therefore 1, because 5 goes into 11 twice (<font face="couier"> 5*2 == 10 </font>) but there is a remainder of 1 to make 11.
+<br><br>
+It is useful to use modulo to cycle between options. In the Processing example below, modulo is used to cycle through 3 different colors used in the fill statement.
+    
+ <pre>for (int i = 0; i&lt;20; i++){
+    if (i%3==0) {
+        fill(255,0,0);
+    }
+    else if (i%3==1){
+        fill(0,255,0);
+    }
+    else if (i%3==2){
+        fill(0,0,255);
+    }
+    ellipse(i*10,i*10,10,10);
+}</pre>
+    In the above method, the code will draw a row of circles (ellipses) but will use modulo to decide if the color of each circle is red, green or blue.
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+
+      
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body></html>

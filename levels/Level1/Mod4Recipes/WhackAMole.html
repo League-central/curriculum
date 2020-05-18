@@ -40,13 +40,25 @@ We are going to make a game where the user has to click on a "mole". The game is
 <br>     
 3. If they click on a button other than “mole!”, use this speak() method to tell them they missed.
 </p>
-    <pre>void speak(String words) { 
-    try { 
-        Runtime.getRuntime().exec("say " + words).waitFor();
-    } catch (Exception e) {
-        e.printStackTrace();
+    <pre>
+    static void speak(String words) {
+        if( System.getProperty( "os.name" ).contains( "Windows" ) ) {
+            String cmd = "PowerShell -Command \"Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('"
+                    + words + "');\"";
+            try {
+                Runtime.getRuntime().exec( cmd ).waitFor();
+            } catch( Exception e ) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                Runtime.getRuntime().exec( "say " + words ).waitFor();
+            } catch( Exception e ) {
+                e.printStackTrace();
+            }
+        }
     }
-}</pre><br>
+</pre><br>
         
 <p class="normal">
 4. Dispose of the frame and draw the buttons anew.

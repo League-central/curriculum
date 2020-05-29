@@ -117,7 +117,7 @@ questions[qIndex].question = "How many times will this code print NOW?<br><br> <
 questions[qIndex].choices[0] = "&nbsp;&nbsp;&nbsp;30";
 questions[qIndex].choices[1] = "&nbsp;&nbsp;&nbsp;5";
 questions[qIndex].choices[2] = "&nbsp;&nbsp;&nbsp;6";
-questions[qIndex].choices[3] = "&nbsp;&nbsp;&nbsp;None. This will result in an error";
+questions[qIndex].choices[3] = "&nbsp;&nbsp;&nbsp;None. This code will not compile";
 
 questions[qIndex].correctAnswers = D;
 
@@ -125,7 +125,7 @@ questions[qIndex].correctAnswers = D;
 questions[qIndex] = new Question();
 questions[qIndex].number=qIndex+1;
       questions[qIndex].type="FILL_IN";
-questions[qIndex].question = "Complete this code (what should go in the blank) so that i will be printed every time it is divisible by 4<br><br><code>for (int i=0; i<30; i++) {<br>&nbsp;&nbsp;&nbsp;if (_____________) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(i);<br>&nbsp;&nbsp;&nbsp;}<br>}</code><br> ";
+questions[qIndex].question = "What code should go in the blank space so that i will be printed every time it is divisible by 4<br><br><code>for (int i=0; i<30; i++) {<br>&nbsp;&nbsp;&nbsp;if (_____________) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(i);<br>&nbsp;&nbsp;&nbsp;}<br>}</code><br> ";
 
 questions[qIndex].correctAnswers = "i%4==0";
 

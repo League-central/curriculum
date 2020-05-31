@@ -2,7 +2,7 @@
         <html lang="en-US">
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-            <title>Abstracts</title> 
+            <title>Abstract Cities</title> 
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
             
         </head>
@@ -10,22 +10,36 @@
 li{
 	padding: 4px;
 }
+body{
+	padding: 20px;
+}
+#taxTable{
+	background:#D8D8D8;
+	padding: 10px;
+}
+
         </style>
         <body>
-        	<h1><center>Abstract City</center></h1>
-        	<p>Follow the instructions below<p>
+        	<h1>Abstract Cities</h1>
         	<p>
-        	Take a look at the given code along with the JUinit test. The abstract class city has been made for you.
-Your job is to make four (4) subclasses of the abstract City class. The classes will be SanDiego, Boston, LosAngeles, and Atlanta. 
-You have to write the getAnnualTaxes method for each city. In this utopia, every citizen only has to pay the city one dollar per year in taxes. 
-Therefor, the annual taxes can be calculated by multiplying the population by the growthRate. However, each city gets a unique bonus based
-on the information below.</p>
+        	Take a look at the provided code and JUnit tests. The abstract class "City" has been made for you.  Notice that City has one abstract method, getAnnualTaxes(), that you will need to provide an implementation for in any subclass.  This is because each city has a slightly different total tax rate.<br>
+Your job is to make four subclasses of the abstract City class and write the getAnnualTaxes() method for each.  The subclasses will be SanDiego, Boston, LosAngeles, and Atlanta.  Each city has a "taxRate" that represents the amount of taxes each citizen pays.
+Therefore, the annual taxes can be calculated by multiplying the population by the taxRate, and then adding any tax bonuses like so:</br></br>
 
-<p>*San Diego gets a flat bonus of $1,000,000 for being the best city ever.</p>
-<p>*Boston gets a bonus of $0.50 per person for having wicked cool accents.</p>
-<p>*Los Angeles gets a multiplication bonus of half the growthRate from the Hollywood Mafia.</p>
-<p>*Atlanta gets a multiplication bonus of twice the growthRate because their airport is just so darn huge!
+double totalTaxes = population*taxRate + (ANY TAX BONUSES);</br><br>
+
+<div id="taxTable">
+
+<em style="font-weight:bold;">Each city gets a unique bonus that is added to their total taxes by the federal government:</em></br>
+
 </p>
+<ul>
+<li>San Diego gets a flat bonus of $1,000,000 for being the best city ever.</li>
+<li>Boston gets a bonus of $0.50 per person for having wicked cool accents.</li>
+<li>Los Angeles gets a bonus of $10,000 for each In-N-Out Burger location within its borders, of which there are 25.</li>
+<li>Atlanta, trying to draw more movie productions to the area, <span style="font-weight:bold;"> loses </span> $0.15 for each person as a tax break for production companies</li>
+</ul>
+</div>
         </body>
         
         </html>

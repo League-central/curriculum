@@ -120,219 +120,175 @@ function removePoint(q) {
 
 function buildRubric(){
        
-    var qNum;
+    var qNum = 0;
     var ptNum = 1;
     var rowEnd;
     var negativePoints = 0;
     
     gradesTable.innerHTML += "<tr><th>Goal</th><th>&#x2705;</th><th>Score</th></tr>"
     
-    qNum = 1;   
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Select the correct variable type</h4></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr>";
+         gradesTable.innerHTML += "<tr><td><h4>Questions 1 through 13 are multiple choice and are therefore self-grading</h4></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr>";   
+    qNum = qNum + 1 ;   
+        gradesTable.innerHTML += "<tr><td><h4>Select the correct variable type</h4></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr>";
     
-        buildRow(ptNum,"String");      
+        buildRow(ptNum, "Question "+ptNum);      
         ptNum++; 
-        buildRow(ptNum,"int");
+        buildRow(ptNum, "Question "+ptNum);
         ptNum++; 
-        buildRow(ptNum,"char"); 
+        buildRow(ptNum, "Question "+ptNum); 
         ptNum++; 
-        buildRow(ptNum,"double");
+        buildRow(ptNum, "Question "+ptNum);
         ptNum++; 
-        buildRow(ptNum,"boolean");
+        buildRow(ptNum, "Question "+ptNum);
         
-    qNum = 2; 
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Compound if condition</h4></td><td>&nbsp;</td><td>&nbsp;</td>";
+    qNum = qNum + 1 ; 
+        gradesTable.innerHTML += "<tr><td><h4>String equality check</h4></td><td>&nbsp;</td><td>&nbsp;</td>";
     
         ptNum++; 
-        buildRow(ptNum,"first condition is correct");        
-        ptNum++; 
-        buildRow(ptNum,"logical operator correct, e.g. &&");
-        ptNum++; 
-        buildRow(ptNum,"second condition is correct");       
+        buildRow(ptNum, "Question "+ptNum);             
        
-     qNum = 3; 
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": \"Mustche\" placement </h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";
+     qNum = qNum + 1 ; 
+        gradesTable.innerHTML += "<tr><td><h4>RGB and drawing (Processing)</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";
 
+        ptNum++; 
+        buildRow(ptNum,"Question "+ptNum+":  x, y, width, height");
+        ptNum++; 
+        buildRow(ptNum,"Question "+ptNum+":  RGB color model");
+        ptNum++; 
+        buildRow(ptNum,"Question "+ptNum+":  shape movement");
+    
+    qNum = qNum + 1 ;    
+        gradesTable.innerHTML += "<tr><td><h4>for loop construction</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";   
+         ptNum++; 
+        buildRow(ptNum,"Question "+ptNum);
+
+    
+    qNum = qNum + 1 ;    
+        gradesTable.innerHTML += "<tr><td><h4>modulo</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+    
+         ptNum++; 
+        buildRow(ptNum,"Question "+ptNum);
+    
+    qNum = qNum + 1 ;     
+         gradesTable.innerHTML += "<tr><td><h4>if/else  and reading code</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+    
+         ptNum++; 
+        buildRow(ptNum,"Question "+ptNum);
+    
+     qNum = qNum + 1 ;     
+         gradesTable.innerHTML += "<tr><td><h4>incrementing variables</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+    
+         ptNum++; 
+        buildRow(ptNum,"Question "+ptNum);   
+    
+    
+    qNum = qNum + 1 ;    
+        gradesTable.innerHTML += "<tr><td><h4>Question 14: Syntax {}</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+      
         ptNum++; 
         buildRow(ptNum,"class");
         ptNum++; 
         buildRow(ptNum,"main method");
         ptNum++; 
-        buildRow(ptNum,"if statement");
-    
-    qNum = 4;    
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Joining Strings</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
-    
-        ptNum++; 
-        buildRow(ptNum,"Declares and initializes a String variable");
-        ptNum++; 
-        buildRow(ptNum,"Correct print statement");
-        ptNum++; 
-        buildRow(ptNum,"Joins literal strings to String variable (+)");
-        ptNum++; 
-        buildRow(ptNum,"Syntax correct - will compile");
-    
-      qNum = 5;     
-         gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Modulo</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
-    
-        ptNum++; 
-        buildRow(ptNum,"Uses modulo (%) ");
-        ptNum++; 
-        buildRow(ptNum,"Checks remainder"); 
-    
-    qNum = 6;    
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Random</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+        buildRow(ptNum,"code block ( if statement or for loop )");
+       
+    qNum = qNum + 1 ;    
+        gradesTable.innerHTML += "<tr><td><h4>Question 15: input dialog and Strings</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
       
         ptNum++; 
-        buildRow(ptNum,"Creates a Random object");
+        buildRow(ptNum,"Declares a String variable");   
         ptNum++; 
-        buildRow(ptNum,"Uses nextInt() with correct bounds");
+        buildRow(ptNum,"Uses input dialog to request input"); 
         ptNum++; 
-        buildRow(ptNum,"Adjusts random number to get correct range");
+        buildRow(ptNum,"Initializes variable with user input");
         ptNum++; 
-        buildRow(ptNum,"Places number into a declared int variable");
-       
-    qNum = 7;    
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": String equality check</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
-      
+        buildRow(ptNum,"Joins literal string(s) to variable to create message");
         ptNum++; 
-        buildRow(ptNum,"Uses .equals() to check String values");   
+        buildRow(ptNum,"Message contains all elements required in question");
         ptNum++; 
-        buildRow(ptNum,"Uses correct values for desired logic");
-        
-    
-    qNum = 8;   
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+"a: Input dialog</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+        buildRow(ptNum,"Correct syntax - code will compile");
+
+  
+        gradesTable.innerHTML += "<tr><td><h4>Questoin 16: String conversion to int </h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
   
         ptNum++; 
-        buildRow(ptNum,"Uses JOptionPane.showInputDialog to request value");
+        buildRow(ptNum,"Obtains String value from user via input dialog");
         ptNum++; 
-        buildRow(ptNum,"Declares a String variable and captures dialog return value");
+        buildRow(ptNum,"Attempts to convert String value to numeric value");
+        ptNum++; 
+        buildRow(ptNum,"Correctly uses Integer.parseInt to convert value");
+        ptNum++; 
+        buildRow(ptNum,"Tests numeric value as expected by question");
+        ptNum++; 
+        buildRow(ptNum,"Constructs message described by question");    
         ptNum++; 
         buildRow(ptNum,"Syntax correct - will compile");
+    
+     qNum = qNum + 1 ;   
+        gradesTable.innerHTML += "<tr><td><h4>Question 17: Fix 4 mistakes</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
   
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+"b: Stringt to int conversion </h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
-  
         ptNum++; 
-        buildRow(ptNum,"Converts String to int");
+        buildRow(ptNum,"mistake fixed (1)");
         ptNum++; 
-        buildRow(ptNum,"Declares int variable and captures converted value");
+        buildRow(ptNum,"mistake fixed (2)");
         ptNum++; 
-        buildRow(ptNum,"Changes int value (increment or decrement)");
+        buildRow(ptNum,"mistake fixed (3)");
         ptNum++; 
-        buildRow(ptNum,"Syntax correct - will compile");
-    
-
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+"c: Output dialog</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
- 
-        ptNum++; 
-        buildRow(ptNum,"correct syntax of JOptionPane.showMessageDialog");
-        ptNum++; 
-        buildRow(ptNum,"literal String and variable correctly joined");
-        ptNum++; 
-        buildRow(ptNum,"variable and literal String correctly joined");
-        ptNum++; 
-        buildRow(ptNum,"Syntax correct - will compile");
-    
-    qNum = 9;  
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Processing</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
-    
-        ptNum++; 
-        buildRow(ptNum,"Identifies correct value (x,y)");
-        ptNum++; 
-        buildRow(ptNum,"Identifies correct value (width,height)");
-        ptNum++; 
-        buildRow(ptNum,"Identifies correct value (color)");  
-        ptNum++; 
-        buildRow(ptNum,"Identifies correct direction (x,y - up,down,left,right)");  
-
-    qNum = 10;  
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Reading code and finding errors</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
-    
-        ptNum++; 
-        buildRow(ptNum,"Must initialize a variable before it is used");
-        ptNum++; 
-        buildRow(ptNum,"Correct equality test for ints");  
-        ptNum++; 
-        buildRow(ptNum,"Assign result of math operation to a variable");  
-        ptNum++; 
-        buildRow(ptNum,"Syntax correct for if, else if, else - will compile");
-        
-    qNum = 11;  
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": For Loops</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
-    
-        ptNum++; 
-        buildRow(ptNum,"Initialize \"counter\" variable");
-        ptNum++; 
-        buildRow(ptNum,"Correct loop condition");  
-        ptNum++; 
-        buildRow(ptNum,"Correct \"counter\" variabale modification");  
-        ptNum++; 
-        buildRow(ptNum,"Use of loop variable in body of loop");
-         
-    qNum = 12;  
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Calling methods with parameters</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
-    
-        ptNum++; 
-        buildRow(ptNum,"Uses correct method name");
-        ptNum++; 
-        buildRow(ptNum,"Provides correct 1st parameter value");  
-        ptNum++; 
-        buildRow(ptNum,"Provides correct 2nd parameter value");  
-        ptNum++; 
-        buildRow(ptNum,"Syntax correct - will compile");
-    
-    
-    qNum = 13;  
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Using for loops and modulo</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
-    
-        ptNum++; 
-        buildRow(ptNum,"Uses a for loop or while loop");
-        ptNum++; 
-        buildRow(ptNum,"Initializes a variable to correct \"start\" number");
-        ptNum++; 
-        buildRow(ptNum,"Correct loop condition");  
-        ptNum++; 
-        buildRow(ptNum,"Correctly modifies variabale in loop");  
-        ptNum++; 
-        buildRow(ptNum,"Uses modulo operation correctly");
-        ptNum++; 
-        buildRow(ptNum,"Uses a correct print statement");   
-        ptNum++; 
-        buildRow(ptNum,"Syntax correct - will compile");       
-
-    
-   qNum = 14;  
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Reading code - if / else if</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
-    
-        ptNum++; 
-        buildRow(ptNum,"Correct 1st line of output");
-        ptNum++; 
-        buildRow(ptNum,"Correct 2nd line of output");  
-        ptNum++; 
-        buildRow(ptNum,"Correct 3rd line of output");  
-       
+        buildRow(ptNum,"mistake fixed (4)");
     
 // Subtract one for wrong answer(s)
         negativePoints++;  //This is a count of questions that can subtract from score.
-         ptNum++;
-        gradesTable.innerHTML +="<tr><td><font color=\"red\">Incorrect answers given (will subtract a point)</font></td><td> <input type=\"checkbox\" id=\"myCheck"+ptNum+"\" onclick=\"removePoint("+ptNum+")\"></td><td id=\"q"+ptNum+"Points\">0</td></tr>";
-   
+        ptNum++;
+        gradesTable.innerHTML +="<tr><td><font color=\"red\">New error(s) introduced - subtract a point</font></td><td> <input type=\"checkbox\" id=\"myCheck"+ptNum+"\" onclick=\"removePoint("+ptNum+")\"></td><td id=\"q"+ptNum+"Points\">0</td></tr>";
+
     
-   qNum = 15;  
-        gradesTable.innerHTML += "<tr><td><h4>Question "+qNum+": Write a method with parameters</h4></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>"; 
+        gradesTable.innerHTML += "<tr><td><h4>Question 18: method calling</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>";    
+ 
+        ptNum++; 
+        buildRow(ptNum,"method name is correct");
+        ptNum++; 
+        buildRow(ptNum,"passes appropriate parameter type(s) to method");
+        ptNum++; 
+        buildRow(ptNum,"passes correct parameter value(s) to method");
+        ptNum++; 
+        buildRow(ptNum,"captures return value - or not, if there isn't one");    
+        ptNum++; 
+        buildRow(ptNum,"Syntax correct - will compile");
+    
+    qNum = qNum + 1 ;  
+        gradesTable.innerHTML += "<tr><td><h4>Question 19: method writing</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
     
         ptNum++; 
-        buildRow(ptNum,"Correct return type (void)");
+        buildRow(ptNum,"method name is correct");
         ptNum++; 
-        buildRow(ptNum,"Correct name of method ");  
+        buildRow(ptNum,"appropriate parameters declared");
         ptNum++; 
-        buildRow(ptNum,"Correct parameter specification");      
+        buildRow(ptNum,"return type is specified (void or otherwise)");
         ptNum++; 
-        buildRow(ptNum,"Method body matches method purpose");     
+        buildRow(ptNum,"method body performs action described");
         ptNum++; 
-        buildRow(ptNum,"Syntax correct - will compile");       
-   
+        buildRow(ptNum,"return value matches method signature");    
+        ptNum++; 
+        buildRow(ptNum,"Syntax correct - will compile");
+    
+    qNum = qNum + 1 ;  
+        gradesTable.innerHTML += "<tr><td><h4>Question 20: Random</h4></td><td>&nbsp;</td></td><td>&nbsp;</td><td>&nbsp;</td>"; 
+    
+        ptNum++; 
+        buildRow(ptNum,"Constructs a Random object");
+        ptNum++; 
+        buildRow(ptNum,"Sets appropriate bounds for nextInt method");  
+        ptNum++; 
+        buildRow(ptNum,"Adjusts random number according to range requested");  
+        ptNum++; 
+        buildRow(ptNum,"Uses random numnber as described by question");  
+        ptNum++; 
+        buildRow(ptNum,"Syntax correct - will compile");
+        
+    
+    
+    
+// Subtract negative answers from total   
     pointsAvailable = ptNum-negativePoints;
     
 }

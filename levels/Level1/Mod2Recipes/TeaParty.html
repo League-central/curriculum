@@ -6,74 +6,102 @@
 <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
-   #moduleIndex {
-   padding: 0;
-}
+    #moduleIndex {
+        padding: 0;
+    }
 </style>
 <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+
 <body>
-        <div id ="wrap">
-            <div id ="main">
-                <div id="header">
-                    <script>addRecipeHeader();</script>
-                </div>
-                <div id = "moduleIndex">
+    <div id="wrap">
+        <div id="main">
+            <div id="header">
+                <script>addRecipeHeader();</script>
+            </div>
+            <div id="moduleIndex">
 
-<h1>Tea Party</h1>
-<br>
-<p class="normal">
+                <h1>Tea Party</h1>
+                <br>
+                <p class="normal">
 
-You are hosting a formal Tea Party. Your task is to welcome your guests properly. Here are the rules for welcoming guests:<br>
-<br>    
-<br>
+                    You are hosting a formal Tea Party. Your task is to welcome your guests properly. Here are the rules
+                    for welcoming guests:<br>
+                    <br>
+                    <br>
 
- If the guest has been knighted by the Queen and is male, use the title "Sir" before their name to greet them, otherwise if the guest is a male, use the title "Mr." before their name.<br>
-    <br>
+                    If the guest has been knighted by the Queen and is male, use the title "Sir" before their name to
+                    greet them, otherwise if the guest is a male, use the title "Mr." before their name.<br>
+                    <br>
 
- If the guest has been knighted by the Queen and is female, use the title "Lady" before their name to greet them, otherwise if the guest is a female, use the title "Ms." before their name.<br>
-<br>
-    Add code to the class below to support the greeting rules above.
-</p>
- 
-<pre>public class TeaParty {
-        public String welcome(String name, boolean isWoman, boolean isKnighted) {
+                    If the guest has been knighted by the Queen and is female, use the title "Lady" before their name to
+                    greet them, otherwise if the guest is a female, use the title "Ms." before their name.<br>
+                    <br>
+                    Add code to the class below to support the greeting rules above.
+                </p>
+
+                <pre>
+public class TeaParty {
+    public String welcome(String name, boolean isWoman, boolean isKnighted) {
         
-        }
-}</pre>    
-    
-<br>
-<p class="normal">
- Here is some JUnit Test code to check your welcome method. Run the tests and check that the green "pass" bar is displayed.<br>
-    </p>
-<pre>import static org.junit.Assert.assertEquals;
+    }
+}
+</pre>
+
+                <br>
+                <p class="normal">
+                    Here is some JUnit Test code to check your welcome method. Run the tests and check that the green
+                    "pass" bar is displayed.<br>
+                </p>
+                <pre>
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class TeaPartyTest {
- /**
-  * Jane Austen is a woman, so say “Hello Ms. Austen”. 
-  * George Orwell is a man, so say “Hello Mr. Orwell”. 
-  * Isaac Newton was knighted, so say "Hello Sir Isaac Newton".
-  **/
+	/**
+	 * Jane Austen is a woman, so say “Hello Ms. Austen”. 
+	 * George Orwell is a man, so say “Hello Mr. Orwell”. 
+	 * Isaac Newton was knighted, so say "Hello Sir Isaac Newton".
+	 **/
 
- @Test
- public void test() {
-     TeaParty teaParty = new TeaParty();
-      String greeting = teaParty.welcome(null, false, false);
-      assertEquals("Hello Ms. Austen", teaParty.welcome("Austen", true, false));
-      assertEquals("Hello Mr. Orwell", teaParty.welcome("Orwell", false, false));
-      assertEquals("Hello Sir Isaac Newton", teaParty.welcome("Isaac Newton", false, true));
- }
+	@Test
+	public void testIsWomanNotKnighted() {
+		TeaParty teaParty = new TeaParty();
+		String greeting = teaParty.welcome(null, false, false);
+		assertEquals("Hello Ms. Austen", teaParty.welcome("Austen", true, false));
+	}
+
+	@Test
+	public void testIsManNotKnighted() {
+		TeaParty teaParty = new TeaParty();
+		String greeting = teaParty.welcome(null, false, false);
+		assertEquals("Hello Mr. Orwell", teaParty.welcome("Orwell", false, false));
+	}
+
+	@Test
+	public void testIsManKnighted() {
+		TeaParty teaParty = new TeaParty();
+		String greeting = teaParty.welcome(null, false, false);
+		assertEquals("Hello Sir Isaac Newton", teaParty.welcome("Isaac Newton", false, true));
+	}
+	
+	@Test
+	public void testIsWomanKnighted() {
+		TeaParty teaParty = new TeaParty();
+		String greeting = teaParty.welcome(null, false, false);
+		assertEquals("Hello Lady Laura", teaParty.welcome("Laura", true, true));
+	}
+
 }
-    
     </pre>
 
-                </div>
+            </div>
+        </div>
     </div>
-    </div>                
-                
-<div id="footer">
-<script>addFooter();</script>
-</div>
+
+    <div id="footer">
+        <script>addFooter();</script>
+    </div>
 
 </body>
+
 </html>

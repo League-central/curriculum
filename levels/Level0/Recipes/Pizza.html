@@ -33,7 +33,7 @@
                             <ol id="stepList">
                                 <li>Find the Pizza recipe program ( pizza.pde ) and open it using Processing.
                                 </li>
-<li>Set your canvas size
+<li>Set your canvas size in the setup method.
                                     <pre>
 size(width, height);
 </pre>
@@ -45,35 +45,40 @@ fill(color);
 ellipse(x, y, width, height);
 </pre>
                                 </li>
-                                <li>Get a topping for your pizza.
-
-                                    Pizza Toppings Menu
-
-                                    <ol class="insetRecipeStepsOL">
-                                        <li>Save the image.</li>
-                                        <li>Drop the file onto your sketch.</li>
-                                        <li>Load the topping image (in draw method)</li>
-                                        <pre>
-PImage pepperoni = loadImage("pepperoni.gif")
-image(pepperoni, x, y)
-</pre>
-                                        <br>
-                                    </ol>
+                                <li>Get some topping images for your pizza. Some examples are provided for you, but if you want to choose your own toppings you can.
+                                <br><br>
+                                    <ul>
+                                        <li>Make a PImage variable for each type of topping at the top of the sketch:<br><pre>PImage pepperoni;</pre></li>
+                                        <li>Drag and drop the topping image file onto your sketch.</li>
+                                        <li>Load the topping image (in the setup method):<pre>pepperoni = loadImage("pepperoni.png");</pre></li>
+                                        <li>In the draw method, use the image command to draw the topping somewhere on your pizza:
+                                            <pre>image(pepperoni,200,200);</pre></li>
+                                    <li>If your topping is too big for the pizza, resize the topping image. Do this in the setup method.
+                                    <pre>pepperoni.resize(30, 30);</pre>
+                                    </li>
+                                    <li>Repeat the above steps for more toppings.</li>
+                                    </ul>
+                                    
+                                <li>Add more code so that the toppings are only drawn when the user clicks the mouse (in draw method).</li>
+  
+                                <li>Make sure you SAVE YOUR CODE when you are done. 
                                 </li>
-                                <li>Resize your topping image. You need to do this before the image command.
+                                 
+
+                                <li>OPTIONAL Add a different topping with the right mouse click.
                                     <pre>
-pepperoni.resize(10, 10)
+if (mousePressed &amp;&amp; (mouseButton == RIGHT)) {}
 </pre>
                                 </li>
-                                <li>Add more toppings.
+                                <li>OPTIONAL Use a background image to put the pizza in a box.
                                     <pre>
-image(toppingImage, x, y)
+PImage pizzaBox = loadImage("box.jpg");     //in setup method
+pizzaBox.resize(width, height);      //to match your canvas size
+background(pizzaBox);       //in setup method
 </pre>
                                 </li>
-                                <li>Add the toppings where the user clicks the mouse (in draw method)
-
-                                </li>
-                                <li>To play a sound when you add a topping....
+                                
+                                <li>OPTIONAL: To play a sound when you add a topping....
                                     First download a sound from freesound.org and drop it onto your sketch
 
                                     Import the minim library Pocessing > tools > add tools > libraries (search minim)
@@ -90,21 +95,6 @@ sound.play();
 sound.rewind();
 </pre>
                                 </li>
-                                <li>Make sure you SAVE YOUR CODE when you are done. 
-                                </li>
-                                <li>[Optional] Add a different topping with the right mouse click.
-                                    <pre>
-if (mousePressed &amp;&amp; (mouseButton == RIGHT)) {}
-</pre>
-                                </li>
-                                <li>[Optional] Use a background image to put the pizza in a box.
-                                    <pre>
-PImage pizzaBox = loadImage("box.jpg");     //in setup method
-pizzaBox.resize(width, height);      //to match your canvas size
-background(pizzaBox);       //in setup method
-</pre>
-                                </li>
-
                             </ol>
                             
                 <a href="https://processing.org/reference">

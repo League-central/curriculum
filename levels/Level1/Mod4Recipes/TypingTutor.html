@@ -22,59 +22,78 @@
 <h1>Typing Tutor</h1>
 <br>
     <p class="normal">
-We are going to make a typing game.
+We are going to make a Typing Tutor.
         </p><br> 
+        <img alt="" src="images/typingTutor2.png" style="width: 444.00px; height: 163.00px; margin-left: 100.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+  <br><br>
  <p class="normal">
-     1. Create a frame for your typing game.<br>
+     1.  Make a typingTutor class with a main method and a setup() method. Create a JFrame and a JPanel in setup method. <br>
      <br>
-     <img alt="" src="images/typingTutor2.png" style="width: 444.00px; height: 163.00px; margin-left: 100.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
-     
-     
-    <br>
-2. Create a member variable and initialize it as shown below:</p><br>
- <pre>char currentLetter;
-currentLetter = generateRandomLetter();
+     <pre> void setup(){
+         JFrame frame = new JFrame();
+         JPanel panel = new JPanel();
+         }
+    </pre><br>
+</p>
+<p class="normal">
+2. Create a member variable in class.  
+ <pre>  char currentLetter;
+ </pre>
+</p><br>
+ <p class="normal">  
+ 3. Initialize currentLetter in the setup method as shown below: </p>
+ <pre> currentLetter = generateRandomLetter();
+     </pre><br>
 
+ <p class="normal">  
+ 4. Paste the following method after the main method. </p>
+ <pre>
 char generateRandomLetter() {
     Random r = new Random();
     return (char) (r.nextInt(26) + 'a');
 }</pre><br>    
  <p class="normal">   
-3.Use a JLabel to show the value of currentLetter on the screen. Make sure it changes every time you start the game.<br>
+5.Create a JLabel and set the text of the label to the currentLetter in the setup method.<br>
 </p><br> 
     <p class="normal">
-4. Format the letter so that it is nice and big. Here are some hints….
+6. Format the letter so that it is nice and big. Here are some hints….
 </p>
-
     <pre>
-jLabel.setFont(jLabel.getFont().deriveFont(28.0f));
-jLabel.setHorizontalAlignment(JLabel.CENTER);</pre><br>
+label.setFont(label.getFont().deriveFont(28.0f));
+label.setHorizontalAlignment(JLabel.CENTER);</pre><br>
      <p class="normal">   
-         5. Add a key listener to the frame.
+         7. Add a key listener to the frame in setup method. Add label to the panel and panel to the frame. 
 
     </p><br>
    
+    <p class="normal">   
+        8. Create object/instance of typingTutor class in main method. Using the object/instance call the setup method as shown below.
+        <pre>  main method(){
+typingTutor tutor = new typingTutor();
+tutor.setup(); 
+ }
+            </pre><br> 
+
+   </p><br>
       <p class="normal">      
-   6. Make the letter change every time a key is pressed.<br> 
-    <br>
- To do that, in the keyReleased method:<br>
+   9. Make the letter change every time a key is pressed.  To do that, in the keyReleased method:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i) Reset currentLetter.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii) Update your JLabel.<br>
 </p><br>
     
   <p class="normal">  
-   7. In the keyPressed method, print out the character that the user typed.<br>
+   10. In the keyPressed method, print out the character that the user typed.<br>
    <br>
         <img alt="" src="images/typingTutor1.png" style="width: 444.00px; height: 130.00px; margin-left: 100.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
       
     
     </p><br>
       <p class="normal">  
-   8. If they typed the currentLetter, print “correct”.<br>
+   11. If they typed the currentLetter, print “correct”.<br>
    <br>
-    9. If they typed the correct letter, set the panel background to <font color="green">green</font>. Otherwise set it to <font color="red">red</font>.<br>
+    12. If they typed the correct letter, set the panel background to <font color="green">green</font>. Otherwise set it to <font color="red">red</font>.<br>
 <br>
-        10.  [optional] After a certain number of characters, show the users’ typing speed.<br>
+        13.  [optional] After a certain number of characters, show the users’ typing speed.<br>
     </p><br>
     <pre>Date timeAtStart = new Date();
      

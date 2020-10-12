@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Level 6 - Student Getting Started</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+<body>
+<div id="wrap">
+    <div id="main">
+        <div id="header">
+            <script>addHeader();</script>
+        </div>
+        <h2>Level 6 - Student Getting Started</h2>
+        <div id="teachersPage">
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>1 - Clone the repository</h3>
+
+                </div>
+                <div class="description">
+
+                    <p>
+                        Github desktop provides nice tools for managing branches, but you can also try using the command
+                        line to clone your repository. If you use GitHub desktop, make sure to create a new
+                        branch for you work. If you are interested in trying the command line, you can follow these
+                        steps:<br><br>
+
+                    <h4>open the terminal</h4><br>
+
+                    <h4>navigate to your desktop</h4>
+                    cd desktop<br><br>
+
+                    <h4>clone your repository</h4>
+                    git clone https://github.com/LEAGUE-Level6/DiscordBot_v2.git<br><br>
+
+                    Your repository url can be found by visiting the repository homepage and clicking the green "code"
+                    button
+                    After this step, you should see your repository folder appear on the desktop<br>
+                    Now we need to create a branch for you to work on<br><br>
+
+                    <h4>Navigate inside of Discord bot folder</h4>
+                    cd DiscordBot_v2<br/><br/>
+
+                    <h4>See every branch that the repository has</h4>
+                    git branch -a<br><br>
+
+                    <h4>quit this branch view</h4>
+                    q<br><br>
+
+                    <h4>create your own branch</h4>
+                    git checkout -b feature/&lt;yourName&gt;<br><br>
+
+                    <h4>check your active branch</h4>
+                    git branch<br><br>
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>2 - Create a new branch</h3>
+
+                </div>
+                <div class="description">
+
+                    <p>
+                        We need to create a branch for you to work on. You can do this is Github Desktop, or use
+                        the command line instructions below. For your first feature, you can call your branch
+                        feature1/&lt;your_name&gt;. For you second and third features use feature2/&lt;your_name&gt;
+                        and feature3/&lt;your_name&gt;, respectively<br><br>
+
+                    <h4>Navigate inside of Discord bot folder</h4>
+                    cd DiscordBot_v2<br/><br/>
+
+                    <h4>See every branch that the repository has</h4>
+                    git branch -a<br><br>
+
+                    <h4>quit this branch view</h4>
+                    q<br><br>
+
+                    <h4>create your own branch</h4>
+                    git checkout -b feature1/&lt;yourName&gt;<br><br>
+
+                    <h4>check your active branch</h4>
+                    git branch<br><br>
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>3 - Import your project into Eclipse </h3>
+                </div>
+                <div class="description">
+                    <p>
+                        In the import menu, select "Maven", and then "Existing Maven Projects"
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>4 - Create bot token on discord developers page </h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Navigate to the <a href="https://discord.com/developers/applications">discord developer's
+                        portal</a>.
+                        You will need to "create a new application". Then click on the "bot" tab on the left side of
+                        the screen and retrieve your bot's token
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>5 - Add environment variables</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        It is bad practice to put sensitive information directly into variables. In the case of this
+                        project,
+                        we have a discord token that provides access to our channel to anyone that possess it. We need
+                        to
+                        keep that secure and out of version control (i.e. Github).
+                        <br/><br/>
+
+                        Launcher.java in the DiscordBot application is set up to read your Discord token and channel
+                        name from environment variables.
+                        We need to create those environment variables and give them appropriate values.
+                    </p>
+                    <strong>In Eclipse:</strong>
+                    <ul>
+                        <li>Run>Run Configurations</li>
+                        <li>Click on the white rectangle with the plus sign to create a new launch configuration</li>
+                        <li>Enter a name for the configuration (e.g. DiscordBot)</li>
+                        <li>Select the Main class (i.e. Launcher.java)</li>
+                        <li>Click on the "Environment" tab</li>
+                        <li>Click "new", and add two new entries:
+                            <ol>
+                                <li>name: DISCORD_TOKEN value:&lt;your_discord_token&gt;</li>
+                                <li>name: CHANNEL_NAME value:&lt;your_channel_name&gt;</li>
+                            </ol>
+                        </li>
+                    </ul>
+                    <br/><br/>
+                    <strong>In IntelliJ:</strong>
+                    <ul>
+                        <li>Run>Edit Configurations
+                        <li>Click on the plus sign to create a new launch configuration</li>
+                        <li>Enter a name for the configuration (e.g. DiscordBot)</li>
+                        <li>Select the Main class (i.e. Launcher.java)</li>
+                        <li>Click on the page icon at the end of the Environment Variables text field</li>
+                        <li>Click "+", and add two new entries:
+                            <ol>
+                                <li>name: DISCORD_TOKEN value:&lt;your_discord_token&gt;</li>
+                                <li>name: CHANNEL_NAME value:&lt;your_channel_name&gt;</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>6 - Run the bot</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        You may first need to run the application as a "Maven install". Maven is an automation tool that
+                        allows us to
+                        download all the files our bot needs to run without having to do it manually.
+                    </p>
+                    <p>Now run your program using your launch configuration</p>
+                    <p>You should now see a link printed out in the console. You will need to send this in your discord
+                        channel so that your teacher can follow it and authorize your bot</p>
+                    <p>Rerun your bot. The bot will send a "bot connected" message in your discord channel!</p>
+                </div>
+            </div>
+
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>7 - Explore the code</h3>
+                </div>
+                <div class="description">
+                    <p>There are two classes that you should be familiar with before you create your first feature:</p>
+                    <h4>DiscordBot_v2/src/main/java/org/jointheleague/discord_bot/DiscordBot.java</h4>
+
+                    <p>When you create a new feature, you will need to add it in this class. You will
+                        notice multiple lines that look like this:</p>
+                    <pre>
+addFeature(new RandomNumber(channelName));
+                    </pre>
+                    <p>This adds your feature to the bot. You will need to add a line like the one above,
+                        replacing "new RandomNumber" with "new &lt;your_feature_class_name&gt;()" </p>
+
+                    <h4>
+                        DiscordBot_v2/src/main/java/org/jointheleague/features/examples/first_features/RandomNumber.java</h4>
+                    <p>This is how you will create your new feature. This class contains the code for a feature that
+                        listens for the command "!random" to be entered into the chat</p>
+                    <pre>
+private static final String COMMAND = "!random";
+                    </pre>
+
+                    <p>In the handle method, this class listens for the command to be issued</p>
+                    <pre>
+String messageContent = event.getMessageContent();
+if (messageContent.startsWith(COMMAND)) {
+                    </pre>
+
+                    <p>It then creates an instance of Random, and uses it to send a message containing a random number</p>
+                    <pre>
+Random r = new Random();
+event.getChannel().sendMessage("Your random number is " + r.nextInt(1001));
+                    </pre>
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>12 - How to do other things</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        For more examples of things you can do with the Discord API, you can take a look at other
+                        completed features in the same package. Our bot uses a wrapper for the Discord API called
+                        Javacord. The complete documentation for this wrapper can be found here:
+                        https://javacord.org/wiki/getting-started/welcome/</p>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>13 - Saving your work</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        If you are using the terminal, reopen your window.
+
+                    <h4>make sure you made changes to the right repository</h4>
+                    git status<br><br>
+                    You should see the names of all the files your changed displayed in red. If you see a message saying
+                    this "is not a git repository", you probably need to navigate back to the correct directory. Go look
+                    at how we did this using "cd" before.<br><br>
+
+                    <h4>stage your changes</h4>
+                    git add .<br><br>
+
+                    the "." at the end means "all"<br><br>
+
+                    <h4>commit your changes</h4>
+                    git commit -m "Your commit message goes here"<br><br>
+
+                    <h4>push your changes</h4>
+                    git push<br><br>
+
+                    If it tells your to set the git remote, copy the line it gives you and run it. After successfully
+                    pushing your code, "git status" should tell you that your branch is up to date.
+
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>14 - Pull request</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Once you finish your feature, you will need to submit a pull request to merge it back into
+                        development. You can do this from the <a
+                            href="https://github.com/LEAGUE-Level6/DiscordBot_v2/pulls">pull requests tab</a> of the
+                        repository on GitHub.
+
+
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <script>addFooter();</script>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

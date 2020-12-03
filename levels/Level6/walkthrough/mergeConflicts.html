@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level 6 - Resolving Merge Conflicts</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="main">
+            <div id="header">
+                <script>addHeader();</script>
+            </div>
+            <h2>Level 6 - Resolving Merge Conflicts</h2>
+            <div id="teachersPage">
+
+                <div class="module">
+                    <div class="titleBar">
+                        <h3>Resolving Merge Conflicts</h3>
+                        <!---
+                            <div class = "links">
+                                <a href="https://bit.ly/introtojava">Code</a>
+                            </div>
+                            -->
+                    </div>
+                    <div class="description">
+                        <p style="font-weight: bold;">
+                            Merge conflicts occur when two branches change the same file. Git simply cannot decide which
+                            version of the changes should be kept. Here's an example scenario:
+                        </p>
+                        <ol style="padding-left:10%">
+                            <li>Student A and Student B both create new branches from the development branch</li>
+                            <li>Student A changes some lines in the Bot.java class</li>
+                            <li>Student A creates a pull request and that is merged back into development</li>
+                            <li>Student B is still working on their branch, and also makes changes to the same lines in
+                                Bot.java</li>
+                            <li>When Student B finishes their feature and creates a pull request, git doesn't know which
+                                version of Bot.java it should keep, since both people changed the same lines</li>
+                        </ol>
+
+                        
+                            <p style="font-weight: bold;">Here's how we could resolve that situation:</p>
+                        
+
+                        <ol style="padding-left:10%">
+                            <li>Navigate to the pull request page inside of the repository, and click on the "Resolve
+                                conflicts" button</li>
+                            <br />
+                            <img src="../img/mergeConflictScreenshots/resolveConflictsButton.png"
+                                alt="pull request screenshot 1" height="10%" width="80%">
+                            <br /><br /><br />
+                            <li>You will then be redirected to a page that displays the code</li>
+                            <br /><br /><br />
+                            <li>If you look closely at the code below, you will notice that git added some comments on
+                                lines
+                                5, 22, and 24</li>
+                            <br />
+                            <img src="../img/mergeConflictScreenshots/mergeConflict.png" alt="pull request screenshot 3"
+                                height="10%" width="80%">
+                            <ul>
+                                <li>Line 5 indicates that the following section is from the feature/TextAdventure branch</li>
+
+                                <li>Line 22 indicates the end of the section</li>
+
+                                <li>Line 24 indicates that the code above is from the development branch</li>
+
+                            </ul>
+                            <br /><br /><br />
+                            <li>To resolve the merge conflict we need to delete the code that we no longer want. Note
+                                that
+                                it is possible that we would want to save some code from both sections</li>
+                            <br /><br /><br />
+                            <li>In the case of the current merge conflict, we can safely delete everything from lines
+                                5-24
+                                EXCEPT line 23. Make sure you delete the annotations that git added as well (on lines
+                                5,
+                                22, and 24 here) </li>
+                            <br /><br /><br />
+                            <li>After resolving any other conflicts in the file, the code is ready to merge.</li>
+                            <br /><br /><br />
+                        </ol>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div id="footer">
+            <script>addFooter();</script>
+        </div>
+    </div>
+</body>
+
+</html>

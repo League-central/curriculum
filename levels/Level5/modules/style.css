@@ -1,0 +1,95 @@
+/*
+REMOVE THIS FILE ONCE ALL MODULES HAVE BEEN UPDATED 
+
+this is being added back temporarily as the current (old) level 1 and level 2 point towards this css file.
+*/
+
+
+
+body {
+    background-color: white;
+}
+
+h1 {
+    color: #fa591a;
+    text-align: center;
+    font-family: verdana;
+    font-size: 48px;
+}
+
+h2 {
+    font-family: verdana;
+    color: #fa591a;
+    font-size: 32px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 24px;
+    text-align: center;
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+
+p.normal {
+    font-family: verdana;
+    font-size: 16px;
+}
+
+p.code {
+    color: #1E9806;
+    font-family: Courier;
+    font-size: 16px;
+    padding-left: 50px;
+
+}
+
+p.copyright {
+    font-family: Arial;
+    font-size: 12px;
+}
+
+img {
+    display: block;
+    margin: right;
+    width: 20%;
+    height: 20%;
+}
+
+img.middle {
+    vertical-align:
+}
+        
+img.footer {
+    max-height: 75px;
+    width: auto;
+    display:inline-block;
+}
+        
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Level 6 - Getting Started</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="main">
+                <div id="header">
+                    <script>addHeader();</script>
+                </div>
+                <h2>Level 6 - Getting Started</h2>  
+                <div id ="teachersPage">
+
+                    <div class ="module">
+                        <div class ="titleBar">
+                            <h3>1 - Collaborative Coding Principles</h3>
+                            <!---
+                            <div class = "links">
+                                <a href="https://bit.ly/introtojava">Code</a>
+                            </div>
+                            -->
+                        </div>
+                        <div class = "description">
+                            <p>
+                                Up until now, you have been the only person commiting to your repositories.  This presentation will show you the basics of working in a repository that is being developed by multiple people.<br><br>https://docs.google.com/presentation/d/1YceAMYWlxXsT-fTrYHne7e65DrIb0lN8iIq7hY3bXlc/edit?usp=sharing<br><br>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class = "module">
+                        <div class = "titleBar">
+                            <h3>2 - Get added to the repository as a collaborator </h3>
+                        </div>
+                        <div class = "description">
+                            
+                            <p>
+                                While you will be able to see the code, you will not be able to commit your changes back to the repository until you are added as a collaborator.  This can be done by your teacher by visiting the repository's homepage and going to settings > manage access
+                            </p>
+                            
+                        </div>
+                    </div>
+
+                    <div class = "module">
+                        <div class = "titleBar">
+                            <h3>3 - Clone the repository</h3>
+                            
+                        </div>
+                        <div class = "description">
+                            
+                            <p>
+                                This is a fantastic opportunity to try using the command line to clone your repository, although using GitHub desktop will work as well.  If you use GitHub desktop, make sure you create a new branch for you work.  If you are interested in trying the command line, you can follow these steps:<br><br>
+                                
+                                <h4>open the terminal</h4><br>
+
+                                <h4>navigate to your desktop</h4>
+                                cd desktop<br><br>
+
+                                <h4>clone your repository</h4><
+                                git clone &lt;yourRespositoryURL&gt;<br><br>
+
+                                Your repository url can be found by visiting the repository homepage and clicking the green button
+                                After this step, you should see your repository folder appear on the desktop<br>
+                                Now we need to create a branch for you to work on<br><br>
+
+                                <h4>See every branch that the repository has</h4>
+                                git branch -a<br><br>
+
+                                <h4>quit this branch view</h4>
+                                q<br><br>
+
+                                <h4>create your own branch</h4>
+                                git checkout -b feature/&lt;yourName&gt;<br><br>
+
+                                <h4>check your active branch</h4>
+                                git branch<br><br>
+
+
+                            </p>   
+                        </div>
+                    </div>
+
+                    <div class = "module">
+                        <div class = "titleBar">
+                            <h3>4 - Create an account on discord </h3>
+                        </div>
+                        <div class = "description">
+                            <p>
+                                https://discordapp.com/
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class = "module">
+                        <div class = "titleBar">
+                            <h3>5 - Create bot token on discord developers page </h3>
+                        </div>
+                        <div class = "description">
+                            <p>
+                                Navigate to the discord developer's portal.  You will need to "create a new application".  Then click on the "bot" tab on the left side of the screen and retrieve your bot's token
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class = "module">
+                        <div class = "titleBar">
+                            <h3>6 - Import your project into Eclipse </h3>
+                        </div>
+                        <div class = "description">
+                            <p>
+                                In the import menu, select "Maven", and then "Existing Maven Projects"
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class = "module">
+                        <div class = "titleBar">
+                            <h3>7 - Get a channel for your bot in Discord</h3>
+                        </div>
+                        <div class = "description">
+                            <p>
+                                Your teacher will need to add a channel in the discord server for you bot.  The channel can have the same name as your bot.  
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class = "module">
+                        <div class = "titleBar">
+                            <h3>8 - Get an invite to the Discord server</h3>
+                        </div>
+                        <div class = "description">
+                            <p>
+                                Your teacher will need to send you an invite to the discord server  
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class = "module">
+                        <div class = "titleBar">
+                            <h3>9 - Update your config.json</h3>
+                        </div>
+                        <div class = "description">
+                            <p>
+                                The config.json file will hold your bot's token (step 5) and channel name (step 7).  It lives in the main/java/resources package.   
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class = "module">
+                        <div class = "titleBar">
+                            <h3>10 - Run the bot</h3>
+                        </div>
+                        <div class = "description">
+                            <p>
+                                First run your project as a "Maven install".  Maven is an automation tool that allows us to download all the files our bot needs to run without having to do it manually.  
+                            </p>
+                            <p>Now run your program as a Java Application</p>
+                            <p>You should now see a link printed out in the console.  You will need to send this in your discord channel so that your teacher can follow it and authorize your bot</p>
+                            <p>Rerun your bot.  The bot will send a "bot connected" message in your discord channel!</p>
+                        </div>
+                    </div>
+
+
+                    <div class = "module">
+                        <div class = "titleBar">
+                            <h3>11 - Explore the code</h3>
+                        </div>
+                        <div class = "description">
+                            <p>
+                                Besides the config.json, there are two other classes which are of particular importance to creating new features:
+
+                                <h4>DiscordBot/src/main/java/org/jointheleague/discord_bot_example/Bot.java</h4>
+
+                                <p>When you create a new feature, you will need to add a listener for it in this class.  You will notice multiple lines that look like this:</p>
+                                <pre>
+api.addMessageCreateListener(new RandomNumber(channelName));
+                                </pre>
+                                <p>This adds your feature's listener to the bot.  You will need to add a line like the one above, replacing "new RandomNumber" with "new &lt;yourFeatureClassName&gt;" </p>
+
+                                <h4>DiscordBot/src/main/java/org/jointheleague/modules/RandomNumber.java</h4>
+                                <p>This is how you will create your new feature.  This class contains the code for a feature that listens for the command "!random" to be entered into the chat</p>
+                                <pre>
+private static final String COMMAND = "!random";
+                                </pre>
+
+                                <p>In the handle method, this class listens for the command to be issued</p>
+                                <pre>
+if (event.getMessageContent().contains(COMMAND)) {
+                                </pre>
+
+                                <p>It then does something that you may not need to, it formats the command it received so that it can parse the optional range of values that the user may have provided</p>
+                                <pre>
+String cmd = event.getMessageContent().replaceAll(" ", "").replace("!random","");
+                                </pre>
+
+                                <p>The if statement checks if the command is now empty.  This would mean that no range of values was provided by the user.  It then creates a random number and sends a reply in the discord channel</p>
+                                <pre>
+if(cmd.equals("")) {
+	Random r = new Random();
+    event.getChannel().sendMessage("Your random number is " + r.nextInt(1000));
+}
+                                </pre>
+
+                                <p>In the else, it handles when the user provides a range of numbers for the random.  Due to the formatting that occured earlier, our String cmd now looks something like "20-100".  It saves the low and high limits in variables, and then sends a message containing the random value to the discord channel.</p>
+                                <pre>
+} else {
+	String rlow = cmd.substring(0, cmd.indexOf('-'));
+    String rhigh = cmd.replace(rlow + '-', "");
+    event.getChannel().sendMessage("Your random number between " + rlow + " and " + rhigh + " is " + ThreadLocalRandom.current().nextInt(Integer.parseInt(rlow), Integer.parseInt(rhigh)));
+}
+                                </pre>
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class = "module">
+                        <div class = "titleBar">
+                            <h3>12 - How to do other things</h3>
+                        </div>
+                        <div class = "description">
+                            <p>
+                                For more examples of things you can do with the Discord API, you can take a look at other completed features in the same package.  Our bot uses a wrapper for the Discord API called Javacord.  The complete documentation for this wrapper can be found here: https://javacord.org/wiki/getting-started/welcome/</p> 
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class = "module">
+                        <div class = "titleBar">
+                            <h3>13 - Saving your work</h3>
+                        </div>
+                        <div class = "description">
+                            <p>
+                                If you are using the terminal, reopen your window. 
+                                
+                                <h4>make sure you made changes to the right repository</h4>
+                                git status<br><br>
+                                You should see the names of all the files your changed displayed in red.  If you see a message saying this "is not a git repository", you probably need to navigate back to the correct directory.  Go look at how we did this using "cd" before.<br><br>  
+
+                                <h4>stage your changes</h4>
+                                git add .<br><br>
+
+                                the "." at the end means "all"<br><br>
+
+                                <h4>commit your changes</h4>
+                                git commit -m "Your commit message goes here"<br><br>
+
+                                <h4>push your changes</h4>
+                                git push<br><br>
+
+                                If it tells your to set the git remote, copy the line it gives you and run it.  After successfully pushing your code, "git status" should tell you that your branch is up to date.
+
+
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class = "module">
+                        <div class = "titleBar">
+                            <h3>14 - Pull request</h3>
+                        </div>
+                        <div class = "description">
+                            <p>
+                               Once you finish your feature, you will need to submit a pull request to merge it back into development.  You can do this from the homepage of ther respository on GitHub.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="footer">
+                <script>addFooter();</script>
+            </div>
+        </div>
+    </body>    
+</html>
+
+
+
+
+
+
+

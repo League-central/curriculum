@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level 6 - Production Environment</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="main">
+            <div id="header">
+                <script>addHeader();</script>
+            </div>
+            <h2>Level 6 - Production Environment</h2>
+            <div id="teachersPage">
+
+                <div class="module">
+                    <div class="titleBar">
+                        <h3>Production Environment</h3>
+                        <!---
+                            <div class = "links">
+                                <a href="https://bit.ly/introtojava">Code</a>
+                            </div>
+                            -->
+                    </div>
+                    <div class="description">
+                        <br />
+                        <p style="font-weight: bold;">
+                            The level 6 discord bot is actively hosted on AWS EC2.  Here is how the instance is set up and maintained.
+                        </p>
+                        <br /><br />
+                        <h3>Creating the Environment</h3>
+                        <br />
+                        <ol style="padding-left:10%; padding-right:10%;">
+                            <li>Create an instance on EC2. You can use Amazon Linux 2 as the image</li>
+                            <br /><br />
+                            <li>Once the instance is initialized, connect using SSH. Instructions for this can be found
+                                by clicking the "connect" button at the top of the EC2 Instances page</li>
+                            <br /><br />
+                            <li>Install Coretto 8 JDK</li>
+                            <ul>
+                                <a
+                                    href="https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/amazon-linux-install.html">https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/amazon-linux-install.html</a>
+                            </ul>
+                            </ul>
+                            </li>
+                            <br /><br />
+                            <li>Install Maven</li>
+                            <ul>
+                                <a
+                                    href="https://docs.aws.amazon.com/neptune/latest/userguide/iam-auth-connect-prerq.html">https://docs.aws.amazon.com/neptune/latest/userguide/iam-auth-connect-prerq.html</a>
+                            </ul>
+                            </ul>
+                            </li>
+                            <br /><br />
+                            <li>Ensure the correct version of java is still active.
+                                <pre>java -version</pre><br /> should include "Coretto". If not, refer to the "verify
+                                your installation" section of the above Amazon Coretto 8 installation page</li>
+                        </ol>
+                        <br /><br /><br />
+
+                        <h3>Deploying the Appplication</h3>
+                        <p style="padding-left:10%; padding-right:10%;">Since some of the features use the FileWriter
+                            class, deploying the application as a .jar file is not possible</p>
+                        <br />
+                        <ol style="padding-left:10%; padding-right:10%;">
+                            <li>Use the "scp" command to transfer the project to the production environment.</li>
+                            <ul>
+                                <li>
+                                    <pre>scp -i _pem/DiscordBot.pem -r DiscordBot ec2-user@ec2-54-241-101-121.us-west-1.compute.amazonaws.com:/home/ec2-user</pre>
+                                </li>
+                                <br />
+                                <li>The command is of the format:</br>
+                                    <pre>scp -i &lt;pathToPemFile&gt -r &lt;pathToProject&gt; &lt;EC2UserFromSshStep&gt;:&lt;destinationPath&gt;</pre>
+                                </li>
+                            </ul>
+                            <br /><br /><br />
+                            <li>Run the project. We need to use nohup so that the process continues to run after you
+                                close the terminal window</li>
+                            <ul>
+                                <li>
+                                    <pre>nohup mvn clean compile exec:java &</pre>
+                                </li>
+                            </ul>
+                            <br /><br /><br />
+                            <li>You should now see the "Bot Connected" message in the channel</li>
+                            <br /><br /><br />
+                            </ol>
+                            <h3>Updating the Appplication</h3>
+                            <br />
+                            <ol style="padding-left:10%; padding-right:10%;">
+                            <li>Find the Process ID (PID) of the currently running version</li>
+                            <ul>
+                                <li>
+                                    <pre>ps aux | egrep '[D]iscordBot'</pre>
+                                </li>
+                            </ul>
+                            <br /><br /><br />
+                            <li>Kill the process</li>
+                            <ul>
+                                <li>
+                                    <pre>kill &lt;PID&gt;</pre>
+                                </li>
+                            </ul>
+                            <br /><br /><br />
+                            <li>Deploy the new version using the above steps</li>
+                            <br /><br /><br />
+                        </ol>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div id="footer">
+            <script>addFooter();</script>
+        </div>
+    </div>
+</body>
+
+</html>

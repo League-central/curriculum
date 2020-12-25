@@ -35,12 +35,28 @@
 <br>
         </p><br> 
 
-<p class="code">
-private void playSound(String fileName) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName)); <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound.play();<br>
-	}<br>
-    </p><br>
+<pre>
+	private void playSound(String soundFile) {
+		String path = "src/_09_sound_effects_machine/";
+			File sound = new File(path+soundFile);
+			if (sound.exists()) {
+				new Thread(() -> {
+				try {
+					Clip clip = AudioSystem.getClip();
+					clip.open(AudioSystem.getAudioInputStream(sound));
+					clip.start();
+					Thread.sleep(clip.getMicrosecondLength()/1000);
+				}
+				catch (Exception e) {
+					System.out.println("Could not play this sound");
+				}}).start();
+	 		}
+			else {
+				System.out.println("File does not exist");
+			}
+		
+	}
+    </pre><br>
                 </div>
     </div>
     </div>                

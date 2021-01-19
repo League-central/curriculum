@@ -16,12 +16,12 @@
         <div id="header">
             <script>addHeader();</script>
         </div>
-        <h2>Level 6 - Milestone 1</h2>
+        <h2>Level 6 - Milestone 2</h2>
         <div id="teachersPage">
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Milestone 2</h3>
+                    <h3>Milestone 2 - Project Code Structure</h3>
                     <!---
                         <div class = "links">
                             <a href="https://bit.ly/introtojava">Code</a>
@@ -30,20 +30,23 @@
                 </div>
                 <div class="description">
                     <p>
-                        This goal of this milestone is to understand the basic structure of a Spring Boot application.<br><br>
-                        Before completion of this milestone, student will:
-                        <ul>
-                    <li>Understand 3-tier architecture of a Spring Boot application</li>
-                    <li>Be introduced to the build.gradle file</li>
-                    <li>Be introduced to the application.yml file </li>
-                </ul>
+                        This goal of this milestone is to understand the basic structure of a Spring Boot
+                        application.<br><br>
+                        Before completion of this milestone, students will:
+                    <ul>
+                        <li>Have a basic understand of what Spring Boot is</li>
+                        <li>Learn how to initialize a Spring Boot project</li>
+                        <li>Understand the 3-tier architecture of a Spring Boot application</li>
+                        <li>Be introduced to the build.gradle file</li>
+                        <li>Be introduced to the application.yml file</li>
+                    </ul>
                     </p>
                 </div>
             </div>
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Downloading IntelliJ IDEA</h3>
+                    <h3>Creating the Project with Spring Initializer</h3>
                     <!---
                         <div class = "links">
                             <a href="https://bit.ly/introtojava">Code</a>
@@ -52,15 +55,264 @@
                 </div>
                 <div class="description">
                     <p>
-                        IntelliJ is an IDE that has a number of features that, combined, make it a very attractive option as an IDE.
-                        If you want to continue to use Eclipse, you are free to do so, but it is highly unusual for someone to choose to go back to Eclipse after making the switch.
-                        You can have the students download the community edition of IntelliJ, as it is free and indistinguishable from Ultimate edition for the purpose of this class.
-                        Whatever choice you make, it is recommended that you have all the students use the same setup.  While you may be tempted to take the easy route and use what the
-                        students are familiar with, the learning curve for IntelliJ is very small, and will make life better in the long run.
+                        The Spring Initializer can be found at <a href="start.spring.io">start.spring.io</a>. There are
+                        a number
+                        of fields here that we will need to select values for:
+                    </p>
+                    <ul>
+                        <li>Project:</li>
+                        <ul>
+                            <li>Gradle Project</br></br>
+                                Gradle is a modern build automation tool that allows us to easily retrieve any
+                                dependencies
+                                our
+                                project requires.</br></br>
+                                Why Gradle?
+                            </li>
+                            <ul>
+                                <li>Less verbose than Maven (which uses XML)</li>
+                                <li>Faster than Maven (After running the application, the Gradle Daemon runs in the
+                                    background,
+                                    allowing subsequent launches to be much faster
+                                </li>
+                                <li>Gradle uses Groovy, a JVM language, in the build file. This allows for much greater
+                                    flexibility, and even allows us to write custom code in the build file.
+                                </li>
+                            </ul>
+                        </ul>
+                        </br>
+                        <li>Language:</li>
+                        <ul>
+                            <li>Java</li>
+                        </ul>
+                        </br>
+                        <li>Spring boot:</li>
+                        <ul>
+                            <li>Choose the most recent stable release</li>
+                        </ul>
+                        </br>
+                        <li>Project Metadata:</li>
+                        <ul>
+                            <li>Group</li>
+                            <ul>
+                                <li>Where the project will be hosted. Also infers the root package name to use.</li>
+                                <li>e.g. org.jointheleague.api.cheetah</li>
+                            </ul>
+                            <li>Artifact</li>
+                            <ul>
+                                <li>Project coordinates - infers the Name</li>
+                                <li>e.g. Cheetah Search</li>
+                            </ul>
+                            <li>Name</li>
+                            <ul>
+                                <li>Display name of the project that also determines the name of your Spring Boot
+                                    application.
+                                </li>
+                                <li>e.g. Cheetah Search</li>
+                            </ul>
+                            <li>Description</li>
+                            <ul>
+                                <li>Description of the project</li>
+                                <li>e.g. A Spring Boot application that uses Library of Congress to return information
+                                    on books.
+                                </li>
+                            </ul>
+                            <li>Package name</li>
+                            <ul>
+                                <li>The root package of the project</li>
+                                <li>e.g. org.jointheleague.api.cheetah</li>
+                            </ul>
+                            <li>Packaging</li>
+                            <ul>
+                                <li>How the project will be packaged</li>
+                                <li>jar</li>
+                            </ul>
+                            <li>Java</li>
+                            <ul>
+                                <li>e.g. 11</li>
+                                <li>Choose the latest Java Long Term Support release</li>
+                            </ul>
+                        </ul>
+                        </br>
+                        <li>Dependencies</li>
+                        <ul>
+                            <li>
+                                Spring Web
+                            </li>
+                            <li>
+                                Spring Reactive Web
+                            </li>
+                        </ul>
+                    </ul>
+                    </br></br>
+                    <p>
+                        Finally, click the "Generate Code" button. This will download the start code.
                     </p>
                 </div>
             </div>
 
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Creating the Repository</h3>
+                    <!---
+                        <div class = "links">
+                            <a href="https://bit.ly/introtojava">Code</a>
+                        </div>
+                        -->
+                </div>
+                <div class="description">
+                    <p>
+                        Obviously we need to get our code onto GitHub. There is more than one way to accomplish this,
+                        but
+                        it can be done using the following steps:
+                    <ul>
+                        <li>
+                            Go to <a href="https://www.github.com/league-level7">www.github.com/league-level7</a>.
+                        </li>
+                        <li>Create a new repository and name it after the class (e.g. Cheetah-Search)</li>
+                        <li>Open up the terminal and navigate to the unzipped project directory</li>
+                        <li>Initialize the directory as a git repository:</br></br>
+                            <span style="font-weight:bold">git init</span>
+                        </li>
+                    </br>
+                        <li>Set the remote for this repository, changing the following URL to your repository's URL:</br></br>
+
+                        <span style="font-weight:bold">git remote add origin https://github.com/league-level7/Cheetah-Search.git</span>
+                        </li>
+                    </br>
+                    <li>Add all of the code to the commit, notice the period at the end denoting "all":</br></br>
+                        <span style="font-weight:bold">git add .</span>
+                    </li>
+                    </br>
+                    <li>Commit the code:</br></br>
+                        <span style="font-weight:bold">git commit -m "initial"</span>
+                    </li>
+                    </br>
+                    <li>Push the code:</br></br>
+                        <span style="font-weight:bold">git push</span>
+                    </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3><N></N>3-Tier Architecture</h3>
+                    <!---
+                        <div class = "links">
+                            <a href="https://bit.ly/introtojava">Code</a>
+                        </div>
+                        -->
+                </div>
+                <div class="description">
+                    <p>
+                        Properly structuring our application makes it easier to understand and maintain. The application
+                        can be broken-down
+                        into 3 sections, which will each later correspond to a package:
+                        <ul>
+                            <li>Presentation Layer</li>
+                    <p>Responsible for mapping request URLs to what should happen when they are hit.</p>
+                    <li>Service Layer</li>
+                    <p>Contains all of the business logic. Any real logic that is need for the application occurs
+                        here.</p>
+                    <li>Repository Layer</li>
+                    <p>Responsible for retrieving data (from an API or database)</p>
+                    </ul>
+                    </p>
+                    <p>Here is a <a href="../../img/level7/n-tier architecture.png">diagram that represents this
+                        structure</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>The <span style="font-style: italic">build.gradle</span> File</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        After putting the code into our IDE, lets examine a couple files that are of special importance to us.
+                        The first is the build.gradle file.  This file is our build configuration script, and contains much of the information that we entered into the
+                        Spring Initializer.  You will see information on the group, source compatibility (i.e. java version), and version of the application.  As an aside,
+                        the "version" is appended to the name of the jar file that is created, and typically the "SNAPSHOT" is removed when the code enters production.
+                        You will also notice a section for dependencies.  These are the external libraries that we selected in the Spring Initializer which our application will require to run properly.
+                        While we are on the topic, there are some additional dependencies we need to add that were not available in the Spring Initializer.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Swagger Dependencies</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        We need to manually add two dependencies to our build.gradle file, one for Springfox Swagger, and the other for the Springfox Swagger UI.  We will use Swagger to document and manually test our application.
+                        The most recent versions of these dependencies can be found below:</br></br>
+                        <a href="https://mvnrepository.com/artifact/io.springfox/springfox-swagger2">Springfox Swagger 2</a></br>
+                        <a href="https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui">Springfox Swagger UI</a>
+                        </br></br>
+                        Add these two dependencies to the "dependencies" section of the build.gradle file. For reference, after this step your
+                        dependencies should looks something like this (but likely with more recent version of these dependencies):
+                    </br>
+                        <pre>
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+	    exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'io.projectreactor:reactor-test'
+}
+                    </pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>The <span style="font-style: italic">application.yml</span> File</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        The other important configuration file is the application.yml file.  This is the configuration
+                        file for the application itself.  The spring initializer provides this file to us as "application.properties",
+                        but many people find a YAML format easier to read and less verbose.  Simply rename the "application.properties" file
+                        to  "application.yml".  While we won't have much need to alter this file for this project, there are quite a few things that
+                        can be configured through this file.  For now, lets change the port on which this application will run.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Changing the Application Port</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        First, lets run the application.  Near the top of the log you should see a line that looks like this:
+                        <pre>
+2021-01-17 16:01:37.002  INFO 65912 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)</pre>
+                </br>
+                    This shows us that our application is currently running on port 8080.  While that is fine, there are a number of reasons we may want to change that.
+                    If we need to run multiple applications on our computer at once, we can't have them all running on the same port.  Also, when hosting the application,
+                    the hosting provider may require that the application run on a certain port.  AWS Elastic Beanstalk, for example, requires that applications run
+                    on port 5000.  As an exercise, and in preparation for ultimately hosting the application, let's change the port of our application to "5000".
+                    In the application.yml file, add the following lines.  Note that the indentation of "port" is important here:
+                    <pre>
+server:
+    port: 5000</pre>
+                    </br>
+                    If you did not rename the file to "application.yml", you will encounter some problems at this step.  Rerun the application,
+                    and you should notice that the line we examined above now says something like this:
+                    <pre>
+2021-01-17 16:01:37.002  INFO 65912 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)</pre>
+                    </p>
+                </div>
+            </div>
 
         </div>
     </div>

@@ -21,7 +21,7 @@
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Milestone 3 - The Presentation Layer</h3>
+                    <h3>Milestone 3 - Documenting and Accessing Our Code with Swagger</h3>
                     <!---
                         <div class = "links">
                             <a href="https://bit.ly/introtojava">Code</a>
@@ -30,96 +30,229 @@
                 </div>
                 <div class="description">
                     <p>
-                        This milestone is dedicated to the presentation package, and the included Controller classes<br><br>
+                        This milestone introduces Swagger, or more specifically, Spring Fox. Spring Fox is an
+                        implementation
+                        of the Swagger specification for Spring. In practice, the two terms can be used interchangeably.
+                        With the addition of the Swagger UI dependency, our application will automatically create a nice
+                        web page that can be used not only to document exactly what our application does, but also allow
+                        us
+                        to very easily execute requests and manually test our application.<br><br>
                         Before completion of this milestone, students will:
-                        <ul>
-                    <li>Add the dependencies for Swagger</li>
-                    <li>Understand the necessity and use of Swagger</li>
-                    <li>Understand the purpose of a Controller class</li>
-                    <li>Add a HomeController class to redirect to the Swagger UI</li>
-                    <li>Understand and properly implement HTTP response codes in the HomeController</li>
-                    <li>Add a Controller class that will eventually be used to access their functionality</li>
-                    <li>Add an endpoint to their Controller class</li>
-                    <li>Add Swagger annotations to their Controller methods to better document their code</li>
-                </ul>
-                    </p>
-                </div>
-            </div>
-
-            <div class="module">
-                <div class="titleBar">
-                    <h3>Downloading IntelliJ IDEA</h3>
-                    <!---
-                        <div class = "links">
-                            <a href="https://bit.ly/introtojava">Code</a>
-                        </div>
-                        -->
-                </div>
-                <div class="description">
-                    <p>
-
-
-                        Springfox is an implementation of the Swagger specification, meant specifically for Spring applications.
-
-
-
-                        IntelliJ is an IDE that has a number of features that, combined, make it a very attractive option as an IDE.
-                        If you want to continue to use Eclipse, you are free to do so, but it is highly unusual for someone to choose to go back to Eclipse after making the switch.
-                        You can have the students download the community edition of IntelliJ, as it is free and indistinguishable from Ultimate edition for the purpose of this class.
-                        Whatever choice you make, it is recommended that you have all the students use the same setup.  While you may be tempted to take the easy route and use what the
-                        students are familiar with, the learning curve for IntelliJ is very small, and will make life better in the long run.
-                    </p>
-                </div>
-            </div>
-
-            <div class="module">
-                <div class="titleBar">
-                    <h3>Introduction to APIs</h3>
-                    <!---
-                        <div class = "links">
-                            <a href="https://bit.ly/introtojava">Code</a>
-                        </div>
-                        -->
-                </div>
-                <div class="description">
-                    <p>
-                        A presentation on APIs is provided below. You may want to go through the presentation
-                        ahead of time to ensure you are comfortable discussing all of the topics.
-                        <br><br>
-                        <a href="https://drive.google.com/file/d/1Tmc7feUYjw3NfG01qggMY9iLWaxA7SIh/view?usp=sharing">Intro to APIs presentation</a>
-                        <br><br>
-                    </p>
-                </div>
-            </div>
-
-            <div class="module">
-                <div class="titleBar">
-                    <h3>Introduction to the Level 7 project</h3>
-                    <!---
-                        <div class = "links">
-                            <a href="https://bit.ly/introtojava">Code</a>
-                        </div>
-                        -->
-                </div>
-                <div class="description">
-                    <p>
-                        Discuss with the students exactly what this project hopes to accomplish:
                     <ul>
-                        <li>Spring Boot REST API</li>
-                        <li>Using another API to retrieve data about a topic</li>
-                        <li>A web page that displays the results from their application. Creating this is not within the
-                            scope of this class.
+                        <li>Understand the necessity and use of Swagger</li>
+                        <li>Understand the purpose of a Controller class</li>
+                        <li>Add a HomeController class to redirect to the Swagger UI</li>
+                        <li>Understand and properly implement HTTP response codes in the HomeController</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Adding a Swagger config file</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        While Swagger handles much of the heavy-lifting for us, we need to provide it with a little bit
+                        of information about our application. First lets create a "config" folder at the base of our
+                        project source
+                        code (e.g. org.jointheleague.api.level7.cheetah). The name of this folder isn't especially
+                        important,
+                        but "config" is a good choice. Inside of this config package, create a class called
+                        "ApiDocConfig.java".
+                        Then, you can copy and paste the code below, or download the file here: <a
+                            href="../../resources/ApiDocConfig.java">ApiDocConfig.java</a>.
+                        Make sure to change the relevant description fields to fit your application. You can make these
+                        changes before supplying the code to students:
+                    <pre>
+package org.jointheleague.level7.cheetah.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.Collections;
+
+@Configuration
+@EnableSwagger2
+public class ApiDocConfig {
+
+    private ApiInfo apiInfo() {
+        return new ApiInfo(
+                "Level 7 Cheetah Search",
+                "League of Amazing Programmers Level 7 Cheetah Search",
+                "1.0.0",
+                null,
+                new Contact("Matt Freedman", "www.jointheleague.org", "matt.freedman@jointheleague.org"),
+                null, null, Collections.emptyList());
+    }
+
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .useDefaultResponseMessages(false)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(apiInfo());
+    }
+}
+                </pre>
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Viewing the Swagger UI</h3>
+                    <!---
+                        <div class = "links">
+                            <a href="https://bit.ly/introtojava">Code</a>
+                        </div>
+                        -->
+                </div>
+                <div class="description">
+                    <p>
+                        In the last section, we added the required Swagger dependencies to our build.gradle file. Lets
+                        see that in action:
+                    <ol style="padding-left:2.5em;">
+                        <li>Run the application</li>
+                        <li>In a web browser, navigate to <a href="http://localhost:5000/swagger-ui.html">localhost:5000/swagger-ui.html</a>
                         </li>
-                        <li>Verifying our code works with unit testing and integration testing</li>
+                    </ol>
+                    </br>
+                    If you receive an error saying that the page cannot be found, there are two possible solutions:
+                    </br>
+                    </br>
+                    <ol style="padding-left:2.5em;">
+                        <li>The application isn't running</li>
+                        <li>The code inserted into the application.yml file in the previous section is incorrectly
+                            setting the port number
+                        </li>
+                    </ol>
+                    </br>
+                    Here we will see some of the information we included in the Swagger config file, as well as all of
+                    the endpoints which our application contains. At this point, there isn't anything too exciting, but
+                    shortly we will be able to use this page to test our functionality.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Improving Access to our Swagger UI</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        We will be visiting this page a lot during the course of this project in order to test our code.
+                        In addition, having this Swagger UI easily available to users of our application will allow them
+                        to understand what our application does. To facilitate access to this page, we will redirect
+                        users
+                        that visit the base URL of our application to our Swagger page. In short, when users visit
+                        localhost:5000, they will be redirected to localhost:5000/swagger-ui.html. The remaining
+                        sections
+                        of this milestone will allow us to achieve that goal
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Creating the Presentation Package</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        First things first, let's create somewhere for all of our Controller classes to live. In
+                        compliance
+                        with the 3-tier architecture that was previously discussed, create a package called
+                        "presentation"
+                        at the same level as the config package (e.g. org.jointheleague.api.level7.cheetah).
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Creating the Home Controller</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        The classes inside of our presentation package are known as "controllers". The purpose of these
+                        classes is to simply map request URLs to methods that should be executed when the specified
+                        request
+                        is received. In this case, we want to creating a mapping for the base URL, which is simply "/".
+                        While you should step through the creation of the class with students, the class in its entirety
+                        will look like this:
+                    <pre>
+package org.jointheleague.level7.cheetah.presentation;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+
+    @GetMapping("/")
+    public String home(){
+            return "redirect:swagger-ui.html";
+    }
+
+}</pre>
+                    <br>
+                    A few notes on the annotations:
+                    <ul>
+                        <li>
+                            @Controller
+                            <ul>
+                                <li>Marks this class as a Controller</li>
+                                <li>This annotation is a specialized version of the @Component annotation.</li>
+                                <li>The difference between @Controller and @Component is purely cosmetic. By
+                                    looking at this annotation, we immediately know that this class is a controller
+                                </li>
+                                <li>The purpose of the underlying @Component annotation is very important: it enables
+                                    this
+                                    class to be autodetected through class path scanning. What this means for us is that
+                                    Spring
+                                    will recognize this class as a component, and any class that implements it will
+                                    <strong>automatically</strong>
+                                    receive an instance of this class. Nowhere in our program will we say "new
+                                    HomeController()", Spring
+                                    handles that for us!
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            @GetMapping("/")
+                            <ul>
+                                <li>
+                                    Method-level annotation that specifies two things:
+                                    <ul>
+                                        <li>This HTTP verb/method for this method is "GET"</li>
+                                        <li>The URL which maps to this method is "/"</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
-                    <br><br>
                     </p>
+
                 </div>
             </div>
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Finding a topic for the project</h3>
+                    <h3>Test that the Redirect Works</h3>
                     <!---
                         <div class = "links">
                             <a href="https://bit.ly/introtojava">Code</a>
@@ -128,86 +261,98 @@
                 </div>
                 <div class="description">
                     <p>
-                        Our application is going to use another API to source relevant data for our users. Since
-                        students
-                        will spend mkonths on this project, it is ideal to find a topic that they are reasonably excited
-                        about.
-                        You can start with a brainstorming session regarding interests that the students have, and also
-                        look up
-                        available APIs to get an idea of what is out there. While there may be a temptation to include
-                        multiple
-                        APIs as sources of data, this should be undertaken with extreme caution. If the application uses
-                        more than one API, that will require adding an additional repository class to communicate with
-                        it, adding
-                        additional data transfer objects for that API, adding additional unit tests for that repository
-                        class, as
-                        well as adding addition logic to the service layer that homogenizes the results from each API
-                        into a single, uniform
-                        domain object that we can return to the users.
-                        <br><br>
-                        If appropriate based on timing, you can task the students with continuing to think about what topics
-                        may interest them, and then make a final decision the following class.
+                        At this point, if you rerun the application, you should be able to go to
+                        <a href="http://localhost:5000">localhost:5000</a> and see it redirect to our Swagger page at
+                        localhost:5000/swagger-ui.html.
                     </p>
-                    <br><br>
                 </div>
             </div>
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Finding a source for the data</h3>
-                    <!---
-                        <div class = "links">
-                            <a href="https://bit.ly/introtojava">Code</a>
-                        </div>
-                        -->
+                    <h3>Improving our Response Code</h3>
                 </div>
                 <div class="description">
                     <p>
-                        This section is strongly related the the previous one, as it may turn out that there are no good
-                        APIs for the idea that the students came up with. Here are a few questions to keep in mind when
-                        selecting
-                        an API from which to source the data:
+                        Open the javascript console in your browser, and go to the "network" tab. Here we can see
+                        exactly
+                        what requests were made when we visit a web page. If you again go to
+                        <a href="http://localhost:5000">localhost:5000</a>, we will see something that can be improved
+                        upon.
+                        At the top of the network window, you should see a row that looks like this:
                         <br>
-                    <h4 style="text-align:left; padding-left:1em;">API Quality</h4>
-                    <ul>
-                        <li>Does the API follow REST principles?</li>
-                        <li>Is this someone's personal project, or developed by a group of professionals?</li>
-                        <li>Is this API being continuously maintained?</li>
-                    </ul>
+                        <br>
+                        <img src="../../img/level7/swaggerRedirectStatusCode.png" alt="Swagger 302 status code"
+                             style="width:100%">
+                        <br>
+                        <br>
+                        If we <a href="https://www.restapitutorial.com/httpstatuscodes.html">look up what a status code
+                        of 302 means</a>,
+                        you'll find that it corresponds to "Found", but that the resource resides temporarily under a
+                        different URI.
+                        This is inaccurate, as we will be permanently redirecting requests to the base URL, to our
+                        Swagger page.
+                        <br>
+                        <br>
+                        This status code is a very important piece of information. It allows us to very succinctly
+                        provide the user
+                        with information about the status of their request, and we should do our best to provide
+                        accurate information.
+                        <br>
+                        <br>
+                        Luckily Spring makes updating this information very easy. Back in the HomeController class,
+                        add another annotation about the home() method:
+                    <pre>
+@ResponseStatus(HttpStatus.MOVED_PERMANENTLY)</pre>
                     <br>
-                    <h4 style="text-align:left; padding-left:1em;">API Documentation</h4>
-                    <ul>
-                        <li>Does the API have a swagger page, or a web page describing the endpoints?</li>
-                    </ul>
-                    <br>
-                    <h4 style="text-align:left; padding-left:1em;">API Usage</h4>
-                    <ul>
-                        <li>Does the API provide the information we are looking for?</li>
-                        <li>Is the API free to use?</li>
-                        <li>Are there any relevant request rate limits?</li>
-                    </ul>
+                    Now if you rerun the application and navigate to <a href="http://localhost:5000">localhost:5000</a>
+                    again,
+                    you should see that the status code is returned as "301", which represents that the resource is
+                    premanently moved.
                     </p>
-                    <br><br>
                 </div>
             </div>
 
             <div class="module">
-                <div class="titleBar">
-                    <h3>Finalizing the source of the data</h3>
-                    <!---
-                        <div class = "links">
-                            <a href="https://bit.ly/introtojava">Code</a>
-                        </div>
-                        -->
+                <div class="titleBar" style="background-color: lightskyblue">
+                    <h3>Summary of Code Changes for this Milestone</h3>
                 </div>
                 <div class="description">
-                    <p>
-                        Before making a final decision on what API will be used to retrieve data for this project, make sure
-                    that it works as expected.  You maybe need to create an account at this point to receive and access token to
-                    use with your requests, if the API requires authentication.  Use postman, your browser, or the API's swagger
-                    page (if it exists) to verify that you can actually make requests and receive an appropriate response.
-                    <br><br>
-                    </p>
+                    <ul>
+                        Cheetah-Search
+                        <ul>
+                            <li>src</li>
+                            <ul>
+                                <li>main</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+                                            <li>config</li>
+                                            <ul>
+                                                <li><a href="../../resources/ApiDocConfig.java">ApiDocConfig.java</a>
+                                                </li>
+                                            </ul>
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li>
+                                                    <a href="../../resources/HomeController.java">HomeController.java</a>
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                        <li>resources</li>
+                                        <ul>
+                                            <li>application.yml</li>
+                                        </ul>
+                                    </ul>
+                                </ul>
+                            </ul>
+                            <li>build.gradle</li>
+                        </ul>
+                    </ul>
                 </div>
             </div>
 

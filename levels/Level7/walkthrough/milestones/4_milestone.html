@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level 6 - Project Overview</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="main">
+        <div id="header">
+            <script>addHeader();</script>
+        </div>
+        <h2>Level 6 - Milestone 3</h2>
+        <div id="teachersPage">
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Milestone 3 - The Presentation Layer</h3>
+                    <!---
+                        <div class = "links">
+                            <a href="https://bit.ly/introtojava">Code</a>
+                        </div>
+                        -->
+                </div>
+                <div class="description">
+                    <p>
+                        This milestone is dedicated to the presentation package, and the included Controller classes<br><br>
+                        Before completion of this milestone, students will:
+                    <ul>
+                        <li>Add a Controller class that will eventually be used to access their functionality</li>
+                        <li>Add an endpoint to their Controller class</li>
+                        <li>Add Swagger annotations to their Controller methods to better document their code</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Downloading IntelliJ IDEA</h3>
+                    <!---
+                        <div class = "links">
+                            <a href="https://bit.ly/introtojava">Code</a>
+                        </div>
+                        -->
+                </div>
+                <div class="description">
+                    <p>
+
+
+                        Springfox is an implementation of the Swagger specification, meant specifically for Spring applications.
+
+
+
+                        IntelliJ is an IDE that has a number of features that, combined, make it a very attractive option as an IDE.
+                        If you want to continue to use Eclipse, you are free to do so, but it is highly unusual for someone to choose to go back to Eclipse after making the switch.
+                        You can have the students download the community edition of IntelliJ, as it is free and indistinguishable from Ultimate edition for the purpose of this class.
+                        Whatever choice you make, it is recommended that you have all the students use the same setup.  While you may be tempted to take the easy route and use what the
+                        students are familiar with, the learning curve for IntelliJ is very small, and will make life better in the long run.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Introduction to APIs</h3>
+                    <!---
+                        <div class = "links">
+                            <a href="https://bit.ly/introtojava">Code</a>
+                        </div>
+                        -->
+                </div>
+                <div class="description">
+                    <p>
+                        A presentation on APIs is provided below. You may want to go through the presentation
+                        ahead of time to ensure you are comfortable discussing all of the topics.
+                        <br><br>
+                        <a href="https://drive.google.com/file/d/1Tmc7feUYjw3NfG01qggMY9iLWaxA7SIh/view?usp=sharing">Intro to APIs presentation</a>
+                        <br><br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Introduction to the Level 7 project</h3>
+                    <!---
+                        <div class = "links">
+                            <a href="https://bit.ly/introtojava">Code</a>
+                        </div>
+                        -->
+                </div>
+                <div class="description">
+                    <p>
+                        Discuss with the students exactly what this project hopes to accomplish:
+                    <ul>
+                        <li>Spring Boot REST API</li>
+                        <li>Using another API to retrieve data about a topic</li>
+                        <li>A web page that displays the results from their application. Creating this is not within the
+                            scope of this class.
+                        </li>
+                        <li>Verifying our code works with unit testing and integration testing</li>
+                    </ul>
+                    <br><br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Finding a topic for the project</h3>
+                    <!---
+                        <div class = "links">
+                            <a href="https://bit.ly/introtojava">Code</a>
+                        </div>
+                        -->
+                </div>
+                <div class="description">
+                    <p>
+                        Our application is going to use another API to source relevant data for our users. Since
+                        students
+                        will spend mkonths on this project, it is ideal to find a topic that they are reasonably excited
+                        about.
+                        You can start with a brainstorming session regarding interests that the students have, and also
+                        look up
+                        available APIs to get an idea of what is out there. While there may be a temptation to include
+                        multiple
+                        APIs as sources of data, this should be undertaken with extreme caution. If the application uses
+                        more than one API, that will require adding an additional repository class to communicate with
+                        it, adding
+                        additional data transfer objects for that API, adding additional unit tests for that repository
+                        class, as
+                        well as adding addition logic to the service layer that homogenizes the results from each API
+                        into a single, uniform
+                        domain object that we can return to the users.
+                        <br><br>
+                        If appropriate based on timing, you can task the students with continuing to think about what topics
+                        may interest them, and then make a final decision the following class.
+                    </p>
+                    <br><br>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Finding a source for the data</h3>
+                    <!---
+                        <div class = "links">
+                            <a href="https://bit.ly/introtojava">Code</a>
+                        </div>
+                        -->
+                </div>
+                <div class="description">
+                    <p>
+                        This section is strongly related the the previous one, as it may turn out that there are no good
+                        APIs for the idea that the students came up with. Here are a few questions to keep in mind when
+                        selecting
+                        an API from which to source the data:
+                        <br>
+                    <h4 style="text-align:left; padding-left:1em;">API Quality</h4>
+                    <ul>
+                        <li>Does the API follow REST principles?</li>
+                        <li>Is this someone's personal project, or developed by a group of professionals?</li>
+                        <li>Is this API being continuously maintained?</li>
+                    </ul>
+                    <br>
+                    <h4 style="text-align:left; padding-left:1em;">API Documentation</h4>
+                    <ul>
+                        <li>Does the API have a swagger page, or a web page describing the endpoints?</li>
+                    </ul>
+                    <br>
+                    <h4 style="text-align:left; padding-left:1em;">API Usage</h4>
+                    <ul>
+                        <li>Does the API provide the information we are looking for?</li>
+                        <li>Is the API free to use?</li>
+                        <li>Are there any relevant request rate limits?</li>
+                    </ul>
+                    </p>
+                    <br><br>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Finalizing the source of the data</h3>
+                    <!---
+                        <div class = "links">
+                            <a href="https://bit.ly/introtojava">Code</a>
+                        </div>
+                        -->
+                </div>
+                <div class="description">
+                    <p>
+                        Before making a final decision on what API will be used to retrieve data for this project, make sure
+                        that it works as expected.  You maybe need to create an account at this point to receive and access token to
+                        use with your requests, if the API requires authentication.  Use postman, your browser, or the API's swagger
+                        page (if it exists) to verify that you can actually make requests and receive an appropriate response.
+                        <br><br>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <script>addFooter();</script>
+    </div>
+</div>
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Level 6 - Project Overview</title>
+    <title>Level 7 - Milestone 4</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
@@ -16,12 +16,12 @@
         <div id="header">
             <script>addHeader();</script>
         </div>
-        <h2>Level 6 - Milestone 3</h2>
+        <h2>Level 7 - Milestone 4</h2>
         <div id="teachersPage">
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Milestone 3 - The Presentation Layer</h3>
+                    <h3>Milestone 4 - The Presentation Layer</h3>
                     <!---
                         <div class = "links">
                             <a href="https://bit.ly/introtojava">Code</a>
@@ -30,7 +30,8 @@
                 </div>
                 <div class="description">
                     <p>
-                        This milestone is dedicated to the presentation package, and the included Controller classes<br><br>
+                        This milestone is dedicated to the presentation package, and adding a Controller class for our
+                        application<br><br>
                         Before completion of this milestone, students will:
                     <ul>
                         <li>Add a Controller class that will eventually be used to access their functionality</li>
@@ -43,7 +44,7 @@
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Downloading IntelliJ IDEA</h3>
+                    <h3>Add a Controller Class</h3>
                     <!---
                         <div class = "links">
                             <a href="https://bit.ly/introtojava">Code</a>
@@ -52,157 +53,184 @@
                 </div>
                 <div class="description">
                     <p>
-
-
-                        Springfox is an implementation of the Swagger specification, meant specifically for Spring applications.
-
-
-
-                        IntelliJ is an IDE that has a number of features that, combined, make it a very attractive option as an IDE.
-                        If you want to continue to use Eclipse, you are free to do so, but it is highly unusual for someone to choose to go back to Eclipse after making the switch.
-                        You can have the students download the community edition of IntelliJ, as it is free and indistinguishable from Ultimate edition for the purpose of this class.
-                        Whatever choice you make, it is recommended that you have all the students use the same setup.  While you may be tempted to take the easy route and use what the
-                        students are familiar with, the learning curve for IntelliJ is very small, and will make life better in the long run.
-                    </p>
-                </div>
-            </div>
-
-            <div class="module">
-                <div class="titleBar">
-                    <h3>Introduction to APIs</h3>
-                    <!---
-                        <div class = "links">
-                            <a href="https://bit.ly/introtojava">Code</a>
-                        </div>
-                        -->
-                </div>
-                <div class="description">
-                    <p>
-                        A presentation on APIs is provided below. You may want to go through the presentation
-                        ahead of time to ensure you are comfortable discussing all of the topics.
-                        <br><br>
-                        <a href="https://drive.google.com/file/d/1Tmc7feUYjw3NfG01qggMY9iLWaxA7SIh/view?usp=sharing">Intro to APIs presentation</a>
-                        <br><br>
-                    </p>
-                </div>
-            </div>
-
-            <div class="module">
-                <div class="titleBar">
-                    <h3>Introduction to the Level 7 project</h3>
-                    <!---
-                        <div class = "links">
-                            <a href="https://bit.ly/introtojava">Code</a>
-                        </div>
-                        -->
-                </div>
-                <div class="description">
-                    <p>
-                        Discuss with the students exactly what this project hopes to accomplish:
-                    <ul>
-                        <li>Spring Boot REST API</li>
-                        <li>Using another API to retrieve data about a topic</li>
-                        <li>A web page that displays the results from their application. Creating this is not within the
-                            scope of this class.
-                        </li>
-                        <li>Verifying our code works with unit testing and integration testing</li>
-                    </ul>
-                    <br><br>
-                    </p>
-                </div>
-            </div>
-
-            <div class="module">
-                <div class="titleBar">
-                    <h3>Finding a topic for the project</h3>
-                    <!---
-                        <div class = "links">
-                            <a href="https://bit.ly/introtojava">Code</a>
-                        </div>
-                        -->
-                </div>
-                <div class="description">
-                    <p>
-                        Our application is going to use another API to source relevant data for our users. Since
-                        students
-                        will spend mkonths on this project, it is ideal to find a topic that they are reasonably excited
-                        about.
-                        You can start with a brainstorming session regarding interests that the students have, and also
-                        look up
-                        available APIs to get an idea of what is out there. While there may be a temptation to include
-                        multiple
-                        APIs as sources of data, this should be undertaken with extreme caution. If the application uses
-                        more than one API, that will require adding an additional repository class to communicate with
-                        it, adding
-                        additional data transfer objects for that API, adding additional unit tests for that repository
-                        class, as
-                        well as adding addition logic to the service layer that homogenizes the results from each API
-                        into a single, uniform
-                        domain object that we can return to the users.
-                        <br><br>
-                        If appropriate based on timing, you can task the students with continuing to think about what topics
-                        may interest them, and then make a final decision the following class.
-                    </p>
-                    <br><br>
-                </div>
-            </div>
-
-            <div class="module">
-                <div class="titleBar">
-                    <h3>Finding a source for the data</h3>
-                    <!---
-                        <div class = "links">
-                            <a href="https://bit.ly/introtojava">Code</a>
-                        </div>
-                        -->
-                </div>
-                <div class="description">
-                    <p>
-                        This section is strongly related the the previous one, as it may turn out that there are no good
-                        APIs for the idea that the students came up with. Here are a few questions to keep in mind when
-                        selecting
-                        an API from which to source the data:
+                    In the presentation package, add another controller class.  In the Cheetah class, we added a class
+                        called "LocController.java", as this class provided endpoints that accessed data from the
+                        Library of Congress.  This class will look very similar to the HomeController, but with one notable
+                        difference: instead of @Controller this class will be annotated @RestController.
                         <br>
-                    <h4 style="text-align:left; padding-left:1em;">API Quality</h4>
-                    <ul>
-                        <li>Does the API follow REST principles?</li>
-                        <li>Is this someone's personal project, or developed by a group of professionals?</li>
-                        <li>Is this API being continuously maintained?</li>
-                    </ul>
-                    <br>
-                    <h4 style="text-align:left; padding-left:1em;">API Documentation</h4>
-                    <ul>
-                        <li>Does the API have a swagger page, or a web page describing the endpoints?</li>
-                    </ul>
-                    <br>
-                    <h4 style="text-align:left; padding-left:1em;">API Usage</h4>
-                    <ul>
-                        <li>Does the API provide the information we are looking for?</li>
-                        <li>Is the API free to use?</li>
-                        <li>Are there any relevant request rate limits?</li>
-                    </ul>
+                        <br>
+                        The @RestController is another convenience annotation that simply combines @Controller and @ResponseBody.
+                        This @ResponseBody annotation binds the methods return value to the web response body.  In this class,
+                        we are expecting to return a piece of data with each request, whereas the HomeController simply redirected
+                        users to the Swagger UI.
+                        <br>
+                        <br>
+                        For now, we will have our method return a simple String, just so we can test that it is working.
+                        Once the class is created, rerun the application and visit the Swagger page.  You should see that
+                        Swagger has automatically noticed our new controller class, and displays all of its endpoints on the
+                        Swagger UI.  You should be able to execute a request to the endpoint via the Swagger UI, and see the
+                        canned response with a 200 status code.  At this point, this new controller class should look something like this:
+                        <pre>
+package org.jointheleague.level7.cheetah.presentation;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+public class LocController {
+
+    @GetMapping("/searchLocResults")
+    public String getResults(){
+        return "Hello, world!";
+    }
+
+}
+                </pre>
                     </p>
-                    <br><br>
                 </div>
             </div>
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Finalizing the source of the data</h3>
-                    <!---
-                        <div class = "links">
-                            <a href="https://bit.ly/introtojava">Code</a>
-                        </div>
-                        -->
+                    <h3>Taking a Request Parameter</h3>
                 </div>
                 <div class="description">
                     <p>
-                        Before making a final decision on what API will be used to retrieve data for this project, make sure
-                        that it works as expected.  You maybe need to create an account at this point to receive and access token to
-                        use with your requests, if the API requires authentication.  Use postman, your browser, or the API's swagger
-                        page (if it exists) to verify that you can actually make requests and receive an appropriate response.
-                        <br><br>
+                       It is highly likely that your endpoint will need the user to pass-in some sort of information.
+                        For example, you may want the user to supply a topic so that you can return books related to that topic.
+                        If we were dealing with a simple java method, we could add a parameter and call it a day.  While this is
+                        actually the first step of the process, we need to add another annotation directly before our method
+                        parameter to make this work:
+                        <pre>
+@RequestParam(value="q")</pre>
+                        <br>
+                    <br>
+                    This allows the user to supply the parameter as part of the URL.  Not only is this an easy way to accept
+                    a value from the user, but is actually a best practice in terms of REST.  One of the key principles of REST
+                    is that a URL should <strong>uniquely</strong> identify a resource.  In simple terms, if the request was meant to
+                    return information on all books ever written, then localhost:5000/searchLocResult would suffice.  However,
+                    we are intending to return books that relate to a specific topic, and our URL should reflect that.
+                    <br>
+                    <br>
+                    The name "q" for our URL parameter is a standard choice.  In fact, if you make a google search you will
+                    find that they use the same URL parameter to represent the query term for the search.
+                    <br>
+                    <br>
+                    At this point, the above method getResults() method would look like this:
+                    <pre>
+@GetMapping("/searchLocResults")
+public String getResults(@RequestParam(value="q") String query)
+    return "Searching for books related to " + query;
+}</pre>
+                    <br>
+                    <br>
+                    At this point, rerun your application and reload the Swagger UI page.  You should see that when you
+                    go to execute a request on this endpoint, there is now a field for you to supply the query parameter.
+                    You may also notice that once you execute your request, there is a section labeled "Request URL" that
+                    shows the exact URL that the request was sent to.  You can feel free to plug that directly into your browser,
+                    and you should see it working as expected.
                     </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Improving the Endpoint Documentation</h3>
+                </div>
+                <div class="description">
+                    <p>
+                       Before we move on for now, lets improve the documentation for this endpoint.  While Swagger is
+                        great and taking care of documenting things for us, we can provide addition clarification.  First,
+                        lets add an @ApiOperation annotation that will allow us to describe this endpoint, shown below in the context
+                        of the method:
+                        <pre>
+@GetMapping("/searchLocResults")
+@ApiOperation(value = "Searches for books matching the search term",
+            notes = "Response may include multiple Result values.",
+            response = String.class)
+public String getResults(@RequestParam(value="q") String query)
+    return "Searching for books related to " + query;
+}</pre>
+                    <br>
+                    <br>
+                    If you rerun the application and reload your Swagger page, you should see this additional information
+                    supplied.  Remember that this doesn't change how the code works, it simply allows us to better document
+                    our code.
+                    <br>
+                    <br>
+                    We can also make another improvement, the benefit of which may not be immediately apparent.  Ultimately,
+                    if there are no results for the search, it would be best if we didn't just return an empty list of results,
+                    but instead provided an response status that indicated the search was unsuccessful.  While we don't currently
+                    have the code to support that, we can go ahead and add an @ApiResponses annotations that allows us to
+                    document what users can expect to be returned from a request to this endpoint.  Again in the context
+                    of our method, this annotation would look like this:
+                    <pre>
+@GetMapping("/searchLocResults")
+@ApiOperation(value = "Searches for books matching the search term",
+            notes = "Response may include multiple Result values.",
+            response = String.class)
+@ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Result(s) found"),
+            @ApiResponse(code = 404, message = "Result(s) not found")
+})
+public String getResults(@RequestParam(value="q") String query)
+    return "Searching for books related to " + query;
+}</pre>
+                    <br>
+                    <br>
+                    This documents that when no results are found for a certain search term, we will be returning a status
+                    code of "404" instead of an empty list.  Remember that status codes are the easiest and most succinct
+                    way that we can convey information to the user, and that we should do our best to return meaningful status codes.
+                    We will implement the code that will actually return the 404 response code instead of an empty list in a later section.
+                    <br>
+                    <br>
+                    If you rerun the application and reload the Swagger UI, you should now be able to see all of the information
+                    supplied by these annotations in Swagger.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="module">
+                <div class="titleBar" style="background-color: lightskyblue">
+                    <h3>Summary of Code Changes for this Milestone</h3>
+                </div>
+                <div class="description">
+                    <ul>
+                        Cheetah-Search
+                        <ul>
+                            <li>src</li>
+                            <ul>
+                                <li>main</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+                                            <li>config</li>
+                                            <ul>
+                                                <li>ApiDocConfig.java</li>
+                                            </ul>
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li>HomeController.java</li>
+                                                <li><a href="../../resources/4_milestone/LocController.java">LocController.java</a></li>
+                                            </ul>
+                                        </ul>
+                                        <li>resources</li>
+                                        <ul>
+                                            <li>application.yml</li>
+                                        </ul>
+                                    </ul>
+                                </ul>
+                            </ul>
+                            <li>build.gradle</li>
+                        </ul>
+                    </ul>
                 </div>
             </div>
 

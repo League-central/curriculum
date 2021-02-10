@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level 7 - Milestone 4</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="main">
+        <div id="header">
+            <script>addHeader();</script>
+        </div>
+        <h2>Level 7 - Milestone 5</h2>
+        <div id="teachersPage">
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Milestone 5 - The Service Layer</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        This milestone is dedicated to the service package, and adding a service layer class for our
+                        application<br><br>
+                        Before completion of this milestone, students will:
+                    <ul>
+                        <li>Add a service-layer class for their application</li>
+                        <li>Add a method that is called from the controller class</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Add a Service Class</h3>
+                    <!---
+                        <div class = "links">
+                            <a href="https://bit.ly/introtojava">Code</a>
+                        </div>
+                        -->
+                </div>
+                <div class="description">
+                    <p>
+                        Create a packaged named "service" at the same level as the presentation package. Service-layer
+                        classes
+                        contain all of the "business logic" of the application. Perhaps one of the best ways
+                        to describe what the service layer contains, is by describing what it doesn't do. Remember that
+                        the controller
+                        classes are used to simply map request URLs to the method that we want called when they are hit,
+                        and the
+                        repository layer is responsible for simply retrieving a piece of data; all other code belongs in
+                        the
+                        service layer.
+                        <br>
+                        <br>
+                        The @Service is a stereotype annotation for @Component. @Service tells us humans that this
+                        class is a service-layer class, but is functionally the same as @Component: it allows Spring
+                        to recognize this class during component scanning, and therefore handle the instantiation of
+                        this
+                        class for us.
+                        <br>
+                        <br>
+                        For now, we will just move the simple functionality from our controller class down into the
+                        service layer.
+                        Having done this, your service class will look similar to this:
+                    <pre>
+package org.jointheleague.api.cheetah.Cheetah_Search.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class LocService {
+
+    public String getResults(String query){
+        return "Searching for books related to " + query;
+    }
+
+}</pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Connecting the Controller and Service class</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        We now need to have the method in our controller class call the method in our service class.
+                        Remember
+                        that the big picture is our controller class receives a request which is passed to the service
+                        layer. The service
+                        layer will, in turn, call a method in a repository-layer class to retrieve the relevant data,
+                        which will then be
+                        returned all the back up through the classes to the user.
+                        <br/>
+                        <br/>
+                        Before we can call the method in our service layer, we need to give the controller class an
+                        instance of
+                        the service class to work with. Luckily Spring makes this easy for us. Because of the Spring's
+                        dependency injection,
+                        we will not use the "new" keyword to instantiate any of our controller, service, or repository
+                        layer classes, Spring handles
+                        that for us. In this case, all we need to do is add field for the service class in the
+                        controller, and provide a constructor
+                        that takes that service class as a parameter. Again, Spring will take it from there and actually
+                        supply the controller
+                        class with an instance of the service class when the controller class itself is automatically
+                        instantiated by Spring.
+                        <br/>
+                        <br/>
+                        Your controller class should now look something like this:
+                    <pre>
+package org.jointheleague.api.cheetah.Cheetah_Search.presentation;
+
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import org.jointheleague.api.cheetah.Cheetah_Search.service.LocService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class LocController {
+
+    private final LocService locService;
+
+    public LocController(LocService locService) {
+        this.locService = locService;
+    }
+
+    @GetMapping("/searchLocResults")
+    @ApiOperation(value = "Searches for articles matching the search term",
+            notes = "Response may include multiple Result values.",
+            response = String.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Result(s) found"),
+            @ApiResponse(code = 404, message = "Result(s) not found")
+    })
+    public String getResults(@RequestParam(value="q") String query){
+        return locService.getResults(query);
+    }
+
+}</pre>
+                </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Our Use of the Service Layer</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Given the desired functionality of our application, our service class will remain rather sparse.
+                    However, if we wanted to manipulate data or process it in any way, we would add code to handle that
+                    within the service layer.  Another common scenario handled by the service layer is converting our data into a
+                    specific "domain object" that we intend to return to our user in a certain format.  Domain objects are
+                    especially useful when combining information from multiple sources into a singular format, which allows us
+                    to return a uniform set of data to the user.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="module">
+                <div class="titleBar" style="background-color: lightskyblue">
+                    <h3>Summary of Code Changes for this Milestone</h3>
+                </div>
+                <div class="description">
+                    <ul>
+                        Cheetah-Search
+                        <ul>
+                            <li>src</li>
+                            <ul>
+                                <li>main</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+                                            <li>config</li>
+                                            <ul>
+                                                <li>ApiDocConfig.java</li>
+                                            </ul>
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li>HomeController.java</li>
+                                                <li><a href="../../resources/5_milestone/LocController.java">LocController.java</a>
+                                                </li>
+                                            </ul>
+                                            <li>service</li>
+                                            <ul>
+                                                <li><a href="../../resources/5_milestone/LocService.java">LocService.java</a>
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                        <li>resources</li>
+                                        <ul>
+                                            <li>application.yml</li>
+                                        </ul>
+                                    </ul>
+                                </ul>
+                            </ul>
+                            <li>build.gradle</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <script>addFooter();</script>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level 7 - Milestone 6</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="main">
+        <div id="header">
+            <script>addHeader();</script>
+        </div>
+        <h2>Level 7 - Milestone 6</h2>
+        <div id="teachersPage">
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Milestone 6 - The Repository Layer</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        In this milestone we will create the repository package, and add a class that will be used
+                        to retrieve relevant data for each request.<br><br>
+                        Before completion of this milestone, students will:
+                    <ul>
+                        <li>Add a repository-layer class for their application</li>
+                        <li>Add a method that is called from the service class</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Add a Repository Class</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Create a packaged named "repository" at the same level as the presentation package. Repository-layer
+                        classes are responsible for simply retrieving pristine data which we need to handle a request.  Notice that
+                        the responsibilities of these classes are very well-defined: the only thing they should do is simply grab
+                        the data we need, and return it to the service-layer method from which it was called.  There is no real
+                        manipulation of the data that takes place at this level.
+                        <br>
+                        <br>
+                        The @Repository is another stereotype annotation for @Component, however unlike @Service it does
+                        provide us with some additional functionality compared to @Component.  While the effects of this difference
+                        may not be immediately noticeable, the @Repository annotation does allow Spring to catch any specific persistence
+                        specific exceptions and rethrow them as one of Spring's unified unchecked exceptions.  The significance of that
+                        is well beyond the scope of this course, and not something we will ever really need to worry about, but is included
+                        here for the sake of completeness.
+                        <br>
+                        <br>
+                        Next we will simply make the same changes to our repository class that we made previously to the service layer:
+                        just move our test method down another level and make sure to call this new method from the service-layer class.
+                    Once this is done, we have now gone as far down as we will need to go.  We will soon replace the functionality of
+                    this new method with code to make request to retrieve actual data, but for now this will allow us to test that the all
+                    of our classes are now working together.
+                </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar" style="background-color: lightskyblue">
+                    <h3>Summary of Code Changes for this Milestone</h3>
+                </div>
+                <div class="description">
+                    <ul>
+                        Cheetah-Search
+                        <ul>
+                            <li>src</li>
+                            <ul>
+                                <li>main</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+                                            <li>config</li>
+                                            <ul>
+                                                <li>ApiDocConfig.java</li>
+                                            </ul>
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li>HomeController.java</li>
+                                                <li>LocController.java</a>
+                                                </li>
+                                            </ul>
+                                            <li>service</li>
+                                            <ul>
+                                                <li><a href="../../resources/6_milestone/LocService.java">LocService.java</a>
+                                                </li>
+                                            </ul>
+                                            <li>repository</li>
+                                            <ul>
+                                                <li><a href="../../resources/6_milestone/LocRepository.java">LocRepository.java</a>
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                        <li>resources</li>
+                                        <ul>
+                                            <li>application.yml</li>
+                                        </ul>
+                                    </ul>
+                                </ul>
+                            </ul>
+                            <li>build.gradle</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <script>addFooter();</script>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level 7 - Milestone 7</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="main">
+        <div id="header">
+            <script>addHeader();</script>
+        </div>
+        <h2>Level 7 - Milestone 7</h2>
+        <div id="teachersPage">
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Milestone 7 - Fetching Data with WebClient</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Here we will use the WebClient class to make HTTP requests to another service. That is, we will
+                        request data from another API, in order to provide the users of our application with information
+                        relevant to their request.<br><br>
+                        Before completion of this milestone, students will:
+                    <ul>
+                        <li>Add an instance of WebClient to their repository class</li>
+                        <li>Return the data receive from the request to our users as a String</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Save the API Base URL as a Static Field</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Soon we are going to need access to the base URL of the API from which we are requesting data.
+                        Go ahead and create a private static final baseUrl variable in the repository class, and
+                        initalize
+                        it with the base URL of the API.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Add the WebClient Dependency</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        In our repository class, we need to add a field and a constructor to support an instance of
+                        WebClient.
+                        This will be accomplished the exact same way we provided the controller and service classes
+                        with instances of the classes they needed. There is one slight different however: instead of
+                        taking the
+                        WebClient as a parameter and having Spring instantiate it for us, we are going to do it ourself
+                        inside of
+                        the constructor. We can also take this opportunity
+                        to set the base URL of the the API to which we expect to make requests. This makes it easier to
+                        execute any request that we make within this class, as we then do not need to supply it for
+                        every one.
+                        The syntax for instantiation can be found below:
+                        <br>
+                    <pre>
+package org.jointheleague.api.cheetah.Cheetah_Search.repository;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.web.reactive.function.client.WebClient;
+
+@Repository
+public class LocRepository {
+
+    private final WebClient webClient;
+
+    private static final String baseUrl = "https://www.loc.gov/books";
+
+    public LocRepository() {
+        webClient = WebClient
+                .builder()
+                .baseUrl(baseUrl)
+                .build();
+    }
+
+    public String getResults(String query){
+        return "Searching for books related to " + query;
+    }
+
+}</pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Requesting the Data</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        This step may look a slightly different depending on the specific API that we are requesting data from.
+                        Each API will require a somewhat specific set of data for a request to be successful.  For example,
+                        an API may require that you specify the format in which you wish to receive that data, as is the
+                        case of the Library of Congress API.  We will also specify that we don't want any extra information with the "at" parameter,
+                        and of course supply the topic that we want results relating to. Here is the completed code to
+                        make our desired request to Library of Congress for a books related to a topic:
+                        <pre>
+public String getResults(String query) {
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .queryParam("fo", "json")
+                        .queryParam("at", "results")
+                        .queryParam("q", query)
+                        .build()
+                )
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+}</pre>
+                    <br/>
+                    <br/>
+                    There is a lot of syntax there.  While it is import that we understand how it works, this is a piece
+                    of code that could be copy and pasted without shame.  In fact, this code was copy and pasted into these
+                    instructions from a project where it was copy and pasted into.  Lets break this down line-by-line to
+                    try to understand what is going on here.
+                    <br/>
+                    <br/>
+                    <h4>.get()</h4>
+                    This represent the HTTP method that we want to use.  Here we want to make a GET request to the API to
+                    simply retrieve some data.
+                    <br/>
+                    <br/>
+                    <h4>.uri(...)</h4>
+                    We are building upon the base URL that we specified in the constructor.  Here we need to append
+                    a few URL parameters to the end of the String, exactly like how we accept the topic that our users
+                    are interested in with our API.  You can see in this case we are adding three URL parameters.  This chunk
+                    of the URL is also known as the "query string".  If we viewed the entire request URL at this point,
+                    it would look like this, given that the value "cats" was passed into our method as a parameter:
+                    "https://www.loc.gov/books?fo=json&at=results&q=cats".
+                    <br/>
+                    <br/>
+                    <h4>.retrieve()</h4>
+                    This means that we are preparing to declare how we want to extract the response.  More specifically,
+                    this retrieve() method says that we are only interested in the body of the response.  The method
+                    .extract() serves a similar role, but allows direct access to the headers and status code of the
+                    response.
+                    </p>
+                    <h4>.bodyToMono(String.class)</h4>
+                    To truly understand this piece of code would require knowledge of a number of topics well beyond
+                    the scope of this course, but they get to the heart of why the WebClient class represents a big step
+                    forward in terms of java libraries designed to fetch data via HTTP requests. A simple explanation will
+                    be provided, as well as links to further reading if you are interested in attempting a deeper understanding.
+                    <br/>
+                    <br/>
+                    There are a number of class that we could use in place of WebClient here, two popular choices would
+                    be the HttpUrlConnection class and the RestTemplate class.  Either of these would suffice for our application,
+                    but WebClient is actually the replacement for the RestTemplate class, which is now deprecated as of Spring 5.
+                    The major change that is implemented by WebClient: it is asynchronous and non-blocking!  By now you are probably
+                    more than willing to accept the suggestion that a deep understanding of this is not necessary.  In essence,
+                    WebClient being non-blocking means that our application doesn't need to sit idly by and wait for the response.
+                    It can come back when the result is ready, and in the meantime switch to another active task that uses the
+                    same underlying resource.
+                    <br/>
+                    <br/>
+                    At the end of the day, we aren't even going to be taking advantage of the non-blocking nature of WebClient.  However
+                    the reactive nature of this class is what leads us to the Mono class.  Since WebClient is designed to be asynchronous
+                    and non-blocking, the request itself needs to return something that will, at a later point, contain the actual result.
+                    We can't simply return the result from the request, because we will not have it yet.  The thing returned from the
+                    actual request is a "publisher", an idea that comes from the reactive streams initiative linked below.  Project
+                    Reactor, the reactive streams implementation created for Spring, defines two publisher classes:
+                    Mono and Flux.  Mono is meant to be used when expected 0 or 1 result from our request.  Flux
+                    is meant to be used when expecting 0 to n results.  Here we are only expecting one result,
+                    so the bodyToMono() is used.
+                    <br/>
+                    <br/>
+                    The parameter to this method is really the only part that is important to us here.  We are saying that
+                    we want to the result to be given to us as a String. While this isn't terribly exciting at the moment,
+                    we will later change this to allow our response to be given to us in the form of a custom Java class that
+                    represents the information we expect from the response.  This will allow us to very easily
+                    pull out the specific pieces of information we are interested in.
+                    </p>
+                    <h4>.block()</h4>
+                    This says that we actually want to wait for the response before the execution of our application continues.
+                    Essentially, this means we do not want to take advantage of the reactive stream related features of WebClient which
+                    were discussed previously.  The request will be carried out with blocking, as it is when using
+                    RestTemplate or other classes.
+                    <br/>
+                    <br/>
+                    Another consequence of this method is that this long chain of methods will now return an object of
+                    type String, instead of type Mono&ltString&gt.
+                    <br/>
+                    <br/>
+                    <br/>
+                    <hr/>
+                    <br/>
+                    <h5>Additional Reading on Reactive Streams in Spring</h5>
+                    <ul>
+                        <li><a href="https://projectreactor.io/docs/core/release/reference/#intro-reactive">Intro to Reactive Programming - Project Reactor</a></li>
+                        <li><a href="https://spring.io/blog/2016/04/19/understanding-reactive-types">Understanding Reactive Types - Spring</a></li>
+                        <li><a href="http://www.reactive-streams.org/">Reactive Streams Initiative</a></li>
+                        <li><a href="https://www.reactivemanifesto.org/">Reactive Manifesto</a></li>
+                    </ul>
+                    <br/>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Test it Out!</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        After adding the code from the previous section, rerun the application and make a request using the
+                        Swagger UI.  You should now see that you are being given back and giant chunk of JSON!  The application
+                        is now returning real data to its users.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar" style="background-color: lightskyblue">
+                    <h3>Summary of Code Changes for this Milestone</h3>
+                </div>
+                <div class="description">
+                    <ul>
+                        Cheetah-Search
+                        <ul>
+                            <li>src</li>
+                            <ul>
+                                <li>main</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+                                            <li>config</li>
+                                            <ul>
+                                                <li>ApiDocConfig.java</li>
+                                            </ul>
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li>HomeController.java</li>
+                                                <li>LocController.java</a>
+                                                </li>
+                                            </ul>
+                                            <li>service</li>
+                                            <ul>
+                                                <li>LocService.java</a>
+                                                </li>
+                                            </ul>
+                                            <li>repository</li>
+                                            <ul>
+                                                <li><a href="../../resources/7_milestone/LocRepository.java">LocRepository.java</a>
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                        <li>resources</li>
+                                        <ul>
+                                            <li>application.yml</li>
+                                        </ul>
+                                    </ul>
+                                </ul>
+                            </ul>
+                            <li>build.gradle</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <script>addFooter();</script>
+    </div>
+</div>
+</body>
+
+</html>

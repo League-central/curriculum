@@ -15,17 +15,28 @@
 1. Make a program that says “ouch” every time a key is pressed. You can use the speak() method below.<br>
 <br>
 
-<p class="code">
-static void speak(String words) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Runtime.getRuntime().exec("say " + words).waitFor();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (Exception e) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-}
+<pre>
+static void speak(String words) {
+		
+		if (System.getProperty("os.name").contains("Windows")) {
+			String cmd = "PowerShell -Command \"Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('"
+					+ words + "');\"";
+			try {
+				Runtime.getRuntime().exec(cmd).waitFor();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				Runtime.getRuntime().exec("say " + words).waitFor();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-    </p>
+
+    </pre>
 
 <br><br>   
     <br><br><br><br><br><br><br>

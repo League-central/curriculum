@@ -62,14 +62,26 @@ private JLabel createLabelImage(String fileName) {
   3. Also play a sound when the jack-in-the-box pops up using this method.<br>
         (A sample sound homer-woohoo.wav is provided in the recipe package(_08_jack_in_the_box))
  
- <pre>private void playSound(String soundFile) { 
-    try {
-        AudioClip sound = JApplet.newAudioClip(getClass().getResource(soundFile));
-        sound.play();
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-}
+ <pre>	private void playSound(String soundFile) {
+		String path = "src/_08_jack_in_the_box/";
+			File sound = new File(path+soundFile);
+			if (sound.exists()) {
+				new Thread(() -> {
+				try {
+					Clip clip = AudioSystem.getClip();
+					clip.open(AudioSystem.getAudioInputStream(sound));
+					clip.start();
+					Thread.sleep(clip.getMicrosecondLength()/1000);
+				}
+				catch (Exception e) {
+					System.out.println("Could not play this sound");
+				}}).start();
+	 		}
+			else {
+				System.out.println("File does not exist");
+			}
+		
+	}
 </pre><br>
     
                 </div>

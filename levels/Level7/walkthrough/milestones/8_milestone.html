@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level 7 - Milestone 8</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="main">
+        <div id="header">
+            <script>addHeader();</script>
+        </div>
+        <h2>Level 7 - Milestone 8</h2>
+        <div id="teachersPage">
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Milestone 8 - Improving the Results</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        In this section we will improve the results we return to our users, by limiting what we give
+                        them
+                        to only the information they are interested in.<br><br>
+                        Before completion of this milestone, students will:
+                    <ul>
+                        <li>Add a Data Transfer Object that will hold the result we received from the external service
+                        </li>
+                        <li>Ignore any fields from that request which we are not interested in returning to our users
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Creating a Data Transfer Object</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Currently we are receiving the data from the external service as a String. A much better option
+                        is to accept it in the form of a custom Java object that represents the data we receive. As a Java
+                        object,
+                        we can much more easily manipulate the response within our application. This process is simple
+                        once
+                        we have created the data transfer object.
+                        <br/>
+                        <br/>
+                        To create the object, we could of course start from scratch and make it ourselves, but there
+                        are tools available that we can use to create a Java object (or objects) that represents the
+                        data contained in the JSON response. We will use jsonschema2pojo.org. All that needs to be done
+                        is to take a sample response that we received from a request to the service. We will also want
+                        to
+                        make sure to enter an appropriate name for the class, there are a few other options to select:
+                    <ul>
+                        <li>Target Language:</li>
+                        <ul>
+                            <li>Java</li>
+                        </ul>
+                        <br/>
+                        <li>Source Type</li>
+                        <ul>
+                            <li>JSON</li>
+                        </ul>
+                        <br/>
+                        <li>Annotation Style</li>
+                        <ul>
+                            <li>Jackson 2.x</li>
+                        </ul>
+                        <br/>
+                    </ul>
+                    <br/>
+                    <br/>
+                    You may find that the sample response you submit contains too many results for the generator to work.
+                    You can use a JSON formatter to properly format the JSON, which will make it easier to delete
+                    all of the results except for one.
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Add the DTO to the Project</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Create a package name "dto" inside of the repository package, and deposit the newly-created
+                        Java object(s) there.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Using the DTO</h3>
+                </div>
+                <div class="description">
+                    Using the DTO is is rather simple. In the repository class, we will simply replace String.class
+                    with the name of our newly-created class, inside of the bodyToMono() method call. This will require
+                    us to update the return types of the methods in our repository, service, and controller classes to
+                    reflect this change.  We should also update the swagger annotations in the controller class for this endpoint to show that
+                    we are no longer returning a String, as well as include that we are a returning a list of the
+                    specified object.  The annotation should now looks something like this:
+<pre>
+@ApiOperation(value = "Searches for articles matching the search term",
+            notes = "Response may include multiple Result values.",
+            response = LocResponse.class,
+            responseContainer="List")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Result(s) found"),
+            @ApiResponse(code = 404, message = "Result(s) not found")
+    })
+                    </pre>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Getting Rid of Unwanted Fields</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        It is likely that there are a number of fields returned from the external service which we are
+                        uninterested in giving to our users.  Unfortunately, jsonschema2pojo includes a lot of annotations
+                        which we do not need.  We could have asked it to not include any annotations, but then
+                        all of the field names would have been converted to camel case with no indication of whether they are
+                        represented in snake case in the JSON we will receive.
+                        <br/>
+                        <br/>
+                        First, we can remove any fields from the objects which we do not want to return to our users.
+                        Next, we can remove all annotations in the DTO class(es).  However, at this point we want to make sure
+                        to annotate any fields that are original in snake case with an @JsonAlias("original_name") annotation.  We
+                        can also use this opportunity to rename the fields in the Java class itself to be more appropriate if necessary, also indicating
+                        this difference from the JSON field with the @JsonAlias annotation.
+                        <br/>
+                        <br/>
+                        After all the changes are made, if you rerun the application and test out the endpoint from the Swagger UI,
+                        you should no longer see the unnecessary fields, and and any renamed fields should show up accordingly.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar" style="background-color: lightskyblue">
+                    <h3>Summary of Code Changes for this Milestone</h3>
+                </div>
+                <div class="description">
+                    <ul>
+                        Cheetah-Search
+                        <ul>
+                            <li>src</li>
+                            <ul>
+                                <li>main</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+                                            <li>config</li>
+                                            <ul>
+                                                <li style="list-style-type: square">ApiDocConfig.java</li>
+                                            </ul>
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li style="list-style-type: square">HomeController.java</li>
+                                                <li style="list-style-type: square">LocController.java
+                                                </li>
+                                            </ul>
+                                            <li>service</li>
+                                            <ul>
+                                                <li style="list-style-type: square">LocService.java</li>
+                                            </ul>
+                                            <li>repository</li>
+                                            <ul>
+                                                <li>dto
+                                                    <ul>
+                                                       <li style="list-style-type: square"><a href="../../resources/8_milestone/Result.java">Result.java</a></li>
+                                                        <li style="list-style-type: square"><a href="../../resources/8_milestone/LocResponse.java">LocResponse.java</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <ul>
+                                                <li style="list-style-type: square"><a href="../../resources/8_milestone/LocRepository.java">LocRepository.java</a>
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                        <li>resources</li>
+                                        <ul>
+                                            <li style="list-style-type: square">application.yml</li>
+                                        </ul>
+                                    </ul>
+                                </ul>
+                            </ul>
+                            <li style="list-style-type: square">build.gradle</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <script>addFooter();</script>
+    </div>
+</div>
+</body>
+
+</html>

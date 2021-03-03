@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level 7 - Milestone 8</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="main">
+        <div id="header">
+            <script>addHeader();</script>
+        </div>
+        <h2>Level 7 - Milestone 9</h2>
+        <div id="teachersPage">
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Milestone 9 - Our First Unit Test</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        In this section we will start adding tests for our application.<br><br>
+                        Before completion of this milestone, students will:
+                    <ul>
+                        <li>Add test class for the HomeController
+                        </li>
+                        <li>Add a unit test for the method that redirects to the Swagger UI.
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Why Unit Testing?</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Up until this point, we have been manually testing our application. That is to say that whenever
+                        we made a change, we have simply rerun the application and tested that it was working by executing
+                        some
+                        requests ourselves, and checking that the response is what we expected. In reality, this may be
+                        sufficient
+                        for programs of limited size. For example, in the early League levels, the programs were simple
+                        enough that
+                        we could manually test them in a reasonable amount of time, and be left with a reasonable
+                        confidence that
+                        everything was in working order.
+                        <br/>
+                        <br/>
+                        However, as applications grow, it becomes more and more time-consuming to test every part of the
+                        application
+                        each time we make a change. While our application currently may have only one endpoint, you can
+                        imagine that if it were to grow to having 30 endpoints, it would be unreasonably burdensome to test each and every one
+                        of them whenever
+                        a change is made.
+                        <br/>
+                        <br/>
+                        Luckily, this is exactly the type of thing computers are good at: repeatedly doing the same task
+                        over
+                        and over again, in exactly the same way. This is the true value of unit tests: not only can they
+                        be run quickly
+                        and repeatedly, but by doing so, we can be confident that every part of the application is still
+                        working as expected.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Creating the HomeControllerTest class</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        When dealing with a class that doesn't require hundreds of lines of unit tests, it is best to
+                        simply mirror the package structure of the source code in the test source set. That means that
+                        our class located at:
+                        <br/>
+                        src/main/ ... /presentation/HomeController.java
+                        <br/>
+                        will have a corresponding test class:
+                        <br/>
+                        src/test/ ... /presentation/HomeControllerTest.java
+                        <br/>
+                        <br/>
+                        If you are using IntelliJ, this can be easily accomplished by visiting the class you wish to
+                        generate
+                        a test for, and hitting command+shift+t (mac) or control+shift+t (windows). This will open a
+                        dialog, within
+                        which you will want to select the "setup/@Before" checkbox, as well as selecting the methods
+                        for which we
+                        want to generate tests. After doing so, the test class will be created in the appropriate place.
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Setting up the Test Class</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Before we can write the tests, there are a couple things we need to add to the test class. First
+                        of all,
+                        we are going to need an instance of the class that is being tested so that we are able to call
+                        the methods
+                        within that class. This is as simple as declaring a member variable in the test class. One thing
+                        we need to be careful
+                        of is ensuring that our tests don't effect each other. This brings us to the setup method which
+                        is annotated
+                        "@BeforeEach". As the annotation implies, this method will be run before each test is run,
+                        allowing us to
+                        reinitialize any objects that may have been changed by the previous test. To that end, we will
+                        initialize our instance of HomeController inside of this setup method.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Renaming the home() Test Method</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Even if you selected for the IDE to generate the test method for you, you probably will want to
+                        start by renaming the method. We will use the Behavior Driven Design (BDD) naming convention for
+                        our methods.
+                        A method that follows the BDD naming convention will be of the form:
+                        <br/>
+                        given&ltPrecondition&gt_when&ltMethod&gt_then&ltExpectedResult&gt
+                        <br/>
+                        <br/>
+                        The given section of the method name can be left off if there are no specific preconditions
+                        that our test is taking into account. Once case in which using the "given" part of the name may
+                        be useful is when testing that a method throws an exception when it is given an invalid input.
+                        In the current case, we can simply name the method:
+                        <br/>
+                        whenHome_thenReturnRedirect
+                        <br/>
+                        <br/>
+                        Naming the method like this clearly conveys what functionality is broken in the case of the
+                        test failing.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Completing the home() Test</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        One strategy for structuring the test method is to add comments inside of it that mirror the
+                        naming convention we used:
+                    <pre>
+@Test
+void whenHome_thenReturnRedirect() {
+    //given
+
+    //when
+
+    //then
+
+}</pre>
+                    <br/>
+                    You may find that this makes it easier to conceptualize what needs to be done to complete the
+                    method.
+                    Using this strategy, it's often easiest to start under the "when", where we will simply invoke the
+                    method that
+                    we wish to test.
+                    <pre>
+@Test
+void whenHome_thenReturnRedirect() {
+    //given
+
+    //when
+    String actual = homeController.home();
+
+    //then
+
+}</pre>
+                    <br/>
+                    This will often reveal what variables we need to create under the "//given", typically values needed
+                    as
+                    parameters for the method we are trying to call. Under the "//given", we can also create a variable
+                    that will
+                    hold the expected result from them method we are testing. In this case, we can copy and paste the
+                    redirect
+                    String for our HomeController class:
+                    <pre>
+@Test
+void whenHome_thenReturnRedirect() {
+    //given
+    String expected = "redirect:swagger-ui.html";
+
+    //when
+    String expected = homeController.home();
+
+    //then
+
+}</pre>
+                    <br/>
+                    Finally, we need to add the assertion, or what could be considered the actual test. Under the
+                    "//then", we
+                    will assert that the expected result is equal to the actual result:
+                    <pre>
+@Test
+void whenHome_thenReturnRedirect() {
+    //given
+    String expected = "redirect:swagger-ui.html";
+
+    //when
+    String expected = homeController.home();
+
+    //then
+    assertEquals(expected, actual);
+}</pre>
+                    <br/>
+                    Now if you run the test, you should see that the test passes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar" style="background-color: lightskyblue">
+                    <h3>Summary of Code Changes for this Milestone</h3>
+                </div>
+                <div class="description">
+                    <ul>
+                        Cheetah-Search
+                        <ul>
+                            <li>src</li>
+                            <ul>
+                                <li>main</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+                                            <li>config</li>
+                                            <ul>
+                                                <li style="list-style-type: square">ApiDocConfig.java</li>
+                                            </ul>
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li style="list-style-type: square">HomeController.java</li>
+                                                <li style="list-style-type: square">LocController.java
+                                                </li>
+                                            </ul>
+                                            <li>service</li>
+                                            <ul>
+                                                <li style="list-style-type: square">LocService.java</li>
+                                            </ul>
+                                            <li>repository</li>
+                                            <ul>
+                                                <li>dto
+                                                    <ul>
+                                                        <li style="list-style-type: square">Result.java
+                                                        </li>
+                                                        <li style="list-style-type: square">LocResponse.java
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <ul>
+                                                <li style="list-style-type: square">LocRepository.java
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                        <li>resources</li>
+                                        <ul>
+                                            <li style="list-style-type: square">application.yml</li>
+                                        </ul>
+
+
+                                        <a
+                                                href="../../resources/8_milestone/LocRepository.java">LocRepository.java</a>
+
+
+                                    </ul>
+
+                                </ul>
+                                <li>test</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li style="list-style-type: square">HomeController.java</li>
+                                                <li style="list-style-type: square">LocController.java
+                                                </li>
+                                            </ul>
+                                        </ul>
+
+
+                                    </ul>
+
+                                </ul>
+                            </ul>
+                            <li style="list-style-type: square">build.gradle</li>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <script>addFooter();</script>
+    </div>
+</div>
+</body>
+
+</html>

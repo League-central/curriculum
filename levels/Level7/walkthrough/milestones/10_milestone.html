@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level 7 - Milestone 8</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="main">
+        <div id="header">
+            <script>addHeader();</script>
+        </div>
+        <h2>Level 7 - Milestone 10</h2>
+        <div id="teachersPage">
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Milestone 10 - Unit Testing the Controller and Service Classes</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        In this section we will complete the unit testing of the controller and service-layer
+                        classes<br><br>
+                        Before completion of this milestone, students will:
+                    <ul>
+                        <li>Add a class/unit tests for their controller class
+                        </li>
+                        <li>Add a class/unit tests for their service class
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Create a Class for the Controller Test</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        This will be accomplished the exact same way you created a test class for the HomeController.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>A Slight Difference This Time</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        After creating the test class, there are a couple additional considerations we have for this
+                        controller class.
+                        Our HomeController was very simple: when the endpoint received a request, it simply returned a
+                        redirect as a String,
+                        requiring no help from additional classes. Our "real" controller class, on the other hand,
+                        requires an instance of the
+                        service class in the constructor, and calls a method in the service class when an endpoint
+                        receives a request. This introduces
+                        multiple levels of complexity, as the service class itself requires an instance of the
+                        repository, with the repository relying on
+                        a request to an external service in order to fetch data for our users. However we can simplify
+                        this problem using mocking.
+                        <br/>
+                        <br/>
+                        By mocking the instance of our service class, we are given an instance without having to
+                        consider the service
+                        class' own dependencies, with the added benefit that we no longer rely on the service class'
+                        code to work properly
+                        in order for our controller unit tests to pass. That being said, the optimal situation is that
+                        our unit tests require
+                        no mocking. So under what circumstances should we consider mocking the dependency of a class?
+                    <ul>
+                        <li>When the dependency is difficult to construct</li>
+                        <ul>
+                            <li>e.g. its constructor takes a lot of parameters which themselves are difficult to
+                                construct
+                            </li>
+                        </ul>
+                        <li>When the dependency uses an unreliable resource
+                            <ul>
+                                <li>e.g. http request or reading from a file
+                                </li>
+                            </ul>
+                        </li>
+                        <li>When we want to verify specific actions occurred when the dependency's method was invoked (white-box testing)
+                        </li>
+                    </ul>
+                    <br/>
+                    <br/>
+                    In our case, point number 2 is the real reason why we are mocking, although perhaps a case could be made for
+                    the first point as well.  Since our repository class relies on an HTTP request to an external service, we do not want
+                    to rely on that service to work in order for our unit tests to pass.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Mocking the Service Class</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        To mock the service class, we will first declare it as a member variable.  However, we will annotate this
+                        field with @Mock, and instead of instantiating it in our setUp() method like a normal object, we will
+                        let Mockito create the mock for us:
+                        <pre>
+    private LocController locController;
+
+    @Mock
+    private LocService locService;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+
+        locController = new LocController(locService);
+    }
+                </pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Testing getResults()</h3>
+                </div>
+                <div class="description">
+                    <p>
+                       Testing this method will follow the same general steps as when we tested the home() method in the
+                        HomeController, with one notable difference: we want to stub the method that is called in the service class.
+                        When we mock an object, what happens behind the scenes is that Mockito creates a subclass of that object where
+                        all of the methods simply return default values.  This may be undesirable, especially since the "actual" value
+                        which we will make an assertion on will likely be a result of the class which we have mocked.  To get around this,
+                         we can using stubbing to specify the exact value that we want to be returned when we invoke a method in a mocked class.
+                        We will use some special syntax to specify the method we wish to stub, as well as specify the value we want returned when
+                        the method is invoked.  You will notice that the stub specifically starts with the when() method, but the test in its
+                    entirety should look like this:
+                        <pre>
+@Test
+void whenGetResults_thenReturnLocResult() {
+    //given
+    String query = "java";
+    LocResponse expectedLocResponse = new LocResponse();
+
+    when(locService.getResults(query))
+        .thenReturn(expectedLocResponse);
+
+    //when
+    LocResponse actualLocResponse = locController.getResults(query);
+
+    //then
+    assertEquals(expectedLocResponse, actualLocResponse);
+    }
+                </pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Testing getResults() in the Service Class</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Assuming you were consistent with your method names throughout the controller, service, and repository
+                        classes, the service class test will be nearly identical to controller class test.  Remember that in a
+                        more complex application, there may be a lot of logic contained within the service layer, often times making
+                        it the most complex layer to test.  However since our service class is merely calling a method in the repository class,
+                        the only real difference from our controller test is the classes on which we are calling the methods.  Using all of the
+                        topics we have discussed so far, go ahead and complete the tests for the service class.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar" style="background-color: lightskyblue">
+                    <h3>Summary of Code Changes for this Milestone</h3>
+                </div>
+                <div class="description">
+                    <ul>
+                        Cheetah-Search
+                        <ul>
+                            <li>src</li>
+                            <ul>
+                                <li>main</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+                                            <li>config</li>
+                                            <ul>
+                                                <li style="list-style-type: square">ApiDocConfig.java</li>
+                                            </ul>
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li style="list-style-type: square">HomeController.java</li>
+                                                <li style="list-style-type: square">LocController.java
+                                                </li>
+                                            </ul>
+                                            <li>service</li>
+                                            <ul>
+                                                <li style="list-style-type: square">LocService.java</li>
+                                            </ul>
+                                            <li>repository</li>
+                                            <ul>
+                                                <li>dto
+                                                    <ul>
+                                                        <li style="list-style-type: square">Result.java
+                                                        </li>
+                                                        <li style="list-style-type: square">LocResponse.java
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <ul>
+                                                <li style="list-style-type: square">LocRepository.java
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                        <li>resources</li>
+                                        <ul>
+                                            <li style="list-style-type: square">application.yml</li>
+                                        </ul>
+                                    </ul>
+
+                                </ul>
+                                <li>test</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li style="list-style-type: square">HomeControllerTest.java</li>
+                                                <li style="list-style-type: square"><a
+                                                        href="../../resources/10_milestone/LocControllerTest.java">LocControllerTest.java</a>
+                                                </li>
+                                                </li>
+                                            </ul>
+                                            <li>service</li>
+                                            <ul>
+                                                <li style="list-style-type: square"><a
+                                                        href="../../resources/10_milestone/LocServiceTest.java">LocServiceTest.java</a>
+                                                </li>
+                                                </li>
+                                            </ul>
+                                        </ul>
+
+
+                                    </ul>
+
+                                </ul>
+                            </ul>
+                            <li style="list-style-type: square">build.gradle</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <script>addFooter();</script>
+    </div>
+</div>
+</body>
+
+</html>

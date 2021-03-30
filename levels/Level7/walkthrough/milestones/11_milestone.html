@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level 7 - Milestone 11</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="main">
+        <div id="header">
+            <script>addHeader();</script>
+        </div>
+        <h2>Level 7 - Milestone 11</h2>
+        <div id="teachersPage">
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Milestone 11 - Unit Testing the Repository Class</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        In this section we will complete the unit testing of the repository-layer
+                        class<br><br>
+                        Before completion of this milestone, students will:
+                    <ul>
+                        <li>Add a class/unit tests for their repository class
+                        </li>
+                        <li>Learn how to unit test code that involves WebClient
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Create a Class for the Repository Test</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        This will be accomplished the exact same way you created a test class for the previous controller and service classes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Unit Testing with WebClient</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        The one significant difference with unit testing our repository class is that we have to deal with
+                        mocking our WebClient instance directly.  Because our WebClient code exists in this repository class,
+                        we will need to undergo a significant amount of mocking and stubbing to successfully avoid making an actual
+                        call to the external service from which we are receiving data.  As with the WebClient code itself, students should
+                        not necessarily feel like they need to be able to recreate this code from memory.  At this level of complexity, it would be
+                        perfectly understandable to find this code, either on the internet or in a previously-completed project, and reuse it for this
+                        class.
+                        <br/>
+                        <br/>
+                        First thing we need to do is get access to a mocked WebClient object that we can use for our test.  In our repository's constructor, you will
+                        notice that the WebClient is not autowired, but instead we wrote some code to build it within the method.  We need a way to get a the mocked WebClient
+                        which we will create in our unit test into the instance of our repository which we will use during our testing.  The easiest way to accomplish this is to simply
+                        add another constructor to our repository class that takes a WebClient as a parameter.  Then we can use that constructor for our test class to pass-in
+                        the mock of our WebClient for use with the test.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Creating even more mocks</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        The WebClient code that makes the request to the external API in our repository class looks something like this:
+                        <pre>
+return webClient.get()
+    .uri(uriBuilder -> uriBuilder
+        .queryParam("fo", "json")
+        .queryParam("at", "results")
+        .queryParam("q", query)
+        .build()
+    ).retrieve()
+    .bodyToMono(LocResponse.class)
+    .block();
+                </pre>
+                    <br/>
+                    Unfortunately, each one of these methods that we have chained together returns a different type of object.  That means that if we
+                    want to successful unit test this code, we will need to create a mock for each one of those intermediary objects.  Including all of those mocks, the
+                    repository test class should look something like this:
+                    <pre>
+class LocRepositoryTest {
+
+    private LocRepository locRepository;
+
+    @Mock
+    WebClient webClientMock;
+
+    @Mock
+    WebClient.RequestHeadersUriSpec requestHeadersUriSpecMock;
+
+    @Mock
+    WebClient.RequestHeadersSpec requestHeadersSpecMock;
+
+    @Mock
+    WebClient.ResponseSpec responseSpecMock;
+
+    @Mock
+    Mono&ltLocResponse&gt LocResponseMonoMock;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+
+        locRepository = new LocRepository(webClientMock);
+    }
+
+    @Test
+    void whenGetResults_thenReturnLocResponse() {
+        //given
+        //when
+        //then
+    }
+
+}
+                    </pre>
+                    <br/>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Creating an LocResponse in our Test Class</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Next, we will need to create an instance of LocResponse within our test class.  You could do this in the setUp() method
+                        and save it as a field if you need to use it in multiple tests, but since we only have a single method to test, we can also
+                        place that within the "given" section of the test method itself.  We can also save the query in a variable within our method, while we may
+                        not need to reuse it in this test, often times you will find that you will be required to pass that value as a parameter to multiple method calls.
+
+                    <pre>
+@Test
+void whenGetResults_thenReturnLocResponse() {
+    //given
+    String query = "Java";
+    LocResponse expectedLocResponse = new LocResponse();
+    Result result = new Result();
+    result.setTitle("Java: A Drink, an Island, and a Programming Language");
+    result.setAuthors(Collections.singletonList("AUTHOR"));
+    result.setLink("LINK");
+    expectedLocResponse.setResults(Collections.singletonList(result));
+
+    //when
+    //then
+}
+                    </pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Stubbing the WebClient Methods</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        This is the challenging part.  Again, it is perfectly acceptable to copy and paste this section of code if you have it
+                        available somewhere.  We need to stub all of the methods that are chained together in our WebClient request, so that at the end
+                        of it we are left with our expected LocResponse, instead of getting a NullPointerException somewhere along the way.
+
+                    <pre>
+@Test
+void whenGetResults_thenReturnLocResponse() {
+    //given
+    String query = "Java";
+    LocResponse expectedLocResponse = new LocResponse();
+    Result result = new Result();
+    result.setTitle("Java: A Drink, an Island, and a Programming Language");
+    result.setAuthors(Collections.singletonList("AUTHOR"));
+    result.setLink("LINK");
+    expectedLocResponse.setResults(Collections.singletonList(result));
+
+    when(webClientMock.get())
+            .thenReturn(requestHeadersUriSpecMock);
+    when(requestHeadersUriSpecMock.uri((Function&ltUriBuilder, URI&gt) any()))
+            .thenReturn(requestHeadersSpecMock);
+    when(requestHeadersSpecMock.retrieve())
+            .thenReturn(responseSpecMock);
+    when(responseSpecMock.bodyToMono(LocResponse.class))
+            .thenReturn(LocResponseMonoMock);
+    when(LocResponseMonoMock.block())
+            .thenReturn(expectedLocResponse);
+
+    //when
+    //then
+
+}
+                    </pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Finishing the Test</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        All that is left to do is call the repository method and make the assertion, much like we have in the previous tests.
+                    Completed, our unit test should look like this:
+
+                    <pre>
+@Test
+void whenGetResults_thenReturnLocResponse() {
+    //given
+    String query = "Java";
+    LocResponse expectedLocResponse = new LocResponse();
+    Result result = new Result();
+    result.setTitle("Java: A Drink, an Island, and a Programming Language");
+    result.setAuthors(Collections.singletonList("AUTHOR"));
+    result.setLink("LINK");
+    expectedLocResponse.setResults(Collections.singletonList(result));
+
+    when(webClientMock.get())
+            .thenReturn(requestHeadersUriSpecMock);
+    when(requestHeadersUriSpecMock.uri((Function<UriBuilder, URI>) any()))
+            .thenReturn(requestHeadersSpecMock);
+    when(requestHeadersSpecMock.retrieve())
+            .thenReturn(responseSpecMock);
+    when(responseSpecMock.bodyToMono(LocResponse.class))
+            .thenReturn(LocResponseMonoMock);
+    when(LocResponseMonoMock.block())
+            .thenReturn(expectedLocResponse);
+
+    //when
+    LocResponse actualLocResponseResponse = locRepository.getResults(query);
+
+    //then
+    assertEquals(expectedLocResponse, actualLocResponseResponse);
+}
+                    </pre>
+                    </br>
+                    You should now be able to run the test and see it pass.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar" style="background-color: lightskyblue">
+                    <h3>Summary of Code Changes for this Milestone</h3>
+                </div>
+                <div class="description">
+                    <ul>
+                        Cheetah-Search
+                        <ul>
+                            <li>src</li>
+                            <ul>
+                                <li>main</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+                                            <li>config</li>
+                                            <ul>
+                                                <li style="list-style-type: square">ApiDocConfig.java</li>
+                                            </ul>
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li style="list-style-type: square">HomeController.java</li>
+                                                <li style="list-style-type: square">LocController.java
+                                                </li>
+                                            </ul>
+                                            <li>service</li>
+                                            <ul>
+                                                <li style="list-style-type: square">LocService.java</li>
+                                            </ul>
+                                            <li>repository</li>
+                                            <ul>
+                                                <li>dto
+                                                    <ul>
+                                                        <li style="list-style-type: square">Result.java
+                                                        </li>
+                                                        <li style="list-style-type: square">LocResponse.java
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <ul>
+                                                <li style="list-style-type: square">
+                                                    <a
+                                                            href="../../resources/11_milestone/LocRepository.java">LocRepository.java</a>
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                        <li>resources</li>
+                                        <ul>
+                                            <li style="list-style-type: square">application.yml</li>
+                                        </ul>
+                                    </ul>
+
+                                </ul>
+                                <li>test</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li style="list-style-type: square">HomeControllerTest.java</li>
+                                                <li style="list-style-type: square">LocControllerTest.java
+                                                </li>
+                                                </li>
+                                            </ul>
+                                            <li>service</li>
+                                            <ul>
+                                                <li style="list-style-type: square">
+                                                       LocServiceTest.java
+                                                </li>
+                                                </li>
+                                            </ul>
+                                            <li>repository</li>
+                                            <ul>
+                                                <li style="list-style-type: square">
+                                                    <a href="../../resources/11_milestone/LocRepositoryTest.java">LocRepositoryTest.java</a>
+                                                </li>
+                                                </li>
+                                            </ul>
+                                        </ul>
+
+
+                                    </ul>
+
+                                </ul>
+                            </ul>
+                            <li style="list-style-type: square">build.gradle</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <script>addFooter();</script>
+    </div>
+</div>
+</body>
+
+</html>

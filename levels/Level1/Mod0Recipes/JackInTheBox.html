@@ -27,7 +27,7 @@
 </p><br>
  <p class="normal">
 	2. When the user presses the button 5 times, show them a jack-in-the-box using the methods below.<br>
-     (A sample jackInTheBox.png file is provided in the recipe package(_02_jack_in_the_box))<br>
+     (A sample jackInTheBox.png file is provided in the recipe package(_08_jack_in_the_box))<br>
 </p>
 
 <pre>private void showPicture(String fileName) {
@@ -60,28 +60,16 @@ private JLabel createLabelImage(String fileName) {
 
 	<p class="normal">
   3. Also play a sound when the jack-in-the-box pops up using this method.<br>
-        (A sample sound homer-woohoo.wav is provided in the recipe package(_02_jack_in_the_box))
+        (A sample sound homer-woohoo.wav is provided in the recipe package(_2_jack_in_the_box))
  
- <pre>	private void playSound(String soundFile) {
-		String path = "src/_03_gui_from_scratch/_2_jack_in_the_box/";
-			File sound = new File(path+soundFile);
-			if (sound.exists()) {
-				new Thread(() -> {
-				try {
-					Clip clip = AudioSystem.getClip();
-					clip.open(AudioSystem.getAudioInputStream(sound));
-					clip.start();
-					Thread.sleep(clip.getMicrosecondLength()/1000);
-				}
-				catch (Exception e) {
-					System.out.println("Could not play this sound");
-				}}).start();
-	 		}
-			else {
-				System.out.println("File does not exist");
-			}
-		
-	}
+ <pre>private void playSound(String soundFile) { 
+    try {
+        AudioClip sound = JApplet.newAudioClip(getClass().getResource(soundFile));
+        sound.play();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 </pre><br>
     
                 </div>

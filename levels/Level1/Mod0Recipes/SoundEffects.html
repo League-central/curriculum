@@ -29,7 +29,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOTE: because this GUI has more than one button, you must add a JPanel to your JFrame and put the buttons on the panel!<br>
 <br>
         2. Gather sound bites. <u>They must be .wav files.</u> Free sound effects can be found <a href="http://soundbible.com/free-sound-effects-1.html">here</a>. The League also has an account at <a href="https://freesound.org/">freesound</a>. Ask your teacher for our login.<br><br>
-        The .wav files must be placed into your recipe package( _09_sound_effects_machine) (drag and drop).<br>
+        The .wav files must be placed into your recipe package(_3_sound_effects_machine) (drag and drop).<br>
 <br>        
 3. Call this playSound() method when they click on a button. You will need to import java.applet.AudioClip
 <br>
@@ -37,7 +37,7 @@
 
 <pre>
 	private void playSound(String soundFile) {
-		String path = "src/_09_sound_effects_machine/";
+		String path = "src/_03_gui_from_scratch/_3_sound_effects_machine/";
 			File sound = new File(path+soundFile);
 			if (sound.exists()) {
 				new Thread(() -> {

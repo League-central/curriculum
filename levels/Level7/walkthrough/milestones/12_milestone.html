@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level 7 - Milestone 12</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="main">
+        <div id="header">
+            <script>addHeader();</script>
+        </div>
+        <h2>Level 7 - Milestone 12</h2>
+        <div id="teachersPage">
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Milestone 12 - Preparing for Integration Testing</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        In this section we will edit our project to prepare for integration testing.
+                        class<br><br>
+                        Before completion of this milestone, students will:
+                    <ul>
+                        <li>Learn the difference between unit testing and integration testing
+                        </li>
+                        <li>Edit the build.gradle file to support our integration tests.
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>What is Integration Testing?</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        When unit testing our code, we wanted to ensure that individual units of code worked as expected.  We used an instance of
+                        an object to invoke a specific method, and then verified that the value that the method returned was equal to the value that
+                        we expected.  On a broad level, integration testing aims to verify that different units of code integrate together as expected.
+                        While some sources consider end-to-end tests of applications to qualify as integration tests, we will focus on much narrower integration tests.
+                        More specifically, we will test that the code that we wrote integrates with the code that Spring provided us.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Updating the build.gradle File</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        There is some code that we need to add to our build.gradle file in order to facilitate the running our upcoming integration tests.  While our project came with a
+                        "test" source set where we could place our unit tests, we will add support for an "intTest" package where our integration tests will live.
+                        The following sections of code can be added back-to-back at the end of the build.grade file, but they will be broken up here for the sake of
+                        providing an explanation as to what the purpose of each section is:
+<pre>
+sourceSets {
+	intTest {
+		compileClasspath += sourceSets.main.output
+		runtimeClasspath += sourceSets.main.output
+	}
+}
+</pre>
+                <br/>
+                    This defines a new source set, "intTest", for our integration tests.  A source set is simply a logical grouping of source files.
+                    Before this step, our project already had two source sets: "main" and "test".
+<pre>
+configurations {
+	intTestImplementation.extendsFrom testImplementation
+	intTestRunTimeOnly.extendsFrom runtimeOnly
+}
+</pre>
+
+                    <br/>
+                    The first line attaches all of the unit test dependencies to the integration tests.  The second line creates an "intTestRunTimeOnly" configuration
+                    and attaches any dependencies that are only required at runtime.
+<pre>
+task intTest(type: Test) {
+    useJUnitPlatform()
+    description = 'Runs the integration tests.'
+    group = 'verification'
+
+    testClassesDirs = sourceSets.intTest.output.classesDirs
+    classpath = sourceSets.intTest.runtimeClasspath
+    shouldRunAfter test
+}
+</pre>
+                    <br/>
+                    This section creates a new gradle task for our intTests.  You can easily view all of the available gradle tasks in IntelliJ
+                    by opening the gradle menu along the right side of the IDE window.  Under Tasks>Verification you should see that there are currently
+                    "test" and "check" tasks.  This section will add another task there called "intTest" that will run our integration tests.
+<pre>
+check.dependsOn intTest
+</pre>
+                <br/>
+                    Finally, this short section will cause our "intTest" task to be executed when the "check" task is run.  This means that
+                    the "check" task will run both our unit tests and our integration tests.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Adding the Packages</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Next, lets add the packages for our integration tests.  These will have the same structure as our "main" and "test" source sets,
+                        but since we will only be writing integration tests for our presentation package, will contain only a subset of those source set files.
+                        We will add an "intTest" package at the same level as the the "main" and "test" packages, as well as the corresponding "java.org.jointheleague.level7.cheetah.presentation" packages inside of the
+                        "intTest" package.  You can copy and paste those packages from one of the other source sets to make it easier.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar" style="background-color: lightskyblue">
+                    <h3>Summary of Code Changes for this Milestone</h3>
+                </div>
+                <div class="description">
+                    <ul>
+                        Cheetah-Search
+                        <ul>
+                            <li>src</li>
+                            <ul>
+                                <li>intTest</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+                                            <li>presentation</li>
+                                        </ul>
+                                    </ul>
+                                </ul>
+                                <li>main</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+                                            <li>config</li>
+                                            <ul>
+                                                <li style="list-style-type: square">ApiDocConfig.java</li>
+                                            </ul>
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li style="list-style-type: square">HomeController.java</li>
+                                                <li style="list-style-type: square">LocController.java
+                                                </li>
+                                            </ul>
+                                            <li>service</li>
+                                            <ul>
+                                                <li style="list-style-type: square">LocService.java</li>
+                                            </ul>
+                                            <li>repository</li>
+                                            <ul>
+                                                <li>dto
+                                                    <ul>
+                                                        <li style="list-style-type: square">Result.java
+                                                        </li>
+                                                        <li style="list-style-type: square">LocResponse.java
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <ul>
+                                                <li style="list-style-type: square">
+                                                   LocRepository.java
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                        <li>resources</li>
+                                        <ul>
+                                            <li style="list-style-type: square">application.yml</li>
+                                        </ul>
+                                    </ul>
+
+                                </ul>
+                                <li>test</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li style="list-style-type: square">HomeControllerTest.java</li>
+                                                <li style="list-style-type: square">LocControllerTest.java
+                                                </li>
+                                                </li>
+                                            </ul>
+                                            <li>service</li>
+                                            <ul>
+                                                <li style="list-style-type: square">
+                                                       LocServiceTest.java
+                                                </li>
+                                                </li>
+                                            </ul>
+                                            <li>repository</li>
+                                            <ul>
+                                                <li style="list-style-type: square">
+                                                   LocRepositoryTest.java
+                                                </li>
+                                                </li>
+                                            </ul>
+                                        </ul>
+
+
+                                    </ul>
+
+                                </ul>
+                            </ul>
+                            <li style="list-style-type: square">
+                                <a href="../../resources/12_milestone/build.gradle.txt">build.gradle
+                            </li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <script>addFooter();</script>
+    </div>
+</div>
+</body>
+
+</html>

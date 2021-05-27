@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Level 7 - Milestone 12</title>
+    <title>Level 7 - Milestone 13</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
@@ -16,22 +16,20 @@
         <div id="header">
             <script>addHeader();</script>
         </div>
-        <h2>Level 7 - Milestone 12</h2>
+        <h2>Level 7 - Milestone 13</h2>
         <div id="teachersPage">
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Milestone 12 - Preparing for Integration Testing</h3>
+                    <h3>Milestone 13 - Integration Testing the Home Controller</h3>
                 </div>
                 <div class="description">
                     <p>
-                        In this section we will edit our project to prepare for integration testing.
+                        In this section we will add an integration test for our HomeController method.
                         <br><br>
                         Before completion of this milestone, students will:
                     <ul>
-                        <li>Learn the difference between unit testing and integration testing
-                        </li>
-                        <li>Edit the build.gradle file to support our integration tests.
+                        <li>Learn how to write a basic integration test.
                         </li>
                     </ul>
                     </p>
@@ -40,85 +38,131 @@
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>What is Integration Testing?</h3>
+                    <h3>Creating a Class for the Integration Test</h3>
                 </div>
                 <div class="description">
                     <p>
-                        When unit testing our code, we wanted to ensure that individual units of code worked as expected.  We used an instance of
-                        an object to invoke a specific method, and then verified that the value that the method returned was equal to the value that
-                        we expected.  On a broad level, integration testing aims to verify that different units of code integrate together as expected.
-                        While some sources consider end-to-end tests of applications to qualify as integration tests, we will focus on much narrower integration tests.
-                        More specifically, we will test that the code that we wrote integrates with the code that Spring provided us.
+                        Add a HomeControllerIntTest class inside the appropriate folder within the IntTest source set,
+                        keep in mind that the structure reflects the structure of our main and test source sets.
                     </p>
                 </div>
             </div>
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Updating the build.gradle File</h3>
+                    <h3>Using @WebMvcTest</h3>
                 </div>
                 <div class="description">
                     <p>
-                        There is some code that we need to add to our build.gradle file in order to facilitate the running our upcoming integration tests.  While our project came with a
-                        "test" source set where we could place our unit tests, we will add support for an "intTest" package where our integration tests will live.
-                        The following sections of code can be added back-to-back at the end of the build.grade file, but they will be broken up here for the sake of
-                        providing an explanation as to what the purpose of each section is:
-<pre>
-sourceSets {
-	intTest {
-		compileClasspath += sourceSets.main.output
-		runtimeClasspath += sourceSets.main.output
-	}
-}
-</pre>
-                <br/>
-                    This defines a new source set, "intTest", for our integration tests.  A source set is simply a logical grouping of source files.
-                    Before this step, our project already had two source sets: "main" and "test".
-<pre>
-configurations {
-	intTestImplementation.extendsFrom testImplementation
-	intTestRunTimeOnly.extendsFrom runtimeOnly
-}
-</pre>
+                        With our integration tests, we will issue a "fake" request to our application, and check to see
+                        that
+                        Spring invokes the correct method when a request is made to a certain endpoint. Notice how this
+                        differs from our unit tests: in our unit tests we used an instance of an object to invoke a
+                        method
+                        directly, and check that it returned the expected result. Here, we are taking a step back and
+                        checking that when a request is issued to a certain URL, that Spring and the code that we wrote
+                        end up doing the correct thing.<br/><br/>
 
-                    <br/>
-                    The first line attaches all of the unit test dependencies to the integration tests.  The second line creates an "intTestRunTimeOnly" configuration
-                    and attaches any dependencies that are only required at runtime.
-<pre>
-task intTest(type: Test) {
-    useJUnitPlatform()
-    description = 'Runs the integration tests.'
-    group = 'verification'
+                        Because we are testing that the application responds correctly to a request, rather than a
+                        single
+                        method in isolation, we need to bring up the Spring part of the application to conduct these
+                        tests.
+                        It is because we need to run the application as a whole for our integration tests, that
+                        integrations test take much long to run that unit tests.<br/><br/>
 
-    testClassesDirs = sourceSets.intTest.output.classesDirs
-    classpath = sourceSets.intTest.runtimeClasspath
-    shouldRunAfter test
-}
-</pre>
-                    <br/>
-                    This section creates a new gradle task for our intTests.  You can easily view all of the available gradle tasks in IntelliJ
-                    by opening the gradle menu along the right side of the IDE window.  Under Tasks>Verification you should see that there are currently
-                    "test" and "check" tasks.  This section will add another task there called "intTest" that will run our integration tests.
-<pre>
-check.dependsOn intTest
-</pre>
-                <br/>
-                    Finally, this short section will cause our "intTest" task to be executed when the "check" task is run.  This means that
-                    the "check" task will run both our unit tests and our integration tests.
+                        In order to launch Spring for our integration test, we need another annotation: @WebMcvTest.
+                        This
+                        will be added right about the class definition for our HomeControllerIntTest. This annotation
+                        auto-configures the Spring MVC infrastructure and the MockMVC (that will discuss shortly) for
+                        use with our tests.
+                        In our integration tests, we aren't going to mention any classes specifically, as we rely on
+                        Spring
+                        to test the mapping between a given URL and the method that is called, but we can improve our
+                        @WebMvcTest annotation
+                        to make our tests a little more efficient. Instead of having our integration test bring up the
+                        entire
+                        Spring context for our application, we can give it a "hint" as to which slice of the application
+                        is needed
+                        for this tests. This will allow us to only start up the slice of the application that is under
+                        tests here,
+                        making it run much more quickly. We can update the class annotation to
+                        "@WebMvcTest(HomeController.class)"
+                        to accomplish this.
                     </p>
                 </div>
             </div>
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Adding the Packages</h3>
+                    <h3>Adding MockMvc Dependency to the Class</h3>
                 </div>
                 <div class="description">
                     <p>
-                        Next, lets add the packages for our integration tests.  These will have the same structure as our "main" and "test" source sets,
-                        but since we will only be writing integration tests for our presentation package, will contain only a subset of those source set files.
-                        We will add an "intTest" package at the same level as the the "main" and "test" packages, as well as the corresponding "java.org.jointheleague.level7.cheetah.presentation" packages inside of the
-                        "intTest" package.  You can copy and paste those packages from one of the other source sets to make it easier.
+                        In preparation for the next step, add a "private MockMvc mockMvc" field to the class, with an
+                        @Autowired annotation above it so that it is automatically instantiated.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Adding the Integration Test Method</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        The basis of the test method will look just as it does in the unit tests. In this case,
+                        something like the following would be appropriate:
+                    <pre>
+@Test
+public void whenHome_ThenReturnMovedPermanentlyAndRedirect() {
+
+}</pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Completing the Test Method</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        We will use the MockMvc we created previously to execute the integration test. In general,
+                        the structure of the test will be somewhat similar to our unit tests: we will execute something,
+                        and then tests that the result is what we expected. For our integration tests, however, the
+                        syntax
+                        for will be considerable different since we are using this MockMvc to issue a request instead of
+                        calling a method directly.
+
+                        In the case of our HomeController method, we want to test that when a request is sent to the
+                        root URL, "/", that two things occur. First, that an "Move Permanently" status code is returned,
+                        and second that the String that redirects our use to our swagger page is sent. We will also
+                        print
+                        our some additional things. This makes it easy to see what went wrong in the even that our test
+                        fails. The code that executes this is pretty readable, and reproduced here:
+                    <pre>
+@Test
+public void givenController_WhenHome_ThenReturnMovedPermanentlyAndRedirect() throws Exception {
+    mockMvc.perform(get("/"))
+        .andDo(print())
+        .andExpect(status().isMovedPermanently())
+        .andExpect(redirectedUrl("swagger-ui.html"));
+}</pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Run the Test</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        At this point our test is complete. You should be able to run it and see that it passes.
+                        Remember
+                        that at this point there are multiple ways for you to run your tests. You can run it using one
+                        of the
+                        play buttons in the IDE gutter, or use the the Gradle "intTest" or "check" tasks.
                     </p>
                 </div>
             </div>
@@ -142,6 +186,11 @@ check.dependsOn intTest
                                         </li>
                                         <ul>
                                             <li>presentation</li>
+                                            <ul>
+                                                <li style="list-style-type: square">
+                                                    <a href="../../resources/13_milestone/HomeControllerIntTest.java">HomeControllerIntTest.java</a>
+                                                </li>
+                                            </ul>
                                         </ul>
                                     </ul>
                                 </ul>
@@ -180,7 +229,7 @@ check.dependsOn intTest
                                             </ul>
                                             <ul>
                                                 <li style="list-style-type: square">
-                                                   LocRepository.java
+                                                    LocRepository.java
                                                 </li>
                                             </ul>
                                         </ul>
@@ -210,14 +259,14 @@ check.dependsOn intTest
                                             <li>service</li>
                                             <ul>
                                                 <li style="list-style-type: square">
-                                                       LocServiceTest.java
+                                                    LocServiceTest.java
                                                 </li>
                                                 </li>
                                             </ul>
                                             <li>repository</li>
                                             <ul>
                                                 <li style="list-style-type: square">
-                                                   LocRepositoryTest.java
+                                                    LocRepositoryTest.java
                                                 </li>
                                                 </li>
                                             </ul>
@@ -229,7 +278,7 @@ check.dependsOn intTest
                                 </ul>
                             </ul>
                             <li style="list-style-type: square">
-                                <a href="../../resources/12_milestone/build.gradle.txt">build.gradle</a>
+                                build.gradle
                             </li>
                         </ul>
                     </ul>

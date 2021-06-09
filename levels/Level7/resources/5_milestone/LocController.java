@@ -22,8 +22,7 @@ public class LocController {
             notes = "Response may include multiple Result values.",
             response = String.class)
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Result(s) found"),
-            @ApiResponse(code = 404, message = "Result(s) not found")
+            @ApiResponse(code = 200, message = "Result(s) found")
     })
     public String getResults(@RequestParam(value="q") String query){
         return locService.getResults(query);

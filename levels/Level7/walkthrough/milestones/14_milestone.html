@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level 7 - Milestone 14</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="main">
+        <div id="header">
+            <script>addHeader();</script>
+        </div>
+        <h2>Level 7 - Milestone 14</h2>
+        <div id="teachersPage">
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Milestone 14 - Integration Testing the Library of Congress Controller</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        In this section we will add an integration test for our LocController method.
+                        <br><br>
+                        Before completion of this milestone, students will:
+                    <ul>
+                        <li>Learn how to write a basic integration test.
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Creating a Class for the Integration Test</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Add a HomeControllerIntTest class inside the appropriate folder within the IntTest source set,
+                        keep in mind that the structure reflects the structure of our main and test source sets.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Using @WebMvcTest</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        With our integration tests, we will issue a "fake" request to our application, and check to see
+                        that
+                        Spring invokes the correct method when a request is made to a certain endpoint. Notice how this
+                        differs from our unit tests: in our unit tests we used an instance of an object to invoke a
+                        method
+                        directly, and check that it returned the expected result. Here, we are taking a step back and
+                        checking that when a request is issued to a certain URL, that Spring and the code that we wrote
+                        end up doing the correct thing.<br/><br/>
+
+                        Because we are testing that the application responds correctly to a request, rather than a
+                        single
+                        method in isolation, we need to bring up the Spring part of the application to conduct these
+                        tests.
+                        It is because we need to run the application as a whole for our integration tests, that
+                        integrations test take much long to run that unit tests.<br/><br/>
+
+                        In order to launch Spring for our integration test, we need another annotation: @WebMcvTest.
+                        This
+                        will be added right about the class definition for our HomeControllerIntTest. This annotation
+                        auto-configures the Spring MVC infrastructure and the MockMVC (that will discuss shortly) for
+                        use with our tests.
+                        In our integration tests, we aren't going to mention any classes specifically, as we rely on
+                        Spring
+                        to test the mapping between a given URL and the method that is called, but we can improve our
+                        @WebMvcTest annotation
+                        to make our tests a little more efficient. Instead of having our integration test bring up the
+                        entire
+                        Spring context for our application, we can give it a "hint" as to which slice of the application
+                        is needed
+                        for this tests. This will allow us to only start up the slice of the application that is under
+                        tests here,
+                        making it run much more quickly. We can update the class annotation to
+                        "@WebMvcTest(HomeController.class)"
+                        to accomplish this.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Adding MockMvc Dependency to the Class</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        In preparation for the next step, add a "private MockMvc mockMvc" field to the class, with an
+                        @Autowired annotation above it so that it is automatically instantiated.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Adding the Integration Test Method</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        The basis of the test method will look just as it does in the unit tests. In this case,
+                        something like the following would be appropriate:
+                    <pre>
+@Test
+public void whenHome_ThenReturnMovedPermanentlyAndRedirect() {
+
+}</pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Completing the Test Method</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        We will use the MockMvc we created previously to execute the integration test. In general,
+                        the structure of the test will be somewhat similar to our unit tests: we will execute something,
+                        and then tests that the result is what we expected. For our integration tests, however, the
+                        syntax
+                        for will be considerable different since we are using this MockMvc to issue a request instead of
+                        calling a method directly.
+
+                        In the case of our HomeController method, we want to test that when a request is sent to the
+                        root URL, "/", that two things occur. First, that an "Move Permanently" status code is returned,
+                        and second that the String that redirects our use to our swagger page is sent. We will also
+                        print
+                        our some additional things. This makes it easy to see what went wrong in the even that our test
+                        fails. The code that executes this is pretty readable, and reproduced here:
+                    <pre>
+@Test
+public void givenController_WhenHome_ThenReturnMovedPermanentlyAndRedirect() throws Exception {
+    mockMvc.perform(get("/"))
+        .andDo(print())
+        .andExpect(status().isMovedPermanently())
+        .andExpect(redirectedUrl("swagger-ui.html"));
+}</pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Run the Test</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        At this point our test is complete. You should be able to run it and see that it passes.
+                        Remember
+                        that at this point there are multiple ways for you to run your tests. You can run it using one
+                        of the
+                        play buttons in the IDE gutter, or use the the Gradle "intTest" or "check" tasks.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar" style="background-color: lightskyblue">
+                    <h3>Summary of Code Changes for this Milestone</h3>
+                </div>
+                <div class="description">
+                    <ul>
+                        Cheetah-Search
+                        <ul>
+                            <li>src</li>
+                            <ul>
+                                <li>intTest</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li style="list-style-type: square">
+                                                    <a href="../../resources/13_milestone/HomeControllerIntTest.java">HomeControllerIntTest.java</a>
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                    </ul>
+                                </ul>
+                                <li>main</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+                                            <li>config</li>
+                                            <ul>
+                                                <li style="list-style-type: square">ApiDocConfig.java</li>
+                                            </ul>
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li style="list-style-type: square">HomeController.java</li>
+                                                <li style="list-style-type: square">LocController.java
+                                                </li>
+                                            </ul>
+                                            <li>service</li>
+                                            <ul>
+                                                <li style="list-style-type: square">LocService.java</li>
+                                            </ul>
+                                            <li>repository</li>
+                                            <ul>
+                                                <li>dto
+                                                    <ul>
+                                                        <li style="list-style-type: square">Result.java
+                                                        </li>
+                                                        <li style="list-style-type: square">LocResponse.java
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <ul>
+                                                <li style="list-style-type: square">
+                                                    LocRepository.java
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                        <li>resources</li>
+                                        <ul>
+                                            <li style="list-style-type: square">application.yml</li>
+                                        </ul>
+                                    </ul>
+
+                                </ul>
+                                <li>test</li>
+                                <ul>
+                                    <li>java</li>
+                                    <ul>
+                                        <li>
+                                            org.jointheleague.level7.cheetah
+                                        </li>
+                                        <ul>
+
+                                            <li>presentation</li>
+                                            <ul>
+                                                <li style="list-style-type: square">HomeControllerTest.java</li>
+                                                <li style="list-style-type: square">LocControllerTest.java
+                                                </li>
+                                                </li>
+                                            </ul>
+                                            <li>service</li>
+                                            <ul>
+                                                <li style="list-style-type: square">
+                                                    LocServiceTest.java
+                                                </li>
+                                                </li>
+                                            </ul>
+                                            <li>repository</li>
+                                            <ul>
+                                                <li style="list-style-type: square">
+                                                    LocRepositoryTest.java
+                                                </li>
+                                                </li>
+                                            </ul>
+                                        </ul>
+
+
+                                    </ul>
+
+                                </ul>
+                            </ul>
+                            <li style="list-style-type: square">
+                                build.gradle
+                            </li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <script>addFooter();</script>
+    </div>
+</div>
+</body>
+
+</html>

@@ -54,12 +54,12 @@ ellipse(x, y, width, height);
 <p class="normal">
 5. Add velocity to the bird. <br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Hint:</u> make a variable for the velocity of the bird in the Y direction (up). Changing its value should change the velocity of your bird.</p><br>
-    <p class="code">int birdYVelocity = 30;</p><br>
+    <p class="code">int birdYVelocity = -10;</p><br>
     
 
 <p class="normal">
 6.  Give the bird gravity.<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Hint:</u> make a variable for the gravity pulling the bird down. Gravity should continually increase the value of y . 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Hint:</u> make a variable for the gravity pulling the bird down. Gravity should continually increase the value of birdYVelocity. 
 </p>
     <p class="code">int gravity = 1;</p><br>
 
@@ -67,7 +67,7 @@ ellipse(x, y, width, height);
 <p class="normal">
 7. Make the bird jump (flap) when the mouse is clicked.<br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Hint:</u> construct a mousePressed() method the same way setup() and draw() were made. <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this method, apply the bird’s velocity to its y position to make the bird rise.
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this method, reset the bird’s velocity to make the bird rise.
     </p><br>
     
 <p class="normal">

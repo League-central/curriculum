@@ -78,6 +78,10 @@
                     </p>
                     <h2 style="font-size:1.5em;">Eclipse</h2>
                     <p>
+                        Eclipse does not support importing Gradle projects from git.  You will need to clone the project using the termainal
+                        method (above), GitHub Desktop, or use eGit to clone it, then delete the project and reimport it.  After cloning the project, 
+                        you will need to import it into Eclipse by going to the import menu and seleecting Gradle>Existing Gradle Projects
+                        
                         <ol style="width: 80%; padding: .25em 2em 0em;">
                             <li>In the menu bar, go to file>import</li>
                             <br>
@@ -95,6 +99,16 @@
                             </li>
                             <br>
                             <li>Select the "development" branch</li>
+                            <br>
+                            <li>Proceed through the remaining menu screens until it allows your to finish.</li>
+                            <br>
+                            <li>Take note of where Eclipse cloned the project on your computer.  You can right-click on the project and select "properties"</li>
+                            <br>
+                            <li>Delete the project from eclipse, but do not remove it from your disk</li>
+                            <br>
+                            <li>In the menu bar, go to file>import</li>
+                            <br>
+                            <li>Select "Gradle", then "Existing Gradle Projects"</li>
                             <br>
                             <li>Proceed through the remaining menu screens until it allows your to finish.</li>
                             <br>

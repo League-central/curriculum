@@ -151,13 +151,13 @@ void givenGoodQuery_whenGetResults_thenReturnListOfResults() {
     result.setTitle("TITLE");
     result.setLink("LINK");
     result.setAuthors(Collections.singletonList("AUTHORS"));
-    List<Result> expectedResults = Collections.singletonList(result);
+    List&ltResult&gt expectedResults = Collections.singletonList(result);
 
     when(locService.getResults(query))
             .thenReturn(expectedResults);
 
     //when
-    List<Result> actualResults = locController.getResults(query);
+    List&ltResult&gt actualResults = locController.getResults(query);
 
     //then
     assertEquals(expectedResults, actualResults);
@@ -185,7 +185,7 @@ void givenGoodQuery_whenGetResults_thenReturnListOfResults() {
                         and check that the message is what we expected, but the unit test for the unhappy path should look like this:
                         <pre>
 @Test
-    void givenBadQuery_whenGetResults_thenReturnThrowException() {
+    void givenBadQuery_whenGetResults_thenThrowsException() {
     //given
     String query = "Java";
 

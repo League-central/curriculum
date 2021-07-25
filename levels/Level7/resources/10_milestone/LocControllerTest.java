@@ -50,7 +50,7 @@ class LocControllerTest {
     }
 
     @Test
-    void givenBadQuery_whenGetResults_thenReturnThrowException() {
+    void givenBadQuery_whenGetResults_thenThrowsException() {
         //given
         String query = "Java";
 
@@ -59,5 +59,5 @@ class LocControllerTest {
         Throwable exceptionThrown = assertThrows(ResponseStatusException.class, () -> locController.getResults(query));
         assertEquals(exceptionThrown.getMessage(), "404 NOT_FOUND \"Result(s) not found.\"");
     }
-    
+
 }

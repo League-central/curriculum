@@ -29,10 +29,8 @@
                         <br><br>
                         Before completion of this milestone, students will:
                     <ul>
-                        <li>Learn how to write a more complete unit test.
-                        </li>
                         <li>Learn how to engage in mocking within an integration test</li>
-                        <li>Learn how to write an integration test that examines the JSON object that would be returned to the user</li>
+                        <li>Learn how to write an integration test that examines the JSON object that is returned to the user</li>
                     </ul>
                     </p>
                 </div>
@@ -46,78 +44,88 @@
                     <p>
                         Add a LocControllerIntTest class inside the appropriate folder within the IntTest source set,
                         keep in mind that the structure reflects the structure of our main and test source sets.
+                        <br/><br/>
+                        Add the @WebMvcTest annotation above the class declaration like we did in the HomeControllerIntTest.
+                        We can again specify the slice of the application that needs to be brought up for this test
+                        by updating the annotation to @WebMvcTest(LocController.class).
+                        <br/><br/>
+                        Again like the HomeControllerIntTest, we need to add an Autowired field that will be of type
+                        MockMvc.  This object will allow us to execute the "fake" requests to the application.
                     </p>
                 </div>
             </div>
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Using @WebMvcTest</h3>
+                    <h3>Mocking Within Integration Tests</h3>
                 </div>
                 <div class="description">
                     <p>
-                        With our integration tests, we will issue a "fake" request to our application, and check to see
-                        that
-                        Spring invokes the correct method when a request is made to a certain endpoint. Notice how this
-                        differs from our unit tests: in our unit tests we used an instance of an object to invoke a
-                        method
-                        directly, and check that it returned the expected result. Here, we are taking a step back and
-                        checking that when a request is issued to a certain URL, that Spring and the code that we wrote
-                        end up doing the correct thing.<br/><br/>
+                        The main difference between our LocControllerIntTest class and our HomeControllerIntTest classes is
+                        very similar to the difference between our LocControllerTest and HomeControllerTest classes: we need
+                        to engage in mocking.  If you do not recall the reason for mocking, you can refer back to
+                        <a href="./10_milestone.html">Milestone 10</a>.  In this milestone, we will focus on the difference between
+                        how mocking takes place in unit tests and integration tests.
 
-                        Because we are testing that the application responds correctly to a request, rather than a
-                        single
-                        method in isolation, we need to bring up the Spring part of the application to conduct these
-                        tests.
-                        It is because we need to run the application as a whole for our integration tests, that
-                        integrations test take much long to run that unit tests.<br/><br/>
+                        In our LocControllerTest class, we created an instance of LocController upon which we directly called
+                        the methods that we wanted to test
+                        <pre style="background-color: #e6f5e4">
+@Mock
+private LocService locService;
 
-                        In order to launch Spring for our integration test, we need another annotation: @WebMcvTest.
-                        This
-                        will be added right about the class definition for our HomeControllerIntTest. This annotation
-                        auto-configures the Spring MVC infrastructure and the MockMVC (that will discuss shortly) for
-                        use with our tests.
-                        In our integration tests, we aren't going to mention any classes specifically, as we rely on
-                        Spring
-                        to test the mapping between a given URL and the method that is called, but we can improve our
-                        @WebMvcTest annotation
-                        to make our tests a little more efficient. Instead of having our integration test bring up the
-                        entire
-                        Spring context for our application, we can give it a "hint" as to which slice of the application
-                        is needed
-                        for this tests. This will allow us to only start up the slice of the application that is under
-                        tests here,
-                        making it run much more quickly. We can update the class annotation to
-                        "@WebMvcTest(HomeController.class)"
-                        to accomplish this.
-                    </p>
-                </div>
-            </div>
+@BeforeEach
+void setUp() {
+    MockitoAnnotations.openMocks(this);
 
-            <div class="module">
-                <div class="titleBar">
-                    <h3>Adding MockMvc Dependency to the Class</h3>
-                </div>
-                <div class="description">
-                    <p>
-                        In preparation for the next step, add a "private MockMvc mockMvc" field to the class, with an
-                        @Autowired annotation above it so that it is automatically instantiated.
-                    </p>
-                </div>
-            </div>
+    locController = new LocController(locService);
+}</pre>
+                <br/>
+                    Notice the first line, where we marked the LocService as a mock using the @Mock annotation, and then
+                    the final line of code where we passed that mock into the instance of LocController upon which we later
+                    directly called the method we want to test:
+<pre style="background-color: #e6f5e4">List&ltResult&gt actualResults = locController.getResults(query);
+</pre>
+                    <br/>
+                    This worked great, and allowed us to ensure that any LocService methods called as a side effect of invoking
+                    methods LocController methods would be called on our mocked LocService.
+                    <br/>
+                    <br/>
+                    We could try using this same strategy for supply mocks for our integration tests to use, but we would immediately
+                    run into an issue: we cannot simply pass in a mocked LocService when we instantiate an LocController, because
+                    we are never creating an instance of LocController!  Similar to our extant HomeControllerIntTest, we will allow
+                    Spring to create all instances of the objects that the code within our main source set requires, just as it
+                    does when run normally.  So then how to do we get a mock in there?  It turns out that it is even more simple than
+                    how we inserted the mock for our unit tests, but the difficult part is understanding the need for doing it this way.
 
-            <div class="module">
-                <div class="titleBar">
-                    <h3>Adding the Integration Test Method</h3>
-                </div>
-                <div class="description">
-                    <p>
-                        The basis of the test method will look just as it does in the unit tests. In this case,
-                        something like the following would be appropriate:
+                    In order to mock the LocService within our integration test, we only need to create a field to contain an LocService, and
+                    then annotate it with @MockBean (notice this is different from the previously-used @Mock annotation).  Since we cannot
+                    pass a mock LocService into our instance of LocController as we did in our unit tests, this @MockBean annotation tells
+                    Spring to create a mock LocService, and simply use that in any scenario where an instance of LocService may be required!
                     <pre>
-@Test
-public void whenHome_ThenReturnMovedPermanentlyAndRedirect() {
+@MockBean
+private LocService locService;</pre>
+                    </p>
+                </div>
+            </div>
 
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Testing the Happy Path</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Just like our LocControllerTest class, we will need to create two integration tests to fully cover everything
+                        than can occur when our getResults() method is invoked.  First we need to test that when the user supplies a good
+                        query, that a list of results is returned.  Later, we will test that when the user supplies a bad query that status
+                        code of 404 is returned.
+                        <br/><br/>
+                        To start, lets create a method to hold our happy path test.
+                        <pre>
+@Test
+public void givenGoodQuery_whenSearchForResults_thenIsOkAndReturnsResults() throws Exception {
+    //given
+    //when
+    //then
 }</pre>
                     </p>
                 </div>
@@ -125,30 +133,32 @@ public void whenHome_ThenReturnMovedPermanentlyAndRedirect() {
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Completing the Test Method</h3>
+                    <h3>Stubbing the LocService Method</h3>
                 </div>
                 <div class="description">
                     <p>
-                        We will use the MockMvc we created previously to execute the integration test. In general,
-                        the structure of the test will be somewhat similar to our unit tests: we will execute something,
-                        and then tests that the result is what we expected. For our integration tests, however, the
-                        syntax
-                        for will be considerable different since we are using this MockMvc to issue a request instead of
-                        calling a method directly.
-
-                        In the case of our HomeController method, we want to test that when a request is sent to the
-                        root URL, "/", that two things occur. First, that an "Move Permanently" status code is returned,
-                        and second that the String that redirects our use to our swagger page is sent. We will also
-                        print
-                        our some additional things. This makes it easy to see what went wrong in the even that our test
-                        fails. The code that executes this is pretty readable, and reproduced here:
+                        We've created our mocked LocService with the previous steps, but we still need to program it to
+                    return a specified value when locService.getResults() is invoked.  This is done in exactly the same way
+                    as it was in LocControllerTest, and you may in fact be able to borrow some code from that class to complete
+                    this one.
                     <pre>
 @Test
-public void givenController_WhenHome_ThenReturnMovedPermanentlyAndRedirect() throws Exception {
-    mockMvc.perform(get("/"))
-        .andDo(print())
-        .andExpect(status().isMovedPermanently())
-        .andExpect(redirectedUrl("swagger-ui.html"));
+public void givenGoodQuery_whenSearchForResults_thenIsOkAndReturnsResults() throws Exception {
+    //given
+    String query = "Java";
+    String title = "Java: A Drink, an Island, and a Programming Language";
+    String author = "AUTHOR";
+    String link = "LINK";
+    Result result = new Result();
+    result.setTitle(title);
+    result.setAuthors(Collections.singletonList(author));
+    result.setLink(link);
+    List&ltResult&gt expectedResults = Collections.singletonList(result);
+
+    when(locService.getResults(query)).thenReturn(expectedResults);
+
+    //when
+    //then
 }</pre>
                     </p>
                 </div>
@@ -156,15 +166,137 @@ public void givenController_WhenHome_ThenReturnMovedPermanentlyAndRedirect() thr
 
             <div class="module">
                 <div class="titleBar">
-                    <h3>Run the Test</h3>
+                    <h3>A Couple Initial Assertions</h3>
                 </div>
                 <div class="description">
                     <p>
-                        At this point our test is complete. You should be able to run it and see that it passes.
-                        Remember
-                        that at this point there are multiple ways for you to run your tests. You can run it using one
-                        of the
-                        play buttons in the IDE gutter, or use the the Gradle "intTest" or "check" tasks.
+                       We will improve our test in the next step, but for now we can simply check that when a well-formatted request is sent
+                    to the /searchLocResults endpoint, a 200 status code is returned and that the content type of the response is APPLICATION_JSON.
+                    <pre>
+@Test
+public void givenGoodQuery_whenSearchForResults_thenIsOkAndReturnsResults() throws Exception {
+    //given
+    String query = "Java";
+    String title = "Java: A Drink, an Island, and a Programming Language";
+    String author = "AUTHOR";
+    String link = "LINK";
+    Result result = new Result();
+    result.setTitle(title);
+    result.setAuthors(Collections.singletonList(author));
+    result.setLink(link);
+    List&ltResult&gt expectedResults = Collections.singletonList(result);
+
+    when(locService.getResults(query)).thenReturn(expectedResults);
+
+    //when
+    //then
+    MvcResult mvcResult = mockMvc.perform(get("/searchLocResults?q=" + query))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andReturn();
+
+    assertEquals(MediaType.APPLICATION_JSON_VALUE, mvcResult.getResponse().getContentType());
+}</pre>
+                    <br/>
+                    This code should look pretty familiar from what we did in the HomeControllerIntTest, and if you run this
+                    test you should see it pass.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Completing the Happy Path Test</h3>
+                </div>
+                <div class="description">
+                    <p>
+                       You may have noticed that, at this point, we aren't actually testing that the result that is sent
+                        in response to the user's request is what we expect.  This, in theory, is the same type of thing we did while unit testing:
+                        invoke a method, then check that result is what we expected.  However within our integration test, the syntax
+                        is different. In our unit tests, we were still dealing with Java objects, and we directly tested the object
+                        returned from calling a method was what we expected.  In our integration test, the response we receive does not contain
+                        a Java object, but rather the JSON value that Spring has created from the Java object returned from the locController.getResults() method.
+                        Think of when we test our endpoint using Swagger: we don't receive a Java object even though the getResults() method itself
+                        returns a Java object, but instead see the result in JSON format.
+                        <br/><br/>
+                        It may be helpful to visit our Swagger page and send a request to the application, so you can see
+                        what the result actually looks like.  In our assertion methods, we will need to pull pieces from the
+                        JSON result and check that they contain the value that we expect.  In the case of testing the LocController
+                        getResults() method, it will look like this:
+                        <pre>
+@Test
+public void givenGoodQuery_whenSearchForResults_thenIsOkAndReturnsResults() throws Exception {
+    //given
+    String query = "Java";
+    String title = "Java: A Drink, an Island, and a Programming Language";
+    String author = "AUTHOR";
+    String link = "LINK";
+    Result result = new Result();
+    result.setTitle(title);
+    result.setAuthors(Collections.singletonList(author));
+    result.setLink(link);
+    List&ltResult&gt expectedResults = Collections.singletonList(result);
+
+    when(locService.getResults(query)).thenReturn(expectedResults);
+
+    //when
+    //then
+    MvcResult mvcResult = mockMvc.perform(get("/searchLocResults?q=" + query))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$[0].title", is(title)))
+            .andExpect(jsonPath("$[0].authors[0]", is(author)))
+            .andExpect(jsonPath("$[0].link", is(link)))
+            .andReturn();
+
+    assertEquals(MediaType.APPLICATION_JSON_VALUE, mvcResult.getResponse().getContentType());
+}</pre>
+            <br/>
+                    If you are attempting to write an integration test for a method that returns a different type of object, include one
+                    that may have as a field an array of values, you can look up "JSONPath syntax", or
+                        <a href="https://support.smartbear.com/alertsite/docs/monitors/api/endpoint/jsonpath.html">visit this site</a>
+                    <br/><br/>
+                    This test is now complete, and if you run it, you should see it pass.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Our Final Piece of Code</h3>
+                </div>
+                <div class="description">
+                    <p>
+                       We finally made it to the final step in creating our application!  All that is left is to test the
+                    unhappy path for our getResults() method.  Just like in our unit test, this is actually quite simple since
+                    the default value returned from a mocked method is an empty list, which is eactly the behavior we are looking
+                    for to trigger the 404 status code being returned from our method.
+                    <pre>
+@Test
+public void givenBadQuery_whenSearchForResults_thenIsNotFound() throws Exception {
+    //given
+    String query = "Java";
+
+    //when
+    //then
+    mockMvc.perform(get("/searchLocResults?q=" + query))
+            .andDo(print())
+            .andExpect(status().isNotFound());
+}</pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Running Our Tests One More Time</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Before we call the application complete, run all of the unit tests and integration tests one more
+                    time to ensure that they all pass.  You can do this in IntelliJ by using the Gradle tab on the right side of the
+                    IDE, then Cheetah-Search>Tasks>Verification>check.  You could also run them in terminal using the command
+                    "gradle check", but the output is not quite as nice to read.  If you have 8 tests passing, then congratulations!
                     </p>
                 </div>
             </div>
@@ -190,7 +322,10 @@ public void givenController_WhenHome_ThenReturnMovedPermanentlyAndRedirect() thr
                                             <li>presentation</li>
                                             <ul>
                                                 <li style="list-style-type: square">
-                                                    <a href="../../resources/13_milestone/HomeControllerIntTest.java">HomeControllerIntTest.java</a>
+                                                    HomeControllerIntTest
+                                                </li>
+                                                <li style="list-style-type: square">
+                                                    <a href="../../resources/14_milestone/LocControllerIntTest.java">LocControllerIntTest.java</a>
                                                 </li>
                                             </ul>
                                         </ul>

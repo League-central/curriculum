@@ -104,7 +104,10 @@
                 </div>
                 <div class="description">
                     Using the DTO is is rather simple. In the repository class, we will simply replace String.class
-                    with the name of our newly-created class, inside of the bodyToMono() method call. This will require
+                    with the name of our newly-created class, inside of the bodyToMono() method call. We can further improve
+                    our response to the user by simply returning the list of results from within the object we receive from the
+                    Library of Congress.  After the .block(), simply call .getResults(), which will cause only the list of Result
+                    objects to be returned from this method.  This will require
                     us to update the return types of the methods in our repository, service, and controller classes to
                     reflect this change.  We should also update the swagger annotations in the controller class for this endpoint to show that
                     we are no longer returning a String, as well as include that we are a returning a list of the
@@ -112,7 +115,7 @@
                     <pre>
 @ApiOperation(value = "Searches for articles matching the search term",
             notes = "Response may include multiple Result values.",
-            response = LocResponse.class,
+            response = Result.class,
             responseContainer="List")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Result(s) found"),
@@ -149,6 +152,31 @@
             </div>
 
             <div class="module">
+                <div class="titleBar">
+                    <h3>Returning 404 Status When No Results Are Found</h3>
+                </div>
+                <div class="description">
+                    <p>
+                       In the swagger notations for our LocController class, we have already state that the application
+                        will return a status code of 404 if there are no results found, it's time to make good on that promise.
+                        Remember that status codes are meant to succinctly tell the user the result of their request.  In the event
+                        they provide a bad search term, it would be much nicer for us to simply tell them there were no results found
+                        than give them an empty list as a result.  Notice this is similar to how it works with webpages, if you
+                        navigate to a subpage that doesn't exist, instead of simply displaying a blank html page, you receive a status
+                        of 404, meaning "not found".  This can be accomplished in our code by updating the LocController
+                        method to something like the following:
+<pre>List&ltResult&gtLocController results = locService.getResults(query);
+if(CollectionUtils.isEmpty(results)){
+    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Result(s) not found.");
+}
+return results;
+
+</pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
                 <div class="titleBar" style="background-color: lightskyblue">
                     <h3>Summary of Code Changes for this Milestone</h3>
                 </div>
@@ -173,7 +201,7 @@
                                             <li>presentation</li>
                                             <ul>
                                                 <li style="list-style-type: square">HomeController.java</li>
-                                                <li style="list-style-type: square">LocController.java
+                                                <li style="list-style-type: square"><a href="../../resources/8_milestone/LocController.java">LocController.java</a>
                                                 </li>
                                             </ul>
                                             <li>service</li>

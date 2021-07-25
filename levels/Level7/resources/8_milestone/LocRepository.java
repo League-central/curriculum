@@ -27,7 +27,8 @@ public class LocRepository {
                         .build()
                 ).retrieve()
                 .bodyToMono(LocResponse.class)
-                .block();
+                .block()
+                .getResults();
     }
 
 }

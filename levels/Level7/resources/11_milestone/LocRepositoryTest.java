@@ -47,15 +47,16 @@ class LocRepositoryTest {
     }
 
     @Test
-    void whenGetResults_thenReturnLocResponse() {
+    void whenGetResults_thenReturnListOfResults() {
         //given
         String query = "Java";
-        LocResponse expectedLocResponse = new LocResponse();
+        LocResponse locResponse = new LocResponse();
         Result result = new Result();
         result.setTitle("Java: A Drink, an Island, and a Programming Language");
         result.setAuthors(Collections.singletonList("AUTHOR"));
         result.setLink("LINK");
-        expectedLocResponse.setResults(Collections.singletonList(result));
+        List<Result> expectedResults = Collections.singletonList(result);
+        locResponse.setResults(expectedResults);
 
         when(webClientMock.get())
                 .thenReturn(requestHeadersUriSpecMock);
@@ -66,13 +67,13 @@ class LocRepositoryTest {
         when(responseSpecMock.bodyToMono(LocResponse.class))
                 .thenReturn(LocResponseMonoMock);
         when(LocResponseMonoMock.block())
-                .thenReturn(expectedLocResponse);
+                .thenReturn(locResponse);
 
         //when
-        LocResponse actualLocResponseResponse = locRepository.getResults(query);
+        List<Result> actualLocResults = locRepository.getResults(query);
 
         //then
-        assertEquals(expectedLocResponse, actualLocResponseResponse);
+        assertEquals(expectedResults, actualLocResults);
     }
 
 }

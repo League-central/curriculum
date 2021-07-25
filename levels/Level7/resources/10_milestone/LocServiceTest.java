@@ -2,10 +2,14 @@ package org.jointheleague.api.cheetah.Cheetah_Search.service;
 
 import org.jointheleague.api.cheetah.Cheetah_Search.repository.LocRepository;
 import org.jointheleague.api.cheetah.Cheetah_Search.repository.dto.LocResponse;
+import org.jointheleague.api.cheetah.Cheetah_Search.repository.dto.Result;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -25,19 +29,23 @@ class LocServiceTest {
     }
 
     @Test
-    void whenGetResults_thenReturnLocResult() {
+    void whenGetResults_thenReturnListOfResults() {
         //given
-        String query = "java";
-        LocResponse expectedLocResponse = new LocResponse();
+        String query = "Java";
+        Result result = new Result();
+        result.setTitle("TITLE");
+        result.setLink("LINK");
+        result.setAuthors(Collections.singletonList("AUTHORS"));
+        List<Result> expectedResults = Collections.singletonList(result);
 
         when(locRepository.getResults(query))
-                .thenReturn(expectedLocResponse);
+                .thenReturn(expectedResults);
 
         //when
-        LocResponse actualLocResponse = locService.getResults(query);
+        List<Result> actualResults = locService.getResults(query);
 
         //then
-        assertEquals(expectedLocResponse, actualLocResponse);
+        assertEquals(expectedResults, actualResults);
     }
-    
+
 }

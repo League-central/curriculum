@@ -144,21 +144,57 @@
                     entirety should look like this:
                         <pre>
 @Test
-void whenGetResults_thenReturnLocResult() {
+void givenGoodQuery_whenGetResults_thenReturnListOfResults() {
     //given
-    String query = "java";
-    LocResponse expectedLocResponse = new LocResponse();
+    String query = "Java";
+    Result result = new Result();
+    result.setTitle("TITLE");
+    result.setLink("LINK");
+    result.setAuthors(Collections.singletonList("AUTHORS"));
+    List<Result> expectedResults = Collections.singletonList(result);
 
     when(locService.getResults(query))
-        .thenReturn(expectedLocResponse);
+            .thenReturn(expectedResults);
 
     //when
-    LocResponse actualLocResponse = locController.getResults(query);
+    List<Result> actualResults = locController.getResults(query);
 
     //then
-    assertEquals(expectedLocResponse, actualLocResponse);
-    }
+    assertEquals(expectedResults, actualResults);
+}
                 </pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>The Unhappy Path</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        When our controller method is invoked, there are two possible outcomes: either the method returns
+                        a list of results, or the list of results that the controller method receives is empty and the application
+                        throws an exception results in a 404 status code being returned to the user.  We have tested the "happy path",
+                        in which the user receives a list of results related to their query, but we still need to write a unit test
+                        that covers the case where they supplied a search term for which there are no results.  Fortunately, this
+                        test is actually a lot more simple than the happy path.  When a method that returns a list is called on a mocked
+                        object, the default behavior is an empty list being returned.  Therefore we don't need to instantiate any objects
+                        or do any stubbing to receive the desired empty list which would simulate no results being returned from the
+                        searching Library of Congress.  We will need to use some new syntax to catch the exception that is being thrown
+                        and check that the message is what we expected, but the unit test for the unhappy path should look like this:
+                        <pre>
+@Test
+    void givenBadQuery_whenGetResults_thenReturnThrowException() {
+    //given
+    String query = "Java";
+
+    //when
+    //then
+    Throwable exceptionThrown = assertThrows(ResponseStatusException.class, () -> locController.getResults(query));
+    assertEquals(exceptionThrown.getMessage(), "404 NOT_FOUND \"Result(s) not found.\"");
+}
+                    </pre>
                     </p>
                 </div>
             </div>
@@ -175,6 +211,10 @@ void whenGetResults_thenReturnLocResult() {
                         it the most complex layer to test.  However since our service class is merely calling a method in the repository class,
                         the only real difference from our controller test is the classes on which we are calling the methods.  Using all of the
                         topics we have discussed so far, go ahead and complete the tests for the service class.
+                    <br/><br/>
+                        Notice that there is only one unit test to be written in the service layer, instead of the two that we saw in the
+                        controller class.  This is because at the point the the application there is only a "happy path", since
+                        the list of Results is returned to the controller class regardless of whether or not it is empty.
                     </p>
                 </div>
             </div>

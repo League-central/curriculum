@@ -89,7 +89,8 @@ return webClient.get()
         .build()
     ).retrieve()
     .bodyToMono(LocResponse.class)
-    .block();
+    .block()
+    .getResults();
                 </pre>
                     <br/>
                     Unfortunately, each one of these methods that we have chained together returns a different type of object.  That means that if we
@@ -150,14 +151,14 @@ class LocRepositoryTest {
                     <pre>
 @Test
 void whenGetResults_thenReturnLocResponse() {
-    //given
     String query = "Java";
-    LocResponse expectedLocResponse = new LocResponse();
+    LocResponse locResponse = new LocResponse();
     Result result = new Result();
     result.setTitle("Java: A Drink, an Island, and a Programming Language");
     result.setAuthors(Collections.singletonList("AUTHOR"));
     result.setLink("LINK");
-    expectedLocResponse.setResults(Collections.singletonList(result));
+    List&ltResult&gt expectedResults = Collections.singletonList(result);
+    locResponse.setResults(expectedResults);
 
     //when
     //then
@@ -182,12 +183,13 @@ void whenGetResults_thenReturnLocResponse() {
 void whenGetResults_thenReturnLocResponse() {
     //given
     String query = "Java";
-    LocResponse expectedLocResponse = new LocResponse();
+    LocResponse locResponse = new LocResponse();
     Result result = new Result();
     result.setTitle("Java: A Drink, an Island, and a Programming Language");
     result.setAuthors(Collections.singletonList("AUTHOR"));
     result.setLink("LINK");
-    expectedLocResponse.setResults(Collections.singletonList(result));
+    List&ltResult&gt expectedResults = Collections.singletonList(result);
+    locResponse.setResults(expectedResults);
 
     when(webClientMock.get())
             .thenReturn(requestHeadersUriSpecMock);
@@ -198,7 +200,7 @@ void whenGetResults_thenReturnLocResponse() {
     when(responseSpecMock.bodyToMono(LocResponse.class))
             .thenReturn(LocResponseMonoMock);
     when(LocResponseMonoMock.block())
-            .thenReturn(expectedLocResponse);
+            .thenReturn(locResponse);
 
     //when
     //then
@@ -223,29 +225,30 @@ void whenGetResults_thenReturnLocResponse() {
 void whenGetResults_thenReturnLocResponse() {
     //given
     String query = "Java";
-    LocResponse expectedLocResponse = new LocResponse();
+    LocResponse locResponse = new LocResponse();
     Result result = new Result();
     result.setTitle("Java: A Drink, an Island, and a Programming Language");
     result.setAuthors(Collections.singletonList("AUTHOR"));
     result.setLink("LINK");
-    expectedLocResponse.setResults(Collections.singletonList(result));
+    List&ltResult&gt expectedResults = Collections.singletonList(result);
+    locResponse.setResults(expectedResults);
 
     when(webClientMock.get())
             .thenReturn(requestHeadersUriSpecMock);
-    when(requestHeadersUriSpecMock.uri((Function<UriBuilder, URI>) any()))
+    when(requestHeadersUriSpecMock.uri((Function&ltUriBuilder, URI&gt) any()))
             .thenReturn(requestHeadersSpecMock);
     when(requestHeadersSpecMock.retrieve())
             .thenReturn(responseSpecMock);
     when(responseSpecMock.bodyToMono(LocResponse.class))
             .thenReturn(LocResponseMonoMock);
     when(LocResponseMonoMock.block())
-            .thenReturn(expectedLocResponse);
+            .thenReturn(locResponse);
 
     //when
-    LocResponse actualLocResponseResponse = locRepository.getResults(query);
+    List&ltResult&gt actualLocResults = locRepository.getResults(query);
 
     //then
-    assertEquals(expectedLocResponse, actualLocResponseResponse);
+    assertEquals(expectedResults, actualLocResults);
 }
                     </pre>
                     </br>

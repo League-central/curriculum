@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level 7 - Epilogue</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="main">
+        <div id="header">
+            <script>addHeader();</script>
+        </div>
+        <h2>Level 7 - Epilogue</h2>
+        <div id="teachersPage">
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Epilogue - The Front End</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Teachers can use the <a href="https://github.com/LEAGUE-Level7/Level7-React-Frontend-Template">Front End Template</a>
+                    to demonstrate how we could use a React application to take search terms from users and display the results.  The following
+                        steps will provide insight on how teachers can alter the template application to display results from
+                        your application.
+                        <br/><br/>
+                        There are two completed projects running on AWS that demonstrate what the finished product looks like:
+                        <br/><br/>
+                        <a href="https://cheetah.jointheleague.org/">Cheetah Search</a>
+                        <br/>
+                        <a href="https://jerboa.jointheleague.org/">Jerboa Search</a>
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Clone the Template Repository and Create a Branch</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Clone the <a href="https://github.com/LEAGUE-Level7/Level7-React-Frontend-Template">Front End Template</a> repository
+                        and create a new branch that you will update to work with the Spring application.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Making it fit Your Application</h3>
+                </div>
+                <div class="description">
+                    <p>
+                       To make this process as easy as possible, many of the fields that you need to change have been extracted into
+                        the properties.js file.  You can easily set the course name, endpoint, description, Swagger URL, list of student
+                        names, and repository URL within that file.
+                        <br/><br/>
+                        The only changes that require going further into the code are those required to make each SearchResult component
+                        properly display the contents of each result from the request.  For example, the Cheetah Search application
+                        retrieves a list of books, and displays a the title, authors, and link for each book.  The Jerboa Search
+                        application retrieves a list of movies, and displays the title, overview, and release date for each movie.
+                        The SearchResult component needs to be altered slightly to reflect the difference in data that is received.
+                        <br/><br/>
+                        If you are running your application locally, you can use a endpoint URL of http://localhost:5000/&ltwhatever your endpoint URL is&gt
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Passing the Data to the SearchResult</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        The SearchOutput component takes the list of data that we received from the request to the Spring application,
+                        a creates a SearchResult component for each of the individuals pieces of data (each book, movie, etc).
+                        On line 22 of SearchOutput.js, we need to create a prop for each of fields within our JSON object,
+                        and set that equal to the field name within the JSON object.  Note that these correspond directly
+                        to the list of fields that are contained with the Java object that the Spring application returns.
+                    For Cheetah Search, the code on line 22 of SearchOutput.js look like this:
+<pre>
+ &ltSearchResult
+         key={index}
+         title={result.title}
+         authors={result.authors}
+         link={result.link}
+ /&gt</pre>
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Displaying the Data Within the SearchResult</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Now all that is left is use the props that have been passed in the SearchResult component and
+                    display them properly.  The starting on line 7 of SearchResult.js is essentially HTML, so if you are familiar with that, you can
+                    play with the style of the what is returned from the SearchResult to make it display exactly how you want.
+                    The Cheetah Search example is actually more complicated than most, as it returns a list of authors that
+                    are, in turned, mapped to an individual &ltp&gt tag:
+                    <pre>
+&ltarticle className={classes.Result}&gt
+    &lth1&gtTitle: {props.title}&lt/h1&gt
+    &lth3 className={classes.Author}&gt
+    {props.authors && props.authors.map((author, index) =&gt (
+        &ltp key={index}&gt{author}&lt/p&gt
+    ))}
+    &lt/h3&gt
+    &lta href={props.link} rel="noopener noreferrer" target="_blank"&gt{props.link}&lt/a&gt
+&lt/article&gt
+</pre>
+                    <br/><br/>
+                    We can also see the final prop, link, is displayed as a clickable link that opens a new page.
+                    <br/><br/>
+                    If your object doesn't return any lists, you could simplify the above code greatly.  For example, the above code for
+                    a made up animal object may look like this:
+<pre>
+&ltarticle className={classes.Result}&gt
+    &lth1&gtSpecies: {props.species}&lt/h1&gt
+    &lth3&gtNumber of legs: {props.numberOfLegs}&lth3&gt
+&lt/article&gt
+</pre>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>Running the Application</h3>
+                </div>
+                <div class="description">
+                    <p>
+                    To run this application, you need to have <a href="https://classic.yarnpkg.com/en/docs/install/">yarn installed</a>.
+                        From that point, you may need to run "yarn install" to install the project's dependencies.  After that,
+                        "yarn start" will start the frontend application and automatically open it in your browser.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
+                    <h3>That's All!</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        If you set up the front end correctly, you should now be able to enter a search query and display
+                        results relevant to that term.  After our long journey, we have seen not only how to create
+                        a production-quality Spring application that provides users with data based on a specific query, but
+                        now how we could display that information to a user with modern React application.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <script>addFooter();</script>
+    </div>
+</div>
+</body>
+
+</html>

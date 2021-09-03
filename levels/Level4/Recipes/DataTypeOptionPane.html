@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Data Type Option Pane - League Level 4</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id="header">
+                    <script>addRecipeHeader();</script>
+                </div>
+                <div id = "recipePage">
+                    <div id="recipeTitle">
+                        <h1>Data Type Option Pane</h1>
+                        <hr>
+                        <img src="dataTypes.png" alt="Data Type Option Pane image">
+                    </div>
+                    <div id ="recipeBody">
+                        <div id="recipeGoal">
+                            <h2>Goal:</h2>
+                            <p id="goal">
+                                Create a new enum and populate a JOptionPane with a selection of choices for use with a switch statement.
+                            </p>
+                        </div>
+                        <div id="recipeSteps">
+                            <h2>Steps:</h2>
+                            <ol id="stepList">
+                                <li>Create a new enum called DataType. The entries should be the primitive data types listed <a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html">here</a>.
+
+
+                                </li>
+                                <li>Give the enum a member variable called bits.  
+
+                                </li>
+                                <li>Set each entry's default value to the number of bits it can hold.
+                                
+                                </li>
+                                <li>Create a constructor to initialize bits and a getter to access bits.
+                                
+                                </li>
+                                <li>Initialize the dataTypes array to have one of each unique value using the .values() method.
+
+                                </li>
+                                <li>Create a JOptionePane <a href="https://docs.oracle.com/javase/7/docs/api/javax/swing/JOptionPane.html#showOptionDialog(java.awt.Component,%20java.lang.Object,%20java.lang.String,%20int,%20int,%20javax.swing.Icon,%20java.lang.Object[],%20java.lang.Object)">Option Dialog</a> that asks the user to select the data type they want to learn about. Use the dataTypes array for the options parameter and save the result into an int.
+                                </li>
+                                <li>Create a switch statement that switches on the dataTypes enum array at the result of the Option dialog. For each value in the data type enum, create a case with a Message Dialog that tells the user what kinds of values the type can contain and use the getter to display how many bits it is made up of.
+                                </li>
+                            </ol>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body>
+</html>

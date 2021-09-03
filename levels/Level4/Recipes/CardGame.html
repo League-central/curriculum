@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Card Game - League Level 4</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png">
+        <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+    </head>
+    <body>
+        <div id ="wrap">
+            <div id ="main">
+                <div id="header">
+                    <script>addRecipeHeader();</script>
+                </div>
+                <div id = "recipePage">
+                    <div id="recipeTitle">
+                        <h1>Card Game</h1>
+                        <hr>
+                        <img src="codeDeck.jpg" alt="Card Game image">
+                    </div>
+                    <div id ="recipeBody">
+                        <div id="recipeGoal">
+                            <h2>Goal:</h2>
+                            <p id="goal">
+                                Create a usable deck of cards using enums and implement the rules for a card game.
+                            </p>
+                        </div>
+                        <div id="recipeSteps">
+                            <h2>Steps:</h2>
+                            <ol id="stepList">
+                                <li>Create an enum for Suit. A Suit refers to the four suits of a standard card deck: Spades, Clubs, Hearts, and Diamonds. 
+                                </li>
+                                <li>Create an enum for Rank. Rank refers to all possible values for cards within the suits: Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, and Ace.
+                                </li>
+                                <li>Create an int member variable for Rank called value and a getter to access it.
+                                </li>
+                                <li>Give appropriate default values for each Rank e.g. for Blackjack you might have 2 for Two, 10 for a face card(Jack, Queen, King), and 11 for an ace. Don't forget to initialize value in a Rank constructor.
+                                </li>
+                                <li>Create a method in the CardDealer class that initializes the deck Member variable and populates it with every Card combination of Rank and Suit so it becomes a complete 52 card playing deck. Hint: Use nested for loops and the .values() method of your enums.
+                                </li>
+                                <li>Create a shuffle method that rearranges the deck into a random order.
+                                </li>
+                                <li>Write code that would enable 
+you to simulate a card game of your choice that uses a standard deck of playing cards. Note: You may create any additional classes, methods or variables that might be helpful to you. Depending on your game you may also need to tweak the default values of your Ranks.
+                                </li>
+                            </ol>
+				
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <script>addRecipeFooter();</script>
+        </div>
+    </body>
+</html>

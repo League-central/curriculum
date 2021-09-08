@@ -213,6 +213,76 @@ public String getResults(String query) {
 
             <div class="module">
                 <div class="titleBar">
+                    <h3>Does the API Require Authentication?</h3>
+                </div>
+                <div class="description">
+                    <p>
+                        Often times APIs will require you to prove that you have access to the service by having you provide
+                        an API token as part of your requests.  You will usually be issued the token after creating
+                        an account on their website.  There are two ways that an API would typically expect a token to
+                        be provided: as a URL parameter, or as a header.
+                        <br/><br/>
+                        When supplying the token as a URL parameter, you will first need to find what the name of the header is
+                        that they are expecting.  Typically it would be something like "token" or "apiKey".  Then you will supply this
+                        when you make your request.  You will likely also be supplying the query (i.e. search term) to the API as a
+                        URL parameter, so it will just be a matter of supplying a second parameter.  Depending on the name that the API
+                        expects for your token and query, your request method will look something like this:
+<pre>public ResultWrapper getResults(String query) {
+    return webClient.get()
+            .uri(uriBuilder -> uriBuilder
+                    .queryParam("query", query)
+                    .queryParam("apiKey", "YOUR API KEY GOES HERE")
+                    .build()
+            ).retrieve()
+            .bodyToMono(ResultWrapper.class)
+            .block();
+}</pre>
+                    <br/><br/>
+                    When supplying the token as a header, you will likewise need to find out what the name of the header is that
+                    the API is expecting.  From that point there are two options.  First, you could supply the header within
+                    the method that you have written to make the request:
+<pre>public String getResults(String query) {
+    return webClient.get()
+        .uri(uriBuilder -> uriBuilder
+            .queryParam("query", query)
+            .build()
+        )
+        .headers(httpHeaders -> httpHeaders.set("api-key", "YOUR API KEY GOES HERE"))
+        .retrieve()
+        .bodyToMono(String.class)
+        .block();
+    }</pre>
+                    <br/>
+                    You can use a multi-line lambda expression if you need to supply more than on header.
+                    <br/><br/>
+                    You could also supply your API token as a default header when you create your instance of
+                    WebClient within your repository class constructor.  This is especially useful if you have multiple methods
+                    within your repository class that made different types of requests.  Since you are likely to only have
+                    one method that makes requests within your repository class, this isn't strictly necessary in this case, but
+                    in general it could be considered a better approach. The code to add your token as a default header
+                    to your instance of WebClient is pretty similar, and would look something like this:
+<pre>webClient = WebClient
+        .builder()
+        .baseUrl(baseUrl)
+        .defaultHeader(httpHeaders -> {
+                httpHeaders.set("api-key", "YOUR API KEY GOES HERE");
+        })
+        .build();</pre>
+                    <br/><br/>
+                    <strong>Important note:</strong>
+                    In this example, we are putting our API token in plain-text within our code.  This is normally
+                    considered <strong>extraordinarily</strong> bad practice, since your token is visible to anyone with
+                    access to the source code.  A better solution would be to use an environment variable
+                    to supply the value for your API token to your application.  The actual value would be supplied within
+                    your IDE or operating system, and would be completely separate from your code and not appear in version control.
+                    The environment variable would likewise be supplied within your production environment, allowing it be used
+                    without exposing it to anyone with access to the code.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="titleBar">
                     <h3>Test it Out!</h3>
                 </div>
                 <div class="description">

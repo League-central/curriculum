@@ -27,73 +27,76 @@ We are going to make a Typing Tutor.
         <img alt="" src="images/typing.jpg" style="width: 444.00px; height: 163.00px; margin-left: 100.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
   <br><br>
  <p class="normal">
-     1.  Make a typingTutor class with a main method and a setup() method. Create a JFrame and a JPanel in setup method. <br>
+     1.  Make a TypingTutor class with a setup() method and a Runner class with a main method. Create a JFrame, JPanel, and currentLetter as member variables <br>
+	     Make sure the JFrame is visible and set the default close operation.
      <br>
-     <pre> void setup(){
-         JFrame frame = new JFrame();
-         JPanel panel = new JPanel();
-         }
-    </pre><br>
+     <pre>JFrame frame = new JFrame();
+JPanel panel = new JPanel();
+char currentLetter;
+
+void setup(){
+	frame.setVisible(true);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+}</pre><br>
 </p>
 <p class="normal">
-2. Create a member variable in class.  
- <pre>  char currentLetter;
- </pre>
-</p><br>
- <p class="normal">  
- 3. Initialize currentLetter in the setup method as shown below: </p>
- <pre> currentLetter = generateRandomLetter();
-     </pre><br>
-
- <p class="normal">  
- 4. Paste the following method after the main method. </p>
- <pre>
-char generateRandomLetter() {
+2. Paste the following method after the main method.  
+ <pre>char generateRandomLetter() {
     Random r = new Random();
     return (char) (r.nextInt(26) + 'a');
-}</pre><br>    
+}</pre>
+</p><br>
+
+ <p class="normal">  
+ 3. Initialize currentLetter in the setup method as shown below: </p>
+ <pre>currentLetter = generateRandomLetter();
+</pre><br>
+
  <p class="normal">   
-5.Create a JLabel and set the text of the label to the currentLetter in the setup method.<br>
+4.Create a JLabel and set the text of the label to the currentLetter in the setup method.<br>
 </p><br> 
+
     <p class="normal">
-6. Format the letter so that it is nice and big. Here are some hints….
+5. Format the letter so that it is nice and big. Here are some hints….
 </p>
     <pre>
 label.setFont(label.getFont().deriveFont(28.0f));
 label.setHorizontalAlignment(JLabel.CENTER);</pre><br>
      <p class="normal">   
-         7. Add a key listener to the frame in setup method. Add label to the panel and panel to the frame. 
+         6. Add a key listener to the frame in setup method. Add label to the panel and panel to the frame. Then pack the frame.
 
     </p><br>
    
     <p class="normal">   
-        8. Create object/instance of typingTutor class in main method. Using the object/instance call the setup method as shown below.
-        <pre>  main method(){
-typingTutor tutor = new typingTutor();
-tutor.setup(); 
- }
-            </pre><br> 
+        7. Create object/instance of typingTutor class in main method. Using the object/instance call the setup method as shown below.
+        <pre>public static void main(String[] args){
+	typingTutor tutor = new typingTutor();
+	tutor.setup(); 
+}</pre><br> 
 
    </p><br>
       <p class="normal">      
-   9. Make the letter change every time a key is pressed.  To do that, in the keyReleased method:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i) Reset currentLetter.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii) Update your JLabel.<br>
+   8. Make the letter change every time a key is pressed.  To do that, in the keyReleased method:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i) Reset currentLetter with generateRandomLetter().<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii) Set the text of your JLabel to the new currentLetter.<br>
 </p><br>
     
   <p class="normal">  
-   10. In the keyPressed method, print out the character that the user typed.<br>
+   9. In the keyPressed method, print out the character that the user typed.<br>
    <br>
         <img alt="" src="images/typingTutor1.png" style="width: 444.00px; height: 130.00px; margin-left: 100.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
       
     
     </p><br>
       <p class="normal">  
-   11. If they typed the currentLetter, print “correct”.<br>
+   10. If they typed the currentLetter, print “correct”.<br>
    <br>
-    12. If they typed the correct letter, set the panel background to <font color="green">green</font>. Otherwise set it to <font color="red">red</font>.<br>
+    11. If they typed the correct letter, set the panel background to <font color="green">green</font>. Otherwise set it to <font color="red">red</font>.<br>
 <br>
-        13.  [optional] After a certain number of characters, show the users’ typing speed.<br>
+<pre>
+panel.setBackground(Color.GREEN);
+</pre><br>
+        12.  [optional] After a certain number of characters, show the users’ typing speed.<br>
     </p><br>
     <pre>Date timeAtStart = new Date();
      

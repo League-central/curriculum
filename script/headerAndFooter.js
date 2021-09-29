@@ -20,7 +20,7 @@ function addFooter() {
 
     footer.innerHTML += "<a href=\"http://www.jointheleague.org\"><img class=\"footer\" src=\"https://league-central.github.io/curriculum/img/leagueOversized.jpeg\" alt=\"league-logo\" align=\"center\"></a>";
 
-    footer.innerHTML += "<span style=\"position:absolute;bottom:20px;font-weight: bold;\">Copyright <a href=\"http://www.jointheleague.org\">The League of Amazing Programmers</a> 2013-2020</span>";
+    footer.innerHTML += "<span style=\"position:absolute;bottom:20px;font-weight: bold;\">Copyright <a href=\"http://www.jointheleague.org\">The League of Amazing Programmers</a> 2013-2021</span>";
 
     //footer.innerHTML += "References:";
 
@@ -59,7 +59,7 @@ function addRecipeFooter(){
 
     footer.innerHTML += "<a href=\"http://www.jointheleague.org\"><img class=\"footer\" src=\"https://league-central.github.io/curriculum/img/leagueOversized.jpeg\" alt=\"league-logo\" align=\"center\"></a>";
 
-    footer.innerHTML += "<span style=\"position:absolute;bottom:20px;font-weight: bold;\">Copyright <a href=\"http://www.jointheleague.org\">The League of Amazing Programmers</a> 2013-2020</span>";
+    footer.innerHTML += "<span style=\"position:absolute;bottom:20px;font-weight: bold;\">Copyright <a href=\"http://www.jointheleague.org\">The League of Amazing Programmers</a> 2013-2021</span>";
 
     //footer.innerHTML += "References:";
 

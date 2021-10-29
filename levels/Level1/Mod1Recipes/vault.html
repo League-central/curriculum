@@ -16,19 +16,18 @@
 <h1>Vault</h1>
 <br>
     <p class="normal">
-        James Bond is trying to crack a vault. Before we start to write code, we will draw a UML diagram on the whiteboard (teacher will help) and figure out what the method signatures will be.</p> 
+        A vault stands in the way of your progress. We need a secret angent to find the code to get through</p> 
 <br>
         <p class="normal">
-     1. We need a Vault object that contains a secret code.<br> It also contains a tryCode() method that takes a <font color="green">number</font> as a parameter and returns <font color="magenta">true</font> if that number opens the vault, <font color="magenta">false</font> otherwise.<br>
+     1. You have been given a Vault class that describes how the vault will work. It has a secret code that will be randomly chosen each time the program is run.
+	 <br> It also contains a tryCode() method that takes a <font color="green">number</font> as a parameter and returns <font color="magenta">true</font> if that number opens the vault, <font color="magenta">false</font> otherwise.<br>
     <br>
-2. Test the vault object using a main method.<br>
+2. Create a Runner class with a main method. Create a vault object and print an attempt at the vault with the tryCode() method<br>
     <br>
-3. Make a James Bond class that has a method findCode() that takes a Vault as a parameter.<br>
-     The codes are between 0 and 1 million. This method tries all the codes, and returns the first code that opens the vault, or -1 if no code opened the vault.<br>
+3. Make a SecretAgent class that has a method findCode() that takes a Vault as a parameter.<br>
+     The codes are between 0 and 1 million. This method will try all the codes, and return the first code that opens the vault, or -1 if no code opened the vault.<br>
 <br>
-4. Test your code by instantiating the JamesBond and Vault classes.<br>
-<br>
-5. Add a constructor for Vault so that you can easily set the secret code.
+4. Add the SecretAgent object to main. Use a syso to print the result from findCode()<br>
 <br>
 </p>
 <br>

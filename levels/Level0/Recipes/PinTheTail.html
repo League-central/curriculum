@@ -10,7 +10,7 @@
     <p>
         This recipe uses two bounding boxes. One is in the top left corner of the sketch, the other is a target area where the donkey tail should be pinned. In the recipe image, the bounding boxes are colored green to help demonstrate the concept, but you won't see them when playing the actual game.</p>
     
-    <ol id="stepList">                <li>Find the Pin the Tail recipe program ( pin_the_tail.pde.pde ) and open it using Processing.
+    <ol id="stepList">                <li>Find the Pin the Tail recipe program in Eclipse.
             </li><li>Find a picture of a donkey and a separate picture of a tail (tail needs a transparent background). 
     <ol class="insetRecipeStepsOL">
         <li>Save the images to your Desktop.</li>
@@ -24,7 +24,7 @@ PImage donkey;
 PImage tail;
 </pre>
         </li>
-        <li>Now add a setup() method. This is where we put the code that will run ONCE at the start of the program. In this method, set the variables to hold the images.
+        <li>In the setup() method, set the variables to hold the images.
 
             <pre>
 donkey = loadImage("donkey.jpg");      //change the file name if you need to
@@ -36,8 +36,8 @@ tail = loadImage("tail.png");      //change the file name if you need to
     <pre>
 size(width, height);     //replace width, height with your picture's dimensions
 </pre>
-    </li><li>Add a draw() method to your sketch. This is where we put the code that will repeat while your program is running. 
-    Draw the donkey and tail in this method. The tail should move around with the mouse. Try it!
+    </li><li>
+    Draw the donkey and tail in the draw() method. The tail should move around with the mouse. Try it!
     <pre>
 background (donkey);
 image(tail, mouseX, mouseY);
@@ -74,23 +74,10 @@ dist(0, 0, mouseX, mouseY) &lt; 30
     </li><li>Now, adjust your code so the tail sticks when you click the mouse (this means it will no longer move when the mouse moves). Hint: you will need to save the x and y values in variables at the top of your sketch.
     </li><li>When the tail has been pinned, write code to check if the tail was pinned inside the target bounding box. You can use dist() like you did earlier, or you can write your own code to check it another way. Show the donkey so the user knows where they pinned the tail.
 
-    </li><li>If the tail is in the right place, the player wins and you play a sound. To play a sound, drag and drop the .wav file onto your sketch, and add the following code to your program.
-
-    NOTE: You may need to add the minim library to your sketch. Ask your teacher if you do not know how to do this.
+    </li><li>If the tail is in the right place, the player wins and you play a sound. To play a sound use the following code
     <pre>
-import ddf.minim.*;          //at the very top of your sketch
-AudioSample woohooSound;          //at the top of your sketch
-boolean playSound = true;          //at the top of your sketch
-
-Minim minim = new Minim(this);     //In the setup method
-woohooSound = minim.loadSample("homer-woohoo.wav");     //In setup. Change the file name if you need to
-
-// put these lines where you want the sound to play
-if (playSound) {
-     woohooSound.trigger();
-     playSound = false;
-}
-</pre>
+    playWhoohoo()
+    </pre>
     </li><li>When you have tested that your pogram works, remove the line of code that draws the tail target bounding box and see if you can pin the tail on the donkey.
 
     </li>

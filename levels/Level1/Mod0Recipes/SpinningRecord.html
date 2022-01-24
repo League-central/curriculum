@@ -23,15 +23,12 @@
 <img alt="" src="images/spinningRecord.png" style="width: 200.00px; height: 207.00px;  margin: 0px 20px" align="left" title=""><br>
 <p class="normal">
 We are going to make a virtual record player that spins and plays your song when you click on it.<br>
-    <br>
-Start with a new sketch that contains <b>setup()</b> and <b>draw()</b> methods. Ask your teacher if you don't know how to do this.
     </p><br>
 <p class="normal">
-1. Find an image of a record.<br>
+1. Use the given record.png image or find your own image of a record.<br>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i) Save the image.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii) Drop the image file onto your sketch.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iii) Load it with code like this...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i) If using your own image, copy the file onto the <b>/images</b> folder.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii) Load the image into your code using the code below:<br>
 </p><br>
     <pre>	PImage pictureOfRecord;                        //as member variable
         size(600,600);                                 //in setup method
@@ -57,22 +54,18 @@ Start with a new sketch that contains <b>setup()</b> and <b>draw()</b> methods. 
     </p><br>
 <p class="normal">
 6. Only spin the record when the user clicks the mouse button. Hint: use <font color="magenta">mousePressed</font>
-    </p><br>
-<p class="normal">    
-7. Add a song.  First drop the song file (ex. awesomeTrack.mp3) onto your sketch.
-</p>
-    <pre> 	import ddf.minim.*;	 	        //at the very top of your sketch
-	Minim minim;				//as a member variable
-	AudioPlayer song;			//as a member variable
-	minim = new Minim(this);		//in the setup method
-	song = minim.loadFile("awesomeTrack.mp3", 512);   //in the setup method</pre>
-	<br>
+</p><br>
 <p class="normal">
-8. Only play the song when the mouse is pressed. Hint: use the methods below.
-</p>
-    <pre>	song.play()
-	song.pause()</pre><br>
+7. Add a song.  Use the sound file already in the project, awesomeTrack.mp3, or add a different one.
+</p><br>
 <p class="normal">
+8. Only play the song when the mouse is pressed. Hint: use the method below.
+</p>
+    <pre>
+    song.play()
+    </pre>
+<p class="normal">
+<br>
 9. Make the record spin as fast as possible
     </p><br>
 

@@ -34,20 +34,15 @@ static float calculateArea(float width, float height){ // code }
 public static void main(String[] args){ // code }
     </pre>
     <br>
+    <h3>1. Static Variable Lifetime</h3>
     A member variable without static <b>DOES NOT</b> exist before an object/instance of a class is made.<br>
     A member variable with static <b>DOES</b> exist before an object/instance of a class is made.<br>
     Take the Athlete class for example:<br>
     <pre>
 public class Athlete {
-  /*
-   * static member variables
-   */
   static String raceLocation = "New York";
   static String raceStartTime = "9.00am";
-  
-  /*
-   * non-static member variables
-   */
+
   String name;
   int speed;
   int bibNumber;
@@ -56,15 +51,9 @@ public class Athlete {
       this.name = name;
       this.speed = speed;
   }
-  
-  /*
-   * static method
-   */
+
   static double calculateDuration(double startSec, double finishSec){ // code }
-  
-  /*
-   * non-static method
-   */
+
   void run(){ // code }
 }
     </pre>
@@ -81,20 +70,23 @@ jim.raceLocation = "Boston";            // OK!
 jim.name = "Jimmy"                      // OK!
     </pre>
 
+    <h3>2. Only 1 Static Variable for all Objects of a Class</h3>
     There is only 1 static member variable for all objects of a class.<br>
     There are unique variables for each object of a class. For example:<br>
     <pre>
 Athlete jim = new Athlete("Jim", 10);
 Athlete amy = new Athlete("Amy", 6);
 
-System.out.println(jim.name);           // prints "jim"
-System.out.println(amy.name);           // prints "amy"
+System.out.println(jim.name);           // prints "Jim"
+System.out.println(amy.name);           // prints "Amy"
 System.out.println(jim.raceStartTime);  // prints "9.00am"
 System.out.println(amy.raceStartTime);  // prints "9.00am"
 </pre>
 In this example changing raceStartTime for jim to "10.00am" also changes the raceStartTime for amy.<br>
-The raceStartTime variable is the same for jim and amy.<br>
+The raceStartTime variable is the same for both jim and amy.<br>
 <br>
+
+<h3>3. Non-Static Member Variables and Methods can not be put inside Static Methods</h3>
 static methods can also be called before an object of a class exists, while non-static methods can't:
 <pre>
 Athlete.calculateDuration(0.0, 14.7);   // OK!
@@ -103,8 +95,23 @@ Athlete jim = new Athlete("Jim", 10);
 jim.run();                              // OK!
 jim.calculateDuration(0.0, 14.7);       // OK!
     </pre>
-    This is why non-static member variables can't be placed inside of static methods.<br>
+    This is why non-static member variables and methods can't be placed inside of static methods.<br>
     Static methods can be called before an object is created when non-static member variables haven't been created yet!<br>
+<pre>
+static double calculateDuration(double startSec, double finishSec){
+    double durationSec = finishSec - startSec;
+    
+    System.out.println(name + " rand the race in " + durationSec + " seconds."); // ERROR! name is non-static
+    return durationSec;
+}
+</pre>
+The <b>this</b> keyword refers to an object so it can't be put inside of a static method either:
+<pre>
+public static void main(String[] args){
+    JFrame frame = new JFrame();
+    frame.addActionListener(this);      // ERROR!
+}
+</pre>
     </div>
   </div>
 </div>

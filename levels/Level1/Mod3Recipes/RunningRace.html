@@ -20,59 +20,101 @@
 
                 <div id = "moduleIndex">   
 
-<h1>Running Race - Explaining Static</h1>
-<br>
-<p class="normal">
- 
-Trying to understand static can be difficult ….<br>
+    <h1>Running Race - Explaining Static</h1>
     <br>
-You use static when you don’t want to use an instance, or you don’t have an instance of the class (so you haven't made a "new" object or instance). For example, the main method is always static because when the program starts, no instances have been created.<br>
-<br>
-Static variables belong to the class, which means that all instances of the class share one variable (i.e. same value for all). <br>
+    The static keyword is a reserved word in Java like int, for, if, and else.<br>
+    It can be placed before the type when declaring member variables:<br>
+    <pre>
+static int var = 1;
+static Robot rob;
+    </pre>
+    and before the return type for method definitions:<br>
+    <pre>
+static float calculateArea(float width, float height){ // code }
+public static void main(String[] args){ // code }
+    </pre>
     <br>
-Here is an example:<br>
-<br>
-Task:  	Create a class for athlete/marathon runners in a single race.<br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Requirements:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Give out sequential bib-numbers (start at 1) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the race location &amp; start time<br>
-    </p>
-                    <br>
-<p class="normal">    Copy the code below, then modify it so that each athlete gets a unique, sequential bib number.</p>
-   
-      
-   <pre>public class Athlete {
-    static int nextBibNumber;
-    static String raceLocation = "New York";
-    static String raceStartTime = "9.00am";
+    <h3>1. Static Variable Lifetime</h3>
+    A member variable without static <b>DOES NOT</b> exist before an object/instance of a class is made.<br>
+    A member variable with static <b>DOES</b> exist before an object/instance of a class is made.<br>
+    Take the Athlete class for example:<br>
+    <pre>
+public class Athlete {
+  static String raceLocation = "New York";
+  static String raceStartTime = "9.00am";
 
-    String name;
-    int speed;
-    int bibNumber;
+  String name;
+  int speed;
+  int bibNumber;
+  
+  Athlete (String name, int speed){
+      this.name = name;
+      this.speed = speed;
+  }
 
-    Athlete (String name, int speed){
-        this.name = name;
-        this.speed = speed;
-    }
+  static double calculateDuration(double startSec, double finishSec){ // code }
 
-    public static void main(String[] args) {
-        //create two athletes
-        //print their names, bibNumbers, and the location of their race. 
-    }
-}</pre>
- <br>
-<p class="normal">      
-So the static variables belong to the class and the other variables belong to the instance.<br>
+  void run(){ // code }
+}
+    </pre>
     <br>
-What happens to the variables when the 2 constructors run? How does nextBibNumber change, and when is the bib number assigned?<br>
-     <br>
-How can you change the location of the race? Is it updated for all the athletes?
-</p>
+    The static member variables in the Athlete class can be a accessed and modified without an object/instance of Athlete.<br>
+    This does not work for non-static member variables:<br>
+    <pre>
+Athlete.raceLocation = "NYC";           // OK!
+Athlete.name = "Jim";                   // ERROR!
+
+Athlete jim = new Athlete("Jim", 10);   // Athlete object/instance jim
+
+jim.raceLocation = "Boston";            // OK!
+jim.name = "Jimmy"                      // OK!
+    </pre>
+
+    <h3>2. Only 1 Static Variable for all Objects of a Class</h3>
+    There is only 1 static member variable for all objects of a class.<br>
+    There are unique variables for each object of a class. For example:<br>
+    <pre>
+Athlete jim = new Athlete("Jim", 10);
+Athlete amy = new Athlete("Amy", 6);
+
+System.out.println(jim.name);           // prints "Jim"
+System.out.println(amy.name);           // prints "Amy"
+System.out.println(jim.raceStartTime);  // prints "9.00am"
+System.out.println(amy.raceStartTime);  // prints "9.00am"
+</pre>
+In this example changing raceStartTime for jim to "10.00am" also changes the raceStartTime for amy.<br>
+The raceStartTime variable is the same for both jim and amy.<br>
+<br>
+
+<h3>3. Non-Static Member Variables and Methods can not be put inside Static Methods</h3>
+static methods can also be called before an object of a class exists, while non-static methods can't:
+<pre>
+Athlete.calculateDuration(0.0, 14.7);   // OK!
+Athlete.run();                          // ERROR!
+Athlete jim = new Athlete("Jim", 10);
+jim.run();                              // OK!
+jim.calculateDuration(0.0, 14.7);       // OK!
+    </pre>
+    This is why non-static member variables and methods can't be placed inside of static methods.<br>
+    Static methods can be called before an object is created when non-static member variables haven't been created yet!<br>
+<pre>
+static double calculateDuration(double startSec, double finishSec){
+    double durationSec = finishSec - startSec;
     
+    System.out.println(name + " rand the race in " + durationSec + " seconds."); // ERROR! name is non-static
+    return durationSec;
+}
+</pre>
+The <b>this</b> keyword refers to an object so it can't be put inside of a static method either:
+<pre>
+public static void main(String[] args){
+    JFrame frame = new JFrame();
+    frame.addActionListener(this);      // ERROR!
+}
+</pre>
     </div>
-    </div>
-    </div>                
-                
+  </div>
+</div>
 <div id="footer">
 <script>addFooter();</script>
 </div>

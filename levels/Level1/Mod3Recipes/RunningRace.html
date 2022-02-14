@@ -101,7 +101,7 @@ jim.calculateDuration(0.0, 14.7);       // OK!
 static double calculateDuration(double startSec, double finishSec){
     double durationSec = finishSec - startSec;
     
-    System.out.println(name + " rand the race in " + durationSec + " seconds."); // ERROR! name is non-static
+    System.out.println(name + " ran the race in " + durationSec + " seconds."); // ERROR! name is non-static
     return durationSec;
 }
 </pre>

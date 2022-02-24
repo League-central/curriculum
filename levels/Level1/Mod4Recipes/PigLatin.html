@@ -12,99 +12,36 @@
 </style>
 <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
 <body>
-        <div id ="wrap">
-            <div id ="main">
-                 <div id="header">
-                    <script>addRecipeHeader();</script>
-                </div>    
-                <div id = "moduleIndex">   
-
-<h1>Pig Latin Translator</h1>
-<br>
-    <p class="normal">
-We are going to make a translator (similar to Google translate) that converts English to Pig Latin.
-        </p> <br>
- <p class="normal">
-     1. Make a UI that looks something like this:
-<br>
-     <br>
-          <img alt="" src="images/PigLatin.png" style="width: 617.00px; height: 120.00px; margin-left: 100.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
-     
-    <br>
-     <br>
-2. Using the class below, translate a word/sentence from left to right when the translate button is pressed.
-<br>
-    </p>
-<pre>public class PigLatinTranslator {<br><br>
-/**
-* Method to test whether a character is a letter or not.
-* @param c The character to test
-* @return True if it's a letter
-*/
-private static boolean isLetter(char c) {
-return ( (c &gt;= 'A' &amp;&amp; c &lt;= 'Z') || (c &gt;='a' &amp;&amp; c &lt;= 'z') );
-}
-    
-/**
-* Method to translate one word into pig latin.
-* @param word The word in english
-* @return The pig latin version
-*/
-private static String pigWord(String word) {
-int split = firstVowel(word);
-return word.substring(split)+"-"+word.substring(0, split)+"ay";
-}
-	
-/**
-* Method to translate a sentence word by word.
-* @param s The sentence in English
-* @return The pig latin version
-*/
-public String translate(String s) {
-String latin = "";
-int i = 0;
-while (i &lt; s.length()) {
-// Take care of punctuation and spaces
-while (i &lt; s.length() &amp;&amp; !isLetter(s.charAt(i))) {
-latin = latin + s.charAt(i);
-i++;
-}
-// If there aren't any words left, stop.
-if (i>=s.length()) break;
-// Otherwise we're at the beginning of a word.
-int begin = i;
-while (i &lt; s.length() &amp;&amp; isLetter(s.charAt(i))) {
-i++;
-}
-// Now we're at the end of a word, so translate it.
-int end = i;
-latin = latin + pigWord(s.substring(begin, end));
-}
-return latin;
-}
-/**
-* Method to find the index of the first vowel in a word.
-* @param word The word to search
-* @return The index of the first vowel
-*/
-	  private static int firstVowel(String word) {
-word = word.toLowerCase();
-for (int i=0; i &lt; word.length(); i++)
-if (word.charAt(i)=='a' || word.charAt(i)=='e' ||
-word.charAt(i)=='i' || word.charAt(i)=='o' ||
-word.charAt(i)=='u')
-return i;
-return 0;
-}
-}</pre>
-
+    <div id ="wrap">
+        <div id ="main">
+            <div id="header">
+                <script>addRecipeHeader();</script>
+            </div>
+            <div id = "moduleIndex">
+                <h1>Pig Latin Translator</h1>
+                <br>
+                <p class="normal">
+                    We are going to make a translator (similar to Google translate) that converts English to Pig Latin.
+                </p>
+                <br>
+                <p class="normal">
+                    1. Make a UI that looks something like this:
+                    <br><br>
+                    <img alt="" src="images/PigLatin2.png"  title="">
+                    <br><br>
+                    2. Using the PigLatinTranslator class in the package, create a program that:
+                    <br><br>
+                </p>
+                <ul style="margin-left:40px;">
+                    <li>Translates a word in English to Pig Latin when a button is pressed.</li>
+                    <li>Translates a word in Pig Latin to English when a button is pressed.</li>
+                    <li>Make the computer speak the Pig Latin phrase (using <b>Sound.speak(words)</b>) when a button is pressed.</li>
+                </ul>
+            </div>
+        </div>
     </div>
+    <div id="footer">
+        <script>addFooter();</script>
     </div>
-    </div>                
-                
-<div id="footer">
-<script>addFooter();</script>
-</div>
-
 </body>
 </html>

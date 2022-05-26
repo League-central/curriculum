@@ -1,20 +1,64 @@
-<!DOCTYPE html><html><head><title> 99 Bottles - League Level 0</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"><link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png"><script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script></head><body><div id ="wrap"><div id ="main">
+<!DOCTYPE html>
+<html>
 
-    
-    <div id="recipeLeftColumn"><h1>99 Bottles</h1><hr>
-    <div id="recipeGoal"><h2>Goal:</h2><p id="goal">Print the words to the "99 bottles" song in a for loop.</p></div></div>
-    
-    
-    
-    <div id ="recipeRightColumn"><div id="recipeSteps"><h2>Steps:</h2>
-        
-        <ol id="stepList">
-                            <li>Find the 99 Bottles recipe program ( bottles.pde ) and open it using Processing.
-            </li>
-            <li>You can find help for printing the lyrics to this song <a href="https://academickids.com/encyclopedia/index.php/99_Bottles_of_Beer">here</a>.
+<head>
+    <title> 99 Bottles - League Level 0</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://league-central.github.io/curriculum/style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="icon" type="image/png" href="https://league-central.github.io/curriculum/img/favicon.png">
+    <script src="https://league-central.github.io/curriculum/script/headerAndFooter.js"></script>
+</head>
 
-</li><li>Do not repeat any of the lyrics in your code - use a for loop!
-</li>
-    <li>Look out for the changes you will need to make to the lyrics when you get down to 1 or zero bottles.</li></ol>
-    <div id="p3link"><script>addRecipeP3ReferenceLink()</script></div>
-    <div style="clear:both;"></div></div></div></div></div><div id="footer"><script>addRecipeFooter();</script></div></body></html>
+<body>
+    <div id="wrap">
+        <h1 class="title">99 Bottles</h1>
+        <hr>
+        <div id="recipeMain">
+            <div class="recipeDescription">
+                <h2>Description</h2>
+                <hr>
+                <p id="goal" class="recipeGoal">Print the words to the "99 bottles" song in a for loop.</p>
+                <br>
+                <p style="font-size: 0.8rem; border-left: solid darkgray .4em; padding-left: .6em">
+                    99 bottles of beer on the wall, 99 bottles of beer.<br>
+                    Take one down and pass it around, 98 bottles of beer on the wall.<br>
+                    98 bottles of beer on the wall, 98 bottles of beer.<br>
+                    Take one down and pass it around, 97 bottles of beer on the wall.<br>
+                    ...<br>
+                    1 bottle of beer on the wall, 1 bottle of beer.<br>
+                    Take one down and pass it around, no more bottles of beer on the wall.<br>
+                    No more bottles of beer on the wall, no more bottles of beer.<br>
+                    Go to the store and buy some more, 99 bottles of beer on the wall.<br>
+                </p>
+            </div>
+
+            <div class="recipeSteps">
+                <h2>Instructions</h2>
+                <hr>
+                <ol id="stepList">
+                    <li>Find the 99 Bottles recipe program ( bottles.pde ) and open it using Processing.
+                    </li>
+                    <li>You can find help for printing the lyrics to this song <a
+                            href="https://academickids.com/encyclopedia/index.php/99_Bottles_of_Beer">here</a>.
+
+                    </li>
+                    <li>Do not repeat any of the lyrics in your code - use a for loop!
+                    </li>
+                    <li>Look out for the changes you will need to make to the lyrics when you get down to 1 or zero
+                        bottles.</li>
+                </ol>
+                <div style="clear:both;"></div>
+            </div>
+            <div id="p3link">
+                <script>addRecipeP3ReferenceLink()</script>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <script>addRecipeFooter();</script>
+    </div>
+</body>
+
+</html>

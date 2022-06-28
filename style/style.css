@@ -351,6 +351,41 @@ hr {
    }
 
 
+/*** P3 Reference Link ***/
+
+#p3link {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+}
+
+    #p3link div {
+        box-shadow: 0 0.25em 0.5em gray;
+        padding: 1px 8px 1px 5px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #p3link img {
+        width: auto;
+        max-height: 100px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #p3link h4 {
+        max-width: min-content;
+    }
+
+
 /*** Tips Pages ***/
 
 #tipsPage {

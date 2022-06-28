@@ -54,6 +54,14 @@ function addRecipeHeaderSmall(){
     
 }
 
+function addRecipeP3ReferenceLink() {
+    document.getElementById("p3link").innerHTML +=
+        "<a href=\"https://processing.org/reference\"> <div>                            \
+            <img src=\"https://league-level0.github.io/p3logo.jpeg\" alt=\"P3 Logo\">   \
+            <h4>Processing Reference</h4>                                               \
+        </div> </a>";
+}
+
 function addRecipeFooter(){
     var footer = document.getElementById("footer");
 

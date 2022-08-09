@@ -351,11 +351,58 @@ hr {
    }
 
 
+/*** Recipe Flow Layout (used for Level 0) ***/
+
+#recipeMain {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-flow: center;
+    gap: 2em;
+
+    padding: 1em;
+    margin: 1em;
+}
+
+#recipeMain .recipeDescription {
+    padding:2em;
+    box-shadow: 0 0.25em 0.5em gray;
+    display: flex;
+    flex-direction: column;
+    max-width: 32em;
+}
+
+#recipeMain .recipeDescription .recipeGoal {
+    /* flex-grow: 1; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#recipeMain .recipeSteps {
+    padding:2em;
+    max-width: 32em;
+    box-shadow: 0 0.25em 0.5em gray;
+}
+
+#recipeMain .recipeSteps ol {
+    margin-left: 1em;
+}
+#recipeMain .recipeSteps ol li {
+    margin-bottom: 1em;
+}
+#recipeMain .recipeSteps ol li:first-child {
+    margin-top: 0;
+}
+
 /*** P3 Reference Link ***/
 
 #p3link {
-    float: left;
-    width: 100%;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background-color: white;
 
     display: flex;
     justify-content: center;
